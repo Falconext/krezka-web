@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState, ChangeEvent, FormEvent } from "react";
+import { useMemo, useState, ChangeEvent, FormEvent, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import InputCustom from "../components/InputCustom";
 import { CheckCircle2, XCircle, PhoneCall, CreditCard } from "lucide-react";
@@ -373,4 +373,11 @@ const QuotePage = () => {
   );
 };
 
-export default QuotePage;
+// Wrapper con Suspense para Next.js 16+
+export default function QuotePageWrapper() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#0E0E0E] text-white">Cargando...</div>}>
+      <QuotePage />
+    </Suspense>
+  );
+}
