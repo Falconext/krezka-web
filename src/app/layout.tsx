@@ -159,8 +159,6 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" type="image/png" href="/assets/fnlogo.png" />
-        <link rel="apple-touch-icon" href="/assets/fnlogo.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#6366F1" />
         <link
