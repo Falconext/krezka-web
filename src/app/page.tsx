@@ -29,19 +29,19 @@ const pageVariants = {
 
 export default function Home() {
 
-  // Force Dark Mode Layout
-  const containerClassName = 'relative bg-transparent overflow-hidden min-h-screen text-[#ffffff]';
-  const sectionBackgroundClassName = 'bg-transparent'; // Transparent to show ambient background
+  // Dynamic Layout for Light/Dark
+  const containerClassName = 'relative overflow-hidden min-h-screen text-gray-900 dark:text-[#ffffff] transition-colors duration-300';
+  const sectionBackgroundClassName = 'bg-transparent';
 
   return (
     <>
       <ScrollProgressBar />
-      {/* Background Ambience (Hotel System Style) - FIXED GLOBAL BACKGROUND */}
-      <div className="fixed inset-0 -z-10 pointer-events-none bg-[#0E0E0E]">
-        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-[#5A0EBB] rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-pulse" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-[#8A38F5] rounded-full mix-blend-screen filter blur-[100px] opacity-15" />
-        {/* Dark Overlay for depth */}
-        <div className="absolute inset-0 bg-[#0E0E0E]/20 -z-10" />
+      {/* Background Ambience - Global */}
+      <div className="fixed inset-0 -z-10 pointer-events-none bg-white dark:bg-[#0E0E0E] transition-colors duration-300">
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-[#5A0EBB] rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] opacity-10 dark:opacity-20 animate-pulse" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-[#8A38F5] rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] opacity-10 dark:opacity-15" />
+        {/* Dark Overlay for depth (only in dark mode) */}
+        <div className="absolute inset-0 bg-transparent dark:bg-[#0E0E0E]/20 -z-10" />
       </div>
 
       <motion.div
