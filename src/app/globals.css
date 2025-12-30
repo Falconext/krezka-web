@@ -1,8 +1,8 @@
-@import "tailwindcss";
-@config "../../tailwind.config.js";
-
 /* Importa las @font-face de HelveticaNowDisplay */
 @import url("./public/fontsIntall/stylesheet.css");
+
+@import "tailwindcss";
+@config "../../tailwind.config.js";
 
 /* Fuente global del proyecto */
 * {
