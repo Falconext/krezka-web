@@ -1,0 +1,28 @@
+{
+    "name": "Falconext - Sistema de Facturación Electrónica",
+    "short_name": "Falconext",
+    "description": "El sistema de facturación electrónica #1 en Perú. Emite boletas, facturas y notas de crédito homologadas con SUNAT.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0E0E0E",
+    "theme_color": "#6366F1",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/assets/fnlogo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/fnlogo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "business",
+        "finance",
+        "productivity"
+    ],
+    "lang": "es-PE"
+}
