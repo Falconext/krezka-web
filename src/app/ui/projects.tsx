@@ -17,10 +17,10 @@ const Projects = () => {
                 {/* Texto izquierda */}
                 <div className="md:col-span-5">
                     <p className="uppercase text-[#B76AE0] text-[14px] md:text-[16px] mb-3 tracking-widest">HABLAN POR NOSOTROS</p>
-                    <h3 className="text-3xl md:text-5xl font-semibold leading-tight text-white mb-6">
+                    <h3 className="text-3xl md:text-5xl font-semibold leading-tight text-gray-900 dark:text-white mb-6 transition-colors">
                         Nuestros trabajos
                     </h3>
-                    <p className="mt-4 text-sm md:text-base text-gray-400">
+                    <p className="mt-4 text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors">
                         Porque no hay nada mejor que demostrar con hechos los proyectos que hemos realizado.
                     </p>
                 </div>
@@ -33,7 +33,7 @@ const Projects = () => {
                         { img: proyect3, title: "Injoyplan", tags: ["Informativa", "Web"] },
                         { img: proyect4, title: "Suizasoft - Sistema Clínico", tags: ["SaaS", "Template"] }
                     ].map((proj, idx) => (
-                        <div key={idx} className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md group hover:border-white/20 transition-all">
+                        <div key={idx} className="rounded-3xl overflow-hidden border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-md group hover:border-gray-300 dark:hover:border-white/20 transition-all shadow-sm dark:shadow-none">
                             <div className="h-56 overflow-hidden">
                                 <Image
                                     src={proj.img}
@@ -44,10 +44,10 @@ const Projects = () => {
                             <div className="p-5">
                                 <div className="flex flex-wrap gap-2 mb-3">
                                     {proj.tags.map(tag => (
-                                        <span key={tag} className="bg-white/10 text-gray-300 px-3 py-1 rounded-full text-xs border border-white/5 backdrop-blur-sm">{tag}</span>
+                                        <span key={tag} className="bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full text-xs border border-gray-200 dark:border-white/5 backdrop-blur-sm transition-colors">{tag}</span>
                                     ))}
                                 </div>
-                                <h5 className="text-base md:text-lg font-medium text-white">{proj.title}</h5>
+                                <h5 className="text-base md:text-lg font-medium text-gray-900 dark:text-white transition-colors">{proj.title}</h5>
                             </div>
                         </div>
                     ))}

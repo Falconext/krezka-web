@@ -12,13 +12,13 @@ const WeTools = () => {
                         SUPERPODERES
                     </p>
                     <h2
-                        className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-white"
+                        className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-gray-900 dark:text-white transition-colors"
                     >
                         Nuestras herramientas
                         <br /> para la excelencia.
                     </h2>
                     <p
-                        className="text-sm md:text-base max-w-md text-gray-400"
+                        className="text-sm md:text-base max-w-md text-gray-500 dark:text-gray-400 transition-colors"
                     >
                         Estas son las tecnologías que usamos día a día para diseñar, construir y mantener sistemas
                         modernos, rápidos y confiables para tu negocio.
@@ -39,16 +39,16 @@ const WeTools = () => {
                         ].map((tool, idx) => (
                             <div
                                 key={idx}
-                                className="rounded-3xl border px-4 py-5 flex flex-col gap-3 bg-white/5 border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors"
+                                className="rounded-3xl border px-4 py-5 flex flex-col gap-3 bg-white dark:bg-white/5 border-gray-200 dark:border-white/10 backdrop-blur-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors shadow-sm dark:shadow-none"
                             >
                                 <div className="inline-flex items-center gap-3">
-                                    <div className="rounded-2xl bg-black/40 p-2 border border-white/5">
+                                    <div className="rounded-2xl bg-gray-100 dark:bg-black/40 p-2 border border-gray-200 dark:border-white/5 transition-colors">
                                         <Icon icon={tool.icon} width={22} height={22} color={tool.color || undefined} />
                                     </div>
                                 </div>
                                 <div className="mt-1 space-y-1">
-                                    <p className="text-sm font-semibold text-white">{tool.name}</p>
-                                    <p className="text-xs text-gray-500">{tool.desc}</p>
+                                    <p className="text-sm font-semibold text-gray-900 dark:text-white transition-colors">{tool.name}</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">{tool.desc}</p>
                                 </div>
                             </div>
                         ))}
