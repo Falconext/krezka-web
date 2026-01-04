@@ -53,7 +53,7 @@ export default function BrochurePreciosPage() {
                         <div className="relative px-12 py-10">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-6">
-                                    <div className="bg-white p-4 rounded-2xl shadow-xl">
+                                    <div className="bg-white p-0 rounded-full shadow-xl">
                                         <Image src={logo} alt="Falconext" width={80} height={80} />
                                     </div>
                                     <div>

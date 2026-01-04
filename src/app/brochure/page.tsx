@@ -121,7 +121,7 @@ export default function BrochurePage() {
                     <div className="mb-10">
                         <div className="flex items-center gap-3 mb-4">
                             <Store className="text-green-500" />
-                            <h3 className="text-2xl font-bold text-green-500">Negocio Informal / Emprendedor</h3>
+                            <h3 className="text-2xl font-bold text-green-500">Negocio nuevo / Emprendedor</h3>
                         </div>
                         <div className="grid grid-cols-3 gap-4">
                             {/* Free */}
@@ -137,8 +137,8 @@ export default function BrochurePage() {
                             {/* Crecimiento */}
                             <div className="bg-[#1a2e1a] p-5 rounded-2xl border border-green-500/30">
                                 <h4 className="font-bold text-lg mb-1">Crecimiento</h4>
-                                <div className="text-3xl font-bold mb-2">S/ 9.90</div>
-                                <p className="text-xs text-green-400 mb-2">Anual: S/ 99.00</p>
+                                <div className="text-3xl font-bold mb-2">S/ 10</div>
+                                <p className="text-xs text-green-400 mb-2">Anual: S/ 99</p>
                                 <ul className="text-sm text-gray-400 space-y-2">
                                     <li>• Ventas ilimitadas</li>
                                     <li>• 2 Usuarios</li>
@@ -148,8 +148,8 @@ export default function BrochurePage() {
                             {/* Pro */}
                             <div className="bg-[#151515] p-5 rounded-2xl border border-white/5">
                                 <h4 className="font-bold text-lg mb-1">Pro</h4>
-                                <div className="text-3xl font-bold mb-2">S/ 19.90</div>
-                                <p className="text-xs text-gray-500 mb-2">Anual: S/ 199.00</p>
+                                <div className="text-3xl font-bold mb-2">S/ 20</div>
+                                <p className="text-xs text-gray-500 mb-2">Anual: S/ 199</p>
                                 <ul className="text-sm text-gray-400 space-y-2">
                                     <li>• 5 Usuarios</li>
                                     <li>• Inventario Avanzado</li>
@@ -224,8 +224,8 @@ export default function BrochurePage() {
                                 <h4 className="font-bold text-lg">Ticketera Bluetooth</h4>
                             </div>
                             <p className="text-sm text-gray-400 mb-2">Imprime comprobantes. Usb + Batería.</p>
-                            <div className="text-yellow-400 font-bold text-xl">+ S/ 25.00 <span className="text-xs font-normal text-gray-500">/mes</span></div>
-                            <p className="text-xs text-green-500 mt-1">*GRATIS en Plan Anual (Desde Control)</p>
+                            <div className="text-yellow-400 font-bold text-xl">+ S/ 25 <span className="text-xs font-normal text-gray-500">/mes</span></div>
+                            <p className="text-xs text-green-500 mt-1">*GRATIS en Plan Anual (Todos los planes)</p>
                         </div>
                         <div>
                             <div className="flex items-center gap-2 mb-2">
@@ -233,8 +233,8 @@ export default function BrochurePage() {
                                 <h4 className="font-bold text-lg">Tienda Virtual</h4>
                             </div>
                             <p className="text-sm text-gray-400 mb-2">Catálogo online para tus clientes.</p>
-                            <div className="text-pink-400 font-bold text-xl">+ S/ 29.90 <span className="text-xs font-normal text-gray-500">/mes</span></div>
-                            <p className="text-xs text-green-500 mt-1">* Integrada con tu stock real</p>
+                            <div className="text-pink-400 font-bold text-xl">Desde S/ 40 <span className="text-xs font-normal text-gray-500">/mes</span></div>
+                            <p className="text-xs text-green-500 mt-1">* S/40 a S/120 según plan</p>
                         </div>
                     </div>
                 </A4Page>
@@ -388,61 +388,7 @@ export default function BrochurePage() {
                 </A4Page>
 
 
-                {/* --- PAGE 5: PORTFOLIO / CASOS DE EXITO --- */}
-                <A4Page>
-                    <div className="flex flex-col h-full items-center justify-center text-center">
-                        <div className="mb-10 p-4 border border-white/10 rounded-full bg-white/5 inline-flex backdrop-blur-md">
-                            <span className="text-amber-400 font-medium tracking-wide mx-4">EXPERIENCIA DEMOSTRADA</span>
-                        </div>
 
-                        <h2 className="text-5xl font-bold mb-12 leading-tight">
-                            Proyectos que <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-600">Inspiran Confianza</span>
-                        </h2>
-
-                        <div className="grid grid-cols-2 gap-8 w-full">
-                            {/* Project 1 */}
-                            <div className="aspect-[4/3] relative rounded-2xl overflow-hidden group border border-white/10">
-                                <div className="absolute inset-0 bg-gray-800">
-                                    <Image
-                                        src={mainproject}
-                                        alt="Project 1"
-                                        className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                                        fill
-                                    />
-                                </div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                                    <h3 className="text-xl font-bold text-white">Sistema POS Falconext</h3>
-                                    <p className="text-sm text-gray-400">Plataforma SaaS de Facturación</p>
-                                </div>
-                            </div>
-
-                            {/* Project 2 Placeholder */}
-                            <div className="aspect-[4/3] relative rounded-2xl overflow-hidden group border border-white/10 bg-[#151515] flex items-center justify-center">
-                                <div className="text-center p-6">
-                                    <ShoppingIcon size={48} className="mx-auto mb-4 text-gray-600" />
-                                    <h3 className="text-xl font-bold text-white">E-commerce Moda</h3>
-                                    <p className="text-sm text-gray-400 mt-2">Tienda online con pasarela de pagos</p>
-                                </div>
-                            </div>
-
-                            {/* Project 3 Placeholder */}
-                            <div className="aspect-[4/3] relative rounded-2xl overflow-hidden group border border-white/10 bg-[#151515] flex items-center justify-center">
-                                <div className="text-center p-6">
-                                    <GraduationCap size={48} className="mx-auto mb-4 text-gray-600" />
-                                    <h3 className="text-xl font-bold text-white">Aula Virtual Corp</h3>
-                                    <p className="text-sm text-gray-400 mt-2">Sistema LMS para capacitación</p>
-                                </div>
-                            </div>
-
-                            {/* Project Stats */}
-                            <div className="aspect-[4/3] bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-2xl border border-white/10 flex flex-col items-center justify-center p-6">
-                                <div className="text-5xl font-bold text-white mb-2">+150</div>
-                                <div className="text-sm uppercase tracking-widest text-gray-400 text-center">Proyectos<br />Entregados</div>
-                            </div>
-                        </div>
-                    </div>
-                </A4Page>
 
 
                 {/* --- PAGE 6: FAQ --- */}
