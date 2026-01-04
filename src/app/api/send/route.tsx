@@ -3,8 +3,6 @@ import * as React from 'react';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
     try {
         const body = await request.json();
@@ -15,6 +13,14 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Faltan campos obligatorios' }, { status: 400 });
         }
 
+        // Initialize Resend only when needed (not at module level)
+        const apiKey = process.env.RESEND_API_KEY;
+        if (!apiKey) {
+            console.error('RESEND_API_KEY is not configured');
+            return NextResponse.json({ error: 'Email service not configured' }, { status: 500 });
+        }
+
+        const resend = new Resend(apiKey);
         const { data, error } = await resend.emails.send({
             from: 'Falconext Web <soporte@falconext.pe>', // Updated to verified domain
             to: ['diego.ortega.dev@gmail.com'], // Deliver to you
