@@ -2,10 +2,11 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import avatar1 from '@/app/public/assets/avatar1.png';
-import avatar2 from '@/app/public/assets/avatar2.png';
-import avatar3 from '@/app/public/assets/avatar3.png';
-
+import men from '@/app/public/assets/men.webp';
+import pharmacyWoman from '@/app/public/assets/peruvian_pharmacy_woman_1767478388764.png';
+import hardwareMan from '@/app/public/assets/peruvian_hardware_man_1767478402330.png';
+import bodegaWoman from '@/app/public/assets/peruvian_bodega_woman_1767478415860.png';
+import pharmacyMan from '@/app/public/assets/peruvian_pharmacy_man_1767478428804.png';
 const Testimonials = () => {
     // Forced Dark / Glassmorphism Mode
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,27 +15,83 @@ const Testimonials = () => {
     const testimonials = [
         {
             id: 1,
-            name: "John Smith",
-            role: "Head of Marketing RetailPro",
-            avatarImg: avatar1,
-            quote: "Revolucionó nuestra estrategia de datos",
-            description: "Sata ha transformado completamente cómo gestionamos y utilizamos nuestros datos de clientes. Las perspectivas en tiempo real nos permitieron entregar experiencias personalizadas."
+            name: "Juan Quispe",
+            role: "Dueño de Bodega 'El Vecino'",
+            avatarImg: hardwareMan,
+            quote: "Control total de mi inventario",
+            description: "Antes se me perdía mercadería y no sabía cuánto ganaba. Con Falconext ahora tengo todo cuadrado al centavo y puedo ver mis ventas desde mi celular."
         },
         {
             id: 2,
-            name: "Emily Johnson",
-            role: "Growth Manager at FitLife",
-            avatarImg: avatar2,
-            quote: "Integración perfecta en todos los canales",
-            description: "Necesitábamos una plataforma que unificara nuestros datos de múltiples canales. Sata lo hizo posible y nos ayudó a escalar nuestras operaciones de manera eficiente."
+            name: "María Flores",
+            role: "Gerente de Farmacia 'Santa Rosa'",
+            avatarImg: pharmacyWoman,
+            quote: "Ideal para farmacias",
+            description: "El sistema maneja perfectamente los lotes y fechas de vencimiento. Me avisa qué productos están por vencer, lo cual me ha ahorrado mucho dinero."
         },
         {
             id: 3,
-            name: "Carlos Mendoza",
-            role: "CEO de TechStart",
-            avatarImg: avatar3,
-            quote: "Automatización que realmente funciona",
-            description: "La automatización inteligente de Sata nos permitió reducir tiempos operativos en un 40% mientras mejoramos la calidad de nuestros servicios."
+            name: "Luis Mamani",
+            role: "Administrador de Ferretería 'El Constructor'",
+            avatarImg: hardwareMan,
+            quote: "Facturación rápida y sin errores",
+            description: "Mis clientes necesitan facturas al instante. El sistema es veloz y muy fácil de usar para mis vendedores. Ya no hacemos colas en caja."
+        },
+        {
+            id: 4,
+            name: "Ana Sánchez",
+            role: "Dueña de Botica 'Salud Total'",
+            avatarImg: pharmacyWoman,
+            quote: "Soporte técnico A1",
+            description: "Lo mejor es que cuando tengo una duda me responden al toque por WhatsApp. Me siento acompañada y segura de que mi negocio no va a parar."
+        },
+        {
+            id: 5,
+            name: "Pedro Castillo",
+            role: "Dueño de Bodega 'Don Pedro'",
+            avatarImg: pharmacyMan,
+            quote: "Muy fácil de aprender",
+            description: "Yo no soy muy tecnológico, pero este sistema es intuitivo. En una tarde ya estaba emitiendo boletas electrónicas sin problemas."
+        },
+        {
+            id: 6,
+            name: "Carmen Ruiz",
+            role: "Gerente Comercial de Ferretería 'Acero'",
+            avatarImg: bodegaWoman,
+            quote: "Reportes que ayudan a crecer",
+            description: "Saber qué productos se venden más y cuáles no me ha permitido comprar mejor y aumentar mis ganancias. Los reportes son clarísimos."
+        },
+        {
+            id: 7,
+            name: "Jorge Vargas",
+            role: "Propietario de Market 'La Esquina'",
+            avatarImg: hardwareMan,
+            quote: "Todo en la nube",
+            description: "Puedo viajar a provincia y seguir viendo cómo van las ventas de mi tienda en Lima. La tranquilidad de tener el control no tiene precio."
+        },
+        {
+            id: 8,
+            name: "Rosa Medina",
+            role: "Administradora de Farmacia 'Vida'",
+            avatarImg: pharmacyWoman,
+            quote: "Cumple con todo lo de SUNAT",
+            description: "Me olvidé de los problemas con SUNAT. El sistema se actualiza solo con las nuevas normas y mis contadores están felices con la información."
+        },
+        {
+            id: 9,
+            name: "Miguel Torres",
+            role: "Dueño de Ferretería 'Torres'",
+            avatarImg: pharmacyMan,
+            quote: "Excelente relación precio-calidad",
+            description: "Probé otros sistemas más caros que hacían menos. Falconext tiene todo lo que necesito a un precio justo para un emprendedor peruano."
+        },
+        {
+            id: 10,
+            name: "Patricia Alarcón",
+            role: "Dueña de Minimarket 'Paty'",
+            avatarImg: bodegaWoman,
+            quote: "Ventas más rápidas",
+            description: "Con el lector de código de barras y la interfaz táctil, atendemos a los clientes volando. Hemos mejorado mucho la atención en horas punta."
         }
     ];
 
@@ -63,6 +120,14 @@ const Testimonials = () => {
 
     useEffect(() => {
         scrollToIndex(currentIndex);
+    }, [currentIndex]);
+
+    // Auto-scroll every 5 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            handleNext();
+        }, 5000);
+        return () => clearInterval(interval);
     }, [currentIndex]);
 
     return (

@@ -155,7 +155,7 @@ const Footer = () => {
 
                         {/* Socials */}
                         <div className="flex gap-3 mt-6">
-                            <a className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Facebook">
+                            <a href="https://www.facebook.com/profile.php?id=61576185915016" target="_blank" rel="noopener noreferrer" className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Facebook">
                                 <Icon icon="mdi:facebook" width={20} height={20} className="text-gray-700 dark:text-white" />
                             </a>
                             <a className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Twitter">

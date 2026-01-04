@@ -2,38 +2,71 @@
 import Image from "next/image";
 import mainproject from '@/app/public/assets/mainproject.png'
 import Link from "next/link";
-import { Monitor, SquareStack } from 'lucide-react'
+import { Monitor, ArrowRight } from 'lucide-react'
 
 const Banner = () => {
-
-    // Removed theme logic. Forced Dark/Transparent.
-
     return (
-        <div className="" id="home">
+        <div className="relative isolate pt-24 md:pt-32 pb-16 overflow-hidden" id="home">
             <div
-                className="w-full transition-all duration-1000 bg-transparent" // Transparent to show global background
+                className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                aria-hidden="true"
             >
-                {/* <div className="opacity-[0] banner relative"></div> */}
                 <div
-                    className="flex top-0 justify-center items-center xl:pt-[210px] md:pt-[120px] max-w-screen-lg mx-auto text-center">
-                    <div className='relative text-center' style={{ transform: `scale(${1})` }} >
-                        <div className="pt-[180px] md:pt-0 px-[40px] md:px-0">
-                            <p className="bg-gray-100 dark:bg-white/10 backdrop-blur-md border border-gray-200 dark:border-white/10 w-fit rounded-xl mx-auto p-2 px-4 mb-3 justify-center text-center text-gray-700 dark:text-white/90 font-medium">Potencia tu empresa con Facturación Electrónica SUNAT</p>
-                        </div>
-                        <h1 className="px-5 xl:text-[70px] mt-[0px] md:mt-[0px] mb-5 text-[24px] max-w-screen-xl mx-auto md:text-[54px] md:w-[800px] font-[500] leading-[28px] md:leading-[70px] text-gray-900 dark:text-white transition-colors">
-                            Sistema de Facturación y Gestión para tu Negocio
-                        </h1>
-                        <p className="md:w-[600px] mb-5 max-w-screen-xl px-10 md:px-0 md:text-[18px] mt-6 mx-auto text-[14px] text-gray-600 dark:text-gray-300 transition-colors">Emite comprobantes electrónicos ilimitados, controla tu inventario y gestiona tus ventas con el mejor sistema POS del mercado. ¡Prueba Falconext hoy!</p>
-                        <div className="flex justify-center gap-4 md:mb-0">
-                            <Link target="_blank" href={"https://master.d236b4to2xgsah.amplifyapp.com/"} className='w-fit flex relative md:mt-5 rounded-full px-3 md:px-6 py-3 text-white bg-[#1c1c1c] dark:bg-[#1c1c1c] hover:bg-[#2c2c2c] border border-white/10 transition-colors'><Monitor className="mr-3" color="#fff" />{`Mirar demo`}</Link>
-                            <Link target="_blank" href={"https://master.d236b4to2xgsah.amplifyapp.com/"} className='w-fit flex relative md:mt-5 bg-[#5A0EBB] hover:bg-[#6820C7] text-[#fff] rounded-full px-3 md:px-6 py-3 shadow-[0_0_20px_rgba(90,14,187,0.4)] transition-all'><SquareStack className="mr-3" />Nuestros sistemas</Link>
+                    className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                    style={{
+                        clipPath:
+                            'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+                    }}
+                />
+            </div>
+
+            <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center relative z-10">
+                <div className="mx-auto max-w-4xl">
+                    <div className="mb-8 flex justify-center">
+                        <div className="relative rounded-full px-4 py-1.5 text-sm leading-6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 dark:ring-white/20 hover:ring-gray-900/20 dark:hover:ring-white/30 bg-white/50 dark:bg-white/5 backdrop-blur-sm transition-all">
+                            Potencia tu empresa con Facturación Electrónica SUNAT{' '}
                         </div>
                     </div>
 
+                    <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl text-balance">
+                        Sistema de Facturación y Gestión para tu Negocio
+                    </h1>
+
+                    <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                        Emite comprobantes electrónicos ilimitados, controla tu inventario y gestiona tus ventas con el mejor sistema POS del mercado. ¡Prueba Falconext hoy!
+                    </p>
+
+                    <div className="mt-10 flex items-center justify-center gap-x-6">
+                        <Link
+                            href="https://app.falconext.pe"
+                            target="_blank"
+                            className="bg-[#1c1c1c] dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-full px-6 py-3 text-sm font-semibold shadow-sm transition-all flex items-center gap-2"
+                        >
+                            <Monitor className="w-4 h-4" />
+                            Mirar demo
+                        </Link>
+                        <Link href="/servicios" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white flex items-center gap-1 hover:gap-2 transition-all">
+                            Saber más <ArrowRight className="w-4 h-4" />
+                        </Link>
+                    </div>
+
+                    <div className="mt-8 flex justify-center">
+                        <div className="inline-flex items-center rounded-lg bg-gray-50 dark:bg-white/5 px-4 py-2 text-sm text-gray-600 dark:text-gray-300 ring-1 ring-inset ring-gray-500/10 dark:ring-white/10">
+                            <span className="mr-2 opacity-70">Credenciales:</span>
+                            <span className="font-mono font-bold mr-3">demo@falconext.pe</span> / <span className="font-mono font-bold ml-1">demo2026</span>
+                        </div>
+                    </div>
                 </div>
-                <div className='block relative mt-10'>
-                    <div className="mt-0 md:px-0 px-2.5 overflow-hidden md:overflow-visible text-center mx-auto flex justify-center">
-                        <Image src={mainproject} width={500} height={454} className="md:w-8/12 w-fit border-[#1f2937]/50 relative rounded-3xl border px-6 pt-6 pb-6 object-cover h-full bg-white/5 backdrop-blur-sm" alt="" />
+
+                <div className="mt-16 flow-root sm:mt-24">
+                    <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 dark:ring-white/10 lg:-m-4 lg:rounded-2xl lg:p-4 bg-white/40 dark:bg-white/5 backdrop-blur-3xl">
+                        <Image
+                            src={mainproject}
+                            alt="Dashboard Preview"
+                            width={2400}
+                            height={1600}
+                            className="rounded-2xl shadow-2xl ring-1 ring-gray-900/10 dark:ring-white/10 w-full"
+                        />
                     </div>
                 </div>
             </div>

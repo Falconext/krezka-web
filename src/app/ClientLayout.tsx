@@ -16,6 +16,12 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     const pathname = usePathname()
 
     useEffect(() => {
+        // Time-based default logic (ignoring localStorage for initial load)
+        const hour = new Date().getHours();
+        const initialLight = hour >= 6 && hour < 19; // 6 AM to 7 PM
+        setIsToggleOn(initialLight);
+    }, []);
+    useEffect(() => {
         if (isToggleOn) {
             getTheme("sun")
         } else {

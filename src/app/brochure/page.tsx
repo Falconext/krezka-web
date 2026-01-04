@@ -3,8 +3,6 @@
 import { Printer, Store, Shield, Phone, Mail, ExternalLink, Check, Plus, Globe, Zap, Users, MessageCircle, Laptop, Rocket, Search, CheckCircle2, ChevronRight, BarChart, Server, GraduationCap } from 'lucide-react';
 import Image from 'next/image';
 import mainproject from '@/app/public/assets/mainproject.png';
-import { useEffect } from 'react';
-import { useThemeStore } from '../zustand/theme';
 
 // --- A4 Container ---
 const A4Page = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => {
@@ -26,12 +24,6 @@ const A4Page = ({ children, className = '' }: { children: React.ReactNode; class
 };
 
 export default function BrochurePage() {
-    const { getTheme } = useThemeStore();
-
-    useEffect(() => {
-        getTheme('sun');
-    }, [getTheme]);
-
 
     const handlePrint = () => {
         window.print();
@@ -95,8 +87,11 @@ export default function BrochurePage() {
                             <Image
                                 src={mainproject}
                                 alt="Dashboard Interface"
-                                className="object-cover"
-                                fill
+                                className="object-contain rounded-3xl"
+                                quality={100}
+                                priority
+                                unoptimized
+                                placeholder="blur"
                             />
                         </div>
                     </div>

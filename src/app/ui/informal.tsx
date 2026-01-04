@@ -15,7 +15,7 @@ const InformalSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-gray-900 dark:text-white transition-colors">
             Sistemas también para
             <br />
-            negocios informales
+            negocios nuevos sin ruc
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base transition-colors">
             Si vendes por redes sociales, ferias, delivery o punto fijo sin RUC, igual puedes llevar el control de tus ventas, stock y caja.
@@ -62,7 +62,7 @@ const InformalSection = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#5A0EBB]/20 rounded-full blur-2xl pointer-events-none" />
 
             <p className="text-sm font-medium mb-3 text-gray-900 dark:text-white relative z-10 transition-colors">
-              Ejemplos de negocios informales que pueden usar Falconext:
+              Ejemplos de negocios nuevos sin ruc que pueden usar Falconext:
             </p>
             <div className="grid grid-cols-2 gap-3 text-sm relative z-10">
               {[

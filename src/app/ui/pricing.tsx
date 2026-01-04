@@ -1,12 +1,23 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { CheckCircle2, XCircle } from "lucide-react";
+import PurchaseModal from "./purchase-modal";
 
 const Pricing = () => {
     // Forced Dark / Glassmorphism Mode
     const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annual">("annual");
     const [customerType, setCustomerType] = useState<"formal" | "informal">("formal");
     const [withVirtualStore, setWithVirtualStore] = useState<boolean>(false);
+
+    // Modal State
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedPlan, setSelectedPlan] = useState<{
+        id: string;
+        name: string;
+        price: number;
+        billingPeriod: "monthly" | "annual";
+    } | null>(null);
+
     const isAnnual = billingPeriod === "annual";
 
     type Feature = { label: string; included: boolean };
@@ -495,17 +506,31 @@ const Pricing = () => {
                                     </span>
                                 </p>
                             </div>
-                            <Link
-                                href={`/cotizar?plan=${plan.id}&billing=${isAnnual ? 'annual' : 'monthly'}&type=${customerType}`}
-                                className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-2 text-sm font-medium transition-all
+                            <button
+                                onClick={() => {
+                                    setSelectedPlan({
+                                        id: plan.id,
+                                        name: plan.name,
+                                        price: priceFor(plan),
+                                        billingPeriod: isAnnual ? "annual" : "monthly"
+                                    });
+                                    setIsModalOpen(true);
+                                }}
+                                className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-2 text-sm font-medium transition-all w-full
                                     ${plan.highlight ? "bg-[#2563eb] text-white hover:bg-[#1d4ed8] shadow-[0_0_15px_rgba(37,99,235,0.4)]" : "bg-gray-900 dark:bg-white/10 text-white hover:bg-gray-800 dark:hover:bg-white/20"}
                                 `}
                             >
-                                Agendar demo GRATIS
-                            </Link>
+                                Comprar ahora
+                            </button>
                         </div>
                     ))}
                 </div>
+
+                <PurchaseModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    plan={selectedPlan}
+                />
 
                 {customerType === "formal" && (
                     <div className="mt-16 overflow-x-auto">
@@ -531,6 +556,49 @@ const Pricing = () => {
                                 <div className="font-semibold text-gray-900 dark:text-white">Notas de Venta</div>
                                 {formalPlansState.map((p) => (
                                     <div key={p.id} className="flex items-center justify-center text-sm">Ilimitado</div>
+                                ))}
+                            </div>
+                            {/* Inventario */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div className="font-semibold text-gray-900 dark:text-white">Inventario</div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Reportes */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div className="font-semibold text-gray-900 dark:text-white">Reportes</div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Funciones */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div className="font-semibold text-gray-900 dark:text-white">Funciones</div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Tienda Virtual */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div>
+                                    <p className="font-semibold text-gray-900 dark:text-white">Tienda Virtual</p>
+                                    <p className="text-xs text-gray-500">Catálogo, Carrito...</p>
+                                </div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        {p.tieneTienda ? (
+                                            <CheckCircle2 size={18} className="text-[#3b82f6]" />
+                                        ) : (
+                                            <XCircle size={18} className="text-gray-400 dark:text-gray-600" />
+                                        )}
+                                    </div>
                                 ))}
                             </div>
                             {/* Usuarios */}

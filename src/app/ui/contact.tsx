@@ -116,43 +116,25 @@ const Contact = () => {
             return;
         }
 
-        const plainTextMessage = `
-        Arcanight - Nuevo Mensaje
-        ----------------------------------------
-        
-        ¡Hola!
-        
-        Has recibido un nuevo mensaje a través del formulario de contacto de Arcanight. Aquí están los detalles:
-        
-        Nombre Completo: ${formValues.fullName}
-        Compañía: ${formValues.company || "No especificado"}
-        Email: ${formValues.email}
-        Teléfono: ${formValues.phone || "No especificado"}
-        Servicios Seleccionados: ${formValues.servicesSelect.join(", ")}
-        Mensaje: ${formValues.message}
-        
-        ----------------------------------------
-        Este mensaje fue enviado desde el formulario de contacto de www.falconext.pe.
-        Powered by Web3Forms
-          `;
-
         try {
-            const response = await fetch("https://api.web3forms.com/submit", {
+            const response = await fetch("/api/send", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    access_key: "9e8b5b39-7603-4a4c-90d7-1976f8d968d4",
-                    subject: `Nuevo mensaje de ${formValues.fullName} - Falconext`,
-                    from_name: "Formulario de Falconext",
-                    reply_to: formValues.email,
-                    email_template: plainTextMessage
+                    fullName: formValues.fullName,
+                    company: formValues.company,
+                    email: formValues.email,
+                    phone: formValues.phone,
+                    servicesSelect: formValues.servicesSelect,
+                    message: formValues.message,
                 }),
             });
 
             const result = await response.json();
-            if (response.ok && result.success) {
+
+            if (response.ok) {
                 setSubmitMessage("¡Mensaje enviado con éxito!");
                 setFormValues(initialForm);
                 setErrors(initialErrors);
@@ -167,7 +149,7 @@ const Contact = () => {
                 }
             } else {
                 setSubmitMessage(
-                    result.message || "Hubo un error al enviar el mensaje. Intenta de nuevo."
+                    result.error || "Hubo un error al enviar el mensaje. Intenta de nuevo."
                 );
             }
         } catch (error) {
@@ -199,7 +181,7 @@ const Contact = () => {
                                 <div>
                                     <p className="text-gray-500 dark:text-gray-400 text-sm">Puedes mandarnos mensaje a este correo</p>
                                     <label className="font-medium text-[16px] md:text-[18px] text-gray-900 dark:text-white transition-colors">
-                                        diego.ortega.dev@gmail.com
+                                        soporte@falconext.pe
                                     </label>
                                 </div>
                             </div>
@@ -212,7 +194,7 @@ const Contact = () => {
                                 <div>
                                     <p className="text-gray-500 dark:text-gray-400 text-sm">Llámanos para cualquier consulta</p>
                                     <label className="font-medium text-[16px] md:text-[18px] text-gray-900 dark:text-white transition-colors">
-                                        +51 991065217
+                                        +51 932 332 556
                                     </label>
                                 </div>
                             </div>
@@ -334,7 +316,7 @@ const Contact = () => {
                                         error={errors.message}
                                         onChange={handleChange}
                                         rows={4}
-                                        className="bg-black/30 border border-white/10 text-white placeholder-gray-500 focus:border-[#22c55e] focus:ring-1 focus:ring-[#22c55e] outline-none transition rounded-xl w-full p-3"
+                                        className="bg-gray-50 dark:bg-black/30 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-[#22c55e] focus:ring-1 focus:ring-[#22c55e] outline-none transition rounded-xl w-full p-3"
                                         placeholder="Cuéntanos sobre tu proyecto..."
                                     />
                                 </div>
