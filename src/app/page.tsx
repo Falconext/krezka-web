@@ -2,7 +2,7 @@
 
 import Questions from './ui/questions';
 import Banner from './ui/banner';
-import Projects from './ui/projects';
+// import Projects from './ui/projects';
 import Contact from './ui/contact';
 import Wellcome from './ui/wellcome';
 import WhatWeDo from './ui/whatwedo';
