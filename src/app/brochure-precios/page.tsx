@@ -40,10 +40,10 @@ export default function BrochurePreciosPage() {
 
             {/* A4 Paper Container */}
             <div className="brochure-container bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen py-8">
-                <div className="brochure-page bg-white max-w-[21cm] mx-auto shadow-2xl">
+                <div className="brochure-page bg-white max-w-[25cm] mx-auto shadow-2xl">
                     {/* Elegant Header */}
                     <div className="relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-900 to-gray-900"></div>
                         <div className="absolute inset-0 opacity-10">
                             <div className="absolute top-0 -right-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
                             <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -77,10 +77,10 @@ export default function BrochurePreciosPage() {
                     <div className="px-12 pt-12 pb-8">
                         <div className="text-center">
                             <div className="inline-block">
-                                <h2 className="text-4xl font-black text-gray-900 mb-3 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+                                <h2 className="text-4xl font-black text-gray-900 mb-3 bg-gradient-to-r from-gray-600 to-gray-500 bg-clip-text text-transparent">
                                     Planes Flexibles para Cada Negocio
                                 </h2>
-                                <div className="h-1.5 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full w-full"></div>
+                                <div className="h-1.5 bg-gradient-to-r from-gray-500 to-gray-600 rounded-full w-full"></div>
                             </div>
                             <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-6 leading-relaxed">
                                 Potencia tu negocio con el sistema #1 de facturación electrónica
@@ -93,7 +93,7 @@ export default function BrochurePreciosPage() {
                     {/* Planes Formales Section */}
                     <div className="px-12 py-8">
                         <div className="mb-10">
-                            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-2xl shadow-lg">
+                            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-gray-500 to-gray-600 text-white px-8 py-4 rounded-2xl shadow-lg">
                                 <Store className="w-7 h-7" />
                                 <h3 className="text-2xl font-bold">
                                     Planes para Negocios Formales
@@ -217,7 +217,7 @@ export default function BrochurePreciosPage() {
                                 <div className="mt-4 pt-4 border-t border-gray-200">
                                     <div className="flex items-center gap-2 text-xs text-orange-600 font-bold">
                                         <ShoppingCart className="w-4 h-4" />
-                                        <span>+ Tienda Virtual: S/47/mes</span>
+                                        <span>+ Tienda Virtual: S/45/mes</span>
                                     </div>
                                 </div>
                             </div>
@@ -282,15 +282,10 @@ export default function BrochurePreciosPage() {
                                 <div className="mt-4 pt-4 border-t border-green-300">
                                     <div className="flex items-center gap-2 text-xs text-orange-600 font-bold">
                                         <ShoppingCart className="w-4 h-4" />
-                                        <span>+ Tienda Virtual: S/54.90/mes</span>
+                                        <span>+ Tienda Virtual: S/60/mes</span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* More Premium Plans */}
-                        <div className="grid grid-cols-3 gap-6 mt-6">
-                            {/* Plan Bacán */}
                             <div className="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-300 rounded-2xl p-6">
                                 <div className="text-center mb-4">
                                     <h4 className="text-2xl font-bold text-indigo-900">Bacán</h4>
