@@ -45,9 +45,6 @@ const Banner = () => {
                             <Monitor className="w-4 h-4" />
                             Mirar demo
                         </Link>
-                        <Link href="/servicios" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white flex items-center gap-1 hover:gap-2 transition-all">
-                            Saber más <ArrowRight className="w-4 h-4" />
-                        </Link>
                     </div>
 
                     <div className="mt-8 flex justify-center">
