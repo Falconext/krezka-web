@@ -23,7 +23,7 @@ export default function BrochurePreciosPage() {
                 <div className="no-print fixed top-4 right-4 z-50 flex gap-2">
                     <button
                         onClick={handlePrint}
-                        className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-xl shadow-2xl hover:shadow-orange-500/50 transition-all flex items-center gap-2 font-semibold"
+                        className="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-6 py-3 rounded-xl shadow-2xl hover:shadow-orange-500/50 transition-all flex items-center gap-2 font-semibold"
                     >
                         <Download className="w-5 h-5" />
                         Descargar PDF
@@ -136,7 +136,7 @@ export default function BrochurePreciosPage() {
                                             Precio Mensual
                                         </td>
                                         <td className="py-4 px-4 text-center font-bold text-gray-900">
-                                            S/ 20
+                                            S/ 35
                                         </td>
                                         <td className="py-4 px-4 text-center font-bold text-gray-900">
                                             S/ 42
@@ -512,10 +512,10 @@ export default function BrochurePreciosPage() {
                                             GRATIS
                                         </td>
                                         <td className="py-4 px-4 text-center font-bold text-gray-900 bg-blue-50">
-                                            S/ 9.90
+                                            S/ 10
                                         </td>
                                         <td className="py-4 px-4 text-center font-bold text-gray-900">
-                                            S/ 19.90
+                                            S/ 20
                                         </td>
                                     </tr>
 
