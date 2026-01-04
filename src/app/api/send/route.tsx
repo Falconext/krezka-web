@@ -23,7 +23,7 @@ export async function POST(request: Request) {
         const resend = new Resend(apiKey);
         const { data, error } = await resend.emails.send({
             from: 'Falconext Web <soporte@falconext.pe>', // Updated to verified domain
-            to: ['diego.ortega.dev@gmail.com'], // Deliver to you
+            to: ['soporte@falconext.pe'], // Deliver to you
             replyTo: email,
             subject: `Nuevo Lead: ${fullName} - ${company || 'Sin empresa'}`,
             react: (
