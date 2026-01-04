@@ -384,10 +384,22 @@ export default function BrochurePreciosPage() {
                                             </div>
                                         </td>
                                         <td className="py-4 px-4 text-center">
-                                            <X className="w-5 h-5 text-red-500 mx-auto" />
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                            <div className="text-xs text-green-700 font-bold mt-1">
+                                                GRATIS
+                                            </div>
+                                            <div className="text-xs text-gray-500">
+                                                (Plan Anual)
+                                            </div>
                                         </td>
                                         <td className="py-4 px-4 text-center">
-                                            <X className="w-5 h-5 text-red-500 mx-auto" />
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                            <div className="text-xs text-green-700 font-bold mt-1">
+                                                GRATIS
+                                            </div>
+                                            <div className="text-xs text-gray-500">
+                                                (Plan Anual)
+                                            </div>
                                         </td>
                                         <td className="py-4 px-4 text-center bg-green-50">
                                             <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
