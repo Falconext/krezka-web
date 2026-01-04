@@ -136,7 +136,7 @@ export default function BrochurePreciosPage() {
                                             Precio Mensual
                                         </td>
                                         <td className="py-4 px-4 text-center font-bold text-gray-900">
-                                            S/ 35
+                                            S/ 20
                                         </td>
                                         <td className="py-4 px-4 text-center font-bold text-gray-900">
                                             S/ 42
@@ -319,37 +319,37 @@ export default function BrochurePreciosPage() {
                                         <td className="py-4 px-4 text-center">
                                             <Circle className="w-5 h-5 text-blue-500 mx-auto" />
                                             <div className="text-xs text-orange-600 font-bold mt-1">
-                                                +S/5
+                                                S/40
                                             </div>
                                         </td>
                                         <td className="py-4 px-4 text-center">
                                             <Circle className="w-5 h-5 text-blue-500 mx-auto" />
                                             <div className="text-xs text-orange-600 font-bold mt-1">
-                                                +S/5
-                                            </div>
-                                        </td>
-                                        <td className="py-4 px-4 text-center bg-green-50">
-                                            <Circle className="w-5 h-5 text-blue-500 mx-auto" />
-                                            <div className="text-xs text-orange-600 font-bold mt-1">
-                                                +S/10
+                                                S/45
                                             </div>
                                         </td>
                                         <td className="py-4 px-4 text-center">
                                             <Circle className="w-5 h-5 text-blue-500 mx-auto" />
                                             <div className="text-xs text-orange-600 font-bold mt-1">
-                                                +S/10
+                                                S/60
                                             </div>
                                         </td>
                                         <td className="py-4 px-4 text-center">
                                             <Circle className="w-5 h-5 text-blue-500 mx-auto" />
                                             <div className="text-xs text-orange-600 font-bold mt-1">
-                                                +S/10
+                                                S/80
                                             </div>
                                         </td>
                                         <td className="py-4 px-4 text-center">
                                             <Circle className="w-5 h-5 text-blue-500 mx-auto" />
                                             <div className="text-xs text-orange-600 font-bold mt-1">
-                                                +S/10
+                                                S/100
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <Circle className="w-5 h-5 text-blue-500 mx-auto" />
+                                            <div className="text-xs text-orange-600 font-bold mt-1">
+                                                S/120
                                             </div>
                                         </td>
                                     </tr>
