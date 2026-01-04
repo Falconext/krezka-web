@@ -1,4 +1,5 @@
 import { ContactTemplate } from '@/components/emails/ContactTemplate';
+import * as React from 'react';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
@@ -19,14 +20,16 @@ export async function POST(request: Request) {
             to: ['diego.ortega.dev@gmail.com'], // Deliver to you
             replyTo: email,
             subject: `Nuevo Lead: ${fullName} - ${company || 'Sin empresa'}`,
-            react: ContactTemplate({
-                fullName,
-                email,
-                company,
-                phone,
-                services: servicesSelect || [],
-                message,
-            }),
+            react: (
+                <ContactTemplate
+                    fullName={fullName}
+                    email={email}
+                    company={company}
+                    phone={phone}
+                    services={servicesSelect || []}
+                    message={message}
+                />
+            ),
         });
 
         if (error) {
