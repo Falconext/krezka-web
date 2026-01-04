@@ -406,11 +406,8 @@ export default function BrochurePreciosPage() {
                                             <div className="text-xs text-green-700 font-bold mt-1">
                                                 GRATIS
                                             </div>
-                                        </td>
-                                        <td className="py-4 px-4 text-center">
-                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
-                                            <div className="text-xs text-green-700 font-bold mt-1">
-                                                GRATIS
+                                            <div className="text-xs text-gray-500">
+                                                (Plan Anual)
                                             </div>
                                         </td>
                                         <td className="py-4 px-4 text-center">
@@ -418,11 +415,26 @@ export default function BrochurePreciosPage() {
                                             <div className="text-xs text-green-700 font-bold mt-1">
                                                 GRATIS
                                             </div>
+                                            <div className="text-xs text-gray-500">
+                                                (Plan Anual)
+                                            </div>
                                         </td>
                                         <td className="py-4 px-4 text-center">
                                             <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
                                             <div className="text-xs text-green-700 font-bold mt-1">
                                                 GRATIS
+                                            </div>
+                                            <div className="text-xs text-gray-500">
+                                                (Plan Anual)
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                            <div className="text-xs text-green-700 font-bold mt-1">
+                                                GRATIS
+                                            </div>
+                                            <div className="text-xs text-gray-500">
+                                                (Plan Anual)
                                             </div>
                                         </td>
                                     </tr>
@@ -540,10 +552,10 @@ export default function BrochurePreciosPage() {
                                             S/ 0
                                         </td>
                                         <td className="py-4 px-4 text-center font-bold text-green-700 bg-blue-50">
-                                            S/ 99
+                                            S/ 100
                                         </td>
                                         <td className="py-4 px-4 text-center font-bold text-green-700">
-                                            S/ 199
+                                            S/ 200
                                         </td>
                                     </tr>
 
