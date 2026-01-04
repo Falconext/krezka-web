@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "@/app/public/assets/fnlogo.png";
-import { CheckCircle2, Download, Printer, Store, ShoppingCart } from "lucide-react";
+import { CheckCircle2, Download, Printer, X, Circle } from "lucide-react";
 
 export default function BrochurePreciosPage() {
     const [isClient, setIsClient] = useState(false);
@@ -90,570 +90,553 @@ export default function BrochurePreciosPage() {
                         </div>
                     </div>
 
-                    {/* Planes Formales Section */}
+                    {/* Tabla de Comparación - Planes Formales */}
                     <div className="px-12 py-8">
-                        <div className="mb-10">
-                            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-gray-500 to-gray-600 text-white px-8 py-4 rounded-2xl shadow-lg">
-                                <Store className="w-7 h-7" />
-                                <h3 className="text-2xl font-bold">
-                                    Planes para Negocios Formales
-                                </h3>
-                            </div>
-                            <p className="text-gray-600 mt-3 ml-1">
+                        <div className="mb-8">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                                Planes para Negocios Formales
+                            </h3>
+                            <p className="text-gray-600">
                                 Con RUC · Facturación electrónica SUNAT
                             </p>
                         </div>
 
-                        {/* Premium Plans Grid - Top 3 */}
-                        <div className="grid grid-cols-3 gap-6 mb-6">
-                            {/* Plan Micro */}
-                            <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-7 hover:border-orange-400 hover:shadow-xl transition-all duration-300">
-                                <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-orange-400 to-orange-500 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                <div className="text-center mb-5">
-                                    <h4 className="text-2xl font-bold text-gray-900 mb-1">
-                                        Micro
-                                    </h4>
-                                    <p className="text-sm text-gray-500 font-medium">
-                                        100% Digital
-                                    </p>
-                                </div>
-                                <div className="text-center mb-6 pb-6 border-b-2 border-gray-100">
-                                    <div className="mb-3">
-                                        <span className="text-gray-500 text-sm">Desde</span>
-                                        <div className="text-5xl font-black text-gray-900">
+                        {/* Comparison Table */}
+                        <div className="overflow-hidden rounded-2xl border-2 border-gray-200 shadow-lg">
+                            <table className="w-full">
+                                <thead>
+                                    <tr className="bg-gradient-to-r from-blue-600 to-blue-700">
+                                        <th className="py-4 px-4 text-left text-white font-bold text-sm">
+                                            Comparación de planes
+                                        </th>
+                                        <th className="py-4 px-4 text-center text-white font-bold text-sm">
+                                            Micro
+                                        </th>
+                                        <th className="py-4 px-4 text-center text-white font-bold text-sm">
+                                            Emprende
+                                        </th>
+                                        <th className="py-4 px-4 text-center text-white font-bold text-sm bg-green-600">
+                                            Control
+                                        </th>
+                                        <th className="py-4 px-4 text-center text-white font-bold text-sm">
+                                            Bacán
+                                        </th>
+                                        <th className="py-4 px-4 text-center text-white font-bold text-sm">
+                                            Súper
+                                        </th>
+                                        <th className="py-4 px-4 text-center text-white font-bold text-sm">
+                                            Mega
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody className="bg-white">
+                                    {/* Precio Mensual */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Precio Mensual
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-gray-900">
                                             S/ 35
-                                        </div>
-                                        <div className="text-gray-500 text-sm font-medium">
-                                            mensual
-                                        </div>
-                                    </div>
-                                    <div className="bg-green-50 border border-green-200 rounded-lg p-2 mt-3">
-                                        <div className="text-2xl font-bold text-green-700">
-                                            S/ 350
-                                        </div>
-                                        <div className="text-green-600 text-xs font-bold">
-                                            PAGO ANUAL · AHORRA S/70
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">
-                                            <strong>100</strong> Comprobantes/mes
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Notas ilimitadas</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Inventario completo</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Reportes avanzados</span>
-                                    </li>
-                                </ul>
-                                <div className="mt-4 pt-4 border-t border-gray-200">
-                                    <div className="flex items-center gap-2 text-xs text-orange-600 font-bold">
-                                        <ShoppingCart className="w-4 h-4" />
-                                        <span>+ Tienda Virtual: S/40/mes</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Plan Emprende */}
-                            <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-7 hover:border-orange-400 hover:shadow-xl transition-all duration-300">
-                                <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-orange-400 to-orange-500 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                <div className="text-center mb-5">
-                                    <h4 className="text-2xl font-bold text-gray-900 mb-1">
-                                        Emprende
-                                    </h4>
-                                    <p className="text-sm text-gray-500 font-medium">
-                                        100% Digital
-                                    </p>
-                                </div>
-                                <div className="text-center mb-6 pb-6 border-b-2 border-gray-100">
-                                    <div className="mb-3">
-                                        <span className="text-gray-500 text-sm">Desde</span>
-                                        <div className="text-5xl font-black text-gray-900">
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-gray-900">
                                             S/ 42
-                                        </div>
-                                        <div className="text-gray-500 text-sm font-medium">
-                                            mensual
-                                        </div>
-                                    </div>
-                                    <div className="bg-green-50 border border-green-200 rounded-lg p-2 mt-3">
-                                        <div className="text-2xl font-bold text-green-700">
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700 bg-green-50">
+                                            S/ 49.90
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-gray-900">
+                                            S/ 59.90
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-gray-900">
+                                            S/ 79.90
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-gray-900">
+                                            S/ 99.90
+                                        </td>
+                                    </tr>
+
+                                    {/* Precio Anual */}
+                                    <tr className="border-b border-gray-200 bg-gray-50">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Precio Anual
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700">
+                                            S/ 350
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700">
                                             S/ 420
-                                        </div>
-                                        <div className="text-green-600 text-xs font-bold">
-                                            PAGO ANUAL · AHORRA S/84
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">
-                                            <strong>300</strong> Comprobantes/mes
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Notas ilimitadas</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Inventario completo</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Reportes avanzados</span>
-                                    </li>
-                                </ul>
-                                <div className="mt-4 pt-4 border-t border-gray-200">
-                                    <div className="flex items-center gap-2 text-xs text-orange-600 font-bold">
-                                        <ShoppingCart className="w-4 h-4" />
-                                        <span>+ Tienda Virtual: S/45/mes</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Plan Control - DESTACADO */}
-                            <div className="relative bg-gradient-to-br from-green-50 to-emerald-50 border-4 border-green-500 rounded-2xl p-7 shadow-2xl transform scale-105">
-                                <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10">
-                                    <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-2 rounded-full text-xs font-black shadow-lg">
-                                        ⭐ MÁS POPULAR
-                                    </div>
-                                </div>
-                                <div className="text-center mb-5 mt-2">
-                                    <h4 className="text-2xl font-bold text-gray-900 mb-1">
-                                        Control
-                                    </h4>
-                                    <p className="text-sm text-green-700 font-bold">
-                                        + Impresora Térmica 🎁
-                                    </p>
-                                </div>
-                                <div className="text-center mb-6 pb-6 border-b-2 border-green-200">
-                                    <div className="mb-3">
-                                        <span className="text-gray-500 text-sm">Desde</span>
-                                        <div className="text-5xl font-black text-gray-900">
-                                            S/ 49
-                                            <sup className="text-2xl">.90</sup>
-                                        </div>
-                                        <div className="text-gray-500 text-sm font-medium">
-                                            mensual
-                                        </div>
-                                    </div>
-                                    <div className="bg-green-100 border-2 border-green-300 rounded-lg p-2 mt-3">
-                                        <div className="text-2xl font-bold text-green-800">
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700 bg-green-50">
                                             S/ 500
-                                        </div>
-                                        <div className="text-green-700 text-xs font-black">
-                                            PAGO ANUAL · AHORRA S/99
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-900 font-bold">
-                                            500 Comprobantes/mes
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-900 font-bold">
-                                            Impresora Térmica GRATIS
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Notas ilimitadas</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Todo incluido</span>
-                                    </li>
-                                </ul>
-                                <div className="mt-4 pt-4 border-t border-green-300">
-                                    <div className="flex items-center gap-2 text-xs text-orange-600 font-bold">
-                                        <ShoppingCart className="w-4 h-4" />
-                                        <span>+ Tienda Virtual: S/60/mes</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-300 rounded-2xl p-6">
-                                <div className="text-center mb-4">
-                                    <h4 className="text-2xl font-bold text-indigo-900">Bacán</h4>
-                                    <p className="text-sm text-indigo-600 font-semibold">
-                                        Para crecer rápido
-                                    </p>
-                                </div>
-                                <div className="text-center mb-5 pb-5 border-b-2 border-indigo-200">
-                                    <div className="text-4xl font-black text-gray-900">
-                                        S/ 59
-                                        <sup className="text-xl">.90</sup>
-                                    </div>
-                                    <div className="text-gray-500 text-sm">mensual</div>
-                                    <div className="bg-indigo-100 rounded-lg p-2 mt-2">
-                                        <div className="text-xl font-bold text-indigo-700">
-                                            S/ 600/año
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul className="space-y-2 text-sm">
-                                    <li className="flex items-center gap-2">
-                                        <CheckCircle2 className="w-4 h-4 text-indigo-600" />
-                                        <span>
-                                            <strong>600</strong> Comprobantes/mes
-                                        </span>
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <CheckCircle2 className="w-4 h-4 text-indigo-600" />
-                                        <span>+ Impresora incluida</span>
-                                    </li>
-                                </ul>
-                                <div className="mt-3 pt-3 border-t border-indigo-200">
-                                    <div className="text-xs text-orange-600 font-bold">
-                                        + Tienda: S/64.90/mes
-                                    </div>
-                                </div>
-                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700">
+                                            S/ 600
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700">
+                                            S/ 800
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700">
+                                            S/ 1000
+                                        </td>
+                                    </tr>
 
-                            {/* Plan Súper */}
-                            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-300 rounded-2xl p-6">
-                                <div className="text-center mb-4">
-                                    <h4 className="text-2xl font-bold text-indigo-900">Súper</h4>
-                                    <p className="text-sm text-indigo-600 font-semibold">
-                                        Alto volumen
-                                    </p>
-                                </div>
-                                <div className="text-center mb-5 pb-5 border-b-2 border-indigo-200">
-                                    <div className="text-4xl font-black text-gray-900">
-                                        S/ 79
-                                        <sup className="text-xl">.90</sup>
-                                    </div>
-                                    <div className="text-gray-500 text-sm">mensual</div>
-                                    <div className="bg-indigo-100 rounded-lg p-2 mt-2">
-                                        <div className="text-xl font-bold text-indigo-700">
-                                            S/ 800/año
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul className="space-y-2 text-sm">
-                                    <li className="flex items-center gap-2">
-                                        <CheckCircle2 className="w-4 h-4 text-indigo-600" />
-                                        <span>
-                                            <strong>800</strong> Comprobantes/mes
-                                        </span>
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <CheckCircle2 className="w-4 h-4 text-indigo-600" />
-                                        <span>+ Impresora incluida</span>
-                                    </li>
-                                </ul>
-                                <div className="mt-3 pt-3 border-t border-indigo-200">
-                                    <div className="text-xs text-orange-600 font-bold">
-                                        + Tienda: S/84.90/mes
-                                    </div>
-                                </div>
-                            </div>
+                                    {/* Comprobantes/mes */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-4 px-4 text-gray-900">
+                                            <div className="font-semibold">Comprobantes/mes</div>
+                                            <div className="text-xs text-gray-500">
+                                                Boletas y Facturas, Guías...
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            100
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            300
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900 bg-green-50">
+                                            500
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            600
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            800
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            1200
+                                        </td>
+                                    </tr>
 
-                            {/* Plan Mega */}
-                            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-300 rounded-2xl p-6">
-                                <div className="text-center mb-4">
-                                    <h4 className="text-2xl font-bold text-indigo-900">Mega</h4>
-                                    <p className="text-sm text-indigo-600 font-semibold">
-                                        Máxima potencia
-                                    </p>
-                                </div>
-                                <div className="text-center mb-5 pb-5 border-b-2 border-indigo-200">
-                                    <div className="text-4xl font-black text-gray-900">
-                                        S/ 99
-                                        <sup className="text-xl">.90</sup>
-                                    </div>
-                                    <div className="text-gray-500 text-sm">mensual</div>
-                                    <div className="bg-indigo-100 rounded-lg p-2 mt-2">
-                                        <div className="text-xl font-bold text-indigo-700">
-                                            S/ 1000/año
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul className="space-y-2 text-sm">
-                                    <li className="flex items-center gap-2">
-                                        <CheckCircle2 className="w-4 h-4 text-indigo-600" />
-                                        <span>
-                                            <strong>1200</strong> Comprobantes/mes
-                                        </span>
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <CheckCircle2 className="w-4 h-4 text-indigo-600" />
-                                        <span>+ Impresora incluida</span>
-                                    </li>
-                                </ul>
-                                <div className="mt-3 pt-3 border-t border-indigo-200">
-                                    <div className="text-xs text-orange-600 font-bold">
-                                        + Tienda: S/104.90/mes
-                                    </div>
-                                </div>
-                            </div>
+                                    {/* Notas de Venta */}
+                                    <tr className="border-b border-gray-200 bg-gray-50">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Notas de Venta
+                                        </td>
+                                        <td className="py-4 px-4 text-center text-gray-600">
+                                            ilimitado
+                                        </td>
+                                        <td className="py-4 px-4 text-center text-gray-600">
+                                            ilimitado
+                                        </td>
+                                        <td className="py-4 px-4 text-center text-gray-600 bg-green-50">
+                                            ilimitado
+                                        </td>
+                                        <td className="py-4 px-4 text-center text-gray-600">
+                                            ilimitado
+                                        </td>
+                                        <td className="py-4 px-4 text-center text-gray-600">
+                                            ilimitado
+                                        </td>
+                                        <td className="py-4 px-4 text-center text-gray-600">
+                                            ilimitado
+                                        </td>
+                                    </tr>
+
+                                    {/* Inventario */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Inventario
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center bg-green-50">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                    </tr>
+
+                                    {/* Reportes */}
+                                    <tr className="border-b border-gray-200 bg-gray-50">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Reportes
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center bg-green-50">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                    </tr>
+
+                                    {/* Funciones */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Funciones
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center bg-green-50">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                    </tr>
+
+                                    {/* Tienda Virtual */}
+                                    <tr className="border-b border-gray-200 bg-gray-50">
+                                        <td className="py-4 px-4 text-gray-900">
+                                            <div className="font-semibold">Tienda Virtual</div>
+                                            <div className="text-xs text-gray-500">
+                                                Catálogo, Carrito...
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <Circle className="w-5 h-5 text-blue-500 mx-auto" />
+                                            <div className="text-xs text-orange-600 font-bold mt-1">
+                                                +S/5
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <Circle className="w-5 h-5 text-blue-500 mx-auto" />
+                                            <div className="text-xs text-orange-600 font-bold mt-1">
+                                                +S/5
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center bg-green-50">
+                                            <Circle className="w-5 h-5 text-blue-500 mx-auto" />
+                                            <div className="text-xs text-orange-600 font-bold mt-1">
+                                                +S/10
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <Circle className="w-5 h-5 text-blue-500 mx-auto" />
+                                            <div className="text-xs text-orange-600 font-bold mt-1">
+                                                +S/10
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <Circle className="w-5 h-5 text-blue-500 mx-auto" />
+                                            <div className="text-xs text-orange-600 font-bold mt-1">
+                                                +S/10
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <Circle className="w-5 h-5 text-blue-500 mx-auto" />
+                                            <div className="text-xs text-orange-600 font-bold mt-1">
+                                                +S/10
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    {/* Usuarios */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Usuarios
+                                        </td>
+                                        <td className="py-4 px-4 text-center text-gray-600">-</td>
+                                        <td className="py-4 px-4 text-center text-gray-600">-</td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900 bg-green-50">
+                                            2
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            4
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            6
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            10
+                                        </td>
+                                    </tr>
+
+                                    {/* + Ticketera */}
+                                    <tr className="border-b border-gray-200 bg-gray-50">
+                                        <td className="py-4 px-4 text-gray-900">
+                                            <div className="font-semibold">+ Ticketera</div>
+                                            <div className="text-xs text-gray-500">
+                                                Portátil, batería...
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <X className="w-5 h-5 text-red-500 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <X className="w-5 h-5 text-red-500 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center bg-green-50">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                            <div className="text-xs text-green-700 font-bold mt-1">
+                                                GRATIS
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                            <div className="text-xs text-green-700 font-bold mt-1">
+                                                GRATIS
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                            <div className="text-xs text-green-700 font-bold mt-1">
+                                                GRATIS
+                                            </div>
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                            <div className="text-xs text-green-700 font-bold mt-1">
+                                                GRATIS
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    {/* Soporte Técnico */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Soporte Técnico
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center bg-green-50">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                    </tr>
+
+                                    {/* Actualizaciones */}
+                                    <tr className="bg-gray-50">
+                                        <td className="py-4 px-4 font-semibold text-gray-900 rounded-bl-xl">
+                                            Actualizaciones
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center bg-green-50">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center rounded-br-xl">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
                     {/* Page Break */}
                     <div className="page-break"></div>
 
-                    {/* Planes Nuevos Section */}
+                    {/* Tabla de Comparación - Planes Nuevos */}
                     <div className="px-12 py-8">
-                        <div className="mb-10">
-                            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-8 py-4 rounded-2xl shadow-lg">
-                                <Store className="w-7 h-7" />
-                                <h3 className="text-2xl font-bold">
-                                    Planes para Negocios Nuevos
-                                </h3>
-                            </div>
-                            <p className="text-gray-600 mt-3 ml-1">
+                        <div className="mb-8">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                                Planes para Negocios Nuevos
+                            </h3>
+                            <p className="text-gray-600">
                                 Sin RUC · Empieza sin complicaciones
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-3 gap-8">
-                            {/* Plan Emprende Free */}
-                            <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-7 hover:shadow-xl transition-all">
-                                <div className="absolute -top-3 right-4">
-                                    <div className="bg-green-500 text-white px-4 py-1.5 rounded-full text-xs font-black shadow-lg">
-                                        GRATIS
-                                    </div>
-                                </div>
-                                <div className="text-center mb-5 mt-2">
-                                    <h4 className="text-2xl font-bold text-gray-900">
-                                        Emprende
-                                    </h4>
-                                    <p className="text-sm text-gray-500 font-medium">
-                                        Ideal para iniciar
-                                    </p>
-                                </div>
-                                <div className="text-center mb-6 pb-6 border-b-2 border-gray-100">
-                                    <div className="text-5xl font-black text-green-600">S/ 0</div>
-                                    <div className="text-gray-500 text-sm font-medium">
-                                        por siempre
-                                    </div>
-                                </div>
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">
-                                            <strong>200 ventas/mes</strong>
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">1 usuario</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">PDF / WhatsApp</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Inventario básico</span>
-                                    </li>
-                                </ul>
-                            </div>
+                        {/* Comparison Table */}
+                        <div className="overflow-hidden rounded-2xl border-2 border-gray-200 shadow-lg">
+                            <table className="w-full">
+                                <thead>
+                                    <tr className="bg-gradient-to-r from-blue-500 to-cyan-600">
+                                        <th className="py-4 px-4 text-left text-white font-bold text-sm">
+                                            Comparación de planes
+                                        </th>
+                                        <th className="py-4 px-4 text-center text-white font-bold text-sm">
+                                            Emprende
+                                        </th>
+                                        <th className="py-4 px-4 text-center text-white font-bold text-sm bg-blue-700">
+                                            Crecimiento
+                                        </th>
+                                        <th className="py-4 px-4 text-center text-white font-bold text-sm">
+                                            Pro
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody className="bg-white">
+                                    {/* Precio Mensual */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Precio Mensual
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700">
+                                            GRATIS
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-gray-900 bg-blue-50">
+                                            S/ 9.90
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-gray-900">
+                                            S/ 19.90
+                                        </td>
+                                    </tr>
 
-                            {/* Plan Crecimiento */}
-                            <div className="relative bg-gradient-to-br from-blue-50 to-cyan-50 border-4 border-blue-500 rounded-2xl p-7 shadow-xl">
-                                <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-                                    <div className="bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-5 py-2 rounded-full text-xs font-black shadow-lg">
-                                        RECOMENDADO
-                                    </div>
-                                </div>
-                                <div className="text-center mb-5 mt-2">
-                                    <h4 className="text-2xl font-bold text-gray-900">
-                                        Crecimiento
-                                    </h4>
-                                    <p className="text-sm text-blue-700 font-bold">
-                                        El mejor valor
-                                    </p>
-                                </div>
-                                <div className="text-center mb-6 pb-6 border-b-2 border-blue-200">
-                                    <div className="mb-3">
-                                        <span className="text-gray-500 text-sm">Solo</span>
-                                        <div className="text-5xl font-black text-gray-900">
-                                            S/ 9
-                                            <sup className="text-2xl">.90</sup>
-                                        </div>
-                                        <div className="text-gray-500 text-sm font-medium">
-                                            al mes
-                                        </div>
-                                    </div>
-                                    <div className="bg-blue-100 border-2 border-blue-300 rounded-lg p-2 mt-3">
-                                        <div className="text-2xl font-bold text-blue-800">
+                                    {/* Precio Anual */}
+                                    <tr className="border-b border-gray-200 bg-gray-50">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Precio Anual
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700">
+                                            S/ 0
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700 bg-blue-50">
                                             S/ 99
-                                        </div>
-                                        <div className="text-blue-700 text-xs font-bold">
-                                            PAGO ANUAL
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-900 font-bold">
-                                            Ventas ilimitadas
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Inventario básico</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">2 usuarios</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Reportes simples</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            {/* Plan Pro */}
-                            <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300 rounded-2xl p-7">
-                                <div className="text-center mb-5">
-                                    <h4 className="text-2xl font-bold text-purple-900">Pro</h4>
-                                    <p className="text-sm text-purple-600 font-semibold">
-                                        Control total
-                                    </p>
-                                </div>
-                                <div className="text-center mb-6 pb-6 border-b-2 border-purple-200">
-                                    <div className="mb-3">
-                                        <span className="text-gray-500 text-sm">Desde</span>
-                                        <div className="text-5xl font-black text-gray-900">
-                                            S/ 19
-                                            <sup className="text-2xl">.90</sup>
-                                        </div>
-                                        <div className="text-gray-500 text-sm font-medium">
-                                            al mes
-                                        </div>
-                                    </div>
-                                    <div className="bg-purple-100 border border-purple-300 rounded-lg p-2 mt-3">
-                                        <div className="text-2xl font-bold text-purple-800">
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-700">
                                             S/ 199
-                                        </div>
-                                        <div className="text-purple-700 text-xs font-bold">
-                                            PAGO ANUAL
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700 font-semibold">
-                                            Inventario avanzado
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Control de fiados</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">5 usuarios</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-sm">
-                                        <CheckCircle2 className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                                        <span className="text-gray-700">Integración impresora</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                                        </td>
+                                    </tr>
 
-                    {/* Premium Features Grid */}
-                    <div className="px-12 py-10 bg-gradient-to-br from-gray-50 to-gray-100">
-                        <div className="text-center mb-8">
-                            <h3 className="text-3xl font-black text-gray-900 mb-2">
-                                Todo lo que necesitas incluido
-                            </h3>
-                            <p className="text-gray-600">
-                                Sin costos ocultos · Sin permanencia
-                            </p>
-                        </div>
-                        <div className="grid grid-cols-2 gap-x-12 gap-y-5">
-                            <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <div className="bg-green-100 p-2 rounded-lg">
-                                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                                </div>
-                                <span className="text-gray-700 font-medium">
-                                    Facturación electrónica SUNAT
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <div className="bg-green-100 p-2 rounded-lg">
-                                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                                </div>
-                                <span className="text-gray-700 font-medium">
-                                    Control de inventario en tiempo real
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <div className="bg-green-100 p-2 rounded-lg">
-                                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                                </div>
-                                <span className="text-gray-700 font-medium">
-                                    Punto de Venta (POS) profesional
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <div className="bg-green-100 p-2 rounded-lg">
-                                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                                </div>
-                                <span className="text-gray-700 font-medium">
-                                    Reportes y analíticas avanzadas
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <div className="bg-green-100 p-2 rounded-lg">
-                                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                                </div>
-                                <span className="text-gray-700 font-medium">
-                                    Gestión completa de clientes
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <div className="bg-green-100 p-2 rounded-lg">
-                                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                                </div>
-                                <span className="text-gray-700 font-medium">
-                                    Control de caja y cierre diario
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <div className="bg-green-100 p-2 rounded-lg">
-                                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                                </div>
-                                <span className="text-gray-700 font-medium">
-                                    Soporte técnico especializado
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <div className="bg-green-100 p-2 rounded-lg">
-                                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                                </div>
-                                <span className="text-gray-700 font-medium">
-                                    Actualizaciones automáticas gratis
-                                </span>
-                            </div>
+                                    {/* Ventas/mes */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Ventas/mes
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            200
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900 bg-blue-50">
+                                            ilimitado
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            ilimitado
+                                        </td>
+                                    </tr>
+
+                                    {/* Inventario */}
+                                    <tr className="border-b border-gray-200 bg-gray-50">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Inventario
+                                        </td>
+                                        <td className="py-4 px-4 text-center text-gray-600">
+                                            Básico
+                                        </td>
+                                        <td className="py-4 px-4 text-center text-gray-600 bg-blue-50">
+                                            Básico
+                                        </td>
+                                        <td className="py-4 px-4 text-center text-gray-600">
+                                            Avanzado
+                                        </td>
+                                    </tr>
+
+                                    {/* Usuarios */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Usuarios
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            1
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900 bg-blue-50">
+                                            2
+                                        </td>
+                                        <td className="py-4 px-4 text-center font-semibold text-gray-900">
+                                            5
+                                        </td>
+                                    </tr>
+
+                                    {/* Reportes */}
+                                    <tr className="border-b border-gray-200 bg-gray-50">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Reportes
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <X className="w-5 h-5 text-red-500 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center bg-blue-50">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                    </tr>
+
+                                    {/* Control de Fiados */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-4 px-4 font-semibold text-gray-900">
+                                            Control de Fiados
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <X className="w-5 h-5 text-red-500 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center bg-blue-50">
+                                            <X className="w-5 h-5 text-red-500 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                    </tr>
+
+                                    {/* Integración Impresora */}
+                                    <tr className="bg-gray-50">
+                                        <td className="py-4 px-4 font-semibold text-gray-900 rounded-bl-xl">
+                                            Integración Impresora
+                                        </td>
+                                        <td className="py-4 px-4 text-center">
+                                            <X className="w-5 h-5 text-red-500 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center bg-blue-50">
+                                            <X className="w-5 h-5 text-red-500 mx-auto" />
+                                        </td>
+                                        <td className="py-4 px-4 text-center rounded-br-xl">
+                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
                     {/* Premium Footer */}
-                    <div className="relative overflow-hidden">
+                    <div className="relative overflow-hidden mt-12">
                         <div className="absolute inset-0 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700"></div>
                         <div className="absolute inset-0 opacity-10">
                             <div className="absolute -top-10 -right-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
@@ -731,13 +714,17 @@ export default function BrochurePreciosPage() {
           }
 
           @page {
-            size: A4;
+            size: A4 landscape;
             margin: 0;
           }
 
           body {
             print-color-adjust: exact;
             -webkit-print-color-adjust: exact;
+          }
+
+          table {
+            page-break-inside: avoid;
           }
         }
 
