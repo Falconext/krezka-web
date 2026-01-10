@@ -576,9 +576,72 @@ const Pricing = () => {
                                     </div>
                                 ))}
                             </div>
-                            {/* Funciones */}
+                            {/* Dashboard */}
                             <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-                                <div className="font-semibold text-gray-900 dark:text-white">Funciones</div>
+                                <div className="font-semibold text-gray-900 dark:text-white">Panel / Dashboard</div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Cotizaciones */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div className="font-semibold text-gray-900 dark:text-white">Cotizaciones</div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Caja y Turnos */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div className="font-semibold text-gray-900 dark:text-white">Caja Chica</div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Compras y Gastos */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div className="font-semibold text-gray-900 dark:text-white">Compras y Gastos</div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Cuentas por Cobrar */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div className="font-semibold text-gray-900 dark:text-white">Cuentas x Cobrar</div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Guías de Remisión */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div className="font-semibold text-gray-900 dark:text-white">Guías de Remisión</div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Exportación Excel */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div className="font-semibold text-gray-900 dark:text-white">Exportación Excel</div>
+                                {formalPlansState.map((p) => (
+                                    <div key={p.id} className="flex items-center justify-center">
+                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* Clientes y Proveedores */}
+                            <div className="grid grid-cols-7 gap-2 px-4 py-4 border-b border-gray-100 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                                <div className="font-semibold text-gray-900 dark:text-white">Clientes/Proveedores</div>
                                 {formalPlansState.map((p) => (
                                     <div key={p.id} className="flex items-center justify-center">
                                         <CheckCircle2 size={18} className="text-[#22c55e]" />

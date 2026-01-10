@@ -6,7 +6,7 @@ import Banner from './ui/banner';
 import Contact from './ui/contact';
 import Wellcome from './ui/wellcome';
 import WhatWeDo from './ui/whatwedo';
-import InformalSection from './ui/informal';
+import AllModules from './ui/all-modules';
 import WeTools from './ui/wetools';
 import Analytics from './ui/analitycs';
 import Pricing from './ui/pricing';
@@ -59,6 +59,9 @@ export default function Home() {
             <WhatWeDo />
           </AnimatedSection>
         </div>
+        <AnimatedSection delay={0.2} direction="fade">
+          <WeTools />
+        </AnimatedSection>
 
         <div className={sectionBackgroundClassName}>
           <AnimatedSection delay={0.2} direction="up">
@@ -68,7 +71,7 @@ export default function Home() {
 
         <div className={sectionBackgroundClassName}>
           <AnimatedSection delay={0.22} direction="up">
-            <InformalSection />
+            <AllModules />
           </AnimatedSection>
         </div>
 
@@ -80,9 +83,7 @@ export default function Home() {
           <Pricing />
         </AnimatedSection>
 
-        <AnimatedSection delay={0.2} direction="fade">
-          <WeTools />
-        </AnimatedSection>
+
 
         {/* <AnimatedSection delay={0.1} direction="left">
           <Projects />

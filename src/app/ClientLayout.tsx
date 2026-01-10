@@ -33,7 +33,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         setIsToggleOn(!isToggleOn);
     };
 
-    const hide = ['/iniciar-sesion', '/administrador', '/brochure', '/hotel']
+    const hide = ['/iniciar-sesion', '/administrador', '/brochure', '/hotel', '/asesores']
     const isMypeRoute = hide.some(route => pathname.startsWith(route))
 
     if (isMypeRoute) {

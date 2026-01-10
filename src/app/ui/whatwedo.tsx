@@ -11,8 +11,8 @@ const WhatWeDo = () => {
         >
             <div className="mx-auto max-w-screen-xl px-4 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
                 {/* Tarjeta con imagen y contenido */}
-                <div className="md:col-span-6 flex justify-center mt-8 md:mt-0">
-                    <div className="relative w-full max-w-md">
+                <div className="md:col-span-7 mt-8 md:mt-0">
+                    <div className="relative w-full max-w-xl">
                         {/* Blob decorativo detrás de la card */}
                         <div className="absolute inset-x-6 top-8 h-72 rounded-3xl bg-[#5A0EBB]/20 filter blur-xl" />
 
@@ -47,28 +47,28 @@ const WhatWeDo = () => {
                     </div>
                 </div>
                 {/* Texto y beneficios */}
-                <div className="md:col-span-6 space-y-6">
+                <div className="md:col-span-5 space-y-6">
                     <p className="bg-gray-100 dark:bg-white/10 backdrop-blur-md border border-gray-200 dark:border-white/10 w-fit rounded-xl p-2 px-4 mb-1 mt-2 text-gray-700 dark:text-white/90 font-medium">
                         Brindamos lo mejor
                     </p>
                     <h2
                         className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-gray-900 dark:text-white transition-colors"
                     >
-                        Solo nuestra estrategia tiene el poder de construir sistemas top.
+                        Contol total de tu negocio en una sola plataforma.
                     </h2>
                     <p
                         className="text-sm md:text-base max-w-md text-gray-600 dark:text-gray-400 transition-colors"
                     >
-                        Organizamos tu negocio desde la parte visual hasta la arquitectura técnica: diseño UI/UX,
-                        sistemas de facturación, páginas web y ecommerce, para que puedas enfocarte en crecer.
+                        Gestiona facturación, inventario, tienda virtual y clientes desde un solo lugar.
+                        Sin módulos extra ni costos ocultos, todo integrado para que tu negocio crezca sin límites.
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                         {[
-                            { icon: "tabler:ux-circle", color: "#ef4444", text: "UI/UX Design", sub: "Interfaces modernas." },
-                            { icon: "mdi:network-pos", color: "#22c55e", text: "Facturación electrónica", sub: "Integrado con SUNAT." },
-                            { icon: "streamline:web", color: "#6366f1", text: "Páginas web modernas", sub: "Sitios a medida." },
-                            { icon: "material-symbols:store", color: "#f97316", text: "Ecommerce", sub: "Vende 24/7." }
+                            { icon: "tabler:layout-dashboard", color: "#ef4444", text: "Control Total", sub: "Dashboard en tiempo real." },
+                            { icon: "mdi:network-pos", color: "#22c55e", text: "Facturación Ilimitada", sub: "Directo a SUNAT." },
+                            { icon: "mdi:store", color: "#6366f1", text: "Tienda Virtual", sub: "Stock sincronizado." },
+                            { icon: "mdi:devices", color: "#f97316", text: "Multidispositivo", sub: "PC, Tablet y Celular." }
                         ].map((item, idx) => (
                             <div key={idx} className="flex items-center gap-3 rounded-2xl px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors backdrop-blur-sm shadow-sm dark:shadow-none">
                                 <div className={`rounded-xl p-2`} style={{ backgroundColor: `${item.color}20` }}>
