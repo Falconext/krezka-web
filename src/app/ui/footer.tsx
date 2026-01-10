@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Image from "next/image";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -158,13 +159,13 @@ const Footer = () => {
                             <a href="https://www.facebook.com/profile.php?id=61576185915016" target="_blank" rel="noopener noreferrer" className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Facebook">
                                 <Icon icon="mdi:facebook" width={20} height={20} className="text-gray-700 dark:text-white" />
                             </a>
-                            <a className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Twitter">
+                            {/* <a className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Twitter">
                                 <Icon icon="mdi:twitter" width={20} height={20} className="text-gray-700 dark:text-white" />
                             </a>
                             <a className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="LinkedIn">
                                 <Icon icon="mdi:linkedin" width={20} height={20} className="text-gray-700 dark:text-white" />
-                            </a>
-                            <a className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Instagram">
+                            </a> */}
+                            <a href="https://www.instagram.com/falconext.pe/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Instagram">
                                 <Icon icon="mdi:instagram" width={20} height={20} className="text-gray-700 dark:text-white" />
                             </a>
                         </div>
@@ -177,7 +178,9 @@ const Footer = () => {
                             <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Overview</li>
                             <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Analítica</li>
                             <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Integraciones</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Precios</li>
+                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">
+                                <Link href="/brochure-precios">Precios</Link>
+                            </li>
                         </ul>
                     </div>
                     <div className="col-span-6 md:col-span-2 text-gray-600 dark:text-gray-400">
@@ -201,7 +204,9 @@ const Footer = () => {
                         <h4 className="font-medium mb-4 text-gray-900 dark:text-white">Compañía</h4>
                         <ul className="space-y-3 text-sm md:text-base">
                             <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Nosotros</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Partners</li>
+                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">
+                                <Link href="/asesores">Partners</Link>
+                            </li>
                             <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Contacto</li>
                             <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Seguridad</li>
                         </ul>

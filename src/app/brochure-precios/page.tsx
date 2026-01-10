@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "@/app/public/assets/fnlogo.png";
-import { CheckCircle2, Download, Printer, X, Circle } from "lucide-react";
+import { CheckCircle2, Download, Printer, X, Circle, FileText, Package, Monitor, Store, BarChart3, Users, PieChart, ShieldCheck } from "lucide-react";
 
 export default function BrochurePreciosPage() {
     const [isClient, setIsClient] = useState(false);
@@ -42,7 +42,7 @@ export default function BrochurePreciosPage() {
             <div className="brochure-container bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
 
                 {/* PÁGINA 1: Header + Tabla Planes Formales */}
-                <div className="brochure-page bg-white max-w-[210mm] mx-auto shadow-2xl page-break-after">
+                <div className="brochure-page bg-white w-full md:max-w-[210mm] mx-auto shadow-2xl page-break-after">
                     {/* Elegant Header */}
                     <div className="relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-900 to-gray-900"></div>
@@ -50,22 +50,22 @@ export default function BrochurePreciosPage() {
                             <div className="absolute top-0 -right-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
                             <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
                         </div>
-                        <div className="relative px-12 py-10">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-6">
+                        <div className="relative px-6 md:px-12 py-8 md:py-10">
+                            <div className="flex flex-col md:flex-row items-center md:justify-between gap-6">
+                                <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-center md:text-left">
                                     <div className="bg-white p-0 rounded-full shadow-xl">
                                         <Image src={logo} alt="Falconext" width={80} height={80} />
                                     </div>
                                     <div>
-                                        <h1 className="text-5xl font-extrabold text-white tracking-tight">
+                                        <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
                                             FALCONEXT
                                         </h1>
-                                        <p className="text-orange-100 text-xl mt-1 font-medium">
+                                        <p className="text-orange-100 text-lg md:text-xl mt-1 font-medium">
                                             Sistema Inteligente de Facturación
                                         </p>
                                     </div>
                                 </div>
-                                <div className="text-right bg-white/10 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/20">
+                                <div className="text-center md:text-right bg-white/10 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/20">
                                     <p className="text-sm text-orange-100 font-medium">
                                         Certificado por
                                     </p>
@@ -76,8 +76,8 @@ export default function BrochurePreciosPage() {
                     </div>
 
                     {/* Tabla de Comparación - Planes Formales */}
-                    <div className="px-8 py-6">
-                        <div className="mb-6">
+                    <div className="px-4 md:px-8 py-6">
+                        <div className="mb-6 text-center md:text-left">
                             <h3 className="text-2xl font-bold text-gray-900 mb-2">
                                 Planes para Negocios Formales
                             </h3>
@@ -87,11 +87,11 @@ export default function BrochurePreciosPage() {
                         </div>
 
                         {/* Comparison Table */}
-                        <div className="overflow-hidden rounded-2xl border-2 border-gray-200 shadow-lg">
-                            <table className="w-full table-fixed">
+                        <div className="overflow-x-auto rounded-2xl border border-gray-200 pb-2">
+                            <table className="w-full table-fixed min-w-[600px]">
                                 <thead>
                                     <tr className="bg-gradient-to-r from-blue-600 to-blue-700">
-                                        <th className="py-3 px-3 text-left text-white font-bold text-xs w-[20%]">
+                                        <th className="py-3 px-3 text-left text-white font-bold text-xs w-[30%] md:w-[20%]">
                                             Comparación de planes
                                         </th>
                                         <th className="py-3 px-2 text-center text-white font-bold text-xs">
@@ -221,7 +221,7 @@ export default function BrochurePreciosPage() {
                                     {/* Inventario */}
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Inventario
+                                            Control de Inventario
                                         </td>
                                         <td className="py-2 px-2 text-center">
                                             <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
@@ -243,10 +243,10 @@ export default function BrochurePreciosPage() {
                                         </td>
                                     </tr>
 
-                                    {/* Reportes */}
+                                    {/* Caja y Finanzas */}
                                     <tr className="border-b border-gray-200 bg-gray-50">
                                         <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Reportes
+                                            Caja y Finanzas
                                         </td>
                                         <td className="py-2 px-2 text-center">
                                             <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
@@ -268,10 +268,60 @@ export default function BrochurePreciosPage() {
                                         </td>
                                     </tr>
 
-                                    {/* Funciones */}
+                                    {/* Compras y Gastos */}
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Funciones
+                                            Compras y Gastos
+                                        </td>
+                                        <td className="py-2 px-2 text-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-2 px-2 text-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-2 px-2 text-center bg-green-50">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-2 px-2 text-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-2 px-2 text-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-2 px-2 text-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                    </tr>
+
+                                    {/* Cuentas por Cobrar */}
+                                    <tr className="border-b border-gray-200 bg-gray-50">
+                                        <td className="py-2 px-3 font-semibold text-gray-900">
+                                            Ctas. por Cobrar
+                                        </td>
+                                        <td className="py-2 px-2 text-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-2 px-2 text-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-2 px-2 text-center bg-green-50">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-2 px-2 text-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-2 px-2 text-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                        <td className="py-2 px-2 text-center">
+                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
+                                        </td>
+                                    </tr>
+
+                                    {/* Kardex Valorizado */}
+                                    <tr className="border-b border-gray-200">
+                                        <td className="py-2 px-3 font-semibold text-gray-900">
+                                            Kardex Valorizado
                                         </td>
                                         <td className="py-2 px-2 text-center">
                                             <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
@@ -467,24 +517,78 @@ export default function BrochurePreciosPage() {
                     </div>
                 </div>
 
+                {/* --- SECCIÓN: TODOS LOS MÓDULOS (NUEVO) --- */}
+                <div className="brochure-page bg-white w-full md:max-w-[210mm] mx-auto shadow-2xl overflow-hidden">
+                    <div className="px-4 md:px-8 py-10 md:py-16">
+                        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                            <p className="uppercase text-purple-600 text-sm tracking-wider font-bold">
+                                SISTEMA INTEGRAL
+                            </p>
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                                Todo lo que tu negocio necesita <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+                                    sin pagar extra
+                                </span>
+                            </h2>
+                            <p className="text-gray-600 text-lg">
+                                Olvídate de pagar por módulos separados. Falconext te da acceso a todas las herramientas profesionales desde el plan más básico.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {[
+                                { title: "Facturación Electrónica", desc: "Emite boletas, facturas y notas de venta ilimitadas directo a SUNAT.", icon: <FileText className="w-6 h-6" /> },
+                                { title: "Control de Inventario", desc: "Kardex en tiempo real, control de stock mínimo y valoración de almacén.", icon: <Package className="w-6 h-6" /> },
+                                { title: "Punto de Venta (POS)", desc: "Ventas rápidas con lector de barras, compatible con PC, tablet y celular.", icon: <Monitor className="w-6 h-6" /> },
+                                { title: "Tienda Virtual Gratis", desc: "Tu propio catálogo online integrado automáticamante con tu stock.", icon: <Store className="w-6 h-6" /> },
+                                { title: "Finanzas y Caja", desc: "Control de flujo de caja, aperturas, cierres y reportes de ganancias.", icon: <BarChart3 className="w-6 h-6" /> },
+                                { title: "Clientes y Proveedores", desc: "Base de datos completa, historial de compras y cuentas por cobrar.", icon: <Users className="w-6 h-6" /> },
+                                { title: "Reportes Inteligentes", desc: "Dashboard con métricas clave para tomar mejores decisiones.", icon: <PieChart className="w-6 h-6" /> },
+                                { title: "Control de Usuarios", desc: "Roles y permisos personalizables para tus vendedores y administradores.", icon: <ShieldCheck className="w-6 h-6" /> }
+                            ].map((item, idx) => (
+                                <div key={idx} className="flex gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-md transition-all">
+                                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-purple-600 shadow-sm shrink-0">
+                                        {item.icon}
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-bold text-gray-900 mb-1">{item.title}</h3>
+                                        <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="mt-12 text-center">
+                            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-green-50 border border-green-100">
+                                <span className="flex h-3 w-3 relative">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                </span>
+                                <span className="text-sm font-medium text-green-700">
+                                    Sistema completo disponible en todos los planes
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {/* PÁGINA 2: Planes Nuevos + Footer */}
-                <div className="brochure-page bg-white max-w-[210mm] mx-auto shadow-2xl">
+                <div className="brochure-page bg-white w-full md:max-w-[210mm] mx-auto shadow-2xl">
                     {/* Mini Header para continuidad */}
-                    <div className="px-8 pt-8 pb-4 border-b-2 border-gray-200">
+                    <div className="px-4 md:px-8 pt-8 pb-4 border-b-2 border-gray-200">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
                                 <Image src={logo} alt="Falconext" width={50} height={50} />
                                 <h2 className="text-2xl font-bold text-gray-800">FALCONEXT</h2>
                             </div>
-                            <div className="text-sm text-gray-600">
+                            <div className="text-sm text-gray-600 hidden md:block">
                                 Sistema Inteligente de Facturación
                             </div>
                         </div>
                     </div>
 
                     {/* Tabla de Comparación - Planes Nuevos */}
-                    <div className="px-8 py-6">
-                        <div className="mb-6">
+                    <div className="px-4 md:px-8 py-6">
+                        <div className="mb-6 text-center md:text-left">
                             <h3 className="text-2xl font-bold text-gray-900 mb-2">
                                 Planes para Negocios Nuevos
                             </h3>
@@ -494,8 +598,8 @@ export default function BrochurePreciosPage() {
                         </div>
 
                         {/* Comparison Table */}
-                        <div className="overflow-hidden rounded-2xl border-2 border-gray-200 shadow-lg">
-                            <table className="w-full table-fixed">
+                        <div className="overflow-x-auto rounded-2xl border-2 border-gray-200 shadow-lg pb-2">
+                            <table className="w-full table-fixed min-w-[500px]">
                                 <thead>
                                     <tr className="bg-gradient-to-r from-blue-500 to-cyan-600">
                                         <th className="py-3 px-4 text-left text-white font-bold text-sm w-[35%]">
@@ -643,46 +747,48 @@ export default function BrochurePreciosPage() {
 
                     {/* Premium Footer */}
                     <div className="relative overflow-hidden mt-8">
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-500 via-gray-600 to-gray-700"></div>
-                        <div className="absolute inset-0 opacity-10">
-                            <div className="absolute -top-10 -right-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-                            <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-black"></div>
+                        <div className="absolute inset-0 opacity-20">
+                            <div className="absolute -top-10 -right-10 w-40 md:w-64 h-40 md:h-64 bg-blue-500 rounded-full blur-[80px]"></div>
+                            <div className="absolute -bottom-10 -left-10 w-40 md:w-64 h-40 md:h-64 bg-purple-500 rounded-full blur-[80px]"></div>
                         </div>
-                        <div className="relative px-12 py-8">
-                            <div className="text-center mb-5">
-                                <h3 className="text-3xl font-black text-white mb-3">
+                        <div className="relative px-6 md:px-12 py-8 md:py-10">
+                            <div className="text-center mb-6 md:mb-8">
+                                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 md:mb-3 leading-tight">
                                     ¿Listo para impulsar tu negocio?
                                 </h3>
-                                <p className="text-gray-100 text-lg font-medium">
+                                <p className="text-slate-300 text-sm md:text-lg font-medium">
                                     Únete a miles de empresarios que ya confían en Falconext
                                 </p>
                             </div>
-                            <div className="flex justify-center gap-12 mt-6">
-                                <div className="text-center">
-                                    <p className="text-sm text-gray-200 font-medium mb-1">
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
+                                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">
                                         WhatsApp
                                     </p>
-                                    <p className="text-2xl font-black text-white">
+                                    <p className="text-lg md:text-xl font-bold text-white">
                                         +51 932 332 556
                                     </p>
                                 </div>
-                                <div className="text-center">
-                                    <p className="text-sm text-gray-200 font-medium mb-1">Email</p>
-                                    <p className="text-2xl font-black text-white">
+                                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Email</p>
+                                    <p className="text-lg md:text-xl font-bold text-white break-words">
                                         soporte@falconext.pe
                                     </p>
                                 </div>
-                                <div className="text-center">
-                                    <p className="text-sm text-gray-200 font-medium mb-1">
+                                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">
                                         Sitio Web
                                     </p>
-                                    <p className="text-2xl font-black text-white">
+                                    <p className="text-lg md:text-xl font-bold text-white">
                                         www.falconext.pe
                                     </p>
                                 </div>
                             </div>
-                            <div className="text-center mt-6 pt-4 border-t border-white/20">
-                                <p className="text-gray-200 text-sm">
+
+                            <div className="text-center mt-8 pt-6 border-t border-white/10">
+                                <p className="text-slate-400 text-xs md:text-sm">
                                     © 2026 Falconext · Todos los derechos reservados
                                 </p>
                             </div>

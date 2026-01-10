@@ -7,15 +7,15 @@ import Image from 'next/image';
 const A4Page = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => {
     return (
         <div
-            className={`w-[210mm] min-h-[297mm] mx-auto bg-white shadow-2xl my-8 overflow-hidden relative print:shadow-none print:w-full print:h-full print:my-0 break-after-page page-break-always text-gray-900 font-helvetica ${className}`}
+            className={`w-full max-w-[210mm] mx-auto bg-white shadow-xl my-4 md:my-8 overflow-hidden relative print:shadow-none print:w-full print:h-full print:my-0 break-after-page page-break-always text-gray-900 font-helvetica ${className}`}
         >
-            {/* Background Ambience */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-30">
+            {/* Background Ambience - HIDDEN IN PRINT */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-30 print:hidden">
                 <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-100/50 blur-[100px] rounded-full"></div>
                 <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-green-100/50 blur-[100px] rounded-full"></div>
             </div>
 
-            <div className="relative z-10 w-full h-full flex flex-col p-[20mm]">
+            <div className="relative z-10 w-full h-full flex flex-col p-4 md:p-[20mm]">
                 {children}
             </div>
         </div>
@@ -47,8 +47,9 @@ export default function AsesoresPage() {
                         page-break-after: always;
                         break-after: page;
                     }
-                    ::-webkit-scrollbar { display: none; }
                     .print-hidden { display: none !important; }
+                    /* Ensure tables fit in print */
+                    table { width: 100% !important; }
                 }
             `}</style>
 
@@ -67,143 +68,138 @@ export default function AsesoresPage() {
                 {/* --- PAGE 1: HERO & CORE CONCEPTS --- */}
                 <A4Page>
                     {/* Header Interno */}
-                    <div className="absolute top-0 left-0 w-full h-12 bg-gray-900 flex items-center justify-between px-8 print:hidden">
-                        <span className="text-xs font-bold tracking-[0.2em] text-gray-400">FALCONEXT PARTNERS</span>
+                    <div className="absolute top-0 left-0 w-full h-12 bg-gray-900 flex items-center justify-between px-4 md:px-8 print:hidden">
+                        <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-gray-400">FALCONEXT PARTNERS</span>
                         <div className="flex items-center gap-2">
                             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                             <span className="text-[10px] font-bold text-red-400 uppercase tracking-wider">Confidencial / Uso Interno</span>
                         </div>
                     </div>
 
-                    <div className="pt-12 text-center mb-10">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold tracking-widest uppercase shadow-lg mb-6">
-                            <Users size={14} className="text-white" />
+                    <div className="pt-8 text-center mb-6 mt-5">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold tracking-widest uppercase shadow-lg mb-6 print:shadow-none print:border print:border-gray-200 print:text-black">
+                            <Users size={14} className="text-white print:text-black" />
                             Documento Oficial 2026
                         </div>
-                        <h1 className="text-6xl font-black text-slate-900 mb-4 tracking-tight leading-tight">
+                        <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-4 tracking-tight leading-tight">
                             Plan de Carrera <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Comercial</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 print:text-purple-600 print:bg-none">Comercial</span>
                         </h1>
-                        <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+                        <p className="text-base md:text-lg text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
                             Esta guía contiene la estrategia de compensación diseñada exclusivamente para nuestros <span className="text-slate-900 font-bold">Socios Comerciales</span>. La información aquí presentada es privilegiada.
                         </p>
                     </div>
 
                     {/* 1. MANIFIESTO */}
                     {/* 1. OBJETIVO */}
-                    <div className="mb-10">
-                        <div className="flex items-center gap-3 mb-4 border-b border-gray-200 pb-2">
-                            <Target className="text-blue-600" size={28} />
-                            <h2 className="text-2xl font-bold text-gray-800">1. Objetivo</h2>
+                    <div className="mb-6">
+                        <div className="flex items-center gap-3 mb-2 border-b border-gray-200 pb-2">
+                            <Target className="text-blue-600" size={24} />
+                            <h2 className="text-xl font-bold text-gray-800">1. Objetivo</h2>
                         </div>
-                        <p className="text-gray-600 mb-4 text-justify leading-relaxed">
-                            Establecer un esquema de comisiones justo, escalable y sostenible para asesores comerciales independientes. Buscamos incentivar tanto la <span className="font-bold text-slate-800">captación rápida</span> como la <span className="font-bold text-slate-800">permanencia de clientes</span> a largo plazo.
+                        <p className="text-sm text-gray-600 mb-2 text-justify leading-relaxed">
+                            Establecer un esquema de comisiones justo, escalable y sostenible para asesores comerciales independientes. Buscamos incentivar tanto la <span className="font-bold text-slate-800">captación rápida</span> como la <span className="font-bold text-slate-800">permanencia de clientes</span>.
                         </p>
                     </div>
 
                     {/* 2. MODALIDAD */}
-                    <div className="mb-10">
-                        <div className="flex items-center gap-3 mb-4 border-b border-gray-200 pb-2">
-                            <Handshake className="text-blue-600" size={28} />
-                            <h2 className="text-2xl font-bold text-gray-800">2. Modalidad de Trabajo</h2>
+                    <div className="mb-6">
+                        <div className="flex items-center gap-3 mb-2 border-b border-gray-200 pb-2">
+                            <Handshake className="text-blue-600" size={24} />
+                            <h2 className="text-xl font-bold text-gray-800">2. Modalidad de Trabajo</h2>
                         </div>
-                        <div className="grid grid-cols-2 gap-6">
-                            <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                                <h4 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                                    <CheckCircle2 size={16} className="text-green-600" /> Relación
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-2 text-sm">
+                                    <CheckCircle2 size={14} className="text-green-600" /> Relación
                                 </h4>
-                                <p className="text-sm text-slate-600">Comercial Independiente.</p>
+                                <p className="text-xs text-slate-600">Comercial Independiente.</p>
                             </div>
-                            <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                                <h4 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-                                    <DollarSign size={16} className="text-green-600" /> Pago
+                            <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <h4 className="font-bold text-slate-900 mb-1 flex items-center gap-2 text-sm">
+                                    <DollarSign size={14} className="text-green-600" /> Pago
                                 </h4>
-                                <p className="text-sm text-slate-600">Solo por ventas efectivamente cobradas.</p>
+                                <p className="text-xs text-slate-600">Solo por ventas cobradas.</p>
                             </div>
                         </div>
-                        <div className="mt-4 flex gap-4 text-xs text-slate-500 bg-red-50 p-3 rounded-lg border border-red-100">
-                            <span className="flex items-center gap-1"><XCircle size={12} className="text-red-500" /> Sin Sueldo Fijo</span>
-                            <span className="flex items-center gap-1"><XCircle size={12} className="text-red-500" /> Sin Planilla</span>
-                            <span className="flex items-center gap-1"><XCircle size={12} className="text-red-500" /> Sin Beneficios Laborales</span>
+                        <div className="mt-3 flex flex-col md:flex-row gap-3 text-[10px] text-slate-500 bg-red-50 p-2 rounded-lg border border-red-100">
+                            <span className="flex items-center gap-1"><XCircle size={10} className="text-red-500" /> Sin Sueldo Fijo</span>
+                            <span className="flex items-center gap-1"><XCircle size={10} className="text-red-500" /> Sin Planilla</span>
+                            <span className="flex items-center gap-1"><XCircle size={10} className="text-red-500" /> Sin Beneficios</span>
                         </div>
                     </div>
 
                     {/* 3. SISTEMA MIXTO */}
-                    <div className="mb-8">
-                        <div className="flex items-center gap-3 mb-6 border-b border-gray-200 pb-2">
-                            <TrendingUp className="text-purple-600" size={28} />
-                            <h2 className="text-2xl font-bold text-gray-800">3. Sistema Mixto de Comisiones</h2>
+                    <div className="mb-4">
+                        <div className="flex items-center gap-3 mb-4 border-b border-gray-200 pb-2">
+                            <TrendingUp className="text-purple-600" size={24} />
+                            <h2 className="text-xl font-bold text-gray-800">3. Sistema Mixto de Comisiones</h2>
                         </div>
 
-                        <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100 mb-6 flex gap-3 text-sm text-blue-800">
-                            <Info className="shrink-0" size={20} />
+                        <div className="bg-blue-50/50 p-3 rounded-xl border border-blue-100 mb-4 flex gap-3 text-xs text-blue-800">
+                            <Info className="shrink-0" size={16} />
                             <div>
                                 <p className="font-bold mb-1">⚡ Flexibilidad Total: Tú decides en cada venta.</p>
                                 <p>El modelo no es fijo para ti. Puedes elegir <strong>Modelo A</strong> para un cliente y <strong>Modelo B</strong> para otro, según tu estrategia.</p>
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-6 relative">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
                             {/* VS Badge */}
-                            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white font-black text-sm w-8 h-8 flex items-center justify-center rounded-full z-10 border-4 border-white">VS</div>
+                            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white font-black text-xs w-6 h-6 items-center justify-center rounded-full z-10 border-2 border-white">VS</div>
 
                             {/* MODELO A */}
-                            <div className="bg-white p-6 rounded-2xl border-2 border-slate-100 shadow-sm hover:border-blue-500 transition-colors group">
-                                <div className="text-center mb-4">
-                                    <div className="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full mb-2">MODELO A</div>
-                                    <h3 className="text-xl font-bold text-slate-900">Comisión Única</h3>
-                                    <p className="text-xs text-slate-500 mt-1">Pago Inmediato • Sin Seguimiento</p>
+                            <div className="bg-white p-4 rounded-xl border-2 border-slate-100 shadow-sm hover:border-blue-500 transition-colors group">
+                                <div className="text-center mb-3">
+                                    <h3 className="text-lg font-black text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">Comisión Única</h3>
+                                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-50 px-2 py-1 rounded-full">Pago Inmediato • Sin Seguimiento</span>
                                 </div>
-                                <ul className="space-y-3 text-sm text-slate-700 mb-6">
-                                    <li className="flex items-start gap-2">
-                                        <Check className="text-green-500 mt-0.5" size={16} />
+                                <ul className="space-y-2 mb-4">
+                                    <li className="flex items-start gap-2 text-sm text-slate-600">
+                                        <Check className="text-green-500 shrink-0 mt-0.5" size={14} />
                                         <span><strong>Comisión Alta</strong> (1 solo pago).</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <Check className="text-green-500 mt-0.5" size={16} />
+                                    <li className="flex items-start gap-2 text-sm text-slate-600">
+                                        <Check className="text-green-500 shrink-0 mt-0.5" size={14} />
                                         <span>Sobre el primer pago (Mensual o Anual).</span>
                                     </li>
                                 </ul>
-                                <div className="bg-slate-50 p-3 rounded-lg text-xs text-slate-500 text-center">
-                                    <span className="font-bold block text-slate-900 mb-1">Ideal para:</span>
-                                    Asesores nuevos, ventas rápidas y alto volumen.
+                                <div className="bg-slate-50 p-3 rounded-lg text-center">
+                                    <p className="text-[10px] uppercase font-bold text-slate-800 mb-1">Ideal para:</p>
+                                    <p className="text-xs text-slate-500 leading-tight">Asesores nuevos, ventas rápidas y alto volumen.</p>
                                 </div>
                             </div>
 
                             {/* MODELO B */}
-                            <div className="bg-white p-6 rounded-2xl border-2 border-slate-100 shadow-sm hover:border-purple-500 transition-colors group">
-                                <div className="text-center mb-4">
-                                    <div className="inline-block bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full mb-2">MODELO B</div>
-                                    <h3 className="text-xl font-bold text-slate-900">Recurrente Limitada</h3>
-                                    <p className="text-xs text-slate-500 mt-1">Pago Mensual • Requiere Seguimiento</p>
+                            <div className="bg-white p-4 rounded-xl border-2 border-slate-100 shadow-sm hover:border-purple-500 transition-colors group">
+                                <div className="text-center mb-3">
+                                    <h3 className="text-lg font-black text-slate-900 mb-1 group-hover:text-purple-600 transition-colors">Recurrente Limitada</h3>
+                                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-50 px-2 py-1 rounded-full">Pago Mensual • Requiere Seguimiento</span>
                                 </div>
-                                <ul className="space-y-3 text-sm text-slate-700 mb-6">
-                                    <li className="flex items-start gap-2">
-                                        <Check className="text-green-500 mt-0.5" size={16} />
+                                <ul className="space-y-2 mb-4">
+                                    <li className="flex items-start gap-2 text-sm text-slate-600">
+                                        <Check className="text-green-500 shrink-0 mt-0.5" size={14} />
                                         <span><strong>Menor Comisión</strong> pero recurrente.</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <Check className="text-green-500 mt-0.5" size={16} />
+                                    <li className="flex items-start gap-2 text-sm text-slate-600">
+                                        <Check className="text-green-500 shrink-0 mt-0.5" size={14} />
                                         <span>Mensual: <strong>10%</strong> (Max 6 meses).</span>
                                     </li>
-                                    <li className="flex items-start gap-2">
-                                        <Check className="text-green-500 mt-0.5" size={16} />
-                                        <div className="flex flex-col">
-                                            <span>Anual: <strong>8%</strong> (Prorrateado).</span>
-                                            <span className="text-[10px] text-slate-400 leading-tight mt-1">* Se divide la comisión total entre 12 y se paga mes a mes para asegurar el soporte al cliente.</span>
-                                        </div>
+                                    <li className="flex items-start gap-2 text-sm text-slate-600">
+                                        <Check className="text-green-500 shrink-0 mt-0.5" size={14} />
+                                        <span>Anual: <strong>8%</strong> (Prorrateado).</span>
                                     </li>
                                 </ul>
-                                <div className="bg-slate-50 p-3 rounded-lg text-xs text-slate-500 text-center">
-                                    <span className="font-bold block text-slate-900 mb-1">Ideal para:</span>
-                                    Ventas consultivas y clientes de mayor valor.
+                                <div className="bg-slate-50 p-3 rounded-lg text-center">
+                                    <p className="text-[10px] uppercase font-bold text-slate-800 mb-1">Ideal para:</p>
+                                    <p className="text-xs text-slate-500 leading-tight">Ventas consultivas y clientes de mayor valor.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* FOOTER INTERNO */}
-                    <div className="mt-auto border-t border-slate-100 pt-6 flex justify-between items-center text-[10px] text-slate-400 uppercase tracking-widest">
+                    <div className="mt-auto border-t border-slate-100 pt-6 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-400 uppercase tracking-widest gap-2 text-center md:text-left">
                         <span>FALCONEXT &copy; 2026</span>
                         <span>DOCUMENTO CONFIDENCIAL - PROHIBIDA SU DISTRIBUCIÓN</span>
                     </div>
@@ -212,23 +208,23 @@ export default function AsesoresPage() {
 
                 {/* --- PAGE 2: DETALLE COMISIONES (MODELO A - DEFAULT) --- */}
                 <A4Page>
-                    <div className="mb-4 flex items-end justify-between border-b border-slate-100 pb-4">
+                    <div className="mb-4 flex flex-col md:flex-row md:items-end justify-between border-b border-slate-100 pb-4 gap-2">
                         <div>
                             <span className="text-xs font-bold text-blue-600 tracking-wider uppercase mb-1 block">Ejemplo de Ganancias</span>
-                            <h2 className="text-3xl font-black text-slate-900">Aplicación del Modelo A</h2>
+                            <h2 className="text-2xl md:text-3xl font-black text-slate-900">Aplicación del Modelo A</h2>
                         </div>
-                        <div className="text-right">
+                        <div className="text-left md:text-right">
                             <span className="text-[10px] font-bold bg-slate-100 text-slate-500 px-3 py-1 rounded-full">COMISIÓN ÚNICA</span>
                         </div>
                     </div>
 
                     {/* MENSUAL */}
-                    <div className="mb-8">
+                    <div className="mb-6">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-lg font-bold text-slate-700">Ventas Mensuales</h3>
                         </div>
-                        <div className="overflow-hidden rounded-xl border border-slate-200">
-                            <table className="w-full text-left border-collapse">
+                        <div className="overflow-x-auto rounded-xl border border-slate-200 pb-2">
+                            <table className="w-full text-left border-collapse min-w-[500px]">
                                 <thead className="bg-slate-50 text-slate-500 text-[10px] uppercase font-bold">
                                     <tr>
                                         <th className="p-3">Plan</th>
@@ -249,38 +245,45 @@ export default function AsesoresPage() {
                     </div>
 
                     {/* ANUAL */}
-                    <div className="mb-10">
+                    <div className="mb-6">
                         <div className="bg-slate-900 rounded-2xl p-6 text-white shadow-xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/20 rounded-full blur-3xl"></div>
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/20 rounded-full blur-3xl print:hidden"></div>
                             <h3 className="text-xl font-bold mb-4 flex items-center gap-2"><span className="text-yellow-400">⚡</span> Ventas Anuales (Modelo A)</h3>
 
-                            <table className="w-full text-left border-collapse">
-                                <thead className="text-slate-400 text-[10px] uppercase font-bold border-b border-white/10">
-                                    <tr>
-                                        <th className="py-2">Plan</th>
-                                        <th className="py-2">Precio</th>
-                                        <th className="py-2 text-right text-green-400">Comisión Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="text-sm">
-                                    <tr className="border-b border-white/5"><td className="py-2 font-bold">Micro</td><td className="py-2 text-slate-400">S/ 350</td><td className="py-2 text-right font-bold text-green-400">S/ 70.00</td></tr>
-                                    <tr className="border-b border-white/5"><td className="py-2 font-bold">Emprende</td><td className="py-2 text-slate-400">S/ 420</td><td className="py-2 text-right font-bold text-green-400">S/ 85.00</td></tr>
-                                    <tr className="border-b border-white/5"><td className="py-2 font-bold text-white">Control</td><td className="py-2 text-slate-400">S/ 500</td><td className="py-2 text-right font-bold text-green-400">S/ 100.00</td></tr>
-                                    <tr className="border-b border-white/5"><td className="py-2 font-bold">Bacán</td><td className="py-2 text-slate-400">S/ 600</td><td className="py-2 text-right font-bold text-green-400">S/ 120.00</td></tr>
-                                    <tr><td className="py-2 font-bold">Mega</td><td className="py-2 text-slate-400">S/ 1000</td><td className="py-2 text-right font-bold text-green-400">S/ 200.00</td></tr>
-                                </tbody>
-                            </table>
+                            <div className="overflow-x-auto pb-2">
+                                <table className="w-full text-left border-collapse min-w-[500px]">
+                                    <thead className="text-slate-400 text-[10px] uppercase font-bold border-b border-white/10">
+                                        <tr>
+                                            <th className="py-2">Plan</th>
+                                            <th className="py-2">Precio</th>
+                                            <th className="py-2 text-right text-green-400">Comisión Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="text-sm">
+                                        <tr className="border-b border-white/5"><td className="py-2 font-bold">Micro</td><td className="py-2 text-slate-400">S/ 350</td><td className="py-2 text-right font-bold text-green-400">S/ 70.00</td></tr>
+                                        <tr className="border-b border-white/5"><td className="py-2 font-bold">Emprende</td><td className="py-2 text-slate-400">S/ 420</td><td className="py-2 text-right font-bold text-green-400">S/ 85.00</td></tr>
+                                        <tr className="border-b border-white/5"><td className="py-2 font-bold text-white">Control</td><td className="py-2 text-slate-400">S/ 500</td><td className="py-2 text-right font-bold text-green-400">S/ 100.00</td></tr>
+                                        <tr className="border-b border-white/5"><td className="py-2 font-bold">Bacán</td><td className="py-2 text-slate-400">S/ 600</td><td className="py-2 text-right font-bold text-green-400">S/ 120.00</td></tr>
+                                        <tr><td className="py-2 font-bold">Mega</td><td className="py-2 text-slate-400">S/ 1000</td><td className="py-2 text-right font-bold text-green-400">S/ 200.00</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+                </A4Page>
 
-                    {/* 4. REGLAS GENERALES & TERMINOS */}
-                    <div className="mt-8 border-t border-slate-100 pt-8">
-                        <h2 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-                            <Briefcase size={20} className="text-slate-400" />
-                            Términos del Acuerdo
-                        </h2>
 
-                        <div className="grid grid-cols-2 gap-8">
+
+                {/* --- PAGE 3: BONOS ESPECIALES & BENEFICIOS --- */}
+                <A4Page>
+                    {/* 4. REGLAS GENERALES & TERMINOS (Moved here) */}
+                    <div className="mb-8 border-b border-slate-100 pb-8">
+                        <div className="flex items-center gap-3 mb-6">
+                            <Briefcase className="text-slate-600" size={24} />
+                            <h2 className="text-xl font-bold text-slate-800">Términos del Acuerdo</h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div>
                                 <h4 className="font-bold text-sm text-slate-900 mb-3 uppercase tracking-wide">Reglas Generales</h4>
                                 <ul className="space-y-2 text-sm text-slate-600">
@@ -300,17 +303,12 @@ export default function AsesoresPage() {
                             </div>
                         </div>
 
-                        <div className="mt-6 bg-slate-50 p-4 rounded-lg flex items-center justify-between text-xs text-slate-500">
+                        <div className="mt-6 bg-slate-50 p-4 rounded-lg flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-2">
                             <span><strong>Jurisdicción:</strong> República del Perú</span>
                             <span><strong>Pagos:</strong> Transferencia, Yape, Plin (Contra RxH)</span>
                         </div>
                     </div>
-                </A4Page>
 
-
-
-                {/* --- PAGE 3: BONOS ESPECIALES & BENEFICIOS --- */}
-                <A4Page>
                     <div className="mb-8">
                         <div className="flex items-center gap-3 mb-6 border-b border-gray-200 pb-2">
                             <Users className="text-indigo-600" size={28} />
@@ -322,7 +320,7 @@ export default function AsesoresPage() {
 
                         <div className="space-y-8">
                             {/* BENEFICIO 1: CARTERA */}
-                            <div className="bg-indigo-50 rounded-2xl p-6 border border-indigo-100 flex gap-5 items-start">
+                            <div className="bg-indigo-50 rounded-2xl p-6 border border-indigo-100 flex flex-col md:flex-row gap-5 items-start">
                                 <div className="bg-white p-3 rounded-xl shadow-sm border border-indigo-100 shrink-0">
                                     <DollarSign className="text-indigo-600" size={24} />
                                 </div>
@@ -352,7 +350,7 @@ export default function AsesoresPage() {
                             </div>
 
                             {/* BENEFICIO 2: LEADS */}
-                            <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100 flex gap-5 items-start">
+                            <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100 flex flex-col md:flex-row gap-5 items-start">
                                 <div className="bg-white p-3 rounded-xl shadow-sm border border-blue-100 shrink-0">
                                     <Target className="text-blue-600" size={24} />
                                 </div>
@@ -369,7 +367,7 @@ export default function AsesoresPage() {
                             </div>
 
                             {/* BENEFICIO 3: MENTORÍA */}
-                            <div className="bg-purple-50 rounded-2xl p-6 border border-purple-100 flex gap-5 items-start">
+                            <div className="bg-purple-50 rounded-2xl p-6 border border-purple-100 flex flex-col md:flex-row gap-5 items-start">
                                 <div className="bg-white p-3 rounded-xl shadow-sm border border-purple-100 shrink-0">
                                     <Users className="text-purple-600" size={24} />
                                 </div>
@@ -398,39 +396,39 @@ export default function AsesoresPage() {
                 <A4Page>
                     <div className="h-full flex flex-col relative overflow-hidden bg-slate-900 rounded-none p-0">
                         {/* Background Effects */}
-                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"></div>
-                        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none print:hidden"></div>
+                        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none print:hidden"></div>
 
-                        <div className="relative z-10 p-[20mm] flex flex-col h-full">
+                        <div className="relative z-10 p-6 md:p-[20mm] flex flex-col h-full">
                             <div className="mb-12">
                                 <span className="text-blue-400 font-bold tracking-widest text-xs uppercase mb-2 block">El Futuro</span>
-                                <h1 className="text-5xl font-black text-white mb-6">Escalabilidad</h1>
+                                <h1 className="text-4xl md:text-5xl font-black text-white mb-6">Escalabilidad</h1>
                                 <p className="text-slate-400 text-lg max-w-xl leading-relaxed">
                                     No hay límite para tu crecimiento. Este modelo está diseñado para que construyas tu propio imperio comercial dentro de Falconext.
                                 </p>
                             </div>
 
                             <div className="grid grid-cols-1 gap-6 mb-12">
-                                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex items-center gap-6">
-                                    <div className="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-black text-2xl">1</div>
+                                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+                                    <div className="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-black text-2xl shrink-0">1</div>
                                     <div>
                                         <h3 className="text-white font-bold text-xl">Partners</h3>
                                         <p className="text-slate-400 text-sm">Inicia gestionando tu propia cartera de clientes.</p>
                                     </div>
                                 </div>
-                                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex items-center gap-6">
-                                    <div className="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-black text-2xl">2</div>
+                                <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+                                    <div className="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-black text-2xl shrink-0">2</div>
                                     <div>
                                         <h3 className="text-white font-bold text-xl">Líder Comercial</h3>
                                         <p className="text-slate-400 text-sm mb-2">Gestionando +50 clientes activos.</p>
                                         <ul className="text-xs text-blue-200 space-y-1">
-                                            <li className="flex items-center gap-2"><CheckCircle2 size={12} /> Bono de Cartera (Ingreso Residual).</li>
-                                            <li className="flex items-center gap-2"><CheckCircle2 size={12} /> Acceso a Leads Cualificados de Empresa.</li>
+                                            <li className="flex items-center gap-2 justify-center md:justify-start"><CheckCircle2 size={12} /> Bono de Cartera (Ingreso Residual).</li>
+                                            <li className="flex items-center gap-2 justify-center md:justify-start"><CheckCircle2 size={12} /> Acceso a Leads Cualificados de Empresa.</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 rounded-2xl flex items-center gap-6 shadow-2xl transform scale-105 border border-white/20">
-                                    <div className="w-16 h-16 rounded-full bg-white text-blue-600 flex items-center justify-center font-black text-2xl">3</div>
+                                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 rounded-2xl flex flex-col md:flex-row items-center gap-6 shadow-2xl transform md:scale-105 border border-white/20 text-center md:text-left transition-transform">
+                                    <div className="w-16 h-16 rounded-full bg-white text-blue-600 flex items-center justify-center font-black text-2xl shrink-0">3</div>
                                     <div>
                                         <h3 className="text-white font-bold text-xl">Director Zonal</h3>
                                         <p className="text-blue-100 text-sm">Gestiona equipos de venta y comisiona por sus resultados.</p>

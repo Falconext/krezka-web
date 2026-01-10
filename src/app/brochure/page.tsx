@@ -1,22 +1,24 @@
 'use client';
 
-import { Printer, Store, Shield, Phone, Mail, ExternalLink, Check, Plus, Globe, Zap, Users, MessageCircle, Laptop, Rocket, Search, CheckCircle2, ChevronRight, BarChart, Server, GraduationCap } from 'lucide-react';
-import Image from 'next/image';
+import { useRef } from 'react';
+import Image from "next/image";
+import logo from "@/app/public/assets/fnlogo.png";
+import { Check, Phone, Globe, Package, ShoppingCart, BarChart3, Users, Monitor, FileText, Store, PieChart, ShieldCheck, Printer, Shield, Plus, Search, Laptop, Rocket, Zap, MessageCircle, Mail, ExternalLink, CheckCircle2 } from "lucide-react";
 import mainproject from '@/app/public/assets/mainproject.png';
 
 // --- A4 Container ---
-const A4Page = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => {
+const A4Page = ({ children, className = '', lastPage = false }: { children: React.ReactNode; className?: string; lastPage?: boolean }) => {
     return (
         <div
-            className={`w-[210mm] h-[297mm] mx-auto bg-white shadow-2xl my-8 overflow-hidden relative print:shadow-none print:w-full print:h-full print:my-0 break-after-page page-break-always text-gray-900 font-helvetica ${className}`}
+            className={`w-full max-w-[210mm] md:w-[210mm] h-auto md:h-[297mm] mx-auto bg-white shadow-2xl my-4 md:my-8 relative print:shadow-none print:w-full print:h-full print:my-0 ${!lastPage ? 'break-after-page page-break-always' : ''} text-gray-900 font-helvetica ${className}`}
         >
-            {/* Background Ambience */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-40">
+            {/* Background Ambience - HIDDEN IN PRINT */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-40 print:hidden">
                 <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-blue-100/50 blur-[120px] rounded-full"></div>
                 <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-100/50 blur-[100px] rounded-full"></div>
             </div>
 
-            <div className="relative z-10 w-full h-full flex flex-col p-[15mm]">
+            <div className="relative z-10 w-full h-full flex flex-col p-6 md:p-[15mm]">
                 {children}
             </div>
         </div>
@@ -75,15 +77,14 @@ export default function BrochurePage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center mt-6">
-                        <h1 className="text-[5rem] leading-[0.9] font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500 mb-6">
+                        <h1 className="text-5xl md:text-[5rem] leading-[0.9] font-bold text-gray-900 mb-6">
                             IMPULSA TU<br />NEGOCIO
                         </h1>
-                        <p className="text-2xl text-gray-500 font-light tracking-wide max-w-lg mb-10">
+                        <p className="text-xl md:text-2xl text-gray-500 font-light tracking-wide max-w-lg mb-10">
                             Software de Facturación & Desarrollo Web Profesional
                         </p>
 
-                        <div className="relative w-full max-w-2xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-gray-200 group">
-                            <div className="absolute inset-0 bg-gradient-to-t from-gray-50 via-transparent to-transparent z-10 opacity-20"></div>
+                        <div className="relative w-full max-w-2xl aspect-video rounded-2xl overflow-hidden border border-gray-200 group">
                             <Image
                                 src={mainproject}
                                 alt="Dashboard Interface"
@@ -123,9 +124,9 @@ export default function BrochurePage() {
                             <Store className="text-green-600" />
                             <h3 className="text-2xl font-bold text-green-600">Negocio nuevo / Emprendedor</h3>
                         </div>
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {/* Free */}
-                            <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                            <div className="bg-white p-5 rounded-2xl border border-gray-200">
                                 <h4 className="font-bold text-lg mb-1 text-gray-900">Emprende</h4>
                                 <div className="text-3xl font-bold mb-2 text-gray-900">GRATIS</div>
                                 <ul className="text-sm text-gray-600 space-y-2">
@@ -146,7 +147,7 @@ export default function BrochurePage() {
                                 </ul>
                             </div>
                             {/* Pro */}
-                            <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
+                            <div className="bg-white p-5 rounded-2xl border border-gray-200">
                                 <h4 className="font-bold text-lg mb-1 text-gray-900">Pro</h4>
                                 <div className="text-3xl font-bold mb-2 text-gray-900">S/ 20</div>
                                 <p className="text-xs text-gray-500 mb-2">Anual: S/ 199</p>
@@ -166,58 +167,60 @@ export default function BrochurePage() {
                             <h3 className="text-2xl font-bold text-blue-600">Empresa Formal (SUNAT)</h3>
                         </div>
 
-                        <table className="w-full text-left border-collapse">
-                            <thead>
-                                <tr className="text-xs uppercase text-gray-500 border-b border-gray-200">
-                                    <th className="py-2">Plan</th>
-                                    <th className="py-2">Mensual</th>
-                                    <th className="py-2">Anual <span className="text-green-600">(Ahorro)</span></th>
-                                    <th className="py-2">Comprobantes</th>
-                                </tr>
-                            </thead>
-                            <tbody className="text-sm">
-                                <tr className="border-b border-gray-100">
-                                    <td className="py-3 font-bold text-gray-900">Micro</td>
-                                    <td className="py-3 text-gray-700">S/ 35.00</td>
-                                    <td className="py-3 text-gray-700">S/ 350</td>
-                                    <td className="py-3 text-gray-500">100 / mes</td>
-                                </tr>
-                                <tr className="border-b border-gray-100">
-                                    <td className="py-3 font-bold text-gray-900">Emprende</td>
-                                    <td className="py-3 text-gray-700">S/ 42.00</td>
-                                    <td className="py-3 text-gray-700">S/ 420</td>
-                                    <td className="py-3 text-gray-500">300 / mes</td>
-                                </tr>
-                                <tr className="border-b border-blue-100 bg-blue-50/50">
-                                    <td className="py-3 font-bold text-blue-600">Control</td>
-                                    <td className="py-3 text-blue-900">S/ 49.90</td>
-                                    <td className="py-3 text-blue-900">S/ 500</td>
-                                    <td className="py-3 text-blue-700">500 / mes</td>
-                                </tr>
-                                <tr className="border-b border-gray-100">
-                                    <td className="py-3 font-bold text-gray-900">Bacán</td>
-                                    <td className="py-3 text-gray-700">S/ 59.90</td>
-                                    <td className="py-3 text-gray-700">S/ 600</td>
-                                    <td className="py-3 text-gray-500">600 / mes</td>
-                                </tr>
-                                <tr className="border-b border-gray-100">
-                                    <td className="py-3 font-bold text-gray-900">Súper</td>
-                                    <td className="py-3 text-gray-700">S/ 79.90</td>
-                                    <td className="py-3 text-gray-700">S/ 800</td>
-                                    <td className="py-3 text-gray-500">800 / mes</td>
-                                </tr>
-                                <tr className="border-b border-gray-100">
-                                    <td className="py-3 font-bold text-gray-900">Mega</td>
-                                    <td className="py-3 text-gray-700">S/ 99.90</td>
-                                    <td className="py-3 text-gray-700">S/ 1000</td>
-                                    <td className="py-3 text-gray-500">1200 / mes</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left border-collapse min-w-[500px]">
+                                <thead>
+                                    <tr className="text-xs uppercase text-gray-500 border-b border-gray-200">
+                                        <th className="py-2">Plan</th>
+                                        <th className="py-2">Mensual</th>
+                                        <th className="py-2">Anual <span className="text-green-600">(Ahorro)</span></th>
+                                        <th className="py-2">Comprobantes</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="text-sm">
+                                    <tr className="border-b border-gray-100">
+                                        <td className="py-3 font-bold text-gray-900">Micro</td>
+                                        <td className="py-3 text-gray-700">S/ 35.00</td>
+                                        <td className="py-3 text-gray-700">S/ 350</td>
+                                        <td className="py-3 text-gray-500">100 / mes</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-100">
+                                        <td className="py-3 font-bold text-gray-900">Emprende</td>
+                                        <td className="py-3 text-gray-700">S/ 42.00</td>
+                                        <td className="py-3 text-gray-700">S/ 420</td>
+                                        <td className="py-3 text-gray-500">300 / mes</td>
+                                    </tr>
+                                    <tr className="border-b border-blue-100 bg-blue-50/50">
+                                        <td className="py-3 font-bold text-blue-600">Control</td>
+                                        <td className="py-3 text-blue-900">S/ 49.90</td>
+                                        <td className="py-3 text-blue-900">S/ 500</td>
+                                        <td className="py-3 text-blue-700">500 / mes</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-100">
+                                        <td className="py-3 font-bold text-gray-900">Bacán</td>
+                                        <td className="py-3 text-gray-700">S/ 59.90</td>
+                                        <td className="py-3 text-gray-700">S/ 600</td>
+                                        <td className="py-3 text-gray-500">600 / mes</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-100">
+                                        <td className="py-3 font-bold text-gray-900">Súper</td>
+                                        <td className="py-3 text-gray-700">S/ 79.90</td>
+                                        <td className="py-3 text-gray-700">S/ 800</td>
+                                        <td className="py-3 text-gray-500">800 / mes</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-100">
+                                        <td className="py-3 font-bold text-gray-900">Mega</td>
+                                        <td className="py-3 text-gray-700">S/ 99.90</td>
+                                        <td className="py-3 text-gray-700">S/ 1000</td>
+                                        <td className="py-3 text-gray-500">1200 / mes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     {/* --- ADDONS --- */}
-                    <div className="grid grid-cols-2 gap-6 mt-auto bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-auto bg-gray-50 p-6 rounded-2xl border border-gray-200">
                         <div>
                             <div className="flex items-center gap-2 mb-2">
                                 <Plus size={18} className="text-yellow-500" />
@@ -240,7 +243,113 @@ export default function BrochurePage() {
                 </A4Page>
 
 
-                {/* --- PAGE 3: WEB DEVELOPMENT SERVICES --- */}
+                {/* --- PAGE 3: ALL MODULES (NEW LOCATION) --- */}
+                <A4Page className="flex flex-col relative">
+                    {/* Header */}
+                    <div className="text-center mb-10 mt-4">
+                        <p className="uppercase text-purple-600 text-sm tracking-wider font-bold mb-2">SISTEMA INTEGRAL</p>
+                        <h2 className="text-4xl font-bold text-gray-900 leading-tight mb-4">
+                            Todo lo que tu negocio necesita<br />
+                            <span className="text-purple-600">sin pagar extra</span>
+                        </h2>
+                        <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+                            Olvídate de pagar por módulos separados. Falconext te da acceso a todas las herramientas profesionales desde el plan más básico.
+                        </p>
+                    </div>
+
+                    {/* Modules Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 px-4">
+                        {/* Module 1 */}
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
+                                <FileText size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-1">Facturación Electrónica</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">Emite boletas, facturas y notas de venta ilimitadas directo a SUNAT.</p>
+                            </div>
+                        </div>
+                        {/* Module 2 */}
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
+                                <Package size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-1">Control de Inventario</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">Kardex en tiempo real, control de stock mínimo y valoración de almacén.</p>
+                            </div>
+                        </div>
+                        {/* Module 3 */}
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
+                                <Monitor size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-1">Punto de Venta (POS)</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">Ventas rápidas con lector de barras, compatible con PC, tablet y celular.</p>
+                            </div>
+                        </div>
+                        {/* Module 4 */}
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
+                                <Store size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-1">Tienda Virtual Gratis</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">Tu propio catálogo online integrado automáticamente con tu stock.</p>
+                            </div>
+                        </div>
+                        {/* Module 5 */}
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
+                                <BarChart3 size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-1">Finanzas y Caja</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">Control de flujo de caja, aperturas, cierres y reportes de ganancias.</p>
+                            </div>
+                        </div>
+                        {/* Module 6 */}
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
+                                <Users size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-1">Clientes y Proveedores</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">Base de datos completa, historial de compras y cuentas por cobrar.</p>
+                            </div>
+                        </div>
+                        {/* Module 7 */}
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
+                                <PieChart size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-1">Reportes Inteligentes</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">Dashboard con métricas clave para tomar mejores decisiones.</p>
+                            </div>
+                        </div>
+                        {/* Module 8 */}
+                        <div className="flex gap-4">
+                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
+                                <ShieldCheck size={24} />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-1">Control de Usuarios</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">Roles y permisos personalizables para tus vendedores y administradores.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-auto mb-8 bg-blue-50 border border-blue-100 rounded-2xl p-6 text-center">
+                        <p className="text-blue-800 font-medium">
+                            🚀 Todos estos módulos están incluidos desde nuestros planes más económicos.
+                        </p>
+                    </div>
+                </A4Page>
+
+
+                {/* --- PAGE 4: WEB DEVELOPMENT SERVICES --- */}
                 <A4Page>
                     <div className="mb-12 text-center">
                         <div className="inline-block px-4 py-1 rounded-full bg-purple-100 text-purple-600 text-sm tracking-widest font-bold mb-4">DESARROLLO WEB</div>
@@ -250,16 +359,15 @@ export default function BrochurePage() {
 
                     <div className="grid grid-cols-1 gap-6">
                         {/* LANDING PAGE */}
-                        <div className="flex bg-white rounded-2xl overflow-hidden border border-gray-200 h-44 group hover:border-purple-300 shadow-sm transition-all hover:shadow-md">
-                            <div className="w-1/3 bg-purple-50 flex items-center justify-center p-6 relative">
-                                <div className="absolute inset-0 bg-purple-200/50 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden border border-gray-200 h-auto md:h-44 group hover:border-purple-300 transition-all">
+                            <div className="w-full md:w-1/3 bg-purple-50 flex items-center justify-center p-6 relative">
                                 <div className="text-center relative z-10">
                                     <h3 className="font-bold text-xl mb-1 text-purple-900">Landing Page</h3>
                                     <div className="text-2xl font-bold text-purple-600">S/ 500</div>
                                     <div className="text-[10px] text-gray-500">Incluido IGV</div>
                                 </div>
                             </div>
-                            <div className="w-2/3 p-6 flex flex-col justify-center">
+                            <div className="w-full md:w-2/3 p-6 flex flex-col justify-center">
                                 <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-600">
                                     <div className="flex items-center gap-2"><Check size={12} className="text-purple-600" /> 1 Sección (1 página)</div>
                                     <div className="flex items-center gap-2"><Check size={12} className="text-purple-600" /> Hosting x 1 año</div>
@@ -272,17 +380,16 @@ export default function BrochurePage() {
                         </div>
 
                         {/* EMPRESARIAL */}
-                        <div className="flex bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl overflow-hidden border border-blue-500/30 h-52 shadow-xl relative transform scale-105 z-10 text-white">
+                        <div className="flex flex-col md:flex-row bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl overflow-hidden border border-blue-500/30 h-auto md:h-52 relative transform md:scale-105 z-10 text-white">
                             <div className="absolute top-0 right-0 px-3 py-1 bg-blue-600 text-white text-[10px] uppercase font-bold rounded-bl-xl">Más Vendido</div>
-                            <div className="w-1/3 bg-blue-900/40 flex items-center justify-center p-6 relative">
-                                <div className="absolute inset-0 bg-blue-400/20 blur-xl"></div>
+                            <div className="w-full md:w-1/3 bg-blue-900/40 flex items-center justify-center p-6 relative">
                                 <div className="text-center relative z-10">
                                     <h3 className="font-bold text-xl mb-1 text-white">Empresarial</h3>
                                     <div className="text-3xl font-bold text-blue-400">S/ 1200</div>
                                     <div className="text-[10px] text-gray-300">Incluido IGV</div>
                                 </div>
                             </div>
-                            <div className="w-2/3 p-6 flex flex-col justify-center text-gray-100">
+                            <div className="w-full md:w-2/3 p-6 flex flex-col justify-center text-gray-100">
                                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
                                     <div className="flex items-center gap-2"><Check size={12} className="text-blue-400" /> Hasta 12 Secciones</div>
                                     <div className="flex items-center gap-2"><Check size={12} className="text-blue-400" /> Hosting & Dominio 1 año</div>
@@ -296,16 +403,15 @@ export default function BrochurePage() {
                         </div>
 
                         {/* E-COMMERCE */}
-                        <div className="flex bg-white rounded-2xl overflow-hidden border border-gray-200 h-56 group hover:border-pink-300 shadow-sm transition-all hover:shadow-md">
-                            <div className="w-1/3 bg-pink-50 flex items-center justify-center p-6 relative">
-                                <div className="absolute inset-0 bg-pink-200/50 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden border border-gray-200 h-auto md:h-56 group hover:border-pink-300 transition-all">
+                            <div className="w-full md:w-1/3 bg-pink-50 flex items-center justify-center p-6 relative">
                                 <div className="text-center relative z-10">
                                     <h3 className="font-bold text-xl mb-1 text-pink-900">E-commerce</h3>
                                     <div className="text-2xl font-bold text-pink-600">S/ 2000</div>
                                     <div className="text-[10px] text-gray-500">Incluido IGV</div>
                                 </div>
                             </div>
-                            <div className="w-2/3 p-6 flex flex-col justify-center">
+                            <div className="w-full md:w-2/3 p-6 flex flex-col justify-center">
                                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs text-gray-600">
                                     <div className="flex items-center gap-2"><Check size={12} className="text-pink-500" /> Hasta 14 Secciones</div>
                                     <div className="flex items-center gap-2"><Check size={12} className="text-pink-500" /> Carrito + Pagos</div>
@@ -334,7 +440,7 @@ export default function BrochurePage() {
                         <div className="space-y-12">
                             {/* Step 1 */}
                             <div className="flex gap-8 relative">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-blue-500 flex items-center justify-center shrink-0 z-10 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                                <div className="w-20 h-20 rounded-full bg-white border-2 border-blue-500 flex items-center justify-center shrink-0 z-10">
                                     <Search size={32} className="text-blue-600" />
                                 </div>
                                 <div>
@@ -347,7 +453,7 @@ export default function BrochurePage() {
 
                             {/* Step 2 */}
                             <div className="flex gap-8 relative">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-purple-500 flex items-center justify-center shrink-0 z-10 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+                                <div className="w-20 h-20 rounded-full bg-white border-2 border-purple-500 flex items-center justify-center shrink-0 z-10">
                                     <Laptop size={32} className="text-purple-600" />
                                 </div>
                                 <div>
@@ -360,7 +466,7 @@ export default function BrochurePage() {
 
                             {/* Step 3 */}
                             <div className="flex gap-8 relative">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-pink-500 flex items-center justify-center shrink-0 z-10 shadow-[0_0_15px_rgba(236,72,153,0.3)]">
+                                <div className="w-20 h-20 rounded-full bg-white border-2 border-pink-500 flex items-center justify-center shrink-0 z-10">
                                     <Rocket size={32} className="text-pink-600" />
                                 </div>
                                 <div>
@@ -373,7 +479,7 @@ export default function BrochurePage() {
 
                             {/* Step 4 */}
                             <div className="flex gap-8 relative">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-green-500 flex items-center justify-center shrink-0 z-10 shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                                <div className="w-20 h-20 rounded-full bg-white border-2 border-green-500 flex items-center justify-center shrink-0 z-10">
                                     <Zap size={32} className="text-green-600" />
                                 </div>
                                 <div>
@@ -396,28 +502,28 @@ export default function BrochurePage() {
                     </div>
 
                     <div className="space-y-6">
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                        <div className="bg-white p-6 rounded-2xl border border-gray-200">
                             <h4 className="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div>¿Necesito firmar un contrato de permanencia?</h4>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 No. Nuestros planes son prepago (mensual o anual). Puedes cancelar cuando desees sin penalidades. Queremos que te quedes por la calidad de nuestro servicio, no por obligación.
                             </p>
                         </div>
 
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                        <div className="bg-white p-6 rounded-2xl border border-gray-200">
                             <h4 className="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div>¿El sistema funciona sin internet?</h4>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Falconext es una tecnología Cloud que requiere internet para sincronizar con SUNAT en tiempo real. Sin embargo, está optimizado para funcionar con datos móviles mínimos, consumiendo muy pocos megas.
                             </p>
                         </div>
 
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                        <div className="bg-white p-6 rounded-2xl border border-gray-200">
                             <h4 className="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div>¿Qué incluye el soporte técnico?</h4>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Soporte prioritario via WhatsApp y llamadas. Te ayudamos con dudas de uso, configuración de impresoras y resolución de problemas. En planes Empresariales, incluimos capacitaciones personalizadas.
                             </p>
                         </div>
 
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                        <div className="bg-white p-6 rounded-2xl border border-gray-200">
                             <h4 className="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div>¿Entregan factura por el servicio?</h4>
                             <p className="text-gray-600 text-sm leading-relaxed">
                                 Sí, somos una empresa 100% formal. Todos nuestros precios incluyen IGV y emitimos factura electrónica que puedes usar para tu crédito fiscal.
@@ -437,8 +543,10 @@ export default function BrochurePage() {
                 </A4Page>
 
 
+
+
                 {/* --- PAGE 7: CONTACT (FINAL) --- */}
-                <A4Page className="flex flex-col items-center justify-center relative">
+                <A4Page className="flex flex-col items-center justify-center relative" lastPage={true}>
                     <div className="absolute top-0 right-0 p-12 opacity-10">
                         {/* Decorative Element */}
                         <div className="w-64 h-64 border-4 border-gray-300 rounded-full"></div>
@@ -446,21 +554,21 @@ export default function BrochurePage() {
                     </div>
 
                     <div className="text-center z-10 w-full max-w-2xl">
-                        <div className="mb-6 mx-auto w-20 h-20 bg-gray-900 text-white flex items-center justify-center rounded-2xl font-bold text-3xl shadow-xl">FN</div>
-                        <h2 className="text-6xl font-bold mb-8 text-gray-900">Empieza Hoy</h2>
+                        <div className="mb-6 mx-auto w-20 h-20 bg-gray-900 text-white flex items-center justify-center rounded-2xl font-bold text-3xl">FN</div>
+                        <h2 className="text-4xl md:text-6xl font-bold mb-8 text-gray-900">Empieza Hoy</h2>
                         <p className="text-2xl text-gray-500 mb-16">
                             Transformación digital real para tu empresa.
                             <br />Solicita tu demo gratuita.
                         </p>
 
-                        <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-10 border border-gray-200 w-full shadow-2xl">
+                        <div className="bg-white/80 rounded-3xl p-10 border border-gray-200 w-full">
                             <div className="flex items-center gap-6 mb-8 pb-8 border-b border-gray-100">
                                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600">
                                     <Phone size={32} />
                                 </div>
                                 <div className="text-left">
                                     <p className="text-gray-400 text-sm uppercase tracking-wider">Llámanos o WhatsApp</p>
-                                    <p className="text-3xl font-bold text-gray-900">+51 932 332 556</p>
+                                    <p className="text-xl md:text-2xl font-bold text-gray-900">+51 932 332 556</p>
                                 </div>
                             </div>
 
@@ -470,7 +578,7 @@ export default function BrochurePage() {
                                 </div>
                                 <div className="text-left">
                                     <p className="text-gray-400 text-sm uppercase tracking-wider">Correo Electrónico</p>
-                                    <p className="text-2xl font-bold text-gray-900">soporte@falconext.pe</p>
+                                    <p className="text-xl md:text-2xl font-bold text-gray-900">soporte@falconext.pe</p>
                                 </div>
                             </div>
 
@@ -480,7 +588,7 @@ export default function BrochurePage() {
                                 </div>
                                 <div className="text-left">
                                     <p className="text-gray-400 text-sm uppercase tracking-wider">Sitio Web</p>
-                                    <p className="text-2xl font-bold text-gray-900">www.falconext.pe</p>
+                                    <p className="text-xl md:text-2xl font-bold text-gray-900">www.falconext.pe</p>
                                 </div>
                             </div>
                         </div>
