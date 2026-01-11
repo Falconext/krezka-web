@@ -270,6 +270,75 @@ export default function AsesoresPage() {
                             </div>
                         </div>
                     </div>
+
+                    {/* SIMULACIÓN REALISTA */}
+                    <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 text-white shadow-xl relative overflow-hidden print:shadow-none print:border print:border-slate-200">
+                        <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4 border-b border-white/20 pb-3">
+                                <TrendingUp className="text-yellow-400" size={24} />
+                                <h3 className="text-xl font-bold">Proyección Mensual Realista</h3>
+                            </div>
+
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {/* ESCENARIO 1: INICIO */}
+                                <div className="bg-white/10 rounded-xl p-5 border border-white/10">
+                                    <h4 className="text-sm font-bold text-blue-200 uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Etapa 1: Construcción</h4>
+                                    <p className="text-xs text-slate-200 mb-4">
+                                        Cerrando solo <strong>3 ventas por semana</strong> (12 al mes):
+                                    </p>
+                                    <ul className="space-y-2 text-xs mb-4">
+                                        <li className="flex justify-between"><span>4 x Plan Control</span> <span className="opacity-70">S/ 400</span></li>
+                                        <li className="flex justify-between"><span>4 x Plan Bacán</span> <span className="opacity-70">S/ 480</span></li>
+                                        <li className="flex justify-between"><span>4 x Plan Mega</span> <span className="opacity-70">S/ 800</span></li>
+                                    </ul>
+                                    <div className="flex justify-between items-center text-yellow-400 text-xs font-bold pt-2 border-t border-white/10 mt-auto">
+                                        <span>+ Bono Cartera (50)</span>
+                                        <span>S/ 500</span>
+                                    </div>
+                                    <div className="mt-4 text-center">
+                                        <p className="text-[10px] text-slate-400 uppercase">Mensual Estimado</p>
+                                        <p className="text-3xl font-black text-white">S/ 2,180</p>
+                                    </div>
+                                </div>
+
+                                {/* ESCENARIO 2: 150 CLIENTES */}
+                                <div className="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-xl p-5 border border-yellow-500/30 relative overflow-hidden group">
+                                    <div className="absolute top-[-20%] right-[-20%] w-[100px] h-[100px] bg-yellow-500/20 blur-[50px] group-hover:bg-yellow-500/40 transition-all"></div>
+
+                                    <div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-2">
+                                        <div className="bg-yellow-500 text-indigo-900 text-[10px] font-black px-2 py-0.5 rounded">META</div>
+                                        <h4 className="text-sm font-bold text-white uppercase tracking-wider">Nivel: Experto</h4>
+                                    </div>
+
+                                    <p className="text-xs text-slate-200 mb-4 h-8">
+                                        Con <strong>150 Clientes Activos</strong> en tu cartera:
+                                    </p>
+
+                                    <ul className="space-y-3 text-xs mb-5">
+                                        <li className="flex justify-between items-center bg-black/20 p-2 rounded">
+                                            <span className="text-blue-200">Bono Cartera (Fijo)</span>
+                                            <span className="font-bold text-yellow-400 text-sm">S/ 1,500</span>
+                                        </li>
+                                        <li className="flex justify-between items-center text-slate-300 px-2">
+                                            <span>Referidos (5 ventas/mes)</span>
+                                            <span className="font-bold text-white">~ S/ 750</span>
+                                        </li>
+                                        <li className="flex justify-between items-center text-slate-300 px-2">
+                                            <span>Mentoría (Equipo)</span>
+                                            <span className="font-bold text-white">~ S/ 1,200</span>
+                                        </li>
+                                    </ul>
+
+                                    <div className="mt-auto text-center bg-black/20 rounded-lg p-3 border border-yellow-500/20">
+                                        <p className="text-[10px] text-yellow-200 uppercase tracking-widest mb-1">Total Proyectado</p>
+                                        <p className="text-3xl font-black text-white">S/ 3,450+</p>
+                                        <p className="text-[9px] text-slate-400 mt-1">Sin contar ventas directas nuevas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </A4Page>
 
 
@@ -325,26 +394,23 @@ export default function AsesoresPage() {
                                     <DollarSign className="text-indigo-600" size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-slate-900 mb-2">1. Bono de Cartera (Residual)</h3>
+                                    <h3 className="text-lg font-bold text-slate-900 mb-2">1. Bono de Cartera (Progresivo)</h3>
                                     <p className="text-sm text-slate-600 leading-relaxed mb-3">
-                                        Recibe un bono fijo de <span className="font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">S/ 500.00 / mes</span> adicionales por mantener activa tu cartera de clientes.
+                                        Recibe <span className="font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">S/ 500.00 fijos</span> por cada bloque de 50 clientes activos que gestiones.
                                     </p>
                                     <div className="bg-white p-3 rounded-lg border border-indigo-100 mb-2">
                                         <div className="flex items-center gap-2 mb-1">
                                             <CheckCircle2 size={12} className="text-indigo-500" />
-                                            <span className="text-xs font-bold text-indigo-800 uppercase tracking-wide">Requisito para Calificar</span>
+                                            <span className="text-xs font-bold text-indigo-800 uppercase tracking-wide">Escala de Bonos Fijos</span>
                                         </div>
-                                        <p className="text-xs text-slate-500 mb-2">
-                                            Para desbloquear este bono mensual, tu cartera debe cumplir <strong>cualquiera</strong> de estas dos metas:
-                                        </p>
-                                        <ul className="text-xs text-slate-600 space-y-1 ml-4 list-disc">
-                                            <li>Gestionar más de <strong>50 clientes activos</strong> <span className="text-slate-400 font-normal">(Modelo A + Modelo B)</span>.</li>
-                                            <li className="list-none text-[10px] font-bold text-indigo-300 py-0.5 ml-[-10px] tracking-widest">--- Ó ---</li>
-                                            <li>Generar una facturación mensual superior a <strong>S/ 2,500</strong>.</li>
+                                        <ul className="text-xs text-slate-600 space-y-1 ml-4">
+                                            <li className="flex justify-between w-40"><span>50 Clientes:</span> <span className="font-bold text-slate-900">S/ 500 /mes</span></li>
+                                            <li className="flex justify-between w-40"><span>100 Clientes:</span> <span className="font-bold text-slate-900">S/ 1,000 /mes</span></li>
+                                            <li className="flex justify-between w-40"><span>150 Clientes:</span> <span className="font-bold text-slate-900">S/ 1,500 /mes</span></li>
                                         </ul>
                                     </div>
                                     <p className="text-[10px] text-slate-400 italic">
-                                        * Este bono premia la consistencia y el volumen de tu cartera.
+                                        * Ingreso 100% residual solo por fidelización.
                                     </p>
                                 </div>
                             </div>
