@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "play-lh.googleusercontent.com" },
     ],
   },
+  output: "standalone",
 };
 
 export default nextConfig;

@@ -121,22 +121,22 @@ export default function BrochurePreciosPage() {
                                             Precio Mensual
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-gray-900">
-                                            S/ 35
+                                            S/ 29.90
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-gray-900">
-                                            S/ 42
+                                            S/ 39.90
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">
                                             S/ 49.90
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-gray-900">
-                                            S/ 59.90
+                                            S/ 69.90
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-gray-900">
-                                            S/ 79.90
+                                            S/ 89.90
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-gray-900">
-                                            S/ 99.90
+                                            S/ 119.90
                                         </td>
                                     </tr>
 
@@ -146,22 +146,22 @@ export default function BrochurePreciosPage() {
                                             Precio Anual
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-green-700 text-[11px]">
-                                            S/ 350
+                                            S/ 299
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-green-700 text-[11px]">
-                                            S/ 420
+                                            S/ 399
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50 text-[11px]">
-                                            S/ 500
+                                            S/ 499
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-green-700 text-[11px]">
-                                            S/ 600
+                                            S/ 699
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-green-700 text-[11px]">
-                                            S/ 800
+                                            S/ 899
                                         </td>
                                         <td className="py-2 px-2 text-center font-bold text-green-700 text-[11px]">
-                                            S/ 1000
+                                            S/ 1199
                                         </td>
                                     </tr>
 
