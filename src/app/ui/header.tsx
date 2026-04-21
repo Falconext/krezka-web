@@ -47,6 +47,7 @@ const Header = () => {
         // { to: 'hotel', label: 'Hotel', isRoute: true },
         { to: 'service', label: 'Servicios' },
         { to: 'price', label: 'Precios' },
+        { to: 'resellers', label: 'Resellers', isRoute: true },
         { to: 'projects', label: 'Proyectos' },
         { to: 'questions', label: 'Preguntas' },
     ];

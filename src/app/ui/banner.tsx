@@ -33,7 +33,7 @@ const Banner = () => {
                     </h1>
 
                     <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        Emite comprobantes electrónicos ilimitados, controla tu inventario y gestiona tus ventas con el mejor sistema POS del mercado. ¡Prueba Falconext hoy!
+                        Emite tus comprobantes electrónicos con control total, gestiona inventario y ventas y escala tus operaciones con el mejor sistema POS del mercado. ¡Prueba Falconext hoy!
                     </p>
 
                     <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -50,7 +50,7 @@ const Banner = () => {
                     <div className="mt-8 flex justify-center">
                         <div className="inline-flex items-center rounded-lg bg-gray-50 dark:bg-white/5 px-4 py-2 text-sm text-gray-600 dark:text-gray-300 ring-1 ring-inset ring-gray-500/10 dark:ring-white/10">
                             <span className="mr-2 opacity-70">Credenciales:</span>
-                            <span className="font-mono font-bold mr-3">demo@falconext.pe</span> / <span className="font-mono font-bold ml-1">demo2026</span>
+                            <span className="font-mono font-bold mr-3">demo@falconext.com</span> / <span className="font-mono font-bold ml-1">demo2026</span>
                         </div>
                     </div>
                 </div>
