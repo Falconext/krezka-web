@@ -25,7 +25,7 @@ const PurchaseModal = ({ isOpen, onClose, plan }: PurchaseModalProps) => {
 
     if (!isOpen || !plan) return null;
 
-    const phoneNumber = "991065217";
+    const phoneNumber = "932332556";
     const contactName = "Diego Jesus Ortega Roldan";
     const formattedPrice = plan.price.toLocaleString("es-PE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const periodText = plan.billingPeriod === "annual" ? "por año" : "por mes";

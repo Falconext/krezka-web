@@ -1,610 +1,284 @@
 'use client';
+import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star } from "lucide-react";
 
-import { useRef } from 'react';
-import Image from "next/image";
-import logo from "@/app/public/assets/fnlogo.png";
-import { Check, Phone, Globe, Package, ShoppingCart, BarChart3, Users, Monitor, FileText, Store, PieChart, ShieldCheck, Printer, Shield, Plus, Search, Laptop, Rocket, Zap, MessageCircle, Mail, ExternalLink, CheckCircle2 } from "lucide-react";
-import mainproject from '@/app/public/assets/mainproject.png';
+const BRAND = { name: "KREZKA", web: "www.krezka.com", email: "soporte@krezka.com", wa: "https://wa.me/51932332556" };
 
-// --- A4 Container ---
-const A4Page = ({ children, className = '', lastPage = false }: { children: React.ReactNode; className?: string; lastPage?: boolean }) => {
-    return (
-        <div
-            className={`w-full max-w-[210mm] md:w-[210mm] h-auto md:h-[297mm] mx-auto bg-white shadow-2xl my-4 md:my-8 relative print:shadow-none print:w-full print:h-full print:my-0 ${!lastPage ? 'break-after-page page-break-always' : ''} text-gray-900 font-helvetica ${className}`}
-        >
-            {/* Background Ambience - HIDDEN IN PRINT */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0 opacity-40 print:hidden">
-                <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-blue-100/50 blur-[120px] rounded-full"></div>
-                <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-100/50 blur-[100px] rounded-full"></div>
-            </div>
+const plans = [
+  { id:"p1", name:"Principiante", badge:"Entrada", tagline:"Ideal para emprendedores que arrancan.", docs:"100 comp/mes", monthly:19.9, annual:238.8, reg:29.9, color:"#6366F1", light:"#EEF2FF", users:"1 usuario", sedes:"1 sede", roles:false, compras:false, caja:false, reportes:false, delivery:false, api:false, soporte:"Estándar", marks:["Facturación electrónica","30 días de acompañamiento","Reportes básicos","Onboarding guiado"] },
+  { id:"p2", name:"Microempresa", badge:"Crecimiento", tagline:"Para negocios con caja y clientes frecuentes.", docs:"300 comp/mes", monthly:29.9, annual:358.8, reg:39.9, color:"#0EA5E9", light:"#F0F9FF", users:"2 usuarios", sedes:"1 sede", roles:false, compras:false, caja:true, reportes:false, delivery:false, api:false, soporte:"Estándar", marks:["Clientes y proveedores","Cotizaciones","Caja y movimientos","1 asesor asignado"] },
+  { id:"p3", name:"Emprendedor", badge:"Popular", tagline:"Equipos que necesitan inventario y roles.", docs:"700 comp/mes", monthly:49.9, annual:598.8, reg:69.9, color:"#8B5CF6", light:"#F5F3FF", users:"4 usuarios", sedes:"2 sedes", roles:true, compras:true, caja:true, reportes:true, delivery:false, api:false, soporte:"Prioritario", popular:true, marks:["Inventario + kardex","Compras y gastos","Roles por usuario","Reportes gerenciales"] },
+  { id:"p4", name:"Corporativo", badge:"Recomendado", tagline:"Multi-sede y alto volumen operativo.", docs:"1200 comp/mes", monthly:99.9, annual:1198.8, reg:139.9, color:"#10B981", light:"#F0FDF4", users:"8 usuarios", sedes:"4 sedes", roles:true, compras:true, caja:true, reportes:true, delivery:true, api:true, soporte:"Prioritario", marks:["Tienda virtual incluida","Delivery y pasarela","Integraciones / API","Auditoría operativa"] },
+] as const;
 
-            <div className="relative z-10 w-full h-full flex flex-col p-6 md:p-[15mm]">
-                {children}
-            </div>
-        </div>
-    );
-};
+const Tick = ({ok,color}:{ok:boolean;color:string}) => ok
+  ? <CheckCircle2 size={15} style={{color}} />
+  : <XCircle size={15} className="text-gray-200" />;
+
+const Page = ({children,dark=false,last=false}:{children:React.ReactNode;dark?:boolean;last?:boolean}) => (
+  <div className={`w-full max-w-[210mm] md:w-[210mm] md:h-[297mm] mx-auto my-5 md:my-7 relative overflow-hidden shadow-2xl print:shadow-none print:my-0 ${!last?'break-after-page':''}  ${dark?'bg-[#080B14] text-white':'bg-white text-gray-900'}`} style={{fontFamily:"'Helvetica Neue',Helvetica,Arial,sans-serif"}}>
+    {children}
+  </div>
+);
 
 export default function BrochurePage() {
+  return (
+    <div className="bg-[#ECEEF3] min-h-screen py-10 print:bg-white print:py-0">
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');@media print{@page{size:A4;margin:0}body{margin:0;padding:0;background:white!important;-webkit-print-color-adjust:exact!important}  .pba{page-break-after:always;break-after:page}.ph{display:none!important}}`}</style>
 
-    const handlePrint = () => {
-        window.print();
-    };
+      <div className="fixed top-5 right-5 z-50 ph print:hidden">
+        <button onClick={()=>window.print()} className="flex items-center gap-2 bg-gray-900 text-white px-5 py-2.5 rounded-full shadow-xl hover:scale-105 transition-transform text-sm font-semibold">
+          <Printer size={15}/> Descargar PDF
+        </button>
+      </div>
 
-    return (
-        <div className="bg-gray-100 min-h-screen py-8 print:bg-white print:py-0 font-helvetica text-gray-900">
-            <style jsx global>{`
-                @media print {
-                    @page {
-                        size: A4;
-                        margin: 0;
-                    }
-                    body {
-                        margin: 0;
-                        padding: 0;
-                        background: white !important;
-                        -webkit-print-color-adjust: exact !important;
-                        print-color-adjust: exact !important;
-                    }
-                    .page-break-always {
-                        page-break-after: always;
-                        break-after: page;
-                    }
-                    ::-webkit-scrollbar { display: none; }
-                    .print-hidden { display: none !important; }
-                }
-            `}</style>
-
-            <div className="fixed top-5 right-5 z-50 print-hidden">
-                <button
-                    onClick={handlePrint}
-                    className="flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform font-medium"
-                >
-                    <Printer size={20} />
-                    Descargar PDF
-                </button>
-            </div>
-
-            <div id="brochure-root">
-
-                {/* --- PAGE 1: COVER --- */}
-                <A4Page className="flex flex-col justify-between">
-                    <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-2">
-                            <div className="text-2xl font-bold tracking-widest text-gray-900">FALCONEXT</div>
-                        </div>
-                        <div className="text-sm font-medium tracking-widest text-gray-500">BROCHURE {new Date().getFullYear()}</div>
-                    </div>
-
-                    <div className="flex flex-col items-center text-center mt-6">
-                        <h1 className="text-5xl md:text-[5rem] leading-[0.9] font-bold text-gray-900 mb-6">
-                            IMPULSA TU<br />NEGOCIO
-                        </h1>
-                        <p className="text-xl md:text-2xl text-gray-500 font-light tracking-wide max-w-lg mb-10">
-                            Software de Facturación & Desarrollo Web Profesional
-                        </p>
-
-                        <div className="relative w-full max-w-2xl aspect-video rounded-2xl overflow-hidden border border-gray-200 group">
-                            <Image
-                                src={mainproject}
-                                alt="Dashboard Interface"
-                                className="object-contain rounded-3xl"
-                                quality={100}
-                                priority
-                                unoptimized
-                                placeholder="blur"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="flex justify-between items-end border-t border-gray-200 pt-8 mt-auto">
-                        <div className="flex gap-8">
-                            <div>
-                                <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Ecosistema</p>
-                                <p className="font-medium text-gray-800">Web + Móvil + Facturación</p>
-                            </div>
-                        </div>
-                        <div className="text-right">
-                            <div className="text-sm font-bold bg-gray-900 text-white px-4 py-1 rounded-full">FALCONEXT.PE</div>
-                        </div>
-                    </div>
-                </A4Page>
-
-
-                {/* --- PAGE 2: SAAS PRICING (Formal & Informal) --- */}
-                <A4Page>
-                    <div className="mb-8">
-                        <h2 className="text-4xl font-bold mb-2 text-gray-900">Planes de Software</h2>
-                        <p className="text-gray-500">Control total para tu negocio, seas formal o no.</p>
-                    </div>
-
-                    {/* --- INFORMAL SECTION --- */}
-                    <div className="mb-10">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Store className="text-green-600" />
-                            <h3 className="text-2xl font-bold text-green-600">Negocio nuevo / Emprendedor</h3>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            {/* Free */}
-                            <div className="bg-white p-5 rounded-2xl border border-gray-200">
-                                <h4 className="font-bold text-lg mb-1 text-gray-900">Emprende</h4>
-                                <div className="text-3xl font-bold mb-2 text-gray-900">GRATIS</div>
-                                <ul className="text-sm text-gray-600 space-y-2">
-                                    <li>• 200 Ventas/mes</li>
-                                    <li>• 1 Usuario</li>
-                                    <li>• PDF / WhatsApp</li>
-                                </ul>
-                            </div>
-                            {/* Crecimiento */}
-                            <div className="bg-green-50 p-5 rounded-2xl border border-green-200 border-l-4 border-l-green-500">
-                                <h4 className="font-bold text-lg mb-1 text-green-900">Crecimiento</h4>
-                                <div className="text-3xl font-bold mb-2 text-green-700">S/ 10</div>
-                                <p className="text-xs text-green-600 mb-2 font-semibold">Anual: S/ 99</p>
-                                <ul className="text-sm text-green-800 space-y-2">
-                                    <li>• Ventas ilimitadas</li>
-                                    <li>• 2 Usuarios</li>
-                                    <li>• Inventario Básico</li>
-                                </ul>
-                            </div>
-                            {/* Pro */}
-                            <div className="bg-white p-5 rounded-2xl border border-gray-200">
-                                <h4 className="font-bold text-lg mb-1 text-gray-900">Pro</h4>
-                                <div className="text-3xl font-bold mb-2 text-gray-900">S/ 20</div>
-                                <p className="text-xs text-gray-500 mb-2">Anual: S/ 199</p>
-                                <ul className="text-sm text-gray-600 space-y-2">
-                                    <li>• 5 Usuarios</li>
-                                    <li>• Inventario Avanzado</li>
-                                    <li>• Backup Automático</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* --- FORMAL SECTION --- */}
-                    <div className="mb-8">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Shield className="text-blue-600" />
-                            <h3 className="text-2xl font-bold text-blue-600">Empresa Formal (SUNAT)</h3>
-                        </div>
-
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse min-w-[500px]">
-                                <thead>
-                                    <tr className="text-xs uppercase text-gray-500 border-b border-gray-200">
-                                        <th className="py-2">Plan</th>
-                                        <th className="py-2">Mensual</th>
-                                        <th className="py-2">Anual <span className="text-green-600">(Ahorro)</span></th>
-                                        <th className="py-2">Comprobantes</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="text-sm">
-                                    <tr className="border-b border-gray-100">
-                                        <td className="py-3 font-bold text-gray-900">Micro</td>
-                                        <td className="py-3 text-gray-700">S/ 35.00</td>
-                                        <td className="py-3 text-gray-700">S/ 350</td>
-                                        <td className="py-3 text-gray-500">100 / mes</td>
-                                    </tr>
-                                    <tr className="border-b border-gray-100">
-                                        <td className="py-3 font-bold text-gray-900">Emprende</td>
-                                        <td className="py-3 text-gray-700">S/ 42.00</td>
-                                        <td className="py-3 text-gray-700">S/ 420</td>
-                                        <td className="py-3 text-gray-500">300 / mes</td>
-                                    </tr>
-                                    <tr className="border-b border-blue-100 bg-blue-50/50">
-                                        <td className="py-3 font-bold text-blue-600">Control</td>
-                                        <td className="py-3 text-blue-900">S/ 49.90</td>
-                                        <td className="py-3 text-blue-900">S/ 500</td>
-                                        <td className="py-3 text-blue-700">500 / mes</td>
-                                    </tr>
-                                    <tr className="border-b border-gray-100">
-                                        <td className="py-3 font-bold text-gray-900">Bacán</td>
-                                        <td className="py-3 text-gray-700">S/ 59.90</td>
-                                        <td className="py-3 text-gray-700">S/ 600</td>
-                                        <td className="py-3 text-gray-500">600 / mes</td>
-                                    </tr>
-                                    <tr className="border-b border-gray-100">
-                                        <td className="py-3 font-bold text-gray-900">Súper</td>
-                                        <td className="py-3 text-gray-700">S/ 79.90</td>
-                                        <td className="py-3 text-gray-700">S/ 800</td>
-                                        <td className="py-3 text-gray-500">800 / mes</td>
-                                    </tr>
-                                    <tr className="border-b border-gray-100">
-                                        <td className="py-3 font-bold text-gray-900">Mega</td>
-                                        <td className="py-3 text-gray-700">S/ 99.90</td>
-                                        <td className="py-3 text-gray-700">S/ 1000</td>
-                                        <td className="py-3 text-gray-500">1200 / mes</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    {/* --- ADDONS --- */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-auto bg-gray-50 p-6 rounded-2xl border border-gray-200">
-                        <div>
-                            <div className="flex items-center gap-2 mb-2">
-                                <Plus size={18} className="text-yellow-500" />
-                                <h4 className="font-bold text-lg text-gray-900">Ticketera Bluetooth</h4>
-                            </div>
-                            <p className="text-sm text-gray-600 mb-2">Imprime comprobantes. Usb + Batería.</p>
-                            <div className="text-yellow-600 font-bold text-xl">+ S/ 25 <span className="text-xs font-normal text-gray-500">/mes</span></div>
-                            <p className="text-xs text-green-600 mt-1">*GRATIS en Plan Anual (Todos los planes)</p>
-                        </div>
-                        <div>
-                            <div className="flex items-center gap-2 mb-2">
-                                <Plus size={18} className="text-pink-500" />
-                                <h4 className="font-bold text-lg text-gray-900">Tienda Virtual</h4>
-                            </div>
-                            <p className="text-sm text-gray-600 mb-2">Catálogo online para tus clientes.</p>
-                            <div className="text-pink-500 font-bold text-xl">Desde S/ 40 <span className="text-xs font-normal text-gray-500">/mes</span></div>
-                            <p className="text-xs text-green-600 mt-1">* S/40 a S/120 según plan</p>
-                        </div>
-                    </div>
-                </A4Page>
-
-
-                {/* --- PAGE 3: ALL MODULES (NEW LOCATION) --- */}
-                <A4Page className="flex flex-col relative">
-                    {/* Header */}
-                    <div className="text-center mb-10 mt-4">
-                        <p className="uppercase text-purple-600 text-sm tracking-wider font-bold mb-2">SISTEMA INTEGRAL</p>
-                        <h2 className="text-4xl font-bold text-gray-900 leading-tight mb-4">
-                            Todo lo que tu negocio necesita<br />
-                            <span className="text-purple-600">sin pagar extra</span>
-                        </h2>
-                        <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-                            Olvídate de pagar por módulos separados. Falconext te da acceso a todas las herramientas profesionales desde el plan más básico.
-                        </p>
-                    </div>
-
-                    {/* Modules Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 px-4">
-                        {/* Module 1 */}
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
-                                <FileText size={24} />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">Facturación Electrónica</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">Emite boletas, facturas y notas de venta ilimitadas directo a SUNAT.</p>
-                            </div>
-                        </div>
-                        {/* Module 2 */}
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
-                                <Package size={24} />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">Control de Inventario</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">Kardex en tiempo real, control de stock mínimo y valoración de almacén.</p>
-                            </div>
-                        </div>
-                        {/* Module 3 */}
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
-                                <Monitor size={24} />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">Punto de Venta (POS)</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">Ventas rápidas con lector de barras, compatible con PC, tablet y celular.</p>
-                            </div>
-                        </div>
-                        {/* Module 4 */}
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
-                                <Store size={24} />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">Tienda Virtual Gratis</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">Tu propio catálogo online integrado automáticamente con tu stock.</p>
-                            </div>
-                        </div>
-                        {/* Module 5 */}
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
-                                <BarChart3 size={24} />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">Finanzas y Caja</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">Control de flujo de caja, aperturas, cierres y reportes de ganancias.</p>
-                            </div>
-                        </div>
-                        {/* Module 6 */}
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
-                                <Users size={24} />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">Clientes y Proveedores</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">Base de datos completa, historial de compras y cuentas por cobrar.</p>
-                            </div>
-                        </div>
-                        {/* Module 7 */}
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
-                                <PieChart size={24} />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">Reportes Inteligentes</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">Dashboard con métricas clave para tomar mejores decisiones.</p>
-                            </div>
-                        </div>
-                        {/* Module 8 */}
-                        <div className="flex gap-4">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
-                                <ShieldCheck size={24} />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-1">Control de Usuarios</h3>
-                                <p className="text-sm text-gray-600 leading-relaxed">Roles y permisos personalizables para tus vendedores y administradores.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-auto mb-8 bg-blue-50 border border-blue-100 rounded-2xl p-6 text-center">
-                        <p className="text-blue-800 font-medium">
-                            🚀 Todos estos módulos están incluidos desde nuestros planes más económicos.
-                        </p>
-                    </div>
-                </A4Page>
-
-
-                {/* --- PAGE 4: WEB DEVELOPMENT SERVICES --- */}
-                <A4Page>
-                    <div className="mb-12 text-center">
-                        <div className="inline-block px-4 py-1 rounded-full bg-purple-100 text-purple-600 text-sm tracking-widest font-bold mb-4">DESARROLLO WEB</div>
-                        <h2 className="text-4xl font-bold mb-2 text-gray-900">Tu Presencia Digital</h2>
-                        <p className="text-gray-500">Estrategia, diseño y tecnología para vender más.</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 gap-6">
-                        {/* LANDING PAGE */}
-                        <div className="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden border border-gray-200 h-auto md:h-44 group hover:border-purple-300 transition-all">
-                            <div className="w-full md:w-1/3 bg-purple-50 flex items-center justify-center p-6 relative">
-                                <div className="text-center relative z-10">
-                                    <h3 className="font-bold text-xl mb-1 text-purple-900">Landing Page</h3>
-                                    <div className="text-2xl font-bold text-purple-600">S/ 500</div>
-                                    <div className="text-[10px] text-gray-500">Incluido IGV</div>
-                                </div>
-                            </div>
-                            <div className="w-full md:w-2/3 p-6 flex flex-col justify-center">
-                                <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-600">
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-purple-600" /> 1 Sección (1 página)</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-purple-600" /> Hosting x 1 año</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-purple-600" /> Dominio x 1 año</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-purple-600" /> Certificado SSL</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-purple-600" /> Entrega: 3 días</div>
-                                    <div className="col-span-2 text-gray-400 italic text-[10px]">Ideal para campañas de publicidad</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* EMPRESARIAL */}
-                        <div className="flex flex-col md:flex-row bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl overflow-hidden border border-blue-500/30 h-auto md:h-52 relative transform md:scale-105 z-10 text-white">
-                            <div className="absolute top-0 right-0 px-3 py-1 bg-blue-600 text-white text-[10px] uppercase font-bold rounded-bl-xl">Más Vendido</div>
-                            <div className="w-full md:w-1/3 bg-blue-900/40 flex items-center justify-center p-6 relative">
-                                <div className="text-center relative z-10">
-                                    <h3 className="font-bold text-xl mb-1 text-white">Empresarial</h3>
-                                    <div className="text-3xl font-bold text-blue-400">S/ 1200</div>
-                                    <div className="text-[10px] text-gray-300">Incluido IGV</div>
-                                </div>
-                            </div>
-                            <div className="w-full md:w-2/3 p-6 flex flex-col justify-center text-gray-100">
-                                <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-blue-400" /> Hasta 12 Secciones</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-blue-400" /> Hosting & Dominio 1 año</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-blue-400" /> Autoadministrable</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-blue-400" /> Cotizador Web</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-blue-400" /> SEO Básico</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-blue-400" /> Entrega: 7 días</div>
-                                    <div className="col-span-2 flex items-center gap-2 text-white font-medium bg-blue-500/20 p-1 rounded"><Check size={12} className="text-blue-400" /> Panel Administrativo Incluido</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* E-COMMERCE */}
-                        <div className="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden border border-gray-200 h-auto md:h-56 group hover:border-pink-300 transition-all">
-                            <div className="w-full md:w-1/3 bg-pink-50 flex items-center justify-center p-6 relative">
-                                <div className="text-center relative z-10">
-                                    <h3 className="font-bold text-xl mb-1 text-pink-900">E-commerce</h3>
-                                    <div className="text-2xl font-bold text-pink-600">S/ 2000</div>
-                                    <div className="text-[10px] text-gray-500">Incluido IGV</div>
-                                </div>
-                            </div>
-                            <div className="w-full md:w-2/3 p-6 flex flex-col justify-center">
-                                <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs text-gray-600">
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-pink-500" /> Hasta 14 Secciones</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-pink-500" /> Carrito + Pagos</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-pink-500" /> Gestión de Pedidos</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-pink-500" /> Reportes de Venta</div>
-                                    <div className="flex items-center gap-2"><Check size={12} className="text-pink-500" /> Entrega: 10 días</div>
-                                    <div className="col-span-2 text-[10px] text-gray-500 mt-2 p-2 border border-gray-200 rounded bg-gray-50">* Incluye carga inicial de productos y capacitación de uso.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </A4Page>
-
-
-                {/* --- PAGE 4: PROCESS & WORKFLOW (Adding Professionalism) --- */}
-                <A4Page>
-                    <div className="flex items-center gap-4 mb-12">
-                        <div className="h-px bg-gray-200 flex-1"></div>
-                        <h2 className="text-3xl font-light uppercase tracking-[0.2em] text-gray-900">Cómo Trabajamos</h2>
-                    </div>
-
-                    <div className="relative">
-                        {/* Connecting Line */}
-                        <div className="absolute left-[2.25rem] top-0 bottom-0 w-px bg-gradient-to-b from-blue-500 via-purple-500 to-transparent opacity-30"></div>
-
-                        <div className="space-y-12">
-                            {/* Step 1 */}
-                            <div className="flex gap-8 relative">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-blue-500 flex items-center justify-center shrink-0 z-10">
-                                    <Search size={32} className="text-blue-600" />
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">1. Descubrimiento</h3>
-                                    <p className="text-gray-500 max-w-lg">
-                                        Analizamos tu negocio, tus competidores y tus objetivos. No solo entregamos software, entregamos una estrategia comercial.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Step 2 */}
-                            <div className="flex gap-8 relative">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-purple-500 flex items-center justify-center shrink-0 z-10">
-                                    <Laptop size={32} className="text-purple-600" />
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">2. Diseño y Desarrollo</h3>
-                                    <p className="text-gray-500 max-w-lg">
-                                        Creamos tu plataforma con las últimas tecnologías del mercado (Next.js, Cloud). Priorizamos velocidad, seguridad y estética.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Step 3 */}
-                            <div className="flex gap-8 relative">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-pink-500 flex items-center justify-center shrink-0 z-10">
-                                    <Rocket size={32} className="text-pink-600" />
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">3. Lanzamiento y Capacitación</h3>
-                                    <p className="text-gray-500 max-w-lg">
-                                        Desplegamos tu proyecto en servidores de alta velocidad. Te capacitamos a ti y a tu equipo para sacar el máximo provecho.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Step 4 */}
-                            <div className="flex gap-8 relative">
-                                <div className="w-20 h-20 rounded-full bg-white border-2 border-green-500 flex items-center justify-center shrink-0 z-10">
-                                    <Zap size={32} className="text-green-600" />
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">4. Soporte Continuo</h3>
-                                    <p className="text-gray-500 max-w-lg">
-                                        No te dejamos solo. Tendrás soporte técnico directo por WhatsApp y actualizaciones constantes de seguridad.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </A4Page>
-
-
-                {/* --- PAGE 6: FAQ --- */}
-                <A4Page>
-                    <div className="mb-12">
-                        <h2 className="text-4xl font-bold mb-4 text-gray-900">Preguntas Frecuentes</h2>
-                        <p className="text-gray-500">Resuelve tus dudas antes de empezar.</p>
-                    </div>
-
-                    <div className="space-y-6">
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200">
-                            <h4 className="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div>¿Necesito firmar un contrato de permanencia?</h4>
-                            <p className="text-gray-600 text-sm leading-relaxed">
-                                No. Nuestros planes son prepago (mensual o anual). Puedes cancelar cuando desees sin penalidades. Queremos que te quedes por la calidad de nuestro servicio, no por obligación.
-                            </p>
-                        </div>
-
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200">
-                            <h4 className="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div>¿El sistema funciona sin internet?</h4>
-                            <p className="text-gray-600 text-sm leading-relaxed">
-                                Falconext es una tecnología Cloud que requiere internet para sincronizar con SUNAT en tiempo real. Sin embargo, está optimizado para funcionar con datos móviles mínimos, consumiendo muy pocos megas.
-                            </p>
-                        </div>
-
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200">
-                            <h4 className="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div>¿Qué incluye el soporte técnico?</h4>
-                            <p className="text-gray-600 text-sm leading-relaxed">
-                                Soporte prioritario via WhatsApp y llamadas. Te ayudamos con dudas de uso, configuración de impresoras y resolución de problemas. En planes Empresariales, incluimos capacitaciones personalizadas.
-                            </p>
-                        </div>
-
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200">
-                            <h4 className="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div>¿Entregan factura por el servicio?</h4>
-                            <p className="text-gray-600 text-sm leading-relaxed">
-                                Sí, somos una empresa 100% formal. Todos nuestros precios incluyen IGV y emitimos factura electrónica que puedes usar para tu crédito fiscal.
-                            </p>
-                        </div>
-
-                        <div className="p-6 rounded-2xl border border-blue-200 bg-blue-50 mt-8">
-                            <div className="flex items-center gap-4">
-                                <div className="bg-blue-600 p-3 rounded-full text-white"><MessageCircle size={24} /></div>
-                                <div>
-                                    <h4 className="font-bold text-gray-900">¿Tienes más preguntas?</h4>
-                                    <p className="text-sm text-gray-600">Escríbenos al WhatsApp: <strong>991 065 217</strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </A4Page>
-
-
-
-
-                {/* --- PAGE 7: CONTACT (FINAL) --- */}
-                <A4Page className="flex flex-col items-center justify-center relative" lastPage={true}>
-                    <div className="absolute top-0 right-0 p-12 opacity-10">
-                        {/* Decorative Element */}
-                        <div className="w-64 h-64 border-4 border-gray-300 rounded-full"></div>
-                        <div className="w-64 h-64 border-4 border-gray-300 rounded-full absolute top-12 right-12"></div>
-                    </div>
-
-                    <div className="text-center z-10 w-full max-w-2xl">
-                        <div className="mb-6 mx-auto w-20 h-20 bg-gray-900 text-white flex items-center justify-center rounded-2xl font-bold text-3xl">FN</div>
-                        <h2 className="text-4xl md:text-6xl font-bold mb-8 text-gray-900">Empieza Hoy</h2>
-                        <p className="text-2xl text-gray-500 mb-16">
-                            Transformación digital real para tu empresa.
-                            <br />Solicita tu demo gratuita.
-                        </p>
-
-                        <div className="bg-white/80 rounded-3xl p-10 border border-gray-200 w-full">
-                            <div className="flex items-center gap-6 mb-8 pb-8 border-b border-gray-100">
-                                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                                    <Phone size={32} />
-                                </div>
-                                <div className="text-left">
-                                    <p className="text-gray-400 text-sm uppercase tracking-wider">Llámanos o WhatsApp</p>
-                                    <p className="text-xl md:text-2xl font-bold text-gray-900">+51 932 332 556</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-6 mb-8 pb-8 border-b border-gray-100">
-                                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                                    <Mail size={32} />
-                                </div>
-                                <div className="text-left">
-                                    <p className="text-gray-400 text-sm uppercase tracking-wider">Correo Electrónico</p>
-                                    <p className="text-xl md:text-2xl font-bold text-gray-900">soporte@falconext.pe</p>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-6">
-                                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
-                                    <ExternalLink size={32} />
-                                </div>
-                                <div className="text-left">
-                                    <p className="text-gray-400 text-sm uppercase tracking-wider">Sitio Web</p>
-                                    <p className="text-xl md:text-2xl font-bold text-gray-900">www.falconext.pe</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="mt-16 text-gray-400 text-sm">
-                            <p>© {new Date().getFullYear()} Falconext. Todos los derechos reservados.</p>
-                            <p className="mt-2">Lima, Perú</p>
-                        </div>
-                    </div>
-                </A4Page>
-
-            </div>
+      {/* PAGE 1 — COVER */}
+      <Page dark>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-700/25 blur-3xl"/>
+          <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-violet-700/20 blur-3xl"/>
+          <svg className="absolute inset-0 w-full h-full opacity-[0.035]"><defs><pattern id="g1" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0L0 0 0 44" fill="none" stroke="white" strokeWidth="0.6"/></pattern></defs><rect width="100%" height="100%" fill="url(#g1)"/></svg>
         </div>
-    );
-}
+        <div className="relative z-10 flex flex-col h-full p-[14mm]">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-600/40">
+                <span className="text-white font-black text-lg">K</span>
+              </div>
+              <span className="text-white font-black text-2xl tracking-tight">KREZKA</span>
+            </div>
+            <span className="text-white/35 text-[11px] font-semibold uppercase tracking-[0.3em]">Brochure {new Date().getFullYear()}</span>
+          </div>
 
-function ShoppingIcon(props: any) {
-    return <Store {...props} />
+          <div className="my-auto flex flex-col gap-7">
+            <div className="inline-flex items-center gap-2 w-fit px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10">
+              <div className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"/>
+              <span className="text-indigo-300 text-[11px] font-bold tracking-[0.18em] uppercase">Sistema de Gestión Empresarial</span>
+            </div>
+            <h1 className="text-[3.8rem] leading-none font-black text-white tracking-tight">
+              DIGITALIZA<br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-pink-400">TU NEGOCIO</span>
+            </h1>
+            <p className="text-white/45 text-base font-light max-w-sm leading-relaxed">
+              Facturación electrónica SUNAT, inventario, caja, tienda virtual y más — todo en una sola plataforma.
+            </p>
+            <div className="flex gap-8 pt-2">
+              {[{v:"4",l:"Planes"},{v:"8+",l:"Módulos"},{v:"24h",l:"Activación"},{v:"100%",l:"Cloud"}].map(s=>(
+                <div key={s.l}>
+                  <div className="text-2xl font-black text-white">{s.v}</div>
+                  <div className="text-white/35 text-[10px] uppercase tracking-wider mt-0.5">{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between border-t border-white/10 pt-6">
+            <div className="flex gap-8">
+              {[{l:"Web",v:BRAND.web},{l:"Soporte",v:BRAND.email}].map(x=>(
+                <div key={x.l}>
+                  <p className="text-white/30 text-[9px] uppercase tracking-widest">{x.l}</p>
+                  <p className="text-white/65 text-sm font-semibold">{x.v}</p>
+                </div>
+              ))}
+            </div>
+            <div className="px-4 py-1.5 rounded-full bg-white/8 border border-white/10">
+              <span className="text-white/50 text-[10px] font-bold tracking-widest uppercase">Lima, Perú</span>
+            </div>
+          </div>
+        </div>
+      </Page>
+
+      {/* PAGE 2 — PLANES */}
+      <Page>
+        <div className="flex flex-col h-full p-[12mm] gap-5">
+          <div className="flex items-end justify-between border-b border-gray-100 pb-5">
+            <div>
+              <p className="text-indigo-600 text-[10px] font-black uppercase tracking-[0.25em] mb-1">Krezka · Precios 2025</p>
+              <h2 className="text-[2rem] font-black text-gray-900 leading-tight">Planes de Software</h2>
+              <p className="text-gray-400 text-sm mt-1">Sin contratos · Sin costos ocultos · Cancela cuando quieras</p>
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full">
+              <Star size={10} className="text-emerald-600 fill-emerald-600"/>
+              <span className="text-emerald-700 text-[11px] font-bold">Desde S/ 19.90 / mes</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 flex-1">
+            {plans.map(p=>(
+              <div key={p.id} className="relative rounded-2xl border-2 overflow-hidden flex flex-col" style={{borderColor:(p as any).popular?p.color:'#E5E7EB',borderWidth:(p as any).popular?2:1}}>
+                {(p as any).popular && (
+                  <div className="absolute top-0 right-0">
+                    <div className="px-3 py-1 text-[9px] font-black text-white uppercase tracking-wider rounded-bl-xl" style={{background:p.color}}>MÁS POPULAR</div>
+                  </div>
+                )}
+                <div className="px-5 pt-5 pb-4" style={{background:p.light}}>
+                  <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">{p.badge}</span>
+                  <h3 className="text-lg font-black text-gray-900 mt-0.5">{p.name}</h3>
+                  <p className="text-[10px] text-gray-500 mt-0.5">{p.tagline}</p>
+                  <div className="flex items-baseline gap-1 mt-3">
+                    <span className="text-2xl font-black" style={{color:p.color}}>S/ {p.monthly.toFixed(2)}</span>
+                    <span className="text-[10px] text-gray-400">/mes + IGV</span>
+                  </div>
+                  <div className="flex items-center gap-2 mt-1">
+                    <span className="text-[9px] line-through text-gray-400">S/ {p.reg.toFixed(2)}</span>
+                    <span className="text-[9px] font-bold text-emerald-600">Ahorra S/ {(p.reg-p.monthly).toFixed(2)}</span>
+                  </div>
+                  <p className="text-[9px] text-gray-400 mt-0.5">Anual: S/ {p.annual.toFixed(2)}</p>
+                </div>
+                <div className="px-5 py-4 flex flex-col gap-2.5 flex-1 bg-white">
+                  <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] text-gray-600">
+                    {[p.docs,p.users,p.sedes,`Soporte ${p.soporte}`].map(t=>(
+                      <div key={t} className="flex items-center gap-1.5">
+                        <span className="font-bold" style={{color:p.color}}>→</span>{t}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-auto space-y-1">
+                    {p.marks.map(m=>(
+                      <div key={m} className="flex items-center gap-1.5 text-[10px] text-gray-700">
+                        <CheckCircle2 size={10} style={{color:p.color}} className="shrink-0"/>{m}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-between bg-gray-50 border border-gray-100 rounded-xl px-5 py-3">
+            <p className="text-[10px] text-gray-600 font-medium">Tienda virtual incluida en todos los planes · Ticketera bluetooth disponible como add-on</p>
+            <p className="text-[9px] text-gray-400 shrink-0 ml-4">Precios sin IGV (18%)</p>
+          </div>
+        </div>
+      </Page>
+
+      {/* PAGE 3 — COMPARACIÓN */}
+      <Page>
+        <div className="flex flex-col h-full p-[12mm] gap-5">
+          <div className="border-b border-gray-100 pb-4">
+            <p className="text-indigo-600 text-[10px] font-black uppercase tracking-[0.25em] mb-1">Krezka · Comparación</p>
+            <h2 className="text-[2rem] font-black text-gray-900">¿Qué incluye cada plan?</h2>
+            <p className="text-gray-400 text-sm">Todos los planes incluyen facturación electrónica y documentos internos ilimitados.</p>
+          </div>
+
+          <div className="flex-1 overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
+            <div className="grid text-white text-[11px] font-bold" style={{gridTemplateColumns:'1.9fr 1fr 1fr 1fr 1fr'}}>
+              <div className="bg-[#080B14] px-4 py-3 rounded-tl-2xl">Funcionalidad</div>
+              {plans.map(p=><div key={p.id} className="py-3 px-2 text-center text-[10px]" style={{background:p.color}}>{p.name}</div>)}
+            </div>
+            {[
+              {label:"Comprobantes/mes", vals:plans.map(p=>p.docs)},
+              {label:"Usuarios",          vals:plans.map(p=>p.users)},
+              {label:"Sedes",             vals:plans.map(p=>p.sedes)},
+              {label:"Caja y movimientos",vals:plans.map(p=>p.caja)},
+              {label:"Compras y gastos",  vals:plans.map(p=>p.compras)},
+              {label:"Roles y permisos",  vals:plans.map(p=>p.roles)},
+              {label:"Reportes gerenciales",vals:plans.map(p=>p.reportes)},
+              {label:"Tienda virtual",    vals:plans.map(()=>true)},
+              {label:"Delivery y pasarela",vals:plans.map(p=>p.delivery)},
+              {label:"Integraciones / API",vals:plans.map(p=>p.api)},
+              {label:"Soporte",           vals:plans.map(p=>p.soporte)},
+            ].map((row,i)=>(
+              <div key={row.label} className={`grid items-center border-b border-gray-50 ${i%2===0?'bg-white':'bg-gray-50/50'}`} style={{gridTemplateColumns:'1.9fr 1fr 1fr 1fr 1fr'}}>
+                <div className="px-4 py-2.5 text-[11px] font-semibold text-gray-700">{row.label}</div>
+                {row.vals.map((val,j)=>(
+                  <div key={j} className="flex items-center justify-center py-2.5">
+                    {typeof val==='boolean' ? <Tick ok={val} color={plans[j].color}/> : <span className="text-[10px] font-semibold text-gray-800">{val}</span>}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-3 bg-indigo-50 border border-indigo-100 rounded-xl px-5 py-3">
+            <MessageCircle size={18} className="text-indigo-600 shrink-0"/>
+            <p className="text-[11px] text-gray-600">¿Dudas sobre qué plan elegir? Escríbenos a <strong className="text-gray-900">{BRAND.email}</strong> o por WhatsApp — te asesoramos sin compromiso.</p>
+          </div>
+        </div>
+      </Page>
+
+      {/* PAGE 4 — CÓMO TRABAJAMOS */}
+      <Page>
+        <div className="flex flex-col h-full p-[12mm] gap-6">
+          <div className="border-b border-gray-100 pb-5">
+            <p className="text-indigo-600 text-[10px] font-black uppercase tracking-[0.25em] mb-1">Proceso</p>
+            <h2 className="text-[2rem] font-black text-gray-900">Cómo trabajamos</h2>
+            <p className="text-gray-400 text-sm">Del primer contacto hasta tener tu negocio operando en horas.</p>
+          </div>
+          <div className="flex-1 flex flex-col justify-around">
+            {[
+              {Icon:Search,  color:"#6366F1", step:"01", title:"Diagnóstico",             time:"Día 1",      desc:"Analizamos tu negocio, flujos y objetivos. Definimos el plan ideal antes de activar cualquier módulo."},
+              {Icon:Laptop,  color:"#8B5CF6", step:"02", title:"Configuración",            time:"Día 1–2",    desc:"Personalizamos el sistema con tus productos, precios y flujos de venta en menos de 24 horas."},
+              {Icon:Rocket,  color:"#EC4899", step:"03", title:"Activación y Capacitación",time:"Día 2–3",    desc:"Tu equipo aprende a operar el sistema con sesiones en vivo guiadas por nuestros asesores."},
+              {Icon:Zap,     color:"#10B981", step:"04", title:"Soporte Continuo",          time:"Continuo",   desc:"Acceso directo a soporte por WhatsApp, actualizaciones automáticas y nuevas funciones cada mes."},
+            ].map((s,i,arr)=>(
+              <div key={s.step} className="flex gap-5 items-start relative">
+                {i<arr.length-1 && <div className="absolute left-[1.55rem] top-[3.2rem] w-px h-[calc(100%+8px)] bg-gray-100 z-0"/>}
+                <div className="relative z-10 w-13 h-13 w-[3.25rem] h-[3.25rem] rounded-2xl flex flex-col items-center justify-center shrink-0 border-2" style={{borderColor:s.color,background:s.color+'15'}}>
+                  <s.Icon size={18} style={{color:s.color}}/>
+                  <span className="text-[8px] font-black mt-0.5" style={{color:s.color}}>{s.step}</span>
+                </div>
+                <div className="flex-1 pb-6">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-base font-black text-gray-900">{s.title}</h3>
+                    <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[9px] font-bold border" style={{borderColor:s.color+'40',color:s.color,background:s.color+'10'}}>
+                      <Clock size={8}/>{s.time}
+                    </div>
+                  </div>
+                  <p className="text-gray-500 text-[12px] mt-1 leading-relaxed max-w-lg">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-xl px-5 py-3">
+            <Award size={18} className="text-indigo-600 shrink-0"/>
+            <p className="text-[11px] text-gray-600"><strong className="text-gray-900">Activación garantizada en 24 horas</strong> — o te devolvemos el primer mes. Sin excepciones.</p>
+          </div>
+        </div>
+      </Page>
+
+      {/* PAGE 5 — CONTACTO (DARK) */}
+      <Page dark last>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-violet-600/20 blur-3xl"/>
+          <div className="absolute -bottom-24 left-1/3 w-96 h-96 rounded-full bg-indigo-600/15 blur-3xl"/>
+          <svg className="absolute inset-0 w-full h-full opacity-[0.03]"><defs><pattern id="g2" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0L0 0 0 44" fill="none" stroke="white" strokeWidth="0.6"/></pattern></defs><rect width="100%" height="100%" fill="url(#g2)"/></svg>
+        </div>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full p-[15mm] text-center gap-8">
+          <div>
+            <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-2xl shadow-indigo-600/40">
+              <span className="text-white font-black text-2xl">K</span>
+            </div>
+            <h2 className="text-5xl font-black text-white leading-tight">
+              Empieza <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">Hoy</span>
+            </h2>
+            <p className="text-white/45 text-base mt-3 max-w-xs mx-auto leading-relaxed">
+              Digitaliza tu negocio en 24 horas. Sin contratos, sin permanencia.
+            </p>
+          </div>
+
+          <div className="w-full max-w-sm space-y-3">
+            {[
+              {Icon:Globe,        bg:"bg-indigo-600",  label:"Sitio Web",  value:BRAND.web},
+              {Icon:Mail,         bg:"bg-violet-600",  label:"Correo",     value:BRAND.email},
+              {Icon:MessageCircle,bg:"bg-[#25D366]",   label:"WhatsApp",   value:"Escríbenos ahora"},
+            ].map(({Icon,bg,label,value})=>(
+              <div key={label} className="flex items-center gap-4 bg-white/6 border border-white/10 rounded-2xl px-5 py-4">
+                <div className={`w-11 h-11 ${bg} rounded-xl flex items-center justify-center shrink-0 shadow-lg`}>
+                  <Icon size={19} className="text-white"/>
+                </div>
+                <div className="text-left">
+                  <p className="text-white/35 text-[9px] uppercase tracking-widest">{label}</p>
+                  <p className="text-white font-bold text-sm">{value}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-white/20 text-[10px] border-t border-white/10 pt-6 w-full">
+            © {new Date().getFullYear()} Krezka. Todos los derechos reservados · Lima, Perú
+          </div>
+        </div>
+      </Page>
+    </div>
+  );
 }

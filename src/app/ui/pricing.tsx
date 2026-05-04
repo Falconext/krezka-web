@@ -23,7 +23,7 @@ const proPlans: ProPlan[] = [
         annual: 238.8,
         regularMonthly: 29.9,
         utility: "Plan base para iniciar ordenadamente",
-        store: "Sin tienda virtual",
+        store: "Incluye tienda virtual",
         badge: "Entrada",
         tagline: "Ideal para emprendedores que arrancan su operación digital.",
         highlights: ["Facturación electrónica", "30 días de acompañamiento", "Reportes básicos", "Onboarding guiado"],
@@ -36,7 +36,7 @@ const proPlans: ProPlan[] = [
         annual: 358.8,
         regularMonthly: 39.9,
         utility: "Más control para operaciones en crecimiento",
-        store: "Sin tienda virtual",
+        store: "Incluye tienda virtual",
         badge: "Crecimiento",
         tagline: "Para negocios con más ventas, clientes frecuentes y caja diaria.",
         highlights: ["Clientes y proveedores", "Cotizaciones", "Caja y movimientos", "1 asesor asignado"],
@@ -49,7 +49,7 @@ const proPlans: ProPlan[] = [
         annual: 598.8,
         regularMonthly: 69.9,
         utility: "Escalamiento comercial con mejor productividad",
-        store: "Add-on opcional",
+        store: "Incluye tienda virtual",
         badge: "Upsell",
         tagline: "Equipos que necesitan compras, inventario y gestión por roles.",
         highlights: ["Inventario + kardex", "Compras y gastos", "Roles por usuario", "Reportes gerenciales"],
@@ -90,11 +90,11 @@ const proPlanCapabilities: Record<string, Capability> = {
         users: "1 usuario",
         sedes: "1 sede",
         roles: false,
-        inventoryAdvanced: false,
+        inventoryAdvanced: true,
         compras: false,
         caja: false,
         reportesGerenciales: false,
-        tienda: "none",
+        tienda: "included",
         delivery: false,
         integraciones: false,
         auditoria: false,
@@ -109,7 +109,7 @@ const proPlanCapabilities: Record<string, Capability> = {
         compras: false,
         caja: true,
         reportesGerenciales: false,
-        tienda: "none",
+        tienda: "included",
         delivery: false,
         integraciones: false,
         auditoria: false,
@@ -124,7 +124,7 @@ const proPlanCapabilities: Record<string, Capability> = {
         compras: true,
         caja: true,
         reportesGerenciales: true,
-        tienda: "addon",
+        tienda: "included",
         delivery: false,
         integraciones: false,
         auditoria: false,
@@ -281,17 +281,17 @@ const comparisonRows: ComparisonRow[] = [
 ];
 
 const planWhatsappLink = (planName: string) =>
-    `https://wa.me/51991065217?text=${encodeURIComponent(
+    `https://wa.me/51932332556?text=${encodeURIComponent(
         `Hola, quiero elegir el plan ${planName} de Falconext. ¿Me ayudan a activarlo?`
     )}`;
 
-const generalWhatsappLink = `https://wa.me/51991065217?text=${encodeURIComponent(
+const generalWhatsappLink = `https://wa.me/51932332556?text=${encodeURIComponent(
     "Hola, quiero entender los Planes Pro de Falconext y elegir el ideal para mi empresa."
 )}`;
 
-const Pricing = () => {
+const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
     return (
-        <section id="price" className="bg-transparent py-16 md:py-24">
+        <section id="price" className="bg-transparent py-16">
             <div className="mx-auto max-w-screen-xl px-4 md:px-6 space-y-14">
                 <div className="text-center max-w-3xl mx-auto">
                     <p className="inline-flex items-center rounded-full bg-[#facc15]/10 px-4 py-1 text-xs md:text-sm text-[#eab308]">
@@ -303,11 +303,15 @@ const Pricing = () => {
                     <p className="mt-3 text-sm md:text-base text-gray-500">
                         Sin contratos forzosos, sin costos ocultos y todo el acompañamiento incluido. Elige el plan perfecto para comenzar, crecer o escalar tu empresa conservando tu utilidad.
                     </p>
+                    <div className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-semibold text-emerald-700">
+                        <span className="text-lg">🏆</span>
+                        El plan más accesible del mercado — desde S/19.90/mes
+                    </div>
                     <a
                         href={generalWhatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-5 inline-flex items-center rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#20bd5a] transition-colors"
+                        className="mt-5 inline-flex items-center rounded-full bg-gradient-to-r from-[#3E2BC7] to-[#5A45D1] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-indigo-500/20"
                     >
                         Hablar con un asesor por WhatsApp
                     </a>
@@ -372,7 +376,7 @@ const Pricing = () => {
                                 href={planWhatsappLink(plan.name)}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#20bd5a] transition-colors"
+                                className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#3E2BC7] to-[#5A45D1] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-all hover:scale-[1.02] shadow-md shadow-indigo-500/10"
                             >
                                 Elegir por WhatsApp
                             </a>
@@ -380,69 +384,82 @@ const Pricing = () => {
                     ))}
                 </div>
 
-                <div className="overflow-x-auto">
-                    <div className="min-w-[900px] rounded-3xl border border-gray-200 shadow-xl overflow-hidden">
-                        <div
-                            className="bg-[#1d4ed8] text-white text-sm font-semibold grid gap-2 px-4 py-3"
-                            style={{ gridTemplateColumns: `repeat(${proPlans.length + 1}, minmax(160px, 1fr))` }}
-                        >
-                            <span>Comparación de Planes Pro</span>
-                            {proPlans.map((plan) => (
-                                <span key={plan.id} className="text-center">{plan.name}</span>
-                            ))}
-                        </div>
-                        <div className="bg-white text-gray-800">
-                            {comparisonRows.map((row) => (
-                                <div
-                                    key={row.key}
-                                    className="grid items-center gap-2 px-4 py-4 border-b border-gray-100 hover:bg-gray-50"
-                                    style={{ gridTemplateColumns: `repeat(${proPlans.length + 1}, minmax(160px, 1fr))` }}
-                                >
-                                    <div>
-                                        <p className="text-sm font-semibold text-gray-900">{row.label}</p>
-                                        {row.description && (
-                                            <p className="text-xs text-gray-500">{row.description}</p>
-                                        )}
+                {showComparison ? (
+                    <div className="overflow-x-auto">
+                        <div className="min-w-[900px] rounded-3xl border border-gray-200 shadow-xl overflow-hidden">
+                            <div
+                                className="bg-[#1d4ed8] text-white text-sm font-semibold grid gap-2 px-4 py-3"
+                                style={{ gridTemplateColumns: `repeat(${proPlans.length + 1}, minmax(160px, 1fr))` }}
+                            >
+                                <span>Comparación de Planes Pro</span>
+                                {proPlans.map((plan) => (
+                                    <span key={plan.id} className="text-center">{plan.name}</span>
+                                ))}
+                            </div>
+                            <div className="bg-white text-gray-800">
+                                {comparisonRows.map((row) => (
+                                    <div
+                                        key={row.key}
+                                        className="grid items-center gap-2 px-4 py-4 border-b border-gray-100 hover:bg-gray-50"
+                                        style={{ gridTemplateColumns: `repeat(${proPlans.length + 1}, minmax(160px, 1fr))` }}
+                                    >
+                                        <div>
+                                            <p className="text-sm font-semibold text-gray-900">{row.label}</p>
+                                            {row.description && (
+                                                <p className="text-xs text-gray-500">{row.description}</p>
+                                            )}
+                                        </div>
+                                        {proPlans.map((plan) => {
+                                            const value = row.getValue(plan);
+                                            if (row.kind === "boolean") {
+                                                const enabled = Boolean(value);
+                                                return (
+                                                    <div key={plan.id + row.key} className="flex items-center justify-center">
+                                                        {enabled ? (
+                                                            <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                                        ) : (
+                                                            <XCircle size={18} className="text-gray-300" />
+                                                        )}
+                                                    </div>
+                                                );
+                                            }
+                                            if (row.kind === "badge" && typeof value === "object" && value !== null) {
+                                                const badgeValue = value as { label: string; variant: BadgeVariant };
+                                                return (
+                                                    <div key={plan.id + row.key} className="flex items-center justify-center">
+                                                        <span className={`text-xs font-semibold px-3 py-1 rounded-full ${badgeVariantClasses[badgeValue.variant]}`}>
+                                                            {badgeValue.label}
+                                                        </span>
+                                                    </div>
+                                                );
+                                            }
+                                            return (
+                                                <div key={plan.id + row.key} className="text-center text-sm font-medium text-gray-900">
+                                                    {value as string}
+                                                </div>
+                                            );
+                                        })}
                                     </div>
-                                    {proPlans.map((plan) => {
-                                        const value = row.getValue(plan);
-                                        if (row.kind === "boolean") {
-                                            const enabled = Boolean(value);
-                                            return (
-                                                <div key={plan.id + row.key} className="flex items-center justify-center">
-                                                    {enabled ? (
-                                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
-                                                    ) : (
-                                                        <XCircle size={18} className="text-gray-300" />
-                                                    )}
-                                                </div>
-                                            );
-                                        }
-                                        if (row.kind === "badge" && typeof value === "object" && value !== null) {
-                                            const badgeValue = value as { label: string; variant: BadgeVariant };
-                                            return (
-                                                <div key={plan.id + row.key} className="flex items-center justify-center">
-                                                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${badgeVariantClasses[badgeValue.variant]}`}>
-                                                        {badgeValue.label}
-                                                    </span>
-                                                </div>
-                                            );
-                                        }
-                                        return (
-                                            <div key={plan.id + row.key} className="text-center text-sm font-medium text-gray-900">
-                                                {value as string}
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
+                ) : (
+                    <div className="flex justify-center mt-8">
+                        <a
+                            href="/sistemas"
+                            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-blue-500/20 transition-all hover:bg-blue-700 hover:scale-105 active:scale-95"
+                        >
+                            Ver comparación detallada de módulos
+                        </a>
+                    </div>
+                )}
             </div>
-            <p className="mt-6 text-center text-xs text-gray-400">
-                Todos los precios mostrados no incluyen IGV (18%).
-            </p>
+            {showComparison && (
+                <p className="mt-6 text-center text-xs text-gray-400">
+                    Todos los precios mostrados no incluyen IGV (18%).
+                </p>
+            )}
         </section>
     );
 };

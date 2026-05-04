@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import fnlogo from '@/app/public/assets/fnlogo.png';
+import fnlogo from '@/app/public/assets/logo.png';
 import { motion } from 'framer-motion';
 import Hero from '../ui/hotel-system/Hero';
 import BentoGrid from '../ui/hotel-system/BentoGrid';
@@ -68,7 +68,7 @@ export default function HotelSystemLanding() {
                                 </ul>
 
                                 <a
-                                    href="https://wa.me/51991065217?text=Hola,%20quisiera%20empezar%20con%20el%20plan%20Gestión%20Interna%20(S/40)."
+                                    href="https://wa.me/51932332556?text=Hola,%20quisiera%20empezar%20con%20el%20plan%20Gestión%20Interna%20(S/40)."
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-full py-4 text-center block rounded-xl font-semibold bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
@@ -99,7 +99,7 @@ export default function HotelSystemLanding() {
                                 </ul>
 
                                 <a
-                                    href="https://wa.me/51991065217?text=Hola,%20quisiera%20empezar%20con%20el%20plan%20Profesional%20(S/60)."
+                                    href="https://wa.me/51932332556?text=Hola,%20quisiera%20empezar%20con%20el%20plan%20Profesional%20(S/60)."
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-full py-4 text-center block rounded-xl font-semibold bg-[#5A0EBB] text-white hover:bg-[#6820C7] transition-all shadow-[0_4px_20px_rgba(90,14,187,0.3)] hover:shadow-[0_6px_25px_rgba(90,14,187,0.4)] transform hover:-translate-y-0.5"

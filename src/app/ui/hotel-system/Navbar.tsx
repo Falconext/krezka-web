@@ -1,30 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Menu, Sun, Moon } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import fnlogo from '@/app/public/assets/fnlogo.png';
-import { useState, useEffect } from 'react';
+import fnlogo from '@/app/public/assets/logo.png';
+import { useEffect } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 
 export default function Navbar() {
-    const [theme, setTheme] = useState('dark');
-
     useEffect(() => {
+        document.documentElement.classList.remove('dark');
         if (typeof window !== 'undefined') {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                setTheme(savedTheme);
-                if (savedTheme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                }
-            } else {
-                // Default to dark
-                document.documentElement.classList.add('dark');
-            }
+            localStorage.setItem('theme', 'light');
         }
     }, []);
     return (
@@ -84,22 +72,7 @@ export default function Navbar() {
 
                     {/* CTA */}
                     <div className="flex items-center gap-4">
-                        <button
-                            onClick={() => {
-                                const newTheme = theme === 'dark' ? 'light' : 'dark';
-                                setTheme(newTheme);
-                                if (newTheme === 'dark') {
-                                    document.documentElement.classList.add('dark');
-                                    localStorage.setItem('theme', 'dark');
-                                } else {
-                                    document.documentElement.classList.remove('dark');
-                                    localStorage.setItem('theme', 'light');
-                                }
-                            }}
-                            className="p-2 rounded-full text-gray-700 dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-                        >
-                            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                        </button>
+                        <div />
                         <button className="hidden md:block px-5 py-2 text-sm font-medium text-gray-700 dark:text-white hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors">
                             Iniciar Sesión
                         </button>

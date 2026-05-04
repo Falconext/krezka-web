@@ -358,7 +358,7 @@ const QuotePage = () => {
 
               <a
                 target="_blank"
-                href={`https://wa.me/51991065217?text=${encodeURIComponent(
+                href={`https://wa.me/51932332556?text=${encodeURIComponent(
                   `Hola, quiero contratar el plan ${selectedPlan.name} (${typeParam === "formal" ? "Formal" : "Informal"}, ${isAnnual ? "Anual" : "Mensual"}${printerParam ? ", con ticketera" : ""}) por S/ ${finalPrice.toFixed(2)}.`
                 )}`}
                 className="inline-flex items-center gap-2 rounded-full border border-[#22c55e] px-5 py-3 text-sm font-medium text-[#22c55e] hover:bg-[#22c55e]/10 transition-colors bg-white/5"

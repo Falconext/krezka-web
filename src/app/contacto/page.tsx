@@ -1,15 +1,7 @@
 'use client';
 
-import Hero from './components/landing/Hero';
-import Features from './components/landing/Features';
-import Pricing from './ui/pricing';
-import Hardware from './components/landing/Hardware';
-import StorePreview from './components/landing/StorePreview';
-import Advisors from './ui/advisors';
-import Testimonials from './ui/testimonials';
-import Questions from './ui/questions';
-import Contact from './ui/contact';
-import { ScrollProgressBar } from './ui/background-effects';
+import Contact from '../ui/contact';
+import { ScrollProgressBar } from '../ui/background-effects';
 import { motion } from 'framer-motion';
 
 const pageVariants = {
@@ -23,7 +15,7 @@ const pageVariants = {
   }
 };
 
-export default function Home() {
+export default function ContactoPage() {
   const containerClassName = 'relative overflow-hidden min-h-screen text-gray-900 dark:text-[#ffffff] transition-colors duration-300';
 
   return (
@@ -35,19 +27,11 @@ export default function Home() {
       </div>
 
       <motion.div
-        className={`${containerClassName}`}
+        className={`${containerClassName} pt-24`}
         initial="hidden"
         animate="visible"
         variants={pageVariants}
       >
-        <Hero />
-        <Features />
-        <Hardware />
-        <StorePreview />
-        <Pricing showComparison={false} />
-        <Advisors />
-        <Testimonials />
-        <Questions />
         <Contact />
       </motion.div>
     </>

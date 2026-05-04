@@ -3,26 +3,78 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Link as ScrollLink } from 'react-scroll';
-import logowhite from '@/app/public/assets/fnlogo.png';
+import logowhite from '../../../public/assets/logowhite.png';
+import { ArrowRight } from 'lucide-react';
+
+const footerColumns = [
+    {
+        title: 'POS SOLUCIONES',
+        links: [
+            { label: 'POS Todo en Uno', href: '/tienda' },
+            { label: 'POS Portátil', href: '/tienda' },
+            { label: 'POS Delivery', href: '/tienda' },
+            { label: 'Software de Ventas', href: '/sistemas' },
+            { label: 'Gestión de Inventario', href: '/sistemas' },
+            { label: 'Facturación SUNAT', href: '/sistemas' },
+        ],
+    },
+    {
+        title: 'HARDWARE',
+        links: [
+            { label: 'Impresoras Térmicas', href: '/tienda' },
+            { label: 'Cajones de Dinero', href: '/tienda' },
+            { label: 'Lectores de Código', href: '/tienda' },
+            { label: 'Pantallas Touch', href: '/tienda' },
+            { label: 'Combos Completos', href: '/tienda' },
+        ],
+    },
+    {
+        title: 'SOFTWARE',
+        links: [
+            { label: 'Facturación Electrónica', href: '/sistemas' },
+            { label: 'E-Commerce', href: '/sistemas' },
+            { label: 'Software a Medida', href: '/sistemas' },
+            { label: 'App Móvil', href: '/sistemas' },
+            { label: 'Integraciones API', href: '/sistemas' },
+        ],
+    },
+    {
+        title: 'EMPRESA',
+        links: [
+            { label: 'Sobre Nosotros', href: '#' },
+            { label: 'Blog', href: '#' },
+            { label: 'Casos de Éxito', href: '#' },
+            { label: 'Partners', href: '/asesores' },
+        ],
+    },
+    {
+        title: 'SOPORTE',
+        links: [
+            { label: 'Centro de Ayuda', href: '#' },
+            { label: 'Contacto', href: '#' },
+            { label: 'WhatsApp Soporte', href: 'https://wa.me/51932332556' },
+            { label: 'Términos de Uso', href: '#' },
+            { label: 'Política de Privacidad', href: '#' },
+        ],
+    },
+];
+
+const socialLinks = [
+    { icon: "mdi:twitter", label: "Twitter", href: "#" },
+    { icon: "mdi:instagram", label: "Instagram", href: "https://www.instagram.com/falconext.pe/" },
+    { icon: "mdi:linkedin", label: "LinkedIn", href: "#" },
+    { icon: "mdi:facebook", label: "Facebook", href: "https://www.facebook.com/profile.php?id=61576185915016" },
+    { icon: "mdi:youtube", label: "YouTube", href: "#" },
+];
+
+const legalLinks = ['Términos y Condiciones', 'Política de Privacidad', 'Libro de Reclamaciones', 'Política de Cookies'];
 
 const Footer = () => {
-    // Forced Dark Mode / Glassmorphism
-    interface IFormSub {
-        email: string;
-    }
+    interface IFormSub { email: string; }
+    interface IFormErrors { email: string; }
 
-    interface IFormErrors {
-        email: string;
-    }
-
-    const initialForm: IFormSub = {
-        email: "",
-    };
-
-    const initialErrors: IFormErrors = {
-        email: "",
-    };
+    const initialForm: IFormSub = { email: "" };
+    const initialErrors: IFormErrors = { email: "" };
 
     const [formValues, setFormValues] = useState<IFormSub>(initialForm);
     const [errors, setErrors] = useState<IFormErrors>(initialErrors);
@@ -31,221 +83,158 @@ const Footer = () => {
 
     const validateForm = () => {
         const newErrors: IFormErrors = {
-            email:
-                formValues.email.trim() !== ""
-                    ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email)
-                        ? ""
-                        : "Ingrese un correo electrónico válido"
-                    : "El correo electrónico es obligatorio",
+            email: formValues.email.trim() !== ""
+                ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email) ? "" : "Ingrese un correo electrónico válido"
+                : "El correo electrónico es obligatorio",
         };
-
         setErrors(newErrors);
         return Object.values(newErrors).every((error) => error === "");
     };
-
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
         setSubmitMessage("");
-
-        if (!validateForm()) {
-            setIsSubmitting(false);
-            return;
-        }
-
-        const plainTextMessage = `
-            Falconext - Nuevo Mensaje
-            ----------------------------------------
-            
-            ¡Hola!
-            
-            Has recibido un nuevo mensaje a través de suscripción de contacto de Falconext. Aquí están los detalles:
-            
-            Email: ${formValues.email}
-            
-            ----------------------------------------
-            Este mensaje fue enviado desde el formulario de contacto de www.falconext.pe.
-            Powered by Web3Forms
-              `;
-
+        if (!validateForm()) { setIsSubmitting(false); return; }
         try {
             const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     access_key: "9e8b5b39-7603-4a4c-90d7-1976f8d968d4",
                     subject: `Nuevo mensaje de suscripcion - Falconext`,
                     from_name: "Suscripcion de Falconext",
                     reply_to: formValues.email,
-                    email_template: plainTextMessage
                 }),
             });
-
             const result = await response.json();
             if (response.ok && result.success) {
-                setSubmitMessage("Correo enviado con éxito!");
+                setSubmitMessage("¡Suscrito con éxito!");
                 setFormValues(initialForm);
                 setErrors(initialErrors);
-
-                // @ts-ignore
-                if (typeof window !== "undefined" && window.gtag) {
-                    // @ts-ignore
-                    window.gtag("event", "conversion", {
-                        send_to: "AW-17010708778/7iqxCMqLk7kaEKqiq68_",
-                        value: 1.0,
-                        currency: "PEN",
-                    });
-                }
             } else {
-                setSubmitMessage(
-                    result.message || "Hubo un error al enviar el mensaje. Intenta de nuevo."
-                );
+                setSubmitMessage(result.message || "Hubo un error. Intenta de nuevo.");
             }
-        } catch (error) {
+        } catch {
             setSubmitMessage("Error de conexión. Intenta de nuevo más tarde.");
         } finally {
             setIsSubmitting(false);
         }
     };
 
-    const handleChange = (
-        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        setFormValues((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
+        setFormValues((prev) => ({ ...prev, [name]: value }));
         setErrors((prev) => ({ ...prev, [name]: "" }));
     };
 
     return (
-        <div className="bg-transparent backdrop-blur-lg border-t border-gray-200 dark:border-white/5 mt-0 relative z-10 transition-colors duration-300">
-            <div className="max-w-screen-xl px-5 mx-auto pt-12 md:pt-20">
-                {/* CTA superior */}
-                <div className="rounded-3xl p-8 md:p-14 text-center bg-gradient-to-br from-[#ef4444] via-[#f97316] to-[#ef4444] relative overflow-hidden shadow-2xl">
-                    <div className="absolute inset-0 bg-black/10 backdrop-blur-[1px] mix-blend-overlay"></div>
-                    <div className="relative z-10">
-                        <h3 className="text-white text-3xl md:text-4xl font-semibold">¿Listo para elevar la experiencia de tus clientes?</h3>
-                        <p className="text-white/90 mt-2 md:text-base text-sm">Empieza a tomar decisiones con datos usando los sistemas de Falconext.</p>
-                        <ScrollLink
-                            to="contact"
-                            smooth={true}
-                            duration={500}
-                            offset={-80}
-                            className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm md:text-base font-bold text-[#f97316] hover:bg-gray-100 cursor-pointer shadow-lg transition-transform hover:scale-105"
+        <footer className="bg-[#0c0a1a] text-white">
+
+            {/* Main body */}
+            <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-10">
+                <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20 pb-12 border-b border-white/10">
+
+                    {/* Left: Brand + newsletter */}
+                    <div className="flex flex-col gap-6">
+                        <Link href="/" className="flex items-center gap-3">
+                            <Image src={logowhite} width={1000} height={1000} alt="Falconext" className="w-48 h-14 object-contain" />
+                        </Link>
+                        <Link
+                            href="/tienda"
+                            className="inline-flex items-center gap-3 self-start border border-white/30 hover:border-white text-white text-[14px] font-semibold px-5 py-3 rounded-full transition-all hover:bg-white/5 group"
                         >
-                            Comienza ahora
-                        </ScrollLink>
-                    </div>
-                </div>
+                            Ver Tienda
+                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
 
-                {/* Contenido principal del footer */}
-                <div className="grid grid-cols-12 gap-6 md:gap-10 pt-12 md:pt-16 pb-10">
-                    {/* Brand y descripción */}
-                    <div className="col-span-12 md:col-span-4">
-                        <p className="font-bold mb-3 flex items-center text-2xl md:text-3xl text-gray-900 dark:text-white">
-                            <Image className="mr-3" src={logowhite} width={40} height={40} alt="logo" />FALCONEXT
-                        </p>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base">
-                            Construimos sistemas, webs y ecommerce para acelerar tu negocio con datos y automatización.
-                        </p>
-
-                        {/* Socials */}
-                        <div className="flex gap-3 mt-6">
-                            <a href="https://www.facebook.com/profile.php?id=61576185915016" target="_blank" rel="noopener noreferrer" className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Facebook">
-                                <Icon icon="mdi:facebook" width={20} height={20} className="text-gray-700 dark:text-white" />
-                            </a>
-                            {/* <a className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Twitter">
-                                <Icon icon="mdi:twitter" width={20} height={20} className="text-gray-700 dark:text-white" />
-                            </a>
-                            <a className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="LinkedIn">
-                                <Icon icon="mdi:linkedin" width={20} height={20} className="text-gray-700 dark:text-white" />
-                            </a> */}
-                            <a href="https://www.instagram.com/falconext.pe/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 p-2 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors cursor-pointer" aria-label="Instagram">
-                                <Icon icon="mdi:instagram" width={20} height={20} className="text-gray-700 dark:text-white" />
-                            </a>
-                        </div>
-                    </div>
-
-                    {/* Columnas de enlaces */}
-                    <div className="col-span-6 md:col-span-2 text-gray-600 dark:text-gray-400">
-                        <h4 className="font-medium mb-4 text-gray-900 dark:text-white">Plataforma</h4>
-                        <ul className="space-y-3 text-sm md:text-base">
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Overview</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Analítica</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Integraciones</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">
-                                <Link href="/brochure-precios">Precios</Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="col-span-6 md:col-span-2 text-gray-600 dark:text-gray-400">
-                        <h4 className="font-medium mb-4 text-gray-900 dark:text-white">Casos de uso</h4>
-                        <ul className="space-y-3 text-sm md:text-base">
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Retail</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Restaurantes</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Servicios</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Ecommerce</li>
-                        </ul>
-                    </div>
-                    <div className="col-span-6 md:col-span-2 text-gray-600 dark:text-gray-400">
-                        <h4 className="font-medium mb-4 text-gray-900 dark:text-white">Recursos</h4>
-                        <ul className="space-y-3 text-sm md:text-base">
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Blog</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Recursos</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Docs</li>
-                        </ul>
-                    </div>
-                    <div className="col-span-6 md:col-span-2 text-gray-600 dark:text-gray-400">
-                        <h4 className="font-medium mb-4 text-gray-900 dark:text-white">Compañía</h4>
-                        <ul className="space-y-3 text-sm md:text-base">
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Nosotros</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">
-                                <Link href="/asesores">Partners</Link>
-                            </li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Contacto</li>
-                            <li className="hover:text-black dark:hover:text-white cursor-pointer transition-colors">Seguridad</li>
-                        </ul>
-                    </div>
-
-                    {/* Newsletter */}
-                    <div className="col-span-12 mt-6">
-                        <form onSubmit={handleSubmit} className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 backdrop-blur-sm rounded-2xl px-4 md:px-6 py-4 md:py-6 flex flex-col md:flex-row items-center gap-3 md:gap-4 transition-colors">
-                            <div className="flex-1 w-full">
-                                <label htmlFor="email" className="sr-only">Email</label>
+                        {/* Newsletter */}
+                        <div>
+                            <p className="text-white text-[13px] font-semibold mb-3">Suscríbete a nuestro boletín</p>
+                            <form onSubmit={handleSubmit} className="flex overflow-hidden rounded-full border border-white/20 focus-within:border-white/40 transition-all">
                                 <input
-                                    id="email"
                                     name="email"
                                     type="email"
                                     onChange={handleChange}
                                     value={formValues.email}
-                                    placeholder="Ingresa tu email para recibir novedades"
-                                    className="bg-gray-100 dark:bg-black/20 text-gray-900 dark:text-white placeholder-gray-500 w-full rounded-xl px-4 py-3 outline-none border border-gray-200 dark:border-white/10 focus:border-[#22c55e] transition-colors"
+                                    placeholder="tu@email.com"
+                                    className="bg-transparent w-full px-4 py-2.5 outline-none text-[13px] text-white placeholder-[#8b8fa8]"
                                 />
-                                {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+                                <button
+                                    disabled={isSubmitting}
+                                    type="submit"
+                                    className="bg-white text-[#0c0a1a] px-5 py-2.5 text-[12px] font-bold hover:bg-[#a78bfa] hover:text-white transition-all whitespace-nowrap shrink-0"
+                                >
+                                    {isSubmitting ? "..." : "Enviar"}
+                                </button>
+                            </form>
+                            {errors.email && <p className="text-xs text-red-400 mt-2">{errors.email}</p>}
+                            {submitMessage && <p className="text-xs text-green-400 mt-2">{submitMessage}</p>}
+                        </div>
+
+                        {/* Social */}
+                        <div>
+                            <p className="text-[#8b8fa8] text-[11px] font-semibold mb-3 uppercase tracking-widest">Síguenos</p>
+                            <div className="flex gap-2">
+                                {socialLinks.map((s) => (
+                                    <a
+                                        key={s.label}
+                                        href={s.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={s.label}
+                                        className="w-9 h-9 rounded-xl border border-white/15 hover:border-white/40 hover:bg-white/10 flex items-center justify-center transition-all"
+                                    >
+                                        <Icon icon={s.icon} width={16} height={16} className="text-[#8b8fa8]" />
+                                    </a>
+                                ))}
                             </div>
-                            <button disabled={isSubmitting} type="submit" className="rounded-full px-6 py-3 text-sm font-bold bg-[#22c55e] text-[#052e16] hover:bg-[#16a34a] hover:text-white transition-all shadow-lg shadow-green-500/20">
-                                {isSubmitting ? "Enviando..." : "Suscribirse"}
-                            </button>
-                        </form>
-                        {submitMessage && (
-                            <p className="mt-2 text-sm text-[#22c55e] text-center md:text-left">{submitMessage}</p>
-                        )}
+                        </div>
                     </div>
 
-                    <div className="col-span-12 mt-6 border-t border-gray-200 dark:border-white/5 pt-8 text-center md:text-left">
-                        <h4 className="text-gray-500 font-light text-sm md:text-base">
-                            © 2026 Falconext Inc. Todos los derechos reservados
-                        </h4>
+                    {/* Right: Link columns */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
+                        {footerColumns.map((col) => (
+                            <div key={col.title}>
+                                <h5 className="text-white text-[11px] font-bold tracking-[0.12em] uppercase mb-5">
+                                    {col.title}
+                                </h5>
+                                <ul className="space-y-3">
+                                    {col.links.map((link) => (
+                                        <li key={link.label}>
+                                            <Link
+                                                href={link.href}
+                                                className="text-[#8b8fa8] hover:text-white text-[13px] leading-snug transition-colors"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+
+                {/* Bottom bar */}
+                <div className="pt-7 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p className="text-[#555870] text-[12px]">
+                        Falconext © {new Date().getFullYear()} | Todos los derechos reservados.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-5">
+                        {legalLinks.map((item) => (
+                            <Link key={item} href="#" className="text-[#555870] hover:text-white text-[12px] transition-colors">
+                                {item}
+                            </Link>
+                        ))}
                     </div>
                 </div>
+
             </div>
-        </div>
-    )
+        </footer>
+    );
 }
 
 export default Footer;
+

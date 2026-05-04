@@ -48,11 +48,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/assets/fnlogo.png', sizes: '32x32', type: 'image/png' },
-      { url: '/assets/fnlogo.png', sizes: '192x192', type: 'image/png' },
+      { url: '/assets/logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/assets/logo.png', sizes: '192x192', type: 'image/png' },
     ],
     apple: [
-      { url: '/assets/fnlogo.png', sizes: '180x180', type: 'image/png' },
+      { url: '/assets/logo.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   manifest: '/manifest.json',
@@ -126,7 +126,7 @@ export default function RootLayout({
     },
     "description": "Sistema de facturación electrónica SUNAT para PYMES en Perú. Emite boletas, facturas y controla tu inventario.",
     "url": "https://falconext.pe",
-    "logo": "https://falconext.pe/assets/fnlogo.png",
+    "logo": "https://falconext.pe/assets/logo.png",
     "sameAs": [
       "https://www.facebook.com/falconext",
       "https://www.instagram.com/falconext"
@@ -138,7 +138,7 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "Falconext",
     "url": "https://falconext.pe",
-    "logo": "https://falconext.pe/assets/fnlogo.png",
+    "logo": "https://falconext.pe/assets/logo.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+51-999-999-999",

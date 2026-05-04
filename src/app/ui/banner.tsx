@@ -53,6 +53,21 @@ const Banner = () => {
                             <span className="font-mono font-bold mr-3">demo@falconext.com</span> / <span className="font-mono font-bold ml-1">demo2026</span>
                         </div>
                     </div>
+
+                    {/* Social proof stats */}
+                    <div className="mt-10 flex flex-wrap justify-center gap-8 md:gap-14">
+                        {[
+                            { value: "+500", label: "Negocios activos" },
+                            { value: "SUNAT", label: "100% Certificado" },
+                            { value: "S/19.90", label: "Desde / mes" },
+                            { value: "Soporte", label: "100% en español" },
+                        ].map((stat) => (
+                            <div key={stat.label} className="flex flex-col items-center gap-0.5">
+                                <span className="text-xl font-bold text-gray-900 dark:text-white transition-colors">{stat.value}</span>
+                                <span className="text-xs text-gray-500 dark:text-gray-400">{stat.label}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 <div className="mt-16 flow-root sm:mt-24">

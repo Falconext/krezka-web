@@ -59,11 +59,11 @@ const faqs = [
 ];
 
 export default function ResellersPage() {
-    const resellerWhatsappLink = `https://wa.me/51991065217?text=${encodeURIComponent(
+    const resellerWhatsappLink = `https://wa.me/51932332556?text=${encodeURIComponent(
         "Hola, quiero unirme al programa Reseller de Falconext. Por favor envíenme: 1) requisitos de ingreso, 2) esquema comercial y comisiones, 3) proceso de onboarding, 4) tiempos de activación, 5) materiales de venta y soporte. Mis datos: [Nombre] [Empresa] [Ciudad] [Rubro] [Cantidad estimada de clientes]."
     )}`;
 
-    const plansWhatsappLink = `https://wa.me/51991065217?text=${encodeURIComponent(
+    const plansWhatsappLink = `https://wa.me/51932332556?text=${encodeURIComponent(
         "Hola, quiero ayuda para elegir el mejor plan Falconext para mi cliente."
     )}`;
 

@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import logo from "@/app/public/assets/fnlogo.png";
-import { CheckCircle2, Download, Printer, X, Circle, FileText, Package, Monitor, Store, BarChart3, Users, PieChart, ShieldCheck } from "lucide-react";
+import logo from "@/app/public/assets/logo.png";
+import { CheckCircle2, Download, Printer, FileText, Package, Monitor, Store, BarChart3, Users, PieChart, ShieldCheck } from "lucide-react";
 
 export default function BrochurePreciosPage() {
     const [isClient, setIsClient] = useState(false);
@@ -88,428 +88,99 @@ export default function BrochurePreciosPage() {
 
                         {/* Comparison Table */}
                         <div className="overflow-x-auto rounded-2xl border border-gray-200 pb-2">
-                            <table className="w-full table-fixed min-w-[600px]">
+                            <table className="w-full table-fixed min-w-[620px]">
                                 <thead>
                                     <tr className="bg-gradient-to-r from-blue-600 to-blue-700">
-                                        <th className="py-3 px-3 text-left text-white font-bold text-xs w-[30%] md:w-[20%]">
+                                        <th className="py-3 px-3 text-left text-white font-bold text-xs w-[32%]">
                                             Comparación de planes
                                         </th>
                                         <th className="py-3 px-2 text-center text-white font-bold text-xs">
-                                            Micro
+                                            Principiante
                                         </th>
                                         <th className="py-3 px-2 text-center text-white font-bold text-xs">
-                                            Emprende
+                                            Microempresa
                                         </th>
                                         <th className="py-3 px-2 text-center text-white font-bold text-xs bg-green-600">
-                                            Control
+                                            Emprendedor
                                         </th>
                                         <th className="py-3 px-2 text-center text-white font-bold text-xs">
-                                            Bacán
-                                        </th>
-                                        <th className="py-3 px-2 text-center text-white font-bold text-xs">
-                                            Súper
-                                        </th>
-                                        <th className="py-3 px-2 text-center text-white font-bold text-xs">
-                                            Mega
+                                            Corporativo
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white text-xs">
-                                    {/* Precio Mensual */}
                                     <tr className="border-b border-gray-200">
-                                        <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Precio Mensual
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-gray-900">
-                                            S/ 29.90
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-gray-900">
-                                            S/ 39.90
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">
-                                            S/ 49.90
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-gray-900">
-                                            S/ 69.90
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-gray-900">
-                                            S/ 89.90
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-gray-900">
-                                            S/ 119.90
-                                        </td>
+                                        <td className="py-2 px-3 font-semibold text-gray-900">Precio mensual</td>
+                                        <td className="py-2 px-2 text-center font-bold text-gray-900">S/ 19.90 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-gray-900">S/ 29.90 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">S/ 49.90 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-gray-900">S/ 99.90 + IGV</td>
                                     </tr>
-
-                                    {/* Precio Anual */}
                                     <tr className="border-b border-gray-200 bg-gray-50">
-                                        <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Precio Anual
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 text-[11px]">
-                                            S/ 299
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 text-[11px]">
-                                            S/ 399
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50 text-[11px]">
-                                            S/ 499
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 text-[11px]">
-                                            S/ 699
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 text-[11px]">
-                                            S/ 899
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 text-[11px]">
-                                            S/ 1199
-                                        </td>
+                                        <td className="py-2 px-3 font-semibold text-gray-900">Precio anual</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700">S/ 238.80 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700">S/ 358.80 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">S/ 598.80 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700">S/ 1198.80 + IGV</td>
                                     </tr>
-
-                                    {/* Comprobantes/mes */}
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 text-gray-900">
                                             <div className="font-semibold">Comprobantes/mes</div>
-                                            <div className="text-[10px] text-gray-500">
-                                                Boletas, Facturas...
-                                            </div>
+                                            <div className="text-[10px] text-gray-500">Boletas y facturas electrónicas</div>
                                         </td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">
-                                            100
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">
-                                            300
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">
-                                            500
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">
-                                            600
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">
-                                            800
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">
-                                            1200
-                                        </td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">100</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">300</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">700</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">1200</td>
                                     </tr>
-
-                                    {/* Notas de Venta */}
                                     <tr className="border-b border-gray-200 bg-gray-50">
-                                        <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Notas de Venta
-                                        </td>
-                                        <td className="py-2 px-2 text-center text-gray-600">
-                                            ilimitado
-                                        </td>
-                                        <td className="py-2 px-2 text-center text-gray-600">
-                                            ilimitado
-                                        </td>
-                                        <td className="py-2 px-2 text-center text-gray-600 bg-green-50">
-                                            ilimitado
-                                        </td>
-                                        <td className="py-2 px-2 text-center text-gray-600">
-                                            ilimitado
-                                        </td>
-                                        <td className="py-2 px-2 text-center text-gray-600">
-                                            ilimitado
-                                        </td>
-                                        <td className="py-2 px-2 text-center text-gray-600">
-                                            ilimitado
-                                        </td>
+                                        <td className="py-2 px-3 font-semibold text-gray-900">Usuarios</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">1</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">2</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">4</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">8</td>
                                     </tr>
-
-                                    {/* Inventario */}
                                     <tr className="border-b border-gray-200">
-                                        <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Control de Inventario
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center bg-green-50">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
+                                        <td className="py-2 px-3 font-semibold text-gray-900">Sedes</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">1</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">1</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">2</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">4</td>
                                     </tr>
-
-                                    {/* Caja y Finanzas */}
                                     <tr className="border-b border-gray-200 bg-gray-50">
-                                        <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Caja y Finanzas
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center bg-green-50">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
+                                        <td className="py-2 px-3 font-semibold text-gray-900">Inventario + Kardex</td>
+                                        <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
+                                        <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
+                                        <td className="py-2 px-2 text-center bg-green-50"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
+                                        <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                     </tr>
-
-                                    {/* Compras y Gastos */}
                                     <tr className="border-b border-gray-200">
-                                        <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Compras y Gastos
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center bg-green-50">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
+                                        <td className="py-2 px-3 font-semibold text-gray-900">Compras y gastos</td>
+                                        <td className="py-2 px-2 text-center text-gray-500">No</td>
+                                        <td className="py-2 px-2 text-center text-gray-500">No</td>
+                                        <td className="py-2 px-2 text-center bg-green-50"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
+                                        <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                     </tr>
-
-                                    {/* Cuentas por Cobrar */}
                                     <tr className="border-b border-gray-200 bg-gray-50">
-                                        <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Ctas. por Cobrar
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center bg-green-50">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
+                                        <td className="py-2 px-3 font-semibold text-gray-900">Caja y movimientos</td>
+                                        <td className="py-2 px-2 text-center text-gray-500">No</td>
+                                        <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
+                                        <td className="py-2 px-2 text-center bg-green-50"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
+                                        <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                     </tr>
-
-                                    {/* Kardex Valorizado */}
                                     <tr className="border-b border-gray-200">
-                                        <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Kardex Valorizado
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center bg-green-50">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
+                                        <td className="py-2 px-3 font-semibold text-gray-900">Tienda virtual</td>
+                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold">Incluida</td>
+                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold">Incluida</td>
+                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold bg-green-50">Incluida</td>
+                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold">Incluida</td>
                                     </tr>
-
-                                    {/* Tienda Virtual */}
-                                    <tr className="border-b border-gray-200 bg-gray-50">
-                                        <td className="py-2 px-3 text-gray-900">
-                                            <div className="font-semibold">Tienda Virtual</div>
-                                            <div className="text-[10px] text-gray-500">
-                                                Catálogo, Carrito...
-                                            </div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <Circle className="w-4 h-4 text-blue-500 mx-auto" />
-                                            <div className="text-[10px] text-orange-600 font-bold mt-0.5">
-                                                S/40
-                                            </div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <Circle className="w-4 h-4 text-blue-500 mx-auto" />
-                                            <div className="text-[10px] text-orange-600 font-bold mt-0.5">
-                                                S/45
-                                            </div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center bg-green-50">
-                                            <Circle className="w-4 h-4 text-blue-500 mx-auto" />
-                                            <div className="text-[10px] text-orange-600 font-bold mt-0.5">
-                                                S/60
-                                            </div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <Circle className="w-4 h-4 text-blue-500 mx-auto" />
-                                            <div className="text-[10px] text-orange-600 font-bold mt-0.5">
-                                                S/80
-                                            </div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <Circle className="w-4 h-4 text-blue-500 mx-auto" />
-                                            <div className="text-[10px] text-orange-600 font-bold mt-0.5">
-                                                S/100
-                                            </div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <Circle className="w-4 h-4 text-blue-500 mx-auto" />
-                                            <div className="text-[10px] text-orange-600 font-bold mt-0.5">
-                                                S/120
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    {/* Usuarios */}
-                                    <tr className="border-b border-gray-200">
-                                        <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Usuarios
-                                        </td>
-                                        <td className="py-2 px-2 text-center text-gray-600">-</td>
-                                        <td className="py-2 px-2 text-center text-gray-600">-</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">
-                                            2
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">
-                                            4
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">
-                                            6
-                                        </td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">
-                                            10
-                                        </td>
-                                    </tr>
-
-                                    {/* + Ticketera */}
-                                    <tr className="border-b border-gray-200 bg-gray-50">
-                                        <td className="py-2 px-3 text-gray-900">
-                                            <div className="font-semibold">+ Ticketera</div>
-                                            <div className="text-[10px] text-gray-500">
-                                                Portátil, batería...
-                                            </div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                            <div className="text-[10px] text-green-700 font-bold mt-0.5">
-                                                GRATIS
-                                            </div>
-                                            <div className="text-[9px] text-gray-500">(Anual)</div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                            <div className="text-[10px] text-green-700 font-bold mt-0.5">
-                                                GRATIS
-                                            </div>
-                                            <div className="text-[9px] text-gray-500">(Anual)</div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center bg-green-50">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                            <div className="text-[10px] text-green-700 font-bold mt-0.5">
-                                                GRATIS
-                                            </div>
-                                            <div className="text-[9px] text-gray-500">(Anual)</div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                            <div className="text-[10px] text-green-700 font-bold mt-0.5">
-                                                GRATIS
-                                            </div>
-                                            <div className="text-[9px] text-gray-500">(Anual)</div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                            <div className="text-[10px] text-green-700 font-bold mt-0.5">
-                                                GRATIS
-                                            </div>
-                                            <div className="text-[9px] text-gray-500">(Anual)</div>
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                            <div className="text-[10px] text-green-700 font-bold mt-0.5">
-                                                GRATIS
-                                            </div>
-                                            <div className="text-[9px] text-gray-500">(Anual)</div>
-                                        </td>
-                                    </tr>
-
-                                    {/* Soporte Técnico */}
-                                    <tr className="border-b border-gray-200">
-                                        <td className="py-2 px-3 font-semibold text-gray-900">
-                                            Soporte Técnico
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center bg-green-50">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                    </tr>
-
-                                    {/* Actualizaciones */}
                                     <tr className="bg-gray-50">
-                                        <td className="py-2 px-3 font-semibold text-gray-900 rounded-bl-xl">
-                                            Actualizaciones
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center bg-green-50">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-2 px-2 text-center rounded-br-xl">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" />
-                                        </td>
+                                        <td className="py-2 px-3 font-semibold text-gray-900 rounded-bl-xl">Soporte</td>
+                                        <td className="py-2 px-2 text-center text-gray-700">Estándar</td>
+                                        <td className="py-2 px-2 text-center text-gray-700">Estándar</td>
+                                        <td className="py-2 px-2 text-center text-indigo-700 font-semibold bg-green-50">Prioritario</td>
+                                        <td className="py-2 px-2 text-center text-indigo-700 font-semibold rounded-br-xl">Prioritario</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -590,29 +261,32 @@ export default function BrochurePreciosPage() {
                     <div className="px-4 md:px-8 py-6">
                         <div className="mb-6 text-center md:text-left">
                             <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                                Planes para Negocios Nuevos
+                                Resumen de Planes Pro
                             </h3>
                             <p className="text-gray-600">
-                                Sin RUC · Empieza sin complicaciones
+                                Mismos precios publicados en falconext.pe
                             </p>
                         </div>
 
                         {/* Comparison Table */}
                         <div className="overflow-x-auto rounded-2xl border-2 border-gray-200 shadow-lg pb-2">
-                            <table className="w-full table-fixed min-w-[500px]">
+                            <table className="w-full table-fixed min-w-[620px]">
                                 <thead>
                                     <tr className="bg-gradient-to-r from-blue-500 to-cyan-600">
-                                        <th className="py-3 px-4 text-left text-white font-bold text-sm w-[35%]">
+                                        <th className="py-3 px-4 text-left text-white font-bold text-sm w-[30%]">
                                             Comparación de planes
                                         </th>
                                         <th className="py-3 px-3 text-center text-white font-bold text-sm">
-                                            Emprende
+                                            Principiante
                                         </th>
                                         <th className="py-3 px-3 text-center text-white font-bold text-sm bg-blue-700">
-                                            Crecimiento
+                                            Microempresa
                                         </th>
                                         <th className="py-3 px-3 text-center text-white font-bold text-sm">
-                                            Pro
+                                            Emprendedor
+                                        </th>
+                                        <th className="py-3 px-3 text-center text-white font-bold text-sm">
+                                            Corporativo
                                         </th>
                                     </tr>
                                 </thead>
@@ -620,125 +294,103 @@ export default function BrochurePreciosPage() {
                                     {/* Precio Mensual */}
                                     <tr className="border-b border-gray-200">
                                         <td className="py-3 px-4 font-semibold text-gray-900">
-                                            Precio Mensual
-                                        </td>
-                                        <td className="py-3 px-3 text-center font-bold text-green-700">
-                                            GRATIS
-                                        </td>
-                                        <td className="py-3 px-3 text-center font-bold text-gray-900 bg-blue-50">
-                                            S/ 10
+                                            Precio mensual
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-gray-900">
-                                            S/ 20
+                                            S/ 19.90 + IGV
+                                        </td>
+                                        <td className="py-3 px-3 text-center font-bold text-gray-900 bg-blue-50">
+                                            S/ 29.90 + IGV
+                                        </td>
+                                        <td className="py-3 px-3 text-center font-bold text-gray-900">
+                                            S/ 49.90 + IGV
+                                        </td>
+                                        <td className="py-3 px-3 text-center font-bold text-gray-900">
+                                            S/ 99.90 + IGV
                                         </td>
                                     </tr>
 
                                     {/* Precio Anual */}
                                     <tr className="border-b border-gray-200 bg-gray-50">
                                         <td className="py-3 px-4 font-semibold text-gray-900">
-                                            Precio Anual
+                                            Precio anual
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-green-700">
-                                            S/ 0
+                                            S/ 238.80 + IGV
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-green-700 bg-blue-50">
-                                            S/ 99
+                                            S/ 358.80 + IGV
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-green-700">
-                                            S/ 199
+                                            S/ 598.80 + IGV
+                                        </td>
+                                        <td className="py-3 px-3 text-center font-bold text-green-700">
+                                            S/ 1198.80 + IGV
                                         </td>
                                     </tr>
 
-                                    {/* Ventas/mes */}
+                                    {/* Comprobantes/mes */}
                                     <tr className="border-b border-gray-200">
                                         <td className="py-3 px-4 font-semibold text-gray-900">
-                                            Ventas/mes
+                                            Comprobantes/mes
                                         </td>
                                         <td className="py-3 px-3 text-center font-semibold text-gray-900">
-                                            200
+                                            100
                                         </td>
                                         <td className="py-3 px-3 text-center font-semibold text-gray-900 bg-blue-50">
-                                            ilimitado
+                                            300
                                         </td>
                                         <td className="py-3 px-3 text-center font-semibold text-gray-900">
-                                            ilimitado
+                                            700
                                         </td>
-                                    </tr>
-
-                                    {/* Inventario */}
-                                    <tr className="border-b border-gray-200 bg-gray-50">
-                                        <td className="py-3 px-4 font-semibold text-gray-900">
-                                            Inventario
+                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">
+                                            1200
                                         </td>
-                                        <td className="py-3 px-3 text-center text-gray-600">Básico</td>
-                                        <td className="py-3 px-3 text-center text-gray-600 bg-blue-50">
-                                            Básico
-                                        </td>
-                                        <td className="py-3 px-3 text-center text-gray-600">Avanzado</td>
                                     </tr>
 
                                     {/* Usuarios */}
-                                    <tr className="border-b border-gray-200">
+                                    <tr className="border-b border-gray-200 bg-gray-50">
                                         <td className="py-3 px-4 font-semibold text-gray-900">
                                             Usuarios
                                         </td>
-                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">
-                                            1
-                                        </td>
+                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">1</td>
                                         <td className="py-3 px-3 text-center font-semibold text-gray-900 bg-blue-50">
                                             2
                                         </td>
-                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">
-                                            5
-                                        </td>
+                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">4</td>
+                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">8</td>
                                     </tr>
 
-                                    {/* Reportes */}
-                                    <tr className="border-b border-gray-200 bg-gray-50">
-                                        <td className="py-3 px-4 font-semibold text-gray-900">
-                                            Reportes
-                                        </td>
-                                        <td className="py-3 px-3 text-center">
-                                            <X className="w-5 h-5 text-red-500 mx-auto" />
-                                        </td>
-                                        <td className="py-3 px-3 text-center bg-blue-50">
-                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
-                                        </td>
-                                        <td className="py-3 px-3 text-center">
-                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
-                                        </td>
-                                    </tr>
-
-                                    {/* Control de Fiados */}
+                                    {/* Tienda Virtual */}
                                     <tr className="border-b border-gray-200">
                                         <td className="py-3 px-4 font-semibold text-gray-900">
-                                            Control de Fiados
+                                            Tienda virtual
                                         </td>
-                                        <td className="py-3 px-3 text-center">
-                                            <X className="w-5 h-5 text-red-500 mx-auto" />
-                                        </td>
-                                        <td className="py-3 px-3 text-center bg-blue-50">
-                                            <X className="w-5 h-5 text-red-500 mx-auto" />
-                                        </td>
-                                        <td className="py-3 px-3 text-center">
-                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
-                                        </td>
+                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold">Incluida</td>
+                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold bg-blue-50">Incluida</td>
+                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold">Incluida</td>
+                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold">Incluida</td>
                                     </tr>
 
-                                    {/* Integración Impresora */}
+                                    <tr className="border-b border-gray-200 bg-gray-50">
+                                        <td className="py-3 px-4 font-semibold text-gray-900">
+                                            Inventario + Kardex
+                                        </td>
+                                        <td className="py-3 px-3 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
+                                        <td className="py-3 px-3 text-center bg-blue-50"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
+                                        <td className="py-3 px-3 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
+                                        <td className="py-3 px-3 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
+                                    </tr>
+
+                                    {/* Soporte */}
                                     <tr className="bg-gray-50">
                                         <td className="py-3 px-4 font-semibold text-gray-900 rounded-bl-xl">
-                                            Integración Impresora
+                                            Soporte
                                         </td>
-                                        <td className="py-3 px-3 text-center">
-                                            <X className="w-5 h-5 text-red-500 mx-auto" />
-                                        </td>
-                                        <td className="py-3 px-3 text-center bg-blue-50">
-                                            <X className="w-5 h-5 text-red-500 mx-auto" />
-                                        </td>
-                                        <td className="py-3 px-3 text-center rounded-br-xl">
-                                            <CheckCircle2 className="w-5 h-5 text-green-600 mx-auto" />
-                                        </td>
+                                        <td className="py-3 px-3 text-center text-gray-700">Estándar</td>
+                                        <td className="py-3 px-3 text-center bg-blue-50 text-gray-700">Estándar</td>
+                                        <td className="py-3 px-3 text-center text-indigo-700 font-semibold">Prioritario</td>
+                                        <td className="py-3 px-3 text-center rounded-br-xl text-indigo-700 font-semibold">Prioritario</td>
                                     </tr>
                                 </tbody>
                             </table>
