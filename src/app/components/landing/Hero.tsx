@@ -4,32 +4,33 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Play, ChevronRight, ShieldCheck, Star } from 'lucide-react';
 import Link from 'next/link';
+import { BRAND } from '@/lib/branding';
 
 const Hero = () => {
   return (
     <div className="relative min-h-screen pt-20" id="home">
       {/* Reinstated bannerhero.png as background - Opacity 1 */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/assets/bannerhero.png" 
-          alt="Background" 
+        <img
+          src="/assets/bannerhero.png"
+          alt="Background"
           className="w-full h-full object-cover object-center opacity-100"
         />
         {/* Removed dark overlay as requested to see background at opacity 1 */}
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full min-h-[calc(100vh-80px)] flex flex-col justify-center py-12">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 w-full min-h-[calc(100vh-80px)] flex flex-col justify-center py-12 md:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Column: Text Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex flex-col items-start text-left"
           >
             {/* Badge */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -40,8 +41,8 @@ const Hero = () => {
             </motion.div>
 
             {/* Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 tracking-tight drop-shadow-2xl">
-              Potencia tu <br />
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 tracking-tight drop-shadow-2xl">
+              Potencia tu <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">
                 Negocio al Máximo
               </span>
@@ -63,7 +64,7 @@ const Hero = () => {
               </Link>
               {/* 
               <Link
-                href="https://app.falconext.pe"
+                href={BRAND.dashboardUrl}
                 target="_blank"
                 className="group px-6 py-4 text-white font-medium flex items-center gap-4 transition-all hover:opacity-80"
               >
@@ -77,17 +78,17 @@ const Hero = () => {
 
             {/* Trust Badges / Stats */}
             <div className="flex items-center gap-8 border-t border-white/10 pt-8 w-full md:w-auto">
-               <div>
-                  <div className="text-2xl font-bold text-white">+500</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-widest font-bold">Empresas</div>
-               </div>
-               <div className="w-px h-10 bg-white/10" />
-               <div className="flex flex-col">
-                  <div className="flex text-yellow-400 gap-0.5">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
-                  </div>
-                  <div className="text-xs text-gray-400 font-medium mt-1">Líderes en Soporte</div>
-               </div>
+              <div>
+                <div className="text-2xl font-bold text-white">+500</div>
+                <div className="text-xs text-gray-400 uppercase tracking-widest font-bold">Empresas</div>
+              </div>
+              <div className="w-px h-10 bg-white/10" />
+              <div className="flex flex-col">
+                <div className="flex text-yellow-400 gap-0.5">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+                </div>
+                <div className="text-xs text-gray-400 font-medium mt-1">Líderes en Soporte</div>
+              </div>
             </div>
           </motion.div>
 
@@ -101,12 +102,12 @@ const Hero = () => {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-        className="absolute bottom-0 right-0 w-full lg:w-1/2 h-full pointer-events-none flex items-end justify-end z-20 pr-4 lg:pr-12"
+        className="absolute bottom-0 right-0 w-full lg:w-1/2 h-[45%] lg:h-full pointer-events-none flex items-end justify-end z-10 pr-0 lg:pr-12"
       >
-        <img 
-          src="/assets/bannerfx.png" 
-          alt="Falconext Software Visual" 
-          className="w-full max-w-[700px] h-auto object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-transform duration-700 pointer-events-auto"
+        <img
+          src="/assets/bannerfx.png"
+          alt={`${BRAND.name} Software Visual`}
+          className="w-full sm:w-[80%] lg:w-full max-w-[700px] h-auto opacity-40 object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-transform duration-700 pointer-events-auto md:opacity-100"
         />
       </motion.div>
     </div>

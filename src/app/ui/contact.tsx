@@ -2,6 +2,7 @@
 import InputCustom from "../components/InputCustom";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Mail, Map, Phone } from "lucide-react";
+import { BRAND } from "@/lib/branding";
 
 const Contact = () => {
     // Forced Dark / Glassmorphism Mode
@@ -181,7 +182,7 @@ const Contact = () => {
                                 <div>
                                     <p className="text-gray-500 dark:text-gray-400 text-sm">Puedes mandarnos mensaje a este correo</p>
                                     <label className="font-medium text-[16px] md:text-[18px] text-gray-900 dark:text-white transition-colors">
-                                        soporte@falconext.pe
+                                        {BRAND.email}
                                     </label>
                                 </div>
                             </div>
@@ -194,7 +195,7 @@ const Contact = () => {
                                 <div>
                                     <p className="text-gray-500 dark:text-gray-400 text-sm">Llámanos para cualquier consulta</p>
                                     <label className="font-medium text-[16px] md:text-[18px] text-gray-900 dark:text-white transition-colors">
-                                        +51 932 332 556
+                                        {BRAND.phone}
                                     </label>
                                 </div>
                             </div>

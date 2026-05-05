@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { BRAND } from "@/lib/branding";
 import men from '@/app/public/assets/men.webp';
 import pharmacyWoman from '@/app/public/assets/peruvian_pharmacy_woman_1767478388764.png';
 import hardwareMan from '@/app/public/assets/peruvian_hardware_man_1767478402330.png';
@@ -19,7 +20,7 @@ const Testimonials = () => {
             role: "Dueño de Bodega 'El Vecino'",
             avatarImg: hardwareMan,
             quote: "Control total de mi inventario",
-            description: "Antes se me perdía mercadería y no sabía cuánto ganaba. Con Falconext ahora tengo todo cuadrado al centavo y puedo ver mis ventas desde mi celular."
+            description: `Antes se me perdía mercadería y no sabía cuánto ganaba. Con ${BRAND.name} ahora tengo todo cuadrado al centavo y puedo ver mis ventas desde mi celular.`
         },
         {
             id: 2,
@@ -83,7 +84,7 @@ const Testimonials = () => {
             role: "Dueño de Ferretería 'Torres'",
             avatarImg: pharmacyMan,
             quote: "Excelente relación precio-calidad",
-            description: "Probé otros sistemas más caros que hacían menos. Falconext tiene todo lo que necesito a un precio justo para un emprendedor peruano."
+            description: `Probé otros sistemas más caros que hacían menos. ${BRAND.name} tiene todo lo que necesito a un precio justo para un emprendedor peruano.`
         },
         {
             id: 10,

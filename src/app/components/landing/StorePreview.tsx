@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ShoppingCart, ChevronLeft, ChevronRight, Tag, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { BRAND } from '@/lib/branding';
 
 type StoreProduct = {
   id: number;
@@ -60,8 +61,8 @@ const ProductCard = ({ product, index }: { product: StoreProduct; index: number 
           />
         ) : (
           <img
-            src="/assets/logo.png"
-            alt="Falconext"
+            src={BRAND.logo}
+            alt={BRAND.name}
             className="w-14 h-14 object-contain opacity-[0.12] group-hover:scale-110 transition-transform duration-500"
           />
         )}
@@ -69,7 +70,7 @@ const ProductCard = ({ product, index }: { product: StoreProduct; index: number 
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-4">
-        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Falconext</span>
+        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">{BRAND.name}</span>
         <h3 className="text-[14px] font-bold text-[#111827] leading-snug mb-3 line-clamp-2 min-h-[40px] group-hover:text-[#3b82f6] transition-colors">
           {product.name}
         </h3>
@@ -137,19 +138,20 @@ const StorePreview = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="flex items-end justify-between mb-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-10 gap-4">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="text-left"
           >
-            <p className="text-[12px] font-bold tracking-widest uppercase text-[#5F54D0] mb-2">Catálogo Falconext</p>
-            <h2 className="text-3xl md:text-4xl text-[#111827] tracking-tight">
+            <p className="text-[11px] md:text-[12px] font-bold tracking-widest uppercase text-[#5F54D0] mb-2">Catálogo {BRAND.name}</p>
+            <h2 className="text-2xl md:text-4xl text-[#111827] tracking-tight font-bold">
               Equipos y accesorios <span className="text-[#3b82f6]">para tu negocio</span>
             </h2>
           </motion.div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 self-end md:self-auto">
             {/* Scroll controls */}
             <div className="hidden md:flex gap-2">
               <button
@@ -167,7 +169,7 @@ const StorePreview = () => {
             </div>
             <Link
               href="/tienda"
-              className="text-[14px] font-bold text-[#3b82f6] hover:underline underline-offset-4 transition-all"
+              className="text-[13px] md:text-[14px] font-bold text-[#3b82f6] hover:underline underline-offset-4 transition-all"
             >
               Ver todos →
             </Link>
@@ -175,21 +177,21 @@ const StorePreview = () => {
         </div>
 
         {/* Cards Row */}
-        <div className="flex gap-6 overflow-hidden">
+        <div className="flex flex-col md:flex-row gap-6">
 
-          {/* Featured Left Panel */}
+          {/* Featured Panel */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex-none w-[220px] rounded-2xl overflow-hidden relative bg-gradient-to-br from-[#5F54D0] via-[#5F54D0] to-[#5F54D0] shadow-lg shadow-blue-500/20 flex flex-col justify-between p-6"
+            className="flex-none w-full md:w-[220px] rounded-2xl overflow-hidden relative bg-gradient-to-br from-[#5F54D0] via-[#5F54D0] to-[#5F54D0] shadow-lg shadow-blue-500/20 flex flex-col justify-between p-7 md:p-6"
           >
             {/* Decorative circle */}
             <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10 pointer-events-none" />
             <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-white/10 pointer-events-none" />
 
             <div className="relative z-10">
-              <img src="/assets/logowhite.png" alt="Falconext" className="h-8 w-auto brightness-200 mb-6" />
+              <img src={BRAND.logoWhite} alt={BRAND.name} className="h-8 w-auto brightness-200 mb-6" />
               <h3 className="text-white text-[20px] font-black leading-snug mb-3">
                 Equipa tu negocio para el <span className="text-[#bfdbfe]">éxito</span>
               </h3>
@@ -208,7 +210,7 @@ const StorePreview = () => {
           {/* Scrollable Product List */}
           <div
             ref={scrollRef}
-            className="flex gap-5 overflow-x-auto pb-2 flex-1 scrollbar-hide scroll-smooth"
+            className="flex gap-5 overflow-x-auto pb-4 md:pb-2 flex-1 scrollbar-hide scroll-smooth -mx-6 px-6 md:mx-0 md:px-0"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {loading

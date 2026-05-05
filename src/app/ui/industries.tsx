@@ -1,4 +1,5 @@
 import { ShoppingCart, Pill, Hammer, UtensilsCrossed, Briefcase, Store } from "lucide-react";
+import { BRAND } from "@/lib/branding";
 
 const industries = [
     {
@@ -51,7 +52,7 @@ const Industries = () => {
                         Adaptado a cada<br />rubro del mercado
                     </h2>
                     <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm md:text-base">
-                        Falconext se adapta a las necesidades específicas de tu industria sin configuraciones complicadas.
+                        {BRAND.name} se adapta a las necesidades específicas de tu industria sin configuraciones complicadas.
                     </p>
                 </div>
 

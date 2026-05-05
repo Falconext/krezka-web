@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { BRAND } from '@/lib/branding';
 
 export default function CheckoutPage() {
   const { items, getTotalPrice, getTotalItems, clearCart } = useCartStore();
@@ -16,8 +17,8 @@ export default function CheckoutPage() {
   const [company, setCompany] = useState('');
   const [phone, setPhone] = useState('');
   
-  // Falconext WhatsApp Number
-  const WHATSAPP_NUMBER = '51932332556'; // Número oficial de ventas Falconext
+  // Brand WhatsApp Number
+  const WHATSAPP_NUMBER = BRAND.whatsapp; // Número oficial de ventas dinámico
 
   useEffect(() => {
     setMounted(true);
@@ -172,7 +173,7 @@ export default function CheckoutPage() {
                       {item.imageUrl ? (
                         <img src={item.imageUrl} alt={item.name} className="w-full h-full object-contain mix-blend-multiply" />
                       ) : (
-                        <img src="/assets/logo.png" alt="Falconext" className="w-8 opacity-10" />
+                        <img src={BRAND.logo} alt={BRAND.name} className="w-8 opacity-10" />
                       )}
                     </div>
                     <div className="flex-1 flex flex-col justify-center">

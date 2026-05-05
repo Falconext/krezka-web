@@ -1,4 +1,5 @@
 import { CheckCircle2, XCircle } from "lucide-react";
+import { BRAND } from "@/lib/branding";
 
 type ProPlan = {
     id: string;
@@ -281,12 +282,12 @@ const comparisonRows: ComparisonRow[] = [
 ];
 
 const planWhatsappLink = (planName: string) =>
-    `https://wa.me/51932332556?text=${encodeURIComponent(
-        `Hola, quiero elegir el plan ${planName} de Falconext. ¿Me ayudan a activarlo?`
+    `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
+        `Hola, quiero elegir el plan ${planName} de ${BRAND.name}. ¿Me ayudan a activarlo?`
     )}`;
 
-const generalWhatsappLink = `https://wa.me/51932332556?text=${encodeURIComponent(
-    "Hola, quiero entender los Planes Pro de Falconext y elegir el ideal para mi empresa."
+const generalWhatsappLink = `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
+    `Hola, quiero entender los Planes Pro de ${BRAND.name} y elegir el ideal para mi empresa.`
 )}`;
 
 const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
@@ -298,7 +299,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                         Precio justo y transparente
                     </p>
                     <h2 className="mt-4 text-3xl md:text-5xl font-semibold text-gray-900">
-                        Planes Pro Falconext
+                        Planes Pro {BRAND.name}
                     </h2>
                     <p className="mt-3 text-sm md:text-base text-gray-500">
                         Sin contratos forzosos, sin costos ocultos y todo el acompañamiento incluido. Elige el plan perfecto para comenzar, crecer o escalar tu empresa conservando tu utilidad.

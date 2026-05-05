@@ -1,105 +1,68 @@
-
 import type { Metadata } from "next";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
-// import { sg } from "@/app/public/fonts";
 import Script from "next/script";
+import { BRAND } from "@/lib/branding";
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://falconext.pe'),
-  title: {
-    default: "Falconext | Sistema de Facturación Electrónica SUNAT para PYMES en Perú",
-    template: "%s | Falconext - Facturación Electrónica Perú"
-  },
-  description: "El sistema de facturación electrónica #1 en Perú. Emite boletas, facturas y notas de crédito homologadas con SUNAT. Punto de venta (POS), control de inventario y gestión comercial para PYMES. ¡Prueba gratis!",
-  keywords: [
-    // Keywords principales
-    "facturación electrónica",
-    "facturación electrónica perú",
-    "sistema de facturación",
-    "software de facturación",
-    "facturación sunat",
-    "emisión de facturas electrónicas",
-    // Keywords secundarias
-    "sistema pos",
-    "punto de venta",
-    "sistema de ventas perú",
-    "control de inventario",
-    "software para pymes",
-    "gestión de negocios",
-    // Keywords long-tail
-    "sistema de facturación electrónica homologado sunat",
-    "facturación electrónica gratis perú",
-    "software facturación para restaurantes",
-    "sistema pos para tiendas",
-    "emitir boletas electrónicas sunat",
-    "facturación electrónica pymes perú",
-    // Marca
-    "falconext",
-    "falconext peru"
-  ],
-  authors: [{ name: "Falconext", url: "https://falconext.pe" }],
-  creator: "Falconext",
-  publisher: "Falconext",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  icons: {
-    icon: [
-      { url: '/assets/logo.png', sizes: '32x32', type: 'image/png' },
-      { url: '/assets/logo.png', sizes: '192x192', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/assets/logo.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
-  manifest: '/manifest.json',
-  openGraph: {
-    title: "Falconext | Sistema de Facturación Electrónica SUNAT #1 en Perú",
-    description: "Emite facturas, boletas y notas de crédito electrónicas homologadas con SUNAT. Sistema POS, inventario y gestión comercial para PYMES. ¡Prueba gratis hoy!",
-    url: "https://falconext.pe/",
-    siteName: "Falconext - Facturación Electrónica Perú",
-    images: [
-      {
-        url: "https://falconext.pe/assets/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Falconext - Sistema de Facturación Electrónica para PYMES en Perú"
-      }
-    ],
-    locale: "es_PE",
-    type: "website",
-    countryName: "Peru"
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Falconext | Facturación Electrónica SUNAT para PYMES",
-    description: "El mejor sistema de facturación electrónica en Perú. Emite boletas, facturas y controla tu inventario fácilmente.",
-    images: ["https://falconext.pe/assets/og-image.png"],
-    creator: "@falconext"
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    metadataBase: new URL(BRAND.website),
+    title: {
+      default: `${BRAND.name} | Sistema de Facturación Electrónica SUNAT para PYMES en Perú`,
+      template: `%s | ${BRAND.name} - Facturación Electrónica Perú`
     },
-  },
-  alternates: {
-    canonical: 'https://falconext.pe',
-  },
-  category: 'technology',
-  verification: {
-    // Agregar después de verificar en Google Search Console
-    // google: 'tu-código-de-verificación',
-  },
-};
+    description: `El sistema de facturación electrónica #1 en Perú. Emite boletas, facturas y notas de crédito homologadas con SUNAT. Punto de venta (POS), control de inventario y gestión comercial para PYMES. ¡Prueba gratis!`,
+    keywords: [
+      "facturación electrónica",
+      "facturación electrónica perú",
+      "sistema de facturación",
+      "software de facturación",
+      "facturación sunat",
+      "punto de venta",
+      BRAND.name.toLowerCase(),
+      `${BRAND.name.toLowerCase()} peru`
+    ],
+    authors: [{ name: BRAND.name, url: BRAND.website }],
+    creator: BRAND.name,
+    publisher: BRAND.name,
+    icons: {
+      icon: [
+        { url: BRAND.logo, sizes: '32x32', type: 'image/png' },
+        { url: BRAND.logo, sizes: '192x192', type: 'image/png' },
+      ],
+      apple: [
+        { url: BRAND.logo, sizes: '180x180', type: 'image/png' },
+      ],
+    },
+    manifest: '/manifest.json',
+    openGraph: {
+      title: `${BRAND.name} | Sistema de Facturación Electrónica SUNAT #1 en Perú`,
+      description: "Emite facturas, boletas y notas de crédito electrónicas homologadas con SUNAT. Sistema POS, inventario y gestión comercial para PYMES. ¡Prueba gratis hoy!",
+      url: `${BRAND.website}/`,
+      siteName: `${BRAND.name} - Facturación Electrónica Perú`,
+      images: [
+        {
+          url: `${BRAND.website}/assets/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: `${BRAND.name} - Sistema de Facturación Electrónica para PYMES en Perú`
+        }
+      ],
+      locale: "es_PE",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${BRAND.name} | Facturación Electrónica SUNAT para PYMES`,
+      description: "El mejor sistema de facturación electrónica en Perú. Emite boletas, facturas y controla tu inventario fácilmente.",
+      images: [`${BRAND.website}/assets/og-image.png`],
+      creator: `@${BRAND.name.toLowerCase()}`
+    },
+    alternates: {
+      canonical: BRAND.website,
+    },
+  };
+}
 
 export default function RootLayout({
   children,
@@ -110,7 +73,7 @@ export default function RootLayout({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Falconext",
+    "name": BRAND.name,
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web, Windows, macOS",
     "offers": {
@@ -124,24 +87,24 @@ export default function RootLayout({
       "ratingValue": "4.9",
       "ratingCount": "150"
     },
-    "description": "Sistema de facturación electrónica SUNAT para PYMES en Perú. Emite boletas, facturas y controla tu inventario.",
-    "url": "https://falconext.pe",
-    "logo": "https://falconext.pe/assets/logo.png",
+    "description": `Sistema de facturación electrónica SUNAT para PYMES en Perú. Emite boletas, facturas y controla tu inventario.`,
+    "url": BRAND.website,
+    "logo": `${BRAND.website}${BRAND.logo}`,
     "sameAs": [
-      "https://www.facebook.com/falconext",
-      "https://www.instagram.com/falconext"
-    ]
+      BRAND.socials.facebook,
+      BRAND.socials.instagram
+    ].filter(Boolean)
   };
 
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Falconext",
-    "url": "https://falconext.pe",
-    "logo": "https://falconext.pe/assets/logo.png",
+    "name": BRAND.name,
+    "url": BRAND.website,
+    "logo": `${BRAND.website}${BRAND.logo}`,
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+51-999-999-999",
+      "telephone": BRAND.phone,
       "contactType": "sales",
       "areaServed": "PE",
       "availableLanguage": "Spanish"

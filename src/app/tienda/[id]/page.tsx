@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { useCartStore } from '@/store/cartStore';
 import { ArrowLeft, Minus, Plus, ShoppingCart, Zap, CheckCircle2, AlertTriangle, ShieldCheck, Truck } from 'lucide-react';
 import Link from 'next/link';
+import { BRAND } from '@/lib/branding';
 
 type ProductDetail = {
   id: number;
@@ -143,8 +144,8 @@ export default function ProductDetailPage() {
                 />
               ) : (
                 <img 
-                  src="/assets/logo.png" 
-                  alt="Falconext" 
+                  src={BRAND.logo} 
+                  alt={BRAND.name} 
                   className="w-32 h-32 object-contain opacity-10" 
                 />
               )}
@@ -233,7 +234,7 @@ export default function ProductDetailPage() {
                   <CheckCircle2 className="text-emerald-500" />
                   <div>
                     <span className="font-bold text-emerald-600 block">En stock y listo para enviar</span>
-                    <span className="text-xs text-gray-500">Stock garantizado por Falconext.</span>
+                    <span className="text-xs text-gray-500">Stock garantizado por {BRAND.name}.</span>
                   </div>
                 </>
               )}
@@ -315,7 +316,7 @@ export default function ProductDetailPage() {
                           className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500" 
                         />
                       ) : (
-                        <img src="/assets/logo.png" className="w-12 h-12 opacity-10" />
+                        <img src={BRAND.logo} alt={BRAND.name} className="w-12 h-12 opacity-10" />
                       )}
                     </div>
                     <div className="p-5 flex flex-col flex-1">

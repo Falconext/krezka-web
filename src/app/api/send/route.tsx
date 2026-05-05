@@ -1,4 +1,5 @@
 import { ContactTemplate } from '@/components/emails/ContactTemplate';
+import { BRAND } from '@/lib/branding';
 import * as React from 'react';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
@@ -22,8 +23,8 @@ export async function POST(request: Request) {
 
         const resend = new Resend(apiKey);
         const { data, error } = await resend.emails.send({
-            from: 'Falconext Web <soporte@falconext.pe>', // Updated to verified domain
-            to: ['soporte@falconext.pe'], // Deliver to you
+            from: `${BRAND.name} Web <${BRAND.email}>`, // Updated to verified domain
+            to: [BRAND.email], // Deliver to you
             replyTo: email,
             subject: `Nuevo Lead: ${fullName} - ${company || 'Sin empresa'}`,
             react: (

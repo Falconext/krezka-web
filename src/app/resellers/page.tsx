@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, CircleCheck, Globe, Handshake, Layers3, Sparkles, Users } from "lucide-react";
+import { BRAND } from "@/lib/branding";
 
 const benefits = [
     {
@@ -59,12 +60,12 @@ const faqs = [
 ];
 
 export default function ResellersPage() {
-    const resellerWhatsappLink = `https://wa.me/51932332556?text=${encodeURIComponent(
-        "Hola, quiero unirme al programa Reseller de Falconext. Por favor envíenme: 1) requisitos de ingreso, 2) esquema comercial y comisiones, 3) proceso de onboarding, 4) tiempos de activación, 5) materiales de venta y soporte. Mis datos: [Nombre] [Empresa] [Ciudad] [Rubro] [Cantidad estimada de clientes]."
+    const resellerWhatsappLink = `https://wa.me/${BRAND.phone.replace(/\D/g, '')}?text=${encodeURIComponent(
+        `Hola, quiero unirme al programa Reseller de ${BRAND.name}. Por favor envíenme: 1) requisitos de ingreso, 2) esquema comercial y comisiones, 3) proceso de onboarding, 4) tiempos de activación, 5) materiales de venta y soporte. Mis datos: [Nombre] [Empresa] [Ciudad] [Rubro] [Cantidad estimada de clientes].`
     )}`;
 
-    const plansWhatsappLink = `https://wa.me/51932332556?text=${encodeURIComponent(
-        "Hola, quiero ayuda para elegir el mejor plan Falconext para mi cliente."
+    const plansWhatsappLink = `https://wa.me/${BRAND.phone.replace(/\D/g, '')}?text=${encodeURIComponent(
+        `Hola, quiero ayuda para elegir el mejor plan ${BRAND.name} para mi cliente.`
     )}`;
 
     return (
@@ -72,13 +73,13 @@ export default function ResellersPage() {
             <section className="mx-auto max-w-7xl px-4 md:px-6">
                 <div className="rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
                     <p className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">
-                        Falconext Partners
+                        {BRAND.name} Partners
                     </p>
                     <h1 className="mt-4 text-3xl md:text-5xl font-black leading-tight text-slate-900">
                         Programa Resellers para crecer con una oferta profesional
                     </h1>
                     <p className="mt-4 max-w-3xl text-sm md:text-base text-slate-600 leading-relaxed">
-                        Conviértete en socio comercial de Falconext y ofrece una solución completa de facturación electrónica,
+                        Conviértete en socio comercial de {BRAND.name} y ofrece una solución completa de facturación electrónica,
                         gestión y crecimiento digital para empresas. Diseñamos una experiencia clara para que puedas vender,
                         activar y escalar tu cartera con confianza.
                     </p>
@@ -139,7 +140,7 @@ export default function ResellersPage() {
                             <li className="flex gap-2"><CircleCheck size={16} className="mt-0.5 text-emerald-600" />Soporte para onboarding y activación de clientes.</li>
                             <li className="flex gap-2"><CircleCheck size={16} className="mt-0.5 text-emerald-600" />Material comercial para una presentación profesional.</li>
                             <li className="flex gap-2"><CircleCheck size={16} className="mt-0.5 text-emerald-600" />Ruta de crecimiento para ampliar tu cartera.</li>
-                            <li className="flex gap-2"><CircleCheck size={16} className="mt-0.5 text-emerald-600" />Acompañamiento continuo del equipo Falconext.</li>
+                            <li className="flex gap-2"><CircleCheck size={16} className="mt-0.5 text-emerald-600" />Acompañamiento continuo del equipo {BRAND.name}.</li>
                         </ul>
 
                         <div className="mt-5 rounded-2xl border border-indigo-200 bg-indigo-50 p-4 text-xs text-indigo-700">
@@ -181,7 +182,7 @@ export default function ResellersPage() {
                     <div className="flex items-start gap-3">
                         <Globe className="mt-1" size={20} />
                         <div>
-                            <h3 className="text-xl font-bold">Construye tu canal reseller con Falconext</h3>
+                            <h3 className="text-xl font-bold">Construye tu canal reseller con {BRAND.name}</h3>
                             <p className="mt-2 text-sm text-slate-200 max-w-3xl">
                                 Si ya atiendes empresas y quieres una oferta sólida para facturación electrónica y gestión,
                                 este programa está diseñado para ayudarte a crecer con orden y una imagen profesional.

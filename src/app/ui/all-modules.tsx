@@ -1,6 +1,7 @@
 "use client";
 
 import { Icon } from "@iconify/react";
+import { BRAND } from "@/lib/branding";
 
 const AllModules = () => {
     const modules = [
@@ -63,7 +64,7 @@ const AllModules = () => {
                         </span>
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 text-lg">
-                        Olvídate de pagar por módulos separados. Falconext te da acceso a todas las herramientas profesionales desde el plan más básico.
+                        Olvídate de pagar por módulos separados. {BRAND.name} te da acceso a todas las herramientas profesionales desde el plan más básico.
                     </p>
 
                     <div className="pt-4 flex justify-center">

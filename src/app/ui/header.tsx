@@ -1,8 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import fnlogo from '../../../public/assets/logo.png';
-import fnlogoWhite from '../../../public/assets/logowhite.png';
+import { BRAND } from '@/lib/branding';
 import { Link as ScrollLink } from 'react-scroll';
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
@@ -157,10 +156,10 @@ const Header = () => {
             className="flex items-center gap-2 cursor-pointer group transition-opacity"
           >
             <Image
-              src={isTransparent ? fnlogoWhite : fnlogo}
+              src={isTransparent ? BRAND.logoWhite : BRAND.logo}
               width={1000}
               height={1000}
-              alt="Falconext Logo"
+              alt={BRAND.name}
               className={`w-48 h-14 object-contain transition-all duration-300`}
             />
           </div>
@@ -262,7 +261,7 @@ const Header = () => {
               )}
             </button>
             <a
-              href="https://app.falconext.pe"
+              href={BRAND.dashboardUrl}
               className={`hidden md:block px-5 py-2 text-sm font-medium rounded-full transition-colors ${loginTextClass}`}
             >
               Iniciar Sesión
@@ -355,7 +354,7 @@ const Header = () => {
 
                 <div className="pt-2 pb-1 border-t border-gray-100 flex flex-col gap-2">
                   <a
-                    href="https://app.falconext.pe"
+                    href={BRAND.dashboardUrl}
                     className="px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors"
                   >
                     Iniciar Sesión

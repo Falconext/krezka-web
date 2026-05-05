@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CircleDollarSign, Cloud, PackageSearch, Code2, BarChart3 } from 'lucide-react';
+import { BRAND } from '@/lib/branding';
 
 const features = [
   {
@@ -50,7 +51,7 @@ const Features = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl lg:text-[42px] font-bold text-[#111827] mb-5 tracking-tight"
           >
-            ¿Por qué elegir Falconext?
+            ¿Por qué elegir {BRAND.name}?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -59,7 +60,7 @@ const Features = () => {
             transition={{ delay: 0.1 }}
             className="text-lg text-[#6b7280] max-w-4xl leading-relaxed"
           >
-            Descubre Falconext, la solución integral que combina una potente gestión operativa POS, optimización de eficiencia y desarrollo ágil de software a medida para impulsar tu negocio hacia el futuro.
+            Descubre {BRAND.name}, la solución integral que combina una potente gestión operativa POS, optimización de eficiencia y desarrollo ágil de software a medida para impulsar tu negocio hacia el futuro.
           </motion.p>
         </div>
 

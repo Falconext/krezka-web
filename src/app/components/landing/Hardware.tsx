@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Printer, Tablet, ArrowUpRight, SmartphoneNfc, Wallet, Store, Globe } from 'lucide-react';
 import Link from 'next/link';
+import { BRAND } from '@/lib/branding';
 
 type StoreProduct = {
   id: number;
@@ -93,7 +94,7 @@ const Hardware = () => {
 
         {/* Text content */}
         <div className="relative z-10 text-center px-6">
-          <h4 className="text-white/80 font-bold tracking-widest text-sm uppercase mb-5">SISTEMA POS FALCONEXT</h4>
+          <h4 className="text-white/80 font-bold tracking-widest text-sm uppercase mb-5">SISTEMA POS {BRAND.name.toUpperCase()}</h4>
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-white max-w-3xl mx-auto leading-[1.15]">
             Construye tu Punto de Venta <br />
             <span className="text-[#a78bfa]">todo en uno</span>
@@ -144,7 +145,7 @@ const Hardware = () => {
             >
               <img
                 src="/assets/pos.png"
-                alt="Falconext POS Sistema"
+                alt={`${BRAND.name} POS Sistema`}
                 className="w-[520px] xl:w-[580px] h-auto object-contain"
               />
             </motion.div>
@@ -176,7 +177,7 @@ const Hardware = () => {
 
           {/* Mobile Fallback: Image on top, 2x2 grid below */}
           <div className="lg:hidden">
-            <img src="/assets/pos.png" alt="Falconext POS" className="w-full h-auto object-contain mb-8" />
+            <img src="/assets/pos.png" alt={`${BRAND.name} POS`} className="w-full h-auto object-contain mb-8" />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { title: 'Cobros Rápidos', desc: 'Cierra ventas rápidamente con un software fácil de usar que mantiene todo organizado.' },

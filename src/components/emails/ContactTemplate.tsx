@@ -11,6 +11,7 @@ import {
     Text,
     Tailwind,
 } from '@react-email/components';
+import { BRAND } from '@/lib/branding';
 
 interface ContactTemplateProps {
     fullName: string;
@@ -41,7 +42,7 @@ export const ContactTemplate: React.FC<ContactTemplateProps> = ({
                         <Section className="mt-[32px]">
                             {/* Logo placeholder or simple text */}
                             <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
-                                <strong>Falconext</strong> Contacto
+                                <strong>{BRAND.name}</strong> Contacto
                             </Heading>
                         </Section>
 
@@ -49,7 +50,7 @@ export const ContactTemplate: React.FC<ContactTemplateProps> = ({
                             Hola equipo,
                         </Text>
                         <Text className="text-black text-[14px] leading-[24px]">
-                            Has recibido un nuevo mensaje a través del formulario web de <strong>falconext.pe</strong>.
+                            Has recibido un nuevo mensaje a través del formulario web de <strong>{BRAND.website.replace('https://', '')}</strong>.
                         </Text>
 
                         <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
@@ -93,7 +94,7 @@ export const ContactTemplate: React.FC<ContactTemplateProps> = ({
                         <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
 
                         <Text className="text-[#666666] text-[12px] leading-[24px] text-center">
-                            Este mensaje fue enviado desde el formulario de contacto de Falconext.
+                            Este mensaje fue enviado desde el formulario de contacto de {BRAND.name}.
                         </Text>
                     </Container>
                 </Body>

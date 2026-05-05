@@ -1,24 +1,25 @@
 "use client";
 import { MessageCircle } from "lucide-react";
+import { BRAND } from "@/lib/branding";
 
 const advisors = [
     {
-        initials: "DM",
-        name: "Diego Moscol V.",
+        initials: "BD",
+        name: "Bratfor Deudor N.",
         role: "Asesor Comercial",
         specialty: "Bodegas y Minimarkets",
         from: "#673AB7",
         to: "#9C27B0",
-        msg: "Hola Diego, me interesa Falconext para mi bodega/minimarket. ¿Me puedes dar más información?",
+        msg: `Hola Diego, me interesa ${BRAND.name} para mi bodega/minimarket. ¿Me puedes dar más información?`,
     },
     {
-        initials: "AL",
-        name: "Ana L.",
+        initials: "YG",
+        name: "Yan Gamonal S.",
         role: "Asesora Comercial",
         specialty: "Farmacias y Boticas",
         from: "#6366f1",
         to: "#8b5cf6",
-        msg: "Hola Ana, me interesa Falconext para mi farmacia/botica. ¿Me puedes dar más información?",
+        msg: `Hola Ana, me interesa ${BRAND.name} para mi farmacia/botica. ¿Me puedes dar más información?`,
     },
     {
         initials: "DO",
@@ -27,16 +28,16 @@ const advisors = [
         specialty: "Ferreterías y Distribuidoras",
         from: "#0284c7",
         to: "#6366f1",
-        msg: "Hola Diego, me interesa Falconext para mi ferretería. ¿Me puedes dar más información?",
+        msg: `Hola Diego, me interesa ${BRAND.name} para mi ferretería. ¿Me puedes dar más información?`,
     },
     {
-        initials: "MV",
-        name: "María V.",
+        initials: "MS",
+        name: "Moroni S.",
         role: "Asesora Comercial",
         specialty: "Restaurantes y Servicios",
         from: "#7c3aed",
         to: "#db2777",
-        msg: "Hola María, me interesa Falconext para mi restaurante/negocio de servicios. ¿Me puedes dar más información?",
+        msg: `Hola María, me interesa ${BRAND.name} para mi restaurante/negocio de servicios. ¿Me puedes dar más información?`,
     },
 ];
 
@@ -76,7 +77,7 @@ const Advisors = () => {
                                 </span>
                             </div>
                             <a
-                                href={`https://wa.me/51932332556?text=${encodeURIComponent(advisor.msg)}`}
+                                href={`https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(advisor.msg)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="mt-auto w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#20bd5a] transition-colors"
@@ -91,12 +92,12 @@ const Advisors = () => {
                 <p className="mt-8 text-center text-xs text-gray-400 dark:text-gray-500">
                     También puedes escribirnos directo al{" "}
                     <a
-                        href="https://wa.me/51932332556"
+                        href={`https://wa.me/${BRAND.whatsapp}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[#25D366] hover:underline font-medium"
                     >
-                        +51 991 065 217
+                        {BRAND.phone}
                     </a>
                 </p>
             </div>

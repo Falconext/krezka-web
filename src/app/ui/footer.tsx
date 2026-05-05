@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import logowhite from '../../../public/assets/logowhite.png';
+import { BRAND } from "@/lib/branding";
 import { ArrowRight } from 'lucide-react';
 
 const footerColumns = [
@@ -52,7 +52,7 @@ const footerColumns = [
         links: [
             { label: 'Centro de Ayuda', href: '#' },
             { label: 'Contacto', href: '#' },
-            { label: 'WhatsApp Soporte', href: 'https://wa.me/51932332556' },
+            { label: 'WhatsApp Soporte', href: `https://wa.me/${BRAND.whatsapp}` },
             { label: 'Términos de Uso', href: '#' },
             { label: 'Política de Privacidad', href: '#' },
         ],
@@ -60,10 +60,10 @@ const footerColumns = [
 ];
 
 const socialLinks = [
-    { icon: "mdi:twitter", label: "Twitter", href: "#" },
-    { icon: "mdi:instagram", label: "Instagram", href: "https://www.instagram.com/falconext.pe/" },
-    { icon: "mdi:linkedin", label: "LinkedIn", href: "#" },
-    { icon: "mdi:facebook", label: "Facebook", href: "https://www.facebook.com/profile.php?id=61576185915016" },
+    { icon: "mdi:twitter", label: "Twitter", href: BRAND.socials.twitter || "#" },
+    { icon: "mdi:instagram", label: "Instagram", href: BRAND.socials.instagram || "#" },
+    { icon: "mdi:linkedin", label: "LinkedIn", href: BRAND.socials.linkedin || "#" },
+    { icon: "mdi:facebook", label: "Facebook", href: BRAND.socials.facebook || "#" },
     { icon: "mdi:youtube", label: "YouTube", href: "#" },
 ];
 
@@ -102,8 +102,8 @@ const Footer = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     access_key: "9e8b5b39-7603-4a4c-90d7-1976f8d968d4",
-                    subject: `Nuevo mensaje de suscripcion - Falconext`,
-                    from_name: "Suscripcion de Falconext",
+                    subject: `Nuevo mensaje de suscripcion - ${BRAND.name}`,
+                    from_name: `Suscripcion de ${BRAND.name}`,
                     reply_to: formValues.email,
                 }),
             });
@@ -138,7 +138,7 @@ const Footer = () => {
                     {/* Left: Brand + newsletter */}
                     <div className="flex flex-col gap-6">
                         <Link href="/" className="flex items-center gap-3">
-                            <Image src={logowhite} width={1000} height={1000} alt="Falconext" className="w-48 h-14 object-contain" />
+                            <Image src={BRAND.logoWhite} width={1000} height={1000} alt={BRAND.name} className="w-48 h-14 object-contain" />
                         </Link>
                         <Link
                             href="/tienda"
@@ -220,7 +220,7 @@ const Footer = () => {
                 {/* Bottom bar */}
                 <div className="pt-7 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-[#555870] text-[12px]">
-                        Falconext © {new Date().getFullYear()} | Todos los derechos reservados.
+                        {BRAND.name} © {new Date().getFullYear()} | Todos los derechos reservados.
                     </p>
                     <div className="flex flex-wrap items-center gap-5">
                         {legalLinks.map((item) => (

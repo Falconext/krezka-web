@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Twitter, Instagram, Linkedin, Youtube, ArrowRight } from 'lucide-react';
+import { BRAND } from '@/lib/branding';
 
 const footerLinks = [
   {
@@ -38,8 +39,8 @@ const Footer = () => {
           {/* Left: Brand */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-3">
-              <img src="/assets/logo.png" alt="Falconext" className="h-9 w-auto brightness-200" />
-              <span className="text-white font-black text-xl tracking-tight">FALCONEXT</span>
+              <img src={BRAND.logo} alt={BRAND.name} className="h-9 w-auto brightness-200" />
+              <span className="text-white font-black text-xl tracking-tight">{BRAND.name.toUpperCase()}</span>
             </Link>
 
             <p className="text-[#8b8fa8] text-[14px] leading-[1.7] max-w-[240px]">
@@ -103,7 +104,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-7 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[#555870] text-[12px]">
-            Falconext © {new Date().getFullYear()} | Todos los derechos reservados.
+            {BRAND.name} © {new Date().getFullYear()} | Todos los derechos reservados.
           </p>
 
           <div className="flex flex-wrap items-center gap-5">

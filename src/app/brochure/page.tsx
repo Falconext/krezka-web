@@ -1,7 +1,7 @@
 'use client';
 import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star } from "lucide-react";
 
-const BRAND = { name: "KREZKA", web: "www.krezka.com", email: "soporte@krezka.com", wa: "https://wa.me/51932332556" };
+const BRAND = { name: "KREZKA", web: "www.krezka.com", email: "ventas@krezka.com", wa: "https://wa.me/51932332556" };
 
 const plans = [
   { id:"p1", name:"Principiante", badge:"Entrada", tagline:"Ideal para emprendedores que arrancan.", docs:"100 comp/mes", monthly:19.9, annual:238.8, reg:29.9, color:"#6366F1", light:"#EEF2FF", users:"1 usuario", sedes:"1 sede", roles:false, compras:false, caja:false, reportes:false, delivery:false, api:false, soporte:"Estándar", marks:["Facturación electrónica","30 días de acompañamiento","Reportes básicos","Onboarding guiado"] },

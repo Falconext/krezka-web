@@ -7,6 +7,7 @@ import { IThemeState, useThemeStore } from "./zustand/theme";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { usePathname } from "next/navigation";
 import Alert from "./components/Alert";
+import { BRAND } from "@/lib/branding";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
 
@@ -37,7 +38,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             <Alert />
             <div className="fixed right-5 bottom-5 z-50 md:right-10 md:bottom-10 cursor-pointer ">
                 <a
-                    href="https://wa.me/51932332556?text=Hola%20quiero%20más%20información%20sobre%20sus%20servicios"
+                    href={`https://wa.me/${BRAND.whatsapp}?text=Hola%20quiero%20más%20información%20sobre%20sus%20servicios`}
                     target="_blank"
                     rel="noopener noreferrer"
                 >

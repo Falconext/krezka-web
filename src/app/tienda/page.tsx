@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Search, SlidersHorizontal, ChevronDown, Check, LayoutGrid, List, X, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 import { useCartStore } from '@/store/cartStore';
+import { BRAND } from '@/lib/branding';
 
 type StoreProduct = {
   id: number;
@@ -134,7 +135,7 @@ export default function TiendaPage() {
             <h1 className="text-3xl font-black tracking-tight text-[#111827] mb-2">
               Hardware y Equipos
             </h1>
-            <p className="text-[#6b7280] text-sm">Mostrando el catálogo oficial de Falconext.</p>
+            <p className="text-[#6b7280] text-sm">Mostrando el catálogo oficial de {BRAND.name}.</p>
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#eff6ff] text-[#3b82f6] text-[11px] font-bold uppercase tracking-widest border border-blue-100">
             <Zap size={14} className="stroke-[2.5]" /> Tienda Oficial
@@ -328,10 +329,10 @@ export default function TiendaPage() {
                       >
                         <Link href={`/tienda/${product.id}`} className="relative w-full sm:w-48 h-48 bg-[#f8fafc] rounded-xl shrink-0 p-4 flex items-center justify-center cursor-pointer group-hover:bg-blue-50 transition-colors">
                           {discount && <span className="absolute top-2 left-2 px-2 py-1 bg-[#be185d] text-white text-[10px] font-bold rounded shadow-sm z-10">{discount}% desc.</span>}
-                          {product.imageUrl ? <img src={product.imageUrl} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform" /> : <img src="/assets/logo.png" className="w-12 h-12 object-contain opacity-10" />}
+                          {product.imageUrl ? <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500" /> : <img src={BRAND.logo} alt={BRAND.name} className="w-16 h-16 object-contain opacity-10 group-hover:scale-110 transition-transform duration-500" />}
                         </Link>
                         <div className="flex-1 flex flex-col items-start w-full">
-                          <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1.5">{product.category || 'Falconext'}</span>
+                          <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1.5">{product.category || BRAND.name}</span>
                           <Link href={`/tienda/${product.id}`} className="text-[18px] font-bold text-[#111827] mb-2 hover:text-blue-600 transition-colors">{product.name}</Link>
                           {product.description && <p className="text-sm text-gray-500 line-clamp-2 mb-4" dangerouslySetInnerHTML={{__html: product.description}}></p>}
                           <div className="flex items-center gap-3 mb-4">
@@ -380,12 +381,12 @@ export default function TiendaPage() {
                         {discount && <span className="absolute top-11 left-4 px-2 py-1 bg-[#be185d] text-white text-[11px] font-bold tracking-wide rounded-[3px] shadow-sm z-10">{discount}% desc.</span>}
                         {!discount && product.badge && <span className="absolute top-11 left-4 px-2 py-1 bg-[#3b82f6] text-white text-[11px] font-bold tracking-wide rounded-[3px] shadow-sm z-10">{product.badge}</span>}
                         <Link href={`/tienda/${product.id}`} className="w-full h-full cursor-pointer flex items-center justify-center">
-                          {product.imageUrl ? <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500" /> : <img src="/assets/logo.png" alt="Falconext" className="w-16 h-16 object-contain opacity-10 group-hover:scale-110 transition-transform duration-500" />}
+                          {product.imageUrl ? <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500" /> : <img src={BRAND.logo} alt={BRAND.name} className="w-16 h-16 object-contain opacity-10 group-hover:scale-110 transition-transform duration-500" />}
                         </Link>
                       </div>
 
                       <div className="flex flex-col flex-1 p-5 text-left bg-white">
-                        <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1.5">{product.category || 'Falconext'}</span>
+                        <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1.5">{product.category || BRAND.name}</span>
                         <Link href={`/tienda/${product.id}`} className="text-[15px] font-bold text-[#111827] mb-4 leading-snug line-clamp-2 min-h-[44px] group-hover:text-[#3b82f6] transition-colors">{product.name}</Link>
                         
                         <div className="flex items-end gap-2.5 mb-4">
@@ -444,7 +445,7 @@ export default function TiendaPage() {
                       <button onClick={() => toggleCompare(p)} className="absolute top-3 right-3 text-red-400 hover:text-red-600">
                         <X size={16} />
                       </button>
-                      {p.imageUrl ? <img src={p.imageUrl} className="w-full h-full object-contain mix-blend-multiply" /> : <img src="/assets/logo.png" className="w-16 opacity-10" />}
+                      {p.imageUrl ? <img src={p.imageUrl} className="w-full h-full object-contain mix-blend-multiply" /> : <img src={BRAND.logo} className="w-16 opacity-10" />}
                     </div>
                     <span className="text-xs font-bold text-[#3b82f6] uppercase tracking-wider mb-2">{p.category || 'Producto'}</span>
                     <h3 className="text-lg font-bold text-gray-900 mb-4">{p.name}</h3>
