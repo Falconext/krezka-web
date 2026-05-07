@@ -31,14 +31,14 @@ const footerLinks = [
 const Footer = () => {
   return (
     <footer className="bg-[#0c0a1a] text-white">
-      
+
       {/* Main Footer Body */}
       <div className="max-w-[90rem] mx-auto px-6 lg:px-12 pt-16 pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12 lg:gap-20 pb-12 border-b border-white/10">
 
           {/* Left: Brand */}
           <div className="flex flex-col gap-6">
-            <Link href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3 relative">
               <img src={BRAND.logo} alt={BRAND.name} className="h-9 w-auto brightness-200" />
               <span className="text-white font-black text-xl tracking-tight">{BRAND.name.toUpperCase()}</span>
             </Link>

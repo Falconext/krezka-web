@@ -91,17 +91,14 @@ export default function BrochurePreciosPage() {
                             <table className="w-full table-fixed min-w-[620px]">
                                 <thead>
                                     <tr className="bg-gradient-to-r from-blue-600 to-blue-700">
-                                        <th className="py-3 px-3 text-left text-white font-bold text-xs w-[32%]">
+                                        <th className="py-3 px-3 text-left text-white font-bold text-xs w-[40%]">
                                             Comparación de planes
                                         </th>
                                         <th className="py-3 px-2 text-center text-white font-bold text-xs">
-                                            Principiante
-                                        </th>
-                                        <th className="py-3 px-2 text-center text-white font-bold text-xs">
-                                            Microempresa
+                                            Emprendedor
                                         </th>
                                         <th className="py-3 px-2 text-center text-white font-bold text-xs bg-green-600">
-                                            Emprendedor
+                                            Negocio
                                         </th>
                                         <th className="py-3 px-2 text-center text-white font-bold text-xs">
                                             Corporativo
@@ -111,41 +108,36 @@ export default function BrochurePreciosPage() {
                                 <tbody className="bg-white text-xs">
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Precio mensual</td>
-                                        <td className="py-2 px-2 text-center font-bold text-gray-900">S/ 19.90 + IGV</td>
-                                        <td className="py-2 px-2 text-center font-bold text-gray-900">S/ 29.90 + IGV</td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">S/ 49.90 + IGV</td>
-                                        <td className="py-2 px-2 text-center font-bold text-gray-900">S/ 99.90 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-gray-900">S/ 39.00 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">S/ 79.00 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-gray-900">S/ 149.00 + IGV</td>
                                     </tr>
                                     <tr className="border-b border-gray-200 bg-gray-50">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Precio anual</td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700">S/ 238.80 + IGV</td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700">S/ 358.80 + IGV</td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">S/ 598.80 + IGV</td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700">S/ 1198.80 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700">S/ 390.00 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">S/ 790.00 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700">S/ 1490.00 + IGV</td>
                                     </tr>
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 text-gray-900">
                                             <div className="font-semibold">Comprobantes/mes</div>
                                             <div className="text-[10px] text-gray-500">Boletas y facturas electrónicas</div>
                                         </td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">100</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">300</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">700</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">1200</td>
+                                        <td className="py-2 px-2 text-center font-bold text-emerald-600">ILIMITADOS</td>
+                                        <td className="py-2 px-2 text-center font-bold text-emerald-600 bg-green-50">ILIMITADOS</td>
+                                        <td className="py-2 px-2 text-center font-bold text-emerald-600">ILIMITADOS</td>
                                     </tr>
                                     <tr className="border-b border-gray-200 bg-gray-50">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Usuarios</td>
                                         <td className="py-2 px-2 text-center font-semibold text-gray-900">1</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">2</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">4</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">8</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">3</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">Ilimitados</td>
                                     </tr>
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Sedes</td>
                                         <td className="py-2 px-2 text-center font-semibold text-gray-900">1</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">1</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">2</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">4</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">Ilimitadas</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">Ilimitadas</td>
                                     </tr>
                                     <tr className="border-b border-gray-200 bg-gray-50">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Inventario + Kardex</td>
@@ -157,27 +149,23 @@ export default function BrochurePreciosPage() {
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Compras y gastos</td>
                                         <td className="py-2 px-2 text-center text-gray-500">No</td>
-                                        <td className="py-2 px-2 text-center text-gray-500">No</td>
                                         <td className="py-2 px-2 text-center bg-green-50"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                         <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                     </tr>
                                     <tr className="border-b border-gray-200 bg-gray-50">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Caja y movimientos</td>
                                         <td className="py-2 px-2 text-center text-gray-500">No</td>
-                                        <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                         <td className="py-2 px-2 text-center bg-green-50"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                         <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                     </tr>
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Tienda virtual</td>
                                         <td className="py-2 px-2 text-center text-emerald-700 font-semibold">Incluida</td>
-                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold">Incluida</td>
                                         <td className="py-2 px-2 text-center text-emerald-700 font-semibold bg-green-50">Incluida</td>
                                         <td className="py-2 px-2 text-center text-emerald-700 font-semibold">Incluida</td>
                                     </tr>
                                     <tr className="bg-gray-50">
                                         <td className="py-2 px-3 font-semibold text-gray-900 rounded-bl-xl">Soporte</td>
-                                        <td className="py-2 px-2 text-center text-gray-700">Estándar</td>
                                         <td className="py-2 px-2 text-center text-gray-700">Estándar</td>
                                         <td className="py-2 px-2 text-center text-indigo-700 font-semibold bg-green-50">Prioritario</td>
                                         <td className="py-2 px-2 text-center text-indigo-700 font-semibold rounded-br-xl">Prioritario</td>
@@ -273,17 +261,14 @@ export default function BrochurePreciosPage() {
                             <table className="w-full table-fixed min-w-[620px]">
                                 <thead>
                                     <tr className="bg-gradient-to-r from-blue-500 to-cyan-600">
-                                        <th className="py-3 px-4 text-left text-white font-bold text-sm w-[30%]">
+                                        <th className="py-3 px-4 text-left text-white font-bold text-sm w-[40%]">
                                             Comparación de planes
                                         </th>
                                         <th className="py-3 px-3 text-center text-white font-bold text-sm">
-                                            Principiante
+                                            Emprendedor
                                         </th>
                                         <th className="py-3 px-3 text-center text-white font-bold text-sm bg-blue-700">
-                                            Microempresa
-                                        </th>
-                                        <th className="py-3 px-3 text-center text-white font-bold text-sm">
-                                            Emprendedor
+                                            Negocio
                                         </th>
                                         <th className="py-3 px-3 text-center text-white font-bold text-sm">
                                             Corporativo
@@ -300,13 +285,10 @@ export default function BrochurePreciosPage() {
                                             S/ 19.90 + IGV
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-gray-900 bg-blue-50">
-                                            S/ 29.90 + IGV
-                                        </td>
-                                        <td className="py-3 px-3 text-center font-bold text-gray-900">
                                             S/ 49.90 + IGV
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-gray-900">
-                                            S/ 99.90 + IGV
+                                            S/ 89.90 + IGV
                                         </td>
                                     </tr>
 
@@ -316,16 +298,13 @@ export default function BrochurePreciosPage() {
                                             Precio anual
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-green-700">
-                                            S/ 238.80 + IGV
+                                            S/ 199.00 + IGV
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-green-700 bg-blue-50">
-                                            S/ 358.80 + IGV
+                                            S/ 499.00 + IGV
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-green-700">
-                                            S/ 598.80 + IGV
-                                        </td>
-                                        <td className="py-3 px-3 text-center font-bold text-green-700">
-                                            S/ 1198.80 + IGV
+                                            S/ 899.00 + IGV
                                         </td>
                                     </tr>
 
@@ -334,17 +313,14 @@ export default function BrochurePreciosPage() {
                                         <td className="py-3 px-4 font-semibold text-gray-900">
                                             Comprobantes/mes
                                         </td>
-                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">
-                                            100
+                                        <td className="py-3 px-3 text-center font-bold text-emerald-600">
+                                            ILIMITADOS
                                         </td>
-                                        <td className="py-3 px-3 text-center font-semibold text-gray-900 bg-blue-50">
-                                            300
+                                        <td className="py-3 px-3 text-center font-bold text-emerald-600 bg-blue-50">
+                                            ILIMITADOS
                                         </td>
-                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">
-                                            700
-                                        </td>
-                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">
-                                            1200
+                                        <td className="py-3 px-3 text-center font-bold text-emerald-600">
+                                            ILIMITADOS
                                         </td>
                                     </tr>
 
@@ -355,10 +331,9 @@ export default function BrochurePreciosPage() {
                                         </td>
                                         <td className="py-3 px-3 text-center font-semibold text-gray-900">1</td>
                                         <td className="py-3 px-3 text-center font-semibold text-gray-900 bg-blue-50">
-                                            2
+                                            3
                                         </td>
-                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">4</td>
-                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">8</td>
+                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">Ilimitados</td>
                                     </tr>
 
                                     {/* Tienda Virtual */}
@@ -369,7 +344,6 @@ export default function BrochurePreciosPage() {
                                         <td className="py-3 px-3 text-center text-emerald-700 font-semibold">Incluida</td>
                                         <td className="py-3 px-3 text-center text-emerald-700 font-semibold bg-blue-50">Incluida</td>
                                         <td className="py-3 px-3 text-center text-emerald-700 font-semibold">Incluida</td>
-                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold">Incluida</td>
                                     </tr>
 
                                     <tr className="border-b border-gray-200 bg-gray-50">
@@ -378,7 +352,6 @@ export default function BrochurePreciosPage() {
                                         </td>
                                         <td className="py-3 px-3 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                         <td className="py-3 px-3 text-center bg-blue-50"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
-                                        <td className="py-3 px-3 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                         <td className="py-3 px-3 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                     </tr>
 
@@ -389,8 +362,7 @@ export default function BrochurePreciosPage() {
                                         </td>
                                         <td className="py-3 px-3 text-center text-gray-700">Estándar</td>
                                         <td className="py-3 px-3 text-center bg-blue-50 text-gray-700">Estándar</td>
-                                        <td className="py-3 px-3 text-center text-indigo-700 font-semibold">Prioritario</td>
-                                        <td className="py-3 px-3 text-center rounded-br-xl text-indigo-700 font-semibold">Prioritario</td>
+                                        <td className="py-3 px-3 text-center text-indigo-700 font-semibold rounded-br-xl">Prioritario</td>
                                     </tr>
                                 </tbody>
                             </table>

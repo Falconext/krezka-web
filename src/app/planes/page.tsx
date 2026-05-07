@@ -14,64 +14,34 @@ type CommercialPlan = {
 
 const commercialPlaybook: CommercialPlan[] = [
     {
-        plan: "Start 100",
-        comprobantesMes: 100,
-        precioMensual: 15,
-        precioAnual: 180,
-        utilidadMeta: 10,
-        tienda: "Incluida",
-        badge: "Entrada",
-        modules: ["Facturación electrónica", "1 usuario admin", "Catálogo simple", "Reporte básico"],
-    },
-    {
-        plan: "Pyme 300",
-        comprobantesMes: 300,
-        precioMensual: 30,
-        precioAnual: 360,
+        plan: "Emprendedor",
+        comprobantesMes: 0, // 0 will be handled as Unlimited in the UI
+        precioMensual: 19.90,
+        precioAnual: 199,
         utilidadMeta: 15,
         tienda: "Incluida",
-        badge: "Crecimiento",
-        modules: ["Clientes y proveedores", "Cotizaciones", "Reportes mensuales", "Exportación Excel/CSV"],
+        badge: "Entrada",
+        modules: ["Facturación electrónica ILIMITADA", "1 usuario / 1 sede", "Catálogo simple", "Gestión de clientes"],
     },
     {
-        plan: "Pro 500",
-        comprobantesMes: 500,
-        precioMensual: 45,
-        precioAnual: 540,
-        utilidadMeta: 20,
-        tienda: "Incluida",
-        badge: "Upsell",
-        modules: ["Inventario + kardex", "Compras/gastos", "Caja y movimientos", "Control operativo"],
-    },
-    {
-        plan: "Negocio 600",
-        comprobantesMes: 600,
-        precioMensual: 55,
-        precioAnual: 660,
-        utilidadMeta: 25,
+        plan: "Negocio",
+        comprobantesMes: 0,
+        precioMensual: 49.90,
+        precioAnual: 499,
+        utilidadMeta: 40,
         tienda: "Incluida",
         badge: "Recomendado",
-        modules: ["2 sedes", "Multiusuario + roles", "Dashboard rentabilidad", "Soporte prioritario"],
+        modules: ["Kardex avanzado (Stock)", "3 usuarios / sedes ilimitadas", "App Mobile Pro", "Control operativo total"],
     },
     {
-        plan: "Escala 800",
-        comprobantesMes: 800,
-        precioMensual: 70,
-        precioAnual: 840,
-        utilidadMeta: 30,
-        tienda: "Incluida",
-        badge: "Escalamiento",
-        modules: ["Tienda online", "Pasarela de pago", "Delivery/recojo", "Campañas comerciales"],
-    },
-    {
-        plan: "Avanzado 1200",
-        comprobantesMes: 1200,
-        precioMensual: 95,
-        precioAnual: 1140,
-        utilidadMeta: 35,
+        plan: "Corporativo",
+        comprobantesMes: 0,
+        precioMensual: 89.90,
+        precioAnual: 899,
+        utilidadMeta: 75,
         tienda: "Incluida",
         badge: "Premium",
-        modules: ["Más sedes y usuarios", "Integraciones/API", "Reportes avanzados", "Auditoría operativa"],
+        modules: ["Multi-RUC (Hasta 3 empresas)", "Usuarios ilimitados", "Tienda virtual Pro", "API para integraciones"],
     },
 ];
 
@@ -134,7 +104,9 @@ export default function PlanesPage() {
                             <div className="flex items-start justify-between gap-3 mb-3">
                                 <div>
                                     <h2 className="text-lg font-bold text-slate-900">{item.plan}</h2>
-                                    <p className="text-xs text-slate-500">{item.comprobantesMes} comprobantes por mes</p>
+                                    <p className="text-xs text-slate-500">
+                                        {item.comprobantesMes === 0 ? "Facturación ILIMITADA" : `${item.comprobantesMes} comprobantes por mes`}
+                                    </p>
                                 </div>
                                 <span className={`rounded-full border px-2.5 py-1 text-[11px] font-bold ${badgeStyle[item.badge]}`}>
                                     {item.badge}

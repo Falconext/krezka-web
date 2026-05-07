@@ -3,11 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { LogIn, ShoppingCart, Phone, Menu } from 'lucide-react';
+import { LogIn, Phone, Menu } from 'lucide-react';
+import { BRAND } from '@/lib/branding';
 
 const Header = () => {
   return (
-    <motion.header 
+    <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200"
@@ -17,8 +18,8 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
-              <img src="/assets/logo.png" alt="Falconext Logo" className="h-10 w-auto" />
-              <span className="text-slate-900 font-bold text-xl tracking-tight">FALCONEXT</span>
+              <img src={BRAND.logo} alt={BRAND.name} className="h-10 w-auto" />
+              <span className="text-slate-900 font-bold text-xl tracking-tight">{BRAND.name.toUpperCase()}</span>
             </Link>
           </div>
 
@@ -39,8 +40,8 @@ const Header = () => {
               <Phone size={18} />
               <span className="text-sm font-medium">Llámanos</span>
             </a>
-            
-            <Link 
+
+            <Link
               href="https://admin.tumi-soft.com/admin/auth" // Placeholder URL del sistema
               className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full transition-all shadow-lg shadow-blue-600/20 text-sm font-bold"
             >

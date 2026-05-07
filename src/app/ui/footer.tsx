@@ -137,7 +137,7 @@ const Footer = () => {
 
                     {/* Left: Brand + newsletter */}
                     <div className="flex flex-col gap-6">
-                        <Link href="/" className="flex items-center gap-3">
+                        <Link href="/" className="flex items-center gap-3 relative left-[-18px]">
                             <Image src={BRAND.logoWhite} width={1000} height={1000} alt={BRAND.name} className="w-48 h-14 object-contain" />
                         </Link>
                         <Link

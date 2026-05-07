@@ -6,67 +6,55 @@ import { Check, ArrowRight } from 'lucide-react';
 
 const plans = [
   {
-    name: "Tumi Gratis",
-    price: "0",
+    name: "Emprendedor",
+    price: "19.90",
     period: "mes",
-    description: "Ideal para emprendedores.",
+    description: "Formalización electrónica sin límites.",
     popular: false,
     color: "bg-white/5",
     features: [
-      "50 comprobantes mensuales",
-      "Notas de venta ilimitadas",
-      "1 licencia para gestión",
-      "Hasta 500 productos",
-      "Acceso web y móvil",
-      "Certificado Digital PSE"
+      "Facturación Electrónica ILIMITADA",
+      "Certificado Digital PSE Incluido",
+      "1 Usuario / 1 Sede",
+      "Gestión de Clientes y Productos",
+      "Reportes de Ventas",
+      "Boletas, Facturas y Notas",
+      "Soporte por Chat"
     ]
   },
   {
-    name: "Tumi Despegar",
-    price: "49",
+    name: "Negocio",
+    price: "49.90",
     period: "mes",
-    description: "Para negocios con ritmo.",
+    description: "Control total de stock y ventas.",
     popular: true,
     color: "bg-white/10",
     features: [
-      "100 comprobantes mensuales",
-      "Notas de venta ilimitadas",
-      "Licencia Admin + Vendedor",
-      "Hasta 1,500 productos",
-      "Soporte por teléfono y chat",
-      "Certificado Digital PSE"
+      "Facturación Electrónica ILIMITADA",
+      "Certificado Digital PSE Incluido",
+      "3 Usuarios / Sedes Ilimitadas",
+      "Kardex Avanzado (Stock)",
+      "Acceso a la App Mobile Pro",
+      "Catálogo PDF Automático",
+      "Control de Cajas y Gastos",
+      "Soporte Prioritario"
     ]
   },
   {
-    name: "Tumi Power",
-    price: "100",
+    name: "Corporativo",
+    price: "89.90",
     period: "mes",
-    description: "Crecimiento acelerado.",
+    description: "Para empresas multi-negocio.",
     popular: false,
     color: "bg-white/5",
     features: [
-      "Comprobantes ILIMITADOS",
-      "Notas de venta ilimitadas",
-      "5 licencias operativas",
-      "Hasta 6,000 productos",
-      "Apertura y cierre de caja",
-      "Soporte por teléfono y chat"
-    ]
-  },
-  {
-    name: "Tumi Full",
-    price: "1416",
-    period: "anual",
-    description: "Para negocios en expansión.",
-    popular: false,
-    color: "bg-white/5",
-    features: [
-      "Comprobantes ILIMITADOS",
-      "Notas de venta ilimitadas",
-      "Productos ilimitados",
-      "Manejo de múltiples RUCs",
-      "Opción de Holding",
-      "Gestión de restaurantes"
+      "Facturación Electrónica ILIMITADA",
+      "Usuarios ILIMITADOS",
+      "Multi-RUC (Hasta 3 empresas)",
+      "Tienda Virtual Pro Integrada",
+      "Guías de Remisión Electrónicas",
+      "API para Integraciones",
+      "Asesor Personal Dedicado"
     ]
   }
 ];
@@ -90,7 +78,7 @@ const Pricing = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-8">
           {plans.map((plan, index) => (
             <motion.div
               key={index}

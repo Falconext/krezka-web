@@ -1,13 +1,12 @@
 'use client';
 import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star } from "lucide-react";
 
-const BRAND = { name: "KREZKA", web: "www.krezka.com", email: "ventas@krezka.com", wa: "https://wa.me/51932332556" };
+const BRAND = { name: "FALCONEXT", web: "www.falconext.pe", email: "soporte@falconext.pe", wa: "https://wa.me/51932332556" };
 
 const plans = [
-  { id:"p1", name:"Principiante", badge:"Entrada", tagline:"Ideal para emprendedores que arrancan.", docs:"100 comp/mes", monthly:19.9, annual:238.8, reg:29.9, color:"#6366F1", light:"#EEF2FF", users:"1 usuario", sedes:"1 sede", roles:false, compras:false, caja:false, reportes:false, delivery:false, api:false, soporte:"Estándar", marks:["Facturación electrónica","30 días de acompañamiento","Reportes básicos","Onboarding guiado"] },
-  { id:"p2", name:"Microempresa", badge:"Crecimiento", tagline:"Para negocios con caja y clientes frecuentes.", docs:"300 comp/mes", monthly:29.9, annual:358.8, reg:39.9, color:"#0EA5E9", light:"#F0F9FF", users:"2 usuarios", sedes:"1 sede", roles:false, compras:false, caja:true, reportes:false, delivery:false, api:false, soporte:"Estándar", marks:["Clientes y proveedores","Cotizaciones","Caja y movimientos","1 asesor asignado"] },
-  { id:"p3", name:"Emprendedor", badge:"Popular", tagline:"Equipos que necesitan inventario y roles.", docs:"700 comp/mes", monthly:49.9, annual:598.8, reg:69.9, color:"#8B5CF6", light:"#F5F3FF", users:"4 usuarios", sedes:"2 sedes", roles:true, compras:true, caja:true, reportes:true, delivery:false, api:false, soporte:"Prioritario", popular:true, marks:["Inventario + kardex","Compras y gastos","Roles por usuario","Reportes gerenciales"] },
-  { id:"p4", name:"Corporativo", badge:"Recomendado", tagline:"Multi-sede y alto volumen operativo.", docs:"1200 comp/mes", monthly:99.9, annual:1198.8, reg:139.9, color:"#10B981", light:"#F0FDF4", users:"8 usuarios", sedes:"4 sedes", roles:true, compras:true, caja:true, reportes:true, delivery:true, api:true, soporte:"Prioritario", marks:["Tienda virtual incluida","Delivery y pasarela","Integraciones / API","Auditoría operativa"] },
+  { id:"p1", name:"Emprendedor", badge:"Entrada", tagline:"Formalización electrónica sin límites.", docs:"ILIMITADOS", monthly:19.9, annual:199.0, reg:29.9, color:"#6366F1", light:"#EEF2FF", users:"1 usuario", sedes:"1 sede", roles:false, compras:false, caja:true, reportes:true, delivery:false, api:false, soporte:"Estándar", marks:["Facturación ILIMITADA","Certificado Digital Incluido","Gestión de productos","Boletas y Facturas"] },
+  { id:"p2", name:"Negocio", badge:"Popular", tagline:"Control total de stock y ventas.", docs:"ILIMITADOS", monthly:49.9, annual:499.0, reg:69.9, color:"#8B5CF6", light:"#F5F3FF", users:"3 usuarios", sedes:"Ilimitadas", roles:true, compras:true, caja:true, reportes:true, delivery:true, api:false, soporte:"Prioritario", popular:true, marks:["Kardex avanzado (Stock)","App Mobile Pro","Catálogo PDF Automático","Control de Cajas"] },
+  { id:"p3", name:"Corporativo", badge:"Recomendado", tagline:"Para empresas multi-negocio.", docs:"ILIMITADOS", monthly:89.9, annual:899.0, reg:129.9, color:"#10B981", light:"#F0FDF4", users:"Ilimitados", sedes:"Ilimitadas", roles:true, compras:true, caja:true, reportes:true, delivery:true, api:true, soporte:"Prioritario", marks:["Multi-RUC (3 empresas)","Tienda Virtual Pro","Integraciones / API","Asesor Dedicado"] },
 ] as const;
 
 const Tick = ({ok,color}:{ok:boolean;color:string}) => ok
@@ -62,7 +61,7 @@ export default function BrochurePage() {
               Facturación electrónica SUNAT, inventario, caja, tienda virtual y más — todo en una sola plataforma.
             </p>
             <div className="flex gap-8 pt-2">
-              {[{v:"4",l:"Planes"},{v:"8+",l:"Módulos"},{v:"24h",l:"Activación"},{v:"100%",l:"Cloud"}].map(s=>(
+              {[{v:"3",l:"Planes"},{v:"8+",l:"Módulos"},{v:"24h",l:"Activación"},{v:"100%",l:"Cloud"}].map(s=>(
                 <div key={s.l}>
                   <div className="text-2xl font-black text-white">{s.v}</div>
                   <div className="text-white/35 text-[10px] uppercase tracking-wider mt-0.5">{s.l}</div>
@@ -161,7 +160,7 @@ export default function BrochurePage() {
           </div>
 
           <div className="flex-1 overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
-            <div className="grid text-white text-[11px] font-bold" style={{gridTemplateColumns:'1.9fr 1fr 1fr 1fr 1fr'}}>
+            <div className="grid text-white text-[11px] font-bold" style={{gridTemplateColumns:'1.9fr 1fr 1fr 1fr'}}>
               <div className="bg-[#080B14] px-4 py-3 rounded-tl-2xl">Funcionalidad</div>
               {plans.map(p=><div key={p.id} className="py-3 px-2 text-center text-[10px]" style={{background:p.color}}>{p.name}</div>)}
             </div>
@@ -178,7 +177,7 @@ export default function BrochurePage() {
               {label:"Integraciones / API",vals:plans.map(p=>p.api)},
               {label:"Soporte",           vals:plans.map(p=>p.soporte)},
             ].map((row,i)=>(
-              <div key={row.label} className={`grid items-center border-b border-gray-50 ${i%2===0?'bg-white':'bg-gray-50/50'}`} style={{gridTemplateColumns:'1.9fr 1fr 1fr 1fr 1fr'}}>
+              <div key={row.label} className={`grid items-center border-b border-gray-50 ${i%2===0?'bg-white':'bg-gray-50/50'}`} style={{gridTemplateColumns:'1.9fr 1fr 1fr 1fr'}}>
                 <div className="px-4 py-2.5 text-[11px] font-semibold text-gray-700">{row.label}</div>
                 {row.vals.map((val,j)=>(
                   <div key={j} className="flex items-center justify-center py-2.5">

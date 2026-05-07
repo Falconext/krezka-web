@@ -27,11 +27,11 @@ export async function generateMetadata(): Promise<Metadata> {
     publisher: BRAND.name,
     icons: {
       icon: [
-        { url: BRAND.logo, sizes: '32x32', type: 'image/png' },
-        { url: BRAND.logo, sizes: '192x192', type: 'image/png' },
+        { url: '/assets/krezka/krezkalogo.png', sizes: '32x32', type: 'image/png' },
+        { url: '/assets/krezka/krezkalogo.png', sizes: '192x192', type: 'image/png' },
       ],
       apple: [
-        { url: BRAND.logo, sizes: '180x180', type: 'image/png' },
+        { url: '/assets/krezka/krezkalogo.png', sizes: '180x180', type: 'image/png' },
       ],
     },
     manifest: '/manifest.json',
@@ -89,7 +89,7 @@ export default function RootLayout({
     },
     "description": `Sistema de facturación electrónica SUNAT para PYMES en Perú. Emite boletas, facturas y controla tu inventario.`,
     "url": BRAND.website,
-    "logo": `${BRAND.website}${BRAND.logo}`,
+    "logo": `${BRAND.website}/assets/krezka/krezkalogo.png`,
     "sameAs": [
       BRAND.socials.facebook,
       BRAND.socials.instagram
@@ -101,7 +101,7 @@ export default function RootLayout({
     "@type": "Organization",
     "name": BRAND.name,
     "url": BRAND.website,
-    "logo": `${BRAND.website}${BRAND.logo}`,
+    "logo": `${BRAND.website}/assets/krezka/krezkalogo.png`,
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": BRAND.phone,

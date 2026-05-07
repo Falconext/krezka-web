@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import fnlogo from '@/app/public/assets/logo.png';
+import { BRAND } from '@/lib/branding';
 import { useEffect } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 
@@ -26,8 +26,8 @@ export default function Navbar() {
                 <div className="flex items-center justify-between px-6 py-4 rounded-2xl bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/10 shadow-lg transition-colors duration-300">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-                        <Image src={fnlogo} alt="Falconext Logo" width={32} height={32} className="w-8 h-8" />
-                        <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white transition-colors">Falconext</span>
+                        <Image src={BRAND.logo} alt={BRAND.name} width={100} height={40} className="w-auto h-8 object-contain" />
+                        <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white transition-colors">{BRAND.name}</span>
                     </Link>
 
                     {/* Desktop Links */}

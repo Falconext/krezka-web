@@ -17,56 +17,43 @@ type ProPlan = {
 
 const proPlans: ProPlan[] = [
     {
-        id: "plan-19",
-        name: "Principiante",
-        docs: "100 comprobantes/mes",
-        monthly: 19.9,
-        annual: 238.8,
+        id: "plan-emprendedor",
+        name: "Emprendedor",
+        docs: "Facturación ILIMITADA",
+        monthly: 19.90,
+        annual: 199.0,
         regularMonthly: 29.9,
-        utility: "Plan base para iniciar ordenadamente",
+        utility: "Plan base para formalización total",
         store: "Incluye tienda virtual",
         badge: "Entrada",
         tagline: "Ideal para emprendedores que arrancan su operación digital.",
-        highlights: ["Facturación electrónica", "30 días de acompañamiento", "Reportes básicos", "Onboarding guiado"],
+        highlights: ["Facturación ILIMITADA", "Certificado Digital Incluido", "1 Usuario / 1 Sede", "Gestión de productos"],
     },
     {
-        id: "plan-29",
-        name: "Microempresa",
-        docs: "300 comprobantes/mes",
-        monthly: 29.9,
-        annual: 358.8,
-        regularMonthly: 39.9,
-        utility: "Más control para operaciones en crecimiento",
-        store: "Incluye tienda virtual",
-        badge: "Crecimiento",
-        tagline: "Para negocios con más ventas, clientes frecuentes y caja diaria.",
-        highlights: ["Clientes y proveedores", "Cotizaciones", "Caja y movimientos", "1 asesor asignado"],
-    },
-    {
-        id: "plan-49",
-        name: "Emprendedor",
-        docs: "700 comprobantes/mes",
-        monthly: 49.9,
-        annual: 598.8,
+        id: "plan-negocio",
+        name: "Negocio",
+        docs: "Facturación ILIMITADA",
+        monthly: 49.90,
+        annual: 499.0,
         regularMonthly: 69.9,
-        utility: "Escalamiento comercial con mejor productividad",
-        store: "Incluye tienda virtual",
-        badge: "Upsell",
-        tagline: "Equipos que necesitan compras, inventario y gestión por roles.",
-        highlights: ["Inventario + kardex", "Compras y gastos", "Roles por usuario", "Reportes gerenciales"],
-    },
-    {
-        id: "plan-99",
-        name: "Corporativo",
-        docs: "1200 comprobantes/mes",
-        monthly: 99.9,
-        annual: 1198.8,
-        regularMonthly: 139.9,
-        utility: "Máxima cobertura para equipos multi-sede",
+        utility: "Control avanzado de stock y ventas",
         store: "Incluye tienda virtual",
         badge: "Recomendado",
+        tagline: "Para negocios con movimiento diario y necesidad de control.",
+        highlights: ["Kardex avanzado (Stock)", "3 Usuarios / Sedes ilimitadas", "App Mobile Pro", "Soporte prioritario"],
+    },
+    {
+        id: "plan-corporativo",
+        name: "Corporativo",
+        docs: "Facturación ILIMITADA",
+        monthly: 89.90,
+        annual: 899.0,
+        regularMonthly: 129.9,
+        utility: "Máxima cobertura multi-empresa",
+        store: "Incluye tienda virtual",
+        badge: "Premium",
         tagline: "Pensado para empresas con varias sedes y mayor volumen operativo.",
-        highlights: ["Tienda virtual incluida", "Delivery y pasarela", "Integraciones/API", "Auditoría operativa"],
+        highlights: ["Multi-RUC (3 empresas)", "Usuarios ILIMITADOS", "Tienda virtual Pro", "Integraciones / API"],
     },
 ];
 
@@ -87,23 +74,8 @@ type Capability = {
 };
 
 const proPlanCapabilities: Record<string, Capability> = {
-    "plan-19": {
+    "plan-emprendedor": {
         users: "1 usuario",
-        sedes: "1 sede",
-        roles: false,
-        inventoryAdvanced: true,
-        compras: false,
-        caja: false,
-        reportesGerenciales: false,
-        tienda: "included",
-        delivery: false,
-        integraciones: false,
-        auditoria: false,
-        soporte: "standard",
-        onboarding: "Activación en 24h",
-    },
-    "plan-29": {
-        users: "2 usuarios",
         sedes: "1 sede",
         roles: false,
         inventoryAdvanced: true,
@@ -117,24 +89,24 @@ const proPlanCapabilities: Record<string, Capability> = {
         soporte: "standard",
         onboarding: "Activación en 24h",
     },
-    "plan-49": {
-        users: "4 usuarios",
-        sedes: "2 sedes",
+    "plan-negocio": {
+        users: "3 usuarios",
+        sedes: "Ilimitadas",
         roles: true,
         inventoryAdvanced: true,
         compras: true,
         caja: true,
         reportesGerenciales: true,
         tienda: "included",
-        delivery: false,
+        delivery: true,
         integraciones: false,
         auditoria: false,
         soporte: "priority",
-        onboarding: "Asesor dedicado",
+        onboarding: "Activación inmediata",
     },
-    "plan-99": {
-        users: "8 usuarios",
-        sedes: "4 sedes",
+    "plan-corporativo": {
+        users: "Ilimitados",
+        sedes: "Ilimitadas",
         roles: true,
         inventoryAdvanced: true,
         compras: true,
@@ -145,7 +117,7 @@ const proPlanCapabilities: Record<string, Capability> = {
         integraciones: true,
         auditoria: true,
         soporte: "priority",
-        onboarding: "Project manager dedicado",
+        onboarding: "Asesor dedicado",
     },
 };
 type BadgeVariant = "included" | "addon" | "none" | "priority" | "standard";
@@ -306,7 +278,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     </p>
                     <div className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-semibold text-emerald-700">
                         <span className="text-lg">🏆</span>
-                        El plan más accesible del mercado — desde S/19.90/mes
+                        Facturación ILIMITADA en todos los planes — desde S/ 19.90/mes
                     </div>
                     <a
                         href={generalWhatsappLink}
@@ -329,22 +301,22 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 flex">
                     {proPlans.map((plan) => (
                         <article
                             key={plan.id}
                             className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg transition-all"
                         >
-                            <div className="flex items-start justify-between gap-3">
-                                <div>
-                                    <p className="text-xs uppercase text-gray-500">{plan.docs}</p>
-                                    <h3 className="mt-1 text-2xl font-semibold text-gray-900">{plan.name}</h3>
-                                </div>
-                                <span className="rounded-full border border-gray-200 px-3 py-1 text-xs font-semibold text-gray-600">
+                            <div className="flex flex-col items-center justify-center text-center gap-2">
+                                <span className="rounded-full border border-gray-200 px-3 py-1 text-[10px] font-bold uppercase text-gray-500 tracking-wider">
                                     {plan.badge}
                                 </span>
+                                <div className="space-y-1">
+                                    <p className="text-[10px] uppercase font-bold text-indigo-600 tracking-widest">{plan.docs}</p>
+                                    <h3 className="text-2xl font-bold text-gray-900">{plan.name}</h3>
+                                </div>
                             </div>
-                            <div className="mt-5 space-y-1">
+                            <div className="mt-5 space-y-1 text-center">
                                 <p className="text-xs uppercase text-gray-500">
                                     Precio regular: <span className="line-through font-semibold text-gray-700">S/ {plan.regularMonthly.toFixed(2)}</span> / mes
                                 </p>
@@ -359,7 +331,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                 <p className="text-xs text-gray-500">
                                     Plan anual: S/ {plan.annual.toFixed(2)} (S/ {(plan.annual / 12).toFixed(2)} al mes) + IGV
                                 </p>
-                                <p className="text-xs text-gray-500">Ideal para: {plan.tagline}</p>
+                                <p className="text-xs text-gray-500">{plan.tagline}</p>
                                 <p className="text-xs font-medium text-emerald-600">{plan.utility}</p>
                             </div>
                             <div className="mt-4 rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-3 text-xs font-semibold text-gray-600">

@@ -15,7 +15,7 @@ const advisors = [
     {
         initials: "YG",
         name: "Yan Gamonal S.",
-        role: "Asesora Comercial",
+        role: "Asesor Comercial",
         specialty: "Farmacias y Boticas",
         from: "#6366f1",
         to: "#8b5cf6",
@@ -33,7 +33,7 @@ const advisors = [
     {
         initials: "MS",
         name: "Moroni S.",
-        role: "Asesora Comercial",
+        role: "Asesor Comercial",
         specialty: "Restaurantes y Servicios",
         from: "#7c3aed",
         to: "#db2777",
