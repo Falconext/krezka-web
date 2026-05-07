@@ -95,9 +95,9 @@ const Hardware = () => {
         {/* Text content */}
         <div className="relative z-10 text-center px-6">
           <h4 className="text-white/80 font-bold tracking-widest text-sm uppercase mb-5">SISTEMA POS {BRAND.name.toUpperCase()}</h4>
-          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-white max-w-3xl mx-auto leading-[1.15]">
+          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-white max-w-3xl mx-auto leading-[1.15] font-povlar">
             Construye tu Punto de Venta <br />
-            <span className="text-[#a78bfa]">todo en uno</span>
+            <span className="text-[#a78bfa] font-povlar">todo en uno</span>
           </h2>
           <p className="mt-5 text-white/70 text-lg max-w-2xl mx-auto leading-relaxed">
             Combos completos de hardware y software listo para operar. Equipa tu tienda, restaurante o local con todo lo que necesitas desde el primer día.

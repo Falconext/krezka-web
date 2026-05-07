@@ -1,13 +1,31 @@
 /* Importa las @font-face de HelveticaNowDisplay */
 @import url("./public/fontsIntall/stylesheet.css");
 
+@font-face {
+  font-family: "Povlar";
+  src: url("/assets/fonts/Povlar.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Povlar Slant";
+  src: url("/assets/fonts/Povlar Slant.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 @config "../../tailwind.config.js";
 
 /* Fuente global del proyecto */
-* {
-  font-family: "Helvetica Now Display",
-    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+@layer base {
+  * {
+    font-family: "Helvetica Now Display",
+      system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
 }
 
 /* Utilidades tipo Tailwind para cambiar de fuente fácilmente */
@@ -18,7 +36,14 @@
   }
 
   .font-alt {
-    /* Ejemplo de fuente alternativa; cambia esta regla cuando agregues otra fuente */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .font-povlar {
+    font-family: "Povlar", sans-serif;
+  }
+
+  .font-povlar-slant {
+    font-family: "Povlar Slant", sans-serif;
   }
 }

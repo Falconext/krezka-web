@@ -41,9 +41,9 @@ const Hero = () => {
             </motion.div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 tracking-tight drop-shadow-2xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-white leading-[1.1] mb-6 tracking-tight drop-shadow-2xl font-povlar">
               Potencia tu <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300 font-povlar">
                 Negocio al Máximo
               </span>
             </h1>
