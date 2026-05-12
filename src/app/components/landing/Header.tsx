@@ -36,9 +36,9 @@ const Header = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
-            <a href="tel:+5116804448" className="hidden lg:flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mr-4">
+            <a href={`https://wa.me/${BRAND.whatsapp}`} target="_blank" rel="noopener noreferrer" className="hidden lg:flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors mr-4">
               <Phone size={18} />
-              <span className="text-sm font-medium">Llámanos</span>
+              <span className="text-sm font-medium">Escríbenos</span>
             </a>
 
             <Link

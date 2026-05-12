@@ -193,7 +193,7 @@ const Contact = () => {
                                     <Phone />
                                 </div>
                                 <div>
-                                    <p className="text-gray-500 dark:text-gray-400 text-sm">Llámanos para cualquier consulta</p>
+                                    <p className="text-gray-500 dark:text-gray-400 text-sm">Escríbenos para cualquier consulta</p>
                                     <label className="font-medium text-[16px] md:text-[18px] text-gray-900 dark:text-white transition-colors">
                                         {BRAND.phone}
                                     </label>
