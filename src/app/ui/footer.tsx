@@ -54,7 +54,7 @@ const footerColumns = [
             { label: 'Contacto', href: '#' },
             { label: 'WhatsApp Soporte', href: `https://wa.me/${BRAND.whatsapp}` },
             { label: 'Términos de Uso', href: '#' },
-            { label: 'Política de Privacidad', href: '#' },
+            { label: 'Política de Privacidad', href: '/privacidad' },
         ],
     },
 ];
@@ -67,7 +67,12 @@ const socialLinks = [
     { icon: "mdi:youtube", label: "YouTube", href: "#" },
 ];
 
-const legalLinks = ['Términos y Condiciones', 'Política de Privacidad', 'Libro de Reclamaciones', 'Política de Cookies'];
+const legalLinks = [
+    { label: 'Términos y Condiciones', href: '#' },
+    { label: 'Política de Privacidad', href: '/privacidad' },
+    { label: 'Libro de Reclamaciones', href: '#' },
+    { label: 'Política de Cookies', href: '/privacidad' },
+];
 
 const Footer = () => {
     interface IFormSub { email: string; }
@@ -224,8 +229,8 @@ const Footer = () => {
                     </p>
                     <div className="flex flex-wrap items-center gap-5">
                         {legalLinks.map((item) => (
-                            <Link key={item} href="#" className="text-[#555870] hover:text-white text-[12px] transition-colors">
-                                {item}
+                            <Link key={item.label} href={item.href} className="text-[#555870] hover:text-white text-[12px] transition-colors">
+                                {item.label}
                             </Link>
                         ))}
                     </div>
