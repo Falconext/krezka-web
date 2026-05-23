@@ -2,6 +2,8 @@
 import { MessageCircle } from "lucide-react";
 import { BRAND } from "@/lib/branding";
 
+const isKrezka = BRAND.name === "Krezka";
+
 const advisors = [
     {
         initials: "BD",
@@ -10,7 +12,8 @@ const advisors = [
         specialty: "Bodegas y Minimarkets",
         from: "#673AB7",
         to: "#9C27B0",
-        msg: `Hola Diego, me interesa ${BRAND.name} para mi bodega/minimarket. ¿Me puedes dar más información?`,
+        image: "/assets/krezka/bratfor.jpeg",
+        msg: `Hola Bratfor, me interesa ${BRAND.name} para mi bodega/minimarket. ¿Me puedes dar más información?`,
     },
     {
         initials: "YG",
@@ -19,7 +22,8 @@ const advisors = [
         specialty: "Farmacias y Boticas",
         from: "#6366f1",
         to: "#8b5cf6",
-        msg: `Hola Ana, me interesa ${BRAND.name} para mi farmacia/botica. ¿Me puedes dar más información?`,
+        image: "/assets/krezka/yan.jpeg",
+        msg: `Hola Yan, me interesa ${BRAND.name} para mi farmacia/botica. ¿Me puedes dar más información?`,
     },
     {
         initials: "DO",
@@ -28,6 +32,7 @@ const advisors = [
         specialty: "Ferreterías y Distribuidoras",
         from: "#0284c7",
         to: "#6366f1",
+        image: "/assets/krezka/diego.jpeg",
         msg: `Hola Diego, me interesa ${BRAND.name} para mi ferretería. ¿Me puedes dar más información?`,
     },
     {
@@ -37,7 +42,8 @@ const advisors = [
         specialty: "Restaurantes y Servicios",
         from: "#7c3aed",
         to: "#db2777",
-        msg: `Hola María, me interesa ${BRAND.name} para mi restaurante/negocio de servicios. ¿Me puedes dar más información?`,
+        image: "/assets/krezka/moroni.jpeg",
+        msg: `Hola Moroni, me interesa ${BRAND.name} para mi restaurante/negocio de servicios. ¿Me puedes dar más información?`,
     },
 ];
 
@@ -61,14 +67,22 @@ const Advisors = () => {
                     {advisors.map((advisor) => (
                         <div
                             key={advisor.initials}
-                            className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 backdrop-blur-md shadow-sm hover:shadow-lg transition-all flex flex-col items-center text-center gap-4"
+                            className="rounded-3xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 backdrop-blur-md shadow-sm hover:shadow-lg transition-all flex flex-col items-center text-center gap-2"
                         >
-                            <div
-                                className="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg"
-                                style={{ background: `linear-gradient(135deg, ${advisor.from}, ${advisor.to})` }}
-                            >
-                                {advisor.initials}
-                            </div>
+                            {isKrezka && advisor.image ? (
+                                <img
+                                    src={advisor.image}
+                                    alt={advisor.name}
+                                    className="w-20 h-20 rounded-full object-cover object-top shadow-lg"
+                                />
+                            ) : (
+                                <div
+                                    className="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg"
+                                    style={{ background: `linear-gradient(135deg, ${advisor.from}, ${advisor.to})` }}
+                                >
+                                    {advisor.initials}
+                                </div>
+                            )}
                             <div>
                                 <p className="font-semibold text-gray-900 dark:text-white transition-colors">{advisor.name}</p>
                                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{advisor.role}</p>

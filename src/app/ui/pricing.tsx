@@ -19,113 +19,205 @@ const proPlans: ProPlan[] = [
     {
         id: "plan-emprendedor",
         name: "Emprendedor",
-        docs: "Facturación ILIMITADA",
-        monthly: 19.90,
-        annual: 199.0,
-        regularMonthly: 29.9,
+        docs: "Comprobantes ILIMITADOS",
+        monthly: 39.90,
+        annual: 399.0,
+        regularMonthly: 49.9,
         utility: "Plan base para formalización total",
-        store: "Incluye tienda virtual",
+        store: "Sin tienda virtual",
         badge: "Entrada",
-        tagline: "Ideal para emprendedores que arrancan su operación digital.",
-        highlights: ["Facturación ILIMITADA", "Certificado Digital Incluido", "1 Usuario / 1 Sede", "Gestión de productos"],
+        tagline: "Ideal para negocios que recién inician su operación formal.",
+        highlights: [
+            "Boletas y Facturas ilimitadas",
+            "Certificado Digital PSE Incluido",
+            "2 Usuarios / 1 Sede",
+            "Kardex de Inventario",
+            "Caja y Cobros",
+            "Reportes de ventas",
+        ],
     },
     {
         id: "plan-negocio",
         name: "Negocio",
-        docs: "Facturación ILIMITADA",
-        monthly: 49.90,
-        annual: 499.0,
-        regularMonthly: 69.9,
+        docs: "Comprobantes ILIMITADOS",
+        monthly: 69.90,
+        annual: 699.0,
+        regularMonthly: 89.9,
         utility: "Control avanzado de stock y ventas",
         store: "Incluye tienda virtual",
         badge: "Recomendado",
-        tagline: "Para negocios con movimiento diario y necesidad de control.",
-        highlights: ["Kardex avanzado (Stock)", "3 Usuarios / Sedes ilimitadas", "App Mobile Pro", "Soporte prioritario"],
+        tagline: "Para negocios en crecimiento con mayor volumen diario.",
+        highlights: [
+            "Todo lo del plan Emprendedor",
+            "Tienda Virtual + Banners y Galería",
+            "5 Usuarios / 2 Sedes",
+            "Ticketera / POS táctil",
+            "Compras y proveedores",
+            "SIRE + Dashboard gerencial",
+            "WhatsApp automático",
+        ],
     },
     {
         id: "plan-corporativo",
         name: "Corporativo",
-        docs: "Facturación ILIMITADA",
-        monthly: 89.90,
-        annual: 899.0,
+        docs: "Comprobantes ILIMITADOS",
+        monthly: 99.90,
+        annual: 999.0,
         regularMonthly: 129.9,
-        utility: "Máxima cobertura multi-empresa",
+        utility: "Control total para empresas establecidas",
         store: "Incluye tienda virtual",
         badge: "Premium",
         tagline: "Pensado para empresas con varias sedes y mayor volumen operativo.",
-        highlights: ["Multi-RUC (3 empresas)", "Usuarios ILIMITADOS", "Tienda virtual Pro", "Integraciones / API"],
+        highlights: [
+            "Todo lo del plan Negocio",
+            "15 Usuarios / Sedes Ilimitadas",
+            "Producción y Recetas",
+            "Pago con Culqi + Delivery GPS",
+            "Finanzas y Comisiones por vendedor",
+            "Gemini IA integrado",
+            "Asesor Personal Dedicado",
+        ],
     },
 ];
 
 type Capability = {
     users: string;
     sedes: string;
-    roles: boolean;
-    inventoryAdvanced: boolean;
+    // Facturación
+    guiaRemision: boolean;
+    // Inventario
+    kardexDashboard: boolean;
+    traslados: boolean;
+    combos: boolean;
+    lotesBarcodes: boolean;
+    // Compras
     compras: boolean;
+    // Ventas
     caja: boolean;
-    reportesGerenciales: boolean;
+    gastos: boolean;
+    ticketera: boolean;
+    cotizaciones: boolean;
+    reservas: boolean;
+    // Tienda
     tienda: "none" | "addon" | "included";
-    delivery: boolean;
-    integraciones: boolean;
-    auditoria: boolean;
-    soporte: "standard" | "priority";
+    banners: boolean;
+    galeria: boolean;
+    culqi: boolean;
+    deliveryGPS: boolean;
+    // Reportes
+    reportesGerenciales: boolean;
+    sire: boolean;
+    finanzas: boolean;
+    // Producción & Avanzado
+    produccion: boolean;
+    comisiones: boolean;
+    roles: boolean;
+    whatsapp: boolean;
+    gemini: boolean;
+    soporte: "standard" | "priority" | "dedicated";
     onboarding: string;
 };
 
 const proPlanCapabilities: Record<string, Capability> = {
     "plan-emprendedor": {
-        users: "1 usuario",
+        users: "2 usuarios",
         sedes: "1 sede",
-        roles: false,
-        inventoryAdvanced: true,
+        guiaRemision: false,
+        kardexDashboard: false,
+        traslados: false,
+        combos: false,
+        lotesBarcodes: false,
         compras: false,
         caja: true,
+        gastos: false,
+        ticketera: false,
+        cotizaciones: false,
+        reservas: false,
+        tienda: "none",
+        banners: false,
+        galeria: false,
+        culqi: false,
+        deliveryGPS: false,
         reportesGerenciales: false,
-        tienda: "included",
-        delivery: false,
-        integraciones: false,
-        auditoria: false,
+        sire: false,
+        finanzas: false,
+        produccion: false,
+        comisiones: false,
+        roles: false,
+        whatsapp: false,
+        gemini: false,
         soporte: "standard",
         onboarding: "Activación en 24h",
     },
     "plan-negocio": {
-        users: "3 usuarios",
-        sedes: "Ilimitadas",
-        roles: true,
-        inventoryAdvanced: true,
+        users: "5 usuarios",
+        sedes: "2 sedes",
+        guiaRemision: true,
+        kardexDashboard: true,
+        traslados: true,
+        combos: true,
+        lotesBarcodes: true,
         compras: true,
         caja: true,
-        reportesGerenciales: true,
+        gastos: true,
+        ticketera: true,
+        cotizaciones: true,
+        reservas: false,
         tienda: "included",
-        delivery: true,
-        integraciones: false,
-        auditoria: false,
+        banners: true,
+        galeria: true,
+        culqi: false,
+        deliveryGPS: false,
+        reportesGerenciales: true,
+        sire: true,
+        finanzas: false,
+        produccion: false,
+        comisiones: false,
+        roles: true,
+        whatsapp: true,
+        gemini: false,
         soporte: "priority",
         onboarding: "Activación inmediata",
     },
     "plan-corporativo": {
-        users: "Ilimitados",
+        users: "15 usuarios",
         sedes: "Ilimitadas",
-        roles: true,
-        inventoryAdvanced: true,
+        guiaRemision: true,
+        kardexDashboard: true,
+        traslados: true,
+        combos: true,
+        lotesBarcodes: true,
         compras: true,
         caja: true,
-        reportesGerenciales: true,
+        gastos: true,
+        ticketera: true,
+        cotizaciones: true,
+        reservas: true,
         tienda: "included",
-        delivery: true,
-        integraciones: true,
-        auditoria: true,
-        soporte: "priority",
+        banners: true,
+        galeria: true,
+        culqi: true,
+        deliveryGPS: true,
+        reportesGerenciales: true,
+        sire: true,
+        finanzas: true,
+        produccion: true,
+        comisiones: true,
+        roles: true,
+        whatsapp: true,
+        gemini: true,
+        soporte: "dedicated",
         onboarding: "Asesor dedicado",
     },
 };
-type BadgeVariant = "included" | "addon" | "none" | "priority" | "standard";
+
+type BadgeVariant = "included" | "addon" | "none" | "dedicated" | "priority" | "standard";
 
 const badgeVariantClasses: Record<BadgeVariant, string> = {
     included: "border border-emerald-100 bg-emerald-50 text-emerald-700",
     addon: "border border-amber-100 bg-amber-50 text-amber-700",
-    none: "border border-slate-200 bg-slate-50 text-slate-600",
+    none: "border border-slate-200 bg-slate-50 text-slate-500",
+    dedicated: "border border-purple-100 bg-purple-50 text-purple-700",
     priority: "border border-indigo-100 bg-indigo-50 text-indigo-700",
     standard: "border border-slate-200 bg-white text-slate-700",
 };
@@ -133,124 +225,271 @@ const badgeVariantClasses: Record<BadgeVariant, string> = {
 type ComparisonRow = {
     key: string;
     label: string;
+    category?: string;
     description?: string;
     kind: "text" | "boolean" | "badge";
     getValue: (plan: ProPlan) => string | boolean | { label: string; variant: BadgeVariant };
 };
 
 const comparisonRows: ComparisonRow[] = [
+    // ── Facturación ──────────────────────────────
     {
         key: "docs",
-        label: "Comprobantes/mes",
-        description: "Boletas, Facturas y Guías",
+        label: "Comprobantes electrónicos",
+        category: "Facturación",
+        description: "Boletas, Facturas, Notas de crédito/débito",
         kind: "text",
         getValue: (plan) => plan.docs,
     },
     {
-        key: "facturacion",
-        label: "Facturación electrónica",
-        description: "Toda la plataforma incluida",
+        key: "pse",
+        label: "Certificado Digital PSE",
+        category: "Facturación",
         kind: "text",
-        getValue: () => "Incluida",
+        getValue: () => "Incluido",
     },
     {
-        key: "documentos",
-        label: "Documentos internos",
-        kind: "text",
-        getValue: () => "Ilimitados",
+        key: "guiaRemision",
+        label: "Guías de Remisión",
+        category: "Facturación",
+        description: "GRE-R y GRE-T para traslado de bienes",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].guiaRemision,
     },
+    // ── Inventario ───────────────────────────────
+    {
+        key: "kardex",
+        label: "Inventario / Kardex",
+        category: "Inventario",
+        description: "Productos, categorías, marcas, movimientos de stock",
+        kind: "text",
+        getValue: () => "Incluido",
+    },
+    {
+        key: "kardexDashboard",
+        label: "Dashboard de inventario",
+        category: "Inventario",
+        description: "KPIs de stock, alertas y análisis",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].kardexDashboard,
+    },
+    {
+        key: "traslados",
+        label: "Traslados entre sedes",
+        category: "Inventario",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].traslados,
+    },
+    {
+        key: "combos",
+        label: "Combos / Kits y Modificadores",
+        category: "Inventario",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].combos,
+    },
+    {
+        key: "lotesBarcodes",
+        label: "Lotes, vencimientos y código de barras",
+        category: "Inventario",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].lotesBarcodes,
+    },
+    // ── Compras ──────────────────────────────────
+    {
+        key: "compras",
+        label: "Compras y proveedores",
+        category: "Compras",
+        description: "Órdenes de compra e ingreso de stock",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].compras,
+    },
+    // ── Ventas & POS ─────────────────────────────
+    {
+        key: "caja",
+        label: "Caja (apertura / cierre / arqueo)",
+        category: "Ventas",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].caja,
+    },
+    {
+        key: "gastos",
+        label: "Control de gastos",
+        category: "Ventas",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].gastos,
+    },
+    {
+        key: "ticketera",
+        label: "Ticketera / POS táctil",
+        category: "Ventas",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].ticketera,
+    },
+    {
+        key: "cotizaciones",
+        label: "Cotizaciones",
+        category: "Ventas",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].cotizaciones,
+    },
+    {
+        key: "reservas",
+        label: "Reservas",
+        category: "Ventas",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].reservas,
+    },
+    // ── Tienda Virtual ───────────────────────────
+    {
+        key: "tienda",
+        label: "Tienda virtual (e-commerce)",
+        category: "Tienda",
+        description: "Landing comercial con slug propio",
+        kind: "badge",
+        getValue: (plan) => {
+            const s = proPlanCapabilities[plan.id].tienda;
+            if (s === "included") return { label: "Incluida", variant: "included" };
+            if (s === "addon") return { label: "Add-on disponible", variant: "addon" };
+            return { label: "No incluida", variant: "none" };
+        },
+    },
+    {
+        key: "banners",
+        label: "Banners promocionales",
+        category: "Tienda",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].banners,
+    },
+    {
+        key: "galeria",
+        label: "Galería de imágenes por producto",
+        category: "Tienda",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].galeria,
+    },
+    {
+        key: "culqi",
+        label: "Pago online con Culqi",
+        category: "Tienda",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].culqi,
+    },
+    {
+        key: "deliveryGPS",
+        label: "Delivery con GPS",
+        category: "Tienda",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].deliveryGPS,
+    },
+    // ── Reportes & Contabilidad ──────────────────
+    {
+        key: "reportesGerenciales",
+        label: "Dashboard gerencial (KPIs)",
+        category: "Reportes",
+        description: "Top productos, tendencias, ventas por período",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].reportesGerenciales,
+    },
+    {
+        key: "sire",
+        label: "SIRE (Libros Ventas / Compras)",
+        category: "Reportes",
+        description: "Exportación a formato SUNAT",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].sire,
+    },
+    {
+        key: "finanzas",
+        label: "Finanzas (P&L y análisis financiero)",
+        category: "Reportes",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].finanzas,
+    },
+    // ── Avanzado ─────────────────────────────────
+    {
+        key: "produccion",
+        label: "Producción y Recetas",
+        category: "Avanzado",
+        description: "Órdenes de producción y bill of materials",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].produccion,
+    },
+    {
+        key: "comisiones",
+        label: "Comisiones por vendedor",
+        category: "Avanzado",
+        description: "% Venta y % Provisión configurables",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].comisiones,
+    },
+    {
+        key: "roles",
+        label: "Roles y permisos granulares",
+        category: "Avanzado",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].roles,
+    },
+    {
+        key: "whatsapp",
+        label: "WhatsApp automático",
+        category: "Avanzado",
+        description: "Envío de comprobantes y notificaciones",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].whatsapp,
+    },
+    {
+        key: "gemini",
+        label: "Gemini IA",
+        category: "Avanzado",
+        description: "Clasificación e inteligencia artificial",
+        kind: "boolean",
+        getValue: (plan) => proPlanCapabilities[plan.id].gemini,
+    },
+    // ── Soporte ──────────────────────────────────
     {
         key: "users",
-        label: "Usuarios",
+        label: "Usuarios incluidos",
+        category: "Soporte",
         kind: "text",
         getValue: (plan) => proPlanCapabilities[plan.id].users,
     },
     {
         key: "sedes",
-        label: "Sedes",
+        label: "Sedes / sucursales",
+        category: "Soporte",
         kind: "text",
         getValue: (plan) => proPlanCapabilities[plan.id].sedes,
     },
     {
-        key: "roles",
-        label: "Roles y permisos",
-        kind: "boolean",
-        getValue: (plan) => proPlanCapabilities[plan.id].roles,
-    },
-    {
-        key: "inventory",
-        label: "Inventario + Kardex",
-        kind: "boolean",
-        getValue: (plan) => proPlanCapabilities[plan.id].inventoryAdvanced,
-    },
-    {
-        key: "compras",
-        label: "Compras y gastos",
-        kind: "boolean",
-        getValue: (plan) => proPlanCapabilities[plan.id].compras,
-    },
-    {
-        key: "caja",
-        label: "Caja y movimientos",
-        kind: "boolean",
-        getValue: (plan) => proPlanCapabilities[plan.id].caja,
-    },
-    {
-        key: "reportes",
-        label: "Reportes gerenciales",
-        description: "KPIs y dashboards",
-        kind: "boolean",
-        getValue: (plan) => proPlanCapabilities[plan.id].reportesGerenciales,
-    },
-    {
-        key: "store",
-        label: "Tienda virtual",
-        description: "Landing comercial",
-        kind: "badge",
-        getValue: (plan) => {
-            const status = proPlanCapabilities[plan.id].tienda;
-            if (status === "included") return { label: "Incluida", variant: "included" };
-            if (status === "addon") return { label: "Add-on disponible", variant: "addon" };
-            return { label: "No incluida", variant: "none" };
-        },
-    },
-    {
-        key: "delivery",
-        label: "Delivery y pasarela",
-        kind: "boolean",
-        getValue: (plan) => proPlanCapabilities[plan.id].delivery,
-    },
-    {
-        key: "integraciones",
-        label: "Integraciones / API",
-        kind: "boolean",
-        getValue: (plan) => proPlanCapabilities[plan.id].integraciones,
-    },
-    {
-        key: "auditoria",
-        label: "Auditoría operativa",
-        kind: "boolean",
-        getValue: (plan) => proPlanCapabilities[plan.id].auditoria,
-    },
-    {
         key: "soporte",
-        label: "Soporte",
-        description: "Acompañamiento",
+        label: "Canal de soporte",
+        category: "Soporte",
         kind: "badge",
         getValue: (plan) => {
-            const support = proPlanCapabilities[plan.id].soporte;
-            return support === "priority"
-                ? { label: "Prioritario", variant: "priority" }
-                : { label: "Estándar", variant: "standard" };
+            const s = proPlanCapabilities[plan.id].soporte;
+            if (s === "dedicated") return { label: "Asesor dedicado", variant: "dedicated" };
+            if (s === "priority") return { label: "Prioritario", variant: "priority" };
+            return { label: "Chat estándar", variant: "standard" };
         },
     },
     {
         key: "onboarding",
         label: "Onboarding",
-        description: "Tiempo de activación",
+        category: "Soporte",
         kind: "text",
         getValue: (plan) => proPlanCapabilities[plan.id].onboarding,
     },
+];
+
+const CATEGORIES = [
+    "Facturación",
+    "Inventario",
+    "Compras",
+    "Ventas",
+    "Tienda",
+    "Reportes",
+    "Avanzado",
+    "Soporte",
 ];
 
 const planWhatsappLink = (planName: string) =>
@@ -266,6 +505,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
     return (
         <section id="price" className="bg-transparent py-16">
             <div className="mx-auto max-w-screen-xl px-4 md:px-6 space-y-14">
+                {/* Header */}
                 <div className="text-center max-w-3xl mx-auto">
                     <p className="inline-flex items-center rounded-full bg-[#facc15]/10 px-4 py-1 text-xs md:text-sm text-[#eab308]">
                         Precio justo y transparente
@@ -278,21 +518,23 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     </p>
                     <div className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-semibold text-emerald-700">
                         <span className="text-lg">🏆</span>
-                        Facturación ILIMITADA en todos los planes — desde S/ 19.90/mes
+                        Comprobantes ILIMITADOS en todos los planes — desde S/ 39.90/mes
                     </div>
-                    <a
-                        href={generalWhatsappLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-5 inline-flex items-center rounded-full bg-gradient-to-r from-[#3E2BC7] to-[#5A45D1] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-indigo-500/20"
-                    >
-                        Hablar con un asesor por WhatsApp
-                    </a>
+                    <div className="mt-4">
+                        <a
+                            href={generalWhatsappLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center rounded-full bg-gradient-to-r from-[#3E2BC7] to-[#5A45D1] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-indigo-500/20"
+                        >
+                            Hablar con un asesor por WhatsApp
+                        </a>
+                    </div>
                     <div className="mt-6 flex flex-wrap justify-center gap-2 text-[13px] font-medium text-gray-700">
                         {[
                             "Facturación electrónica ilimitada",
-                            "Documentos internos y envíos por correo/WhatsApp",
-                            "Soporte y acompañamiento comercial",
+                            "Envío por correo y WhatsApp",
+                            "Soporte y acompañamiento incluido",
                         ].map((pill) => (
                             <span key={pill} className="rounded-full border border-gray-200 bg-white px-4 py-1">
                                 {pill}
@@ -301,14 +543,23 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 flex">
+                {/* Plan Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                     {proPlans.map((plan) => (
                         <article
                             key={plan.id}
-                            className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-lg transition-all"
+                            className={`rounded-3xl border bg-white p-6 shadow-sm hover:shadow-lg transition-all ${
+                                plan.badge === "Recomendado"
+                                    ? "border-indigo-400 ring-2 ring-indigo-200"
+                                    : "border-gray-200"
+                            }`}
                         >
                             <div className="flex flex-col items-center justify-center text-center gap-2">
-                                <span className="rounded-full border border-gray-200 px-3 py-1 text-[10px] font-bold uppercase text-gray-500 tracking-wider">
+                                <span className={`rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${
+                                    plan.badge === "Recomendado"
+                                        ? "border-indigo-200 bg-indigo-50 text-indigo-600"
+                                        : "border-gray-200 text-gray-500"
+                                }`}>
                                     {plan.badge}
                                 </span>
                                 <div className="space-y-1">
@@ -329,18 +580,18 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                     Ahorra S/ {(plan.regularMonthly - plan.monthly).toFixed(2)} con la promo vigente
                                 </p>
                                 <p className="text-xs text-gray-500">
-                                    Plan anual: S/ {plan.annual.toFixed(2)} (S/ {(plan.annual / 12).toFixed(2)} al mes) + IGV
+                                    Plan anual: S/ {plan.annual.toFixed(2)} (S/ {(plan.annual / 12).toFixed(2)}/mes) + IGV
                                 </p>
                                 <p className="text-xs text-gray-500">{plan.tagline}</p>
                                 <p className="text-xs font-medium text-emerald-600">{plan.utility}</p>
                             </div>
-                            <div className="mt-4 rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-3 text-xs font-semibold text-gray-600">
+                            <div className="mt-4 rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-3 text-xs font-semibold text-gray-600 text-center">
                                 {plan.store}
                             </div>
                             <ul className="mt-5 space-y-2 text-sm text-gray-700">
                                 {plan.highlights.map((item) => (
-                                    <li key={item} className="flex items-center gap-2">
-                                        <CheckCircle2 size={16} className="text-[#22c55e]" />
+                                    <li key={item} className="flex items-start gap-2">
+                                        <CheckCircle2 size={16} className="text-[#22c55e] mt-0.5 shrink-0" />
                                         {item}
                                     </li>
                                 ))}
@@ -357,63 +608,82 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     ))}
                 </div>
 
+                {/* Comparison Table */}
                 {showComparison ? (
                     <div className="overflow-x-auto">
-                        <div className="min-w-[900px] rounded-3xl border border-gray-200 shadow-xl overflow-hidden">
+                        <div className="min-w-[860px] rounded-3xl border border-gray-200 shadow-xl overflow-hidden">
+                            {/* Table header */}
                             <div
                                 className="bg-[#1d4ed8] text-white text-sm font-semibold grid gap-2 px-4 py-3"
-                                style={{ gridTemplateColumns: `repeat(${proPlans.length + 1}, minmax(160px, 1fr))` }}
+                                style={{ gridTemplateColumns: `2fr repeat(${proPlans.length}, 1fr)` }}
                             >
-                                <span>Comparación de Planes Pro</span>
+                                <span>Comparación completa de módulos</span>
                                 {proPlans.map((plan) => (
                                     <span key={plan.id} className="text-center">{plan.name}</span>
                                 ))}
                             </div>
+
                             <div className="bg-white text-gray-800">
-                                {comparisonRows.map((row) => (
-                                    <div
-                                        key={row.key}
-                                        className="grid items-center gap-2 px-4 py-4 border-b border-gray-100 hover:bg-gray-50"
-                                        style={{ gridTemplateColumns: `repeat(${proPlans.length + 1}, minmax(160px, 1fr))` }}
-                                    >
-                                        <div>
-                                            <p className="text-sm font-semibold text-gray-900">{row.label}</p>
-                                            {row.description && (
-                                                <p className="text-xs text-gray-500">{row.description}</p>
-                                            )}
-                                        </div>
-                                        {proPlans.map((plan) => {
-                                            const value = row.getValue(plan);
-                                            if (row.kind === "boolean") {
-                                                const enabled = Boolean(value);
-                                                return (
-                                                    <div key={plan.id + row.key} className="flex items-center justify-center">
-                                                        {enabled ? (
-                                                            <CheckCircle2 size={18} className="text-[#22c55e]" />
-                                                        ) : (
-                                                            <XCircle size={18} className="text-gray-300" />
+                                {CATEGORIES.map((category) => {
+                                    const rows = comparisonRows.filter((r) => r.category === category);
+                                    return (
+                                        <div key={category}>
+                                            {/* Category header */}
+                                            <div
+                                                className="grid gap-2 px-4 py-2 bg-gray-50 border-b border-gray-100"
+                                                style={{ gridTemplateColumns: `2fr repeat(${proPlans.length}, 1fr)` }}
+                                            >
+                                                <span className="text-xs font-black uppercase tracking-widest text-gray-400">
+                                                    {category}
+                                                </span>
+                                            </div>
+
+                                            {rows.map((row) => (
+                                                <div
+                                                    key={row.key}
+                                                    className="grid items-center gap-2 px-4 py-3 border-b border-gray-100 hover:bg-gray-50"
+                                                    style={{ gridTemplateColumns: `2fr repeat(${proPlans.length}, 1fr)` }}
+                                                >
+                                                    <div>
+                                                        <p className="text-sm font-semibold text-gray-900">{row.label}</p>
+                                                        {row.description && (
+                                                            <p className="text-xs text-gray-400">{row.description}</p>
                                                         )}
                                                     </div>
-                                                );
-                                            }
-                                            if (row.kind === "badge" && typeof value === "object" && value !== null) {
-                                                const badgeValue = value as { label: string; variant: BadgeVariant };
-                                                return (
-                                                    <div key={plan.id + row.key} className="flex items-center justify-center">
-                                                        <span className={`text-xs font-semibold px-3 py-1 rounded-full ${badgeVariantClasses[badgeValue.variant]}`}>
-                                                            {badgeValue.label}
-                                                        </span>
-                                                    </div>
-                                                );
-                                            }
-                                            return (
-                                                <div key={plan.id + row.key} className="text-center text-sm font-medium text-gray-900">
-                                                    {value as string}
+                                                    {proPlans.map((plan) => {
+                                                        const value = row.getValue(plan);
+                                                        if (row.kind === "boolean") {
+                                                            return (
+                                                                <div key={plan.id + row.key} className="flex items-center justify-center">
+                                                                    {value ? (
+                                                                        <CheckCircle2 size={18} className="text-[#22c55e]" />
+                                                                    ) : (
+                                                                        <XCircle size={18} className="text-gray-200" />
+                                                                    )}
+                                                                </div>
+                                                            );
+                                                        }
+                                                        if (row.kind === "badge" && typeof value === "object" && value !== null) {
+                                                            const b = value as { label: string; variant: BadgeVariant };
+                                                            return (
+                                                                <div key={plan.id + row.key} className="flex items-center justify-center">
+                                                                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${badgeVariantClasses[b.variant]}`}>
+                                                                        {b.label}
+                                                                    </span>
+                                                                </div>
+                                                            );
+                                                        }
+                                                        return (
+                                                            <div key={plan.id + row.key} className="text-center text-sm font-medium text-gray-900">
+                                                                {value as string}
+                                                            </div>
+                                                        );
+                                                    })}
                                                 </div>
-                                            );
-                                        })}
-                                    </div>
-                                ))}
+                                            ))}
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
@@ -428,6 +698,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     </div>
                 )}
             </div>
+
             {showComparison && (
                 <p className="mt-6 text-center text-xs text-gray-400">
                     Todos los precios mostrados no incluyen IGV (18%).

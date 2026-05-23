@@ -7,53 +7,57 @@ import { Check, ArrowRight } from 'lucide-react';
 const plans = [
   {
     name: "Emprendedor",
-    price: "19.90",
+    price: "39.90",
     period: "mes",
-    description: "Formalización electrónica sin límites.",
+    description: "Ideal para negocios que recién inician.",
     popular: false,
     color: "bg-white/5",
     features: [
-      "Facturación Electrónica ILIMITADA",
+      "Boletas y Facturas Electrónicas",
       "Certificado Digital PSE Incluido",
-      "1 Usuario / 1 Sede",
+      "Hasta 300 comprobantes / mes",
+      "2 Usuarios · 1 Sede",
       "Gestión de Clientes y Productos",
+      "Kardex de Inventario",
       "Reportes de Ventas",
-      "Boletas, Facturas y Notas",
       "Soporte por Chat"
     ]
   },
   {
     name: "Negocio",
-    price: "49.90",
+    price: "69.90",
     period: "mes",
-    description: "Control total de stock y ventas.",
+    description: "Para negocios en crecimiento.",
     popular: true,
     color: "bg-white/10",
     features: [
-      "Facturación Electrónica ILIMITADA",
+      "Boletas y Facturas Electrónicas",
       "Certificado Digital PSE Incluido",
-      "3 Usuarios / Sedes Ilimitadas",
-      "Kardex Avanzado (Stock)",
-      "Acceso a la App Mobile Pro",
-      "Catálogo PDF Automático",
+      "Hasta 800 comprobantes / mes",
+      "5 Usuarios · 2 Sedes",
+      "Tienda Virtual Incluida",
+      "Banners y Galería de Productos",
+      "Ticketera / POS",
       "Control de Cajas y Gastos",
       "Soporte Prioritario"
     ]
   },
   {
     name: "Corporativo",
-    price: "89.90",
+    price: "99.90",
     period: "mes",
-    description: "Para empresas multi-negocio.",
+    description: "Control total para empresas establecidas.",
     popular: false,
     color: "bg-white/5",
     features: [
-      "Facturación Electrónica ILIMITADA",
-      "Usuarios ILIMITADOS",
-      "Multi-RUC (Hasta 3 empresas)",
-      "Tienda Virtual Pro Integrada",
+      "Boletas y Facturas Electrónicas",
+      "Certificado Digital PSE Incluido",
+      "Comprobantes ILIMITADOS",
+      "15 Usuarios · Sedes Ilimitadas",
+      "Tienda Virtual Pro + Delivery GPS",
+      "Pago con Culqi Integrado",
       "Guías de Remisión Electrónicas",
-      "API para Integraciones",
+      "Gestión de Comisiones por Vendedor",
       "Asesor Personal Dedicado"
     ]
   }
