@@ -95,7 +95,6 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
       "Plantilla de catalogos",
       "Gestion de lotes",
       "Combos y precios por mayorista",
-      "SIRE + Dashboard gerencial",
       "Envio a email a tus clientes",
       "Envio a WhatsApp a tus clientes",
     ],
