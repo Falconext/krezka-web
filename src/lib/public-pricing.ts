@@ -90,7 +90,6 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
       "Todo lo del plan Emprendedor",
       "Tienda Virtual + Banners y Galería",
       "5 Usuarios / 2 Sedes",
-      "Ticketera / POS táctil",
       "Gastos y compras",
       "Plantilla de catalogos",
       "Gestion de lotes",
