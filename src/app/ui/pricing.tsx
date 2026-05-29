@@ -1,84 +1,16 @@
+'use client';
+
+import { useEffect, useMemo, useState } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { BRAND } from "@/lib/branding";
+import {
+    fetchPublicPlansClient,
+    mergePricingPlans,
+    PRICING_BASE_PLANS,
+    type PricingBasePlan,
+} from "@/lib/public-pricing";
 
-type ProPlan = {
-    id: string;
-    name: string;
-    docs: string;
-    monthly: number;
-    annual: number;
-    regularMonthly: number;
-    utility: string;
-    store: "Sin tienda virtual" | "Add-on opcional" | "Incluye tienda virtual";
-    badge: string;
-    tagline: string;
-    highlights: string[];
-};
-
-const proPlans: ProPlan[] = [
-    {
-        id: "plan-emprendedor",
-        name: "Emprendedor",
-        docs: "Comprobantes ILIMITADOS",
-        monthly: 39.90,
-        annual: 399.0,
-        regularMonthly: 49.9,
-        utility: "Plan base para formalización total",
-        store: "Sin tienda virtual",
-        badge: "Entrada",
-        tagline: "Ideal para negocios que recién inician su operación formal.",
-        highlights: [
-            "Boletas y Facturas ilimitadas",
-            "Certificado Digital PSE Incluido",
-            "2 Usuarios / 1 Sede",
-            "Kardex de Inventario",
-            "Caja y Cobros",
-            "Reportes de ventas",
-        ],
-    },
-    {
-        id: "plan-negocio",
-        name: "Negocio",
-        docs: "Comprobantes ILIMITADOS",
-        monthly: 69.90,
-        annual: 699.0,
-        regularMonthly: 89.9,
-        utility: "Control avanzado de stock y ventas",
-        store: "Incluye tienda virtual",
-        badge: "Recomendado",
-        tagline: "Para negocios en crecimiento con mayor volumen diario.",
-        highlights: [
-            "Todo lo del plan Emprendedor",
-            "Tienda Virtual + Banners y Galería",
-            "5 Usuarios / 2 Sedes",
-            "Ticketera / POS táctil",
-            "Compras y proveedores",
-            "SIRE + Dashboard gerencial",
-            "WhatsApp automático",
-        ],
-    },
-    {
-        id: "plan-corporativo",
-        name: "Corporativo",
-        docs: "Comprobantes ILIMITADOS",
-        monthly: 99.90,
-        annual: 999.0,
-        regularMonthly: 129.9,
-        utility: "Control total para empresas establecidas",
-        store: "Incluye tienda virtual",
-        badge: "Premium",
-        tagline: "Pensado para empresas con varias sedes y mayor volumen operativo.",
-        highlights: [
-            "Todo lo del plan Negocio",
-            "15 Usuarios / Sedes Ilimitadas",
-            "Producción y Recetas",
-            "Pago con Culqi + Delivery GPS",
-            "Finanzas y Comisiones por vendedor",
-            "Gemini IA integrado",
-            "Asesor Personal Dedicado",
-        ],
-    },
-];
+type ProPlan = PricingBasePlan;
 
 type Capability = {
     users: string;
@@ -451,14 +383,14 @@ const comparisonRows: ComparisonRow[] = [
         label: "Usuarios incluidos",
         category: "Soporte",
         kind: "text",
-        getValue: (plan) => proPlanCapabilities[plan.id].users,
+        getValue: (plan) => plan.usersLabel,
     },
     {
         key: "sedes",
         label: "Sedes / sucursales",
         category: "Soporte",
         kind: "text",
-        getValue: (plan) => proPlanCapabilities[plan.id].sedes,
+        getValue: (plan) => plan.sedesLabel,
     },
     {
         key: "soporte",
@@ -502,6 +434,26 @@ const generalWhatsappLink = `https://wa.me/${BRAND.whatsapp}?text=${encodeURICom
 )}`;
 
 const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
+    const [proPlans, setProPlans] = useState<PricingBasePlan[]>(PRICING_BASE_PLANS);
+
+    useEffect(() => {
+        let active = true;
+        const load = async () => {
+            const remotePlans = await fetchPublicPlansClient();
+            if (!active) return;
+            setProPlans(mergePricingPlans(PRICING_BASE_PLANS, remotePlans));
+        };
+        void load();
+        return () => {
+            active = false;
+        };
+    }, []);
+
+    const minMonthly = useMemo(
+        () => Math.min(...proPlans.map((plan) => plan.monthly)),
+        [proPlans]
+    );
+
     return (
         <section id="price" className="bg-transparent py-16">
             <div className="mx-auto max-w-screen-xl px-4 md:px-6 space-y-14">
@@ -518,7 +470,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     </p>
                     <div className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-semibold text-emerald-700">
                         <span className="text-lg">🏆</span>
-                        Comprobantes ILIMITADOS en todos los planes — desde S/ 39.90/mes
+                        Comprobantes ILIMITADOS en todos los planes — desde S/ {minMonthly.toFixed(2)}/mes
                     </div>
                     <div className="mt-4">
                         <a
