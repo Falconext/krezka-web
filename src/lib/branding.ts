@@ -31,7 +31,7 @@ const brands: Record<string, BrandConfig> = {
     email: 'ventas@falconext.pe',
     phone: '+51 932 332 556',
     whatsapp: '51932332556',
-    logo: '/assets/logo.png',
+    logo: '/assets/logofalconext.png',
     logoWhite: '/assets/logowhite.png',
     primaryColor: '#3E2BC7',
     secondaryColor: '#5A45D1',

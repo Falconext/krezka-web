@@ -129,7 +129,11 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
   },
 ];
 
-const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4001/api").replace(/\/$/, "");
+const API_URL = (
+  process.env.API_URL ??
+  process.env.NEXT_PUBLIC_API_URL ??
+  "http://localhost:4001/api"
+).replace(/\/$/, "");
 const PRODUCTO = "facturacion";
 
 const normalizeName = (value: string): string =>
@@ -204,6 +208,10 @@ const normalizePlan = (plan: PublicPlanApi): PublicPlanApi => ({
 });
 
 const extractPlans = (payload: unknown): PublicPlanApi[] => {
+  if (Array.isArray(payload)) {
+    return payload.map((item) => normalizePlan(item as PublicPlanApi));
+  }
+
   if (
     typeof payload === "object" &&
     payload !== null &&

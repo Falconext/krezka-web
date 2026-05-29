@@ -5,13 +5,23 @@ import Script from "next/script";
 import { BRAND } from "@/lib/branding";
 
 export async function generateMetadata(): Promise<Metadata> {
+  const isFalconext = BRAND.name.toLowerCase() === "falconext";
+  const brandLogo = isFalconext ? "/assets/logofalconext.png" : "/assets/krezka/krezkalogo.png";
+  const ogImage = `${BRAND.website}${brandLogo}`;
+  const title = isFalconext
+    ? "Falconext | Facturación Electrónica SUNAT y POS para Empresas en Perú"
+    : "Krezka | Facturación Electrónica SUNAT y POS para Negocios en Perú";
+  const description = isFalconext
+    ? "Falconext: sistema de facturación electrónica SUNAT con boletas, facturas, notas de crédito, POS e inventario. Optimizado para empresas y PYMES en Perú."
+    : "Krezka: software de facturación electrónica SUNAT con POS, control de inventario y gestión comercial para negocios en Perú.";
+
   return {
     metadataBase: new URL(BRAND.website),
     title: {
-      default: `${BRAND.name} | Sistema de Facturación Electrónica SUNAT para PYMES en Perú`,
+      default: title,
       template: `%s | ${BRAND.name} - Facturación Electrónica Perú`
     },
-    description: `El sistema de facturación electrónica #1 en Perú. Emite boletas, facturas y notas de crédito homologadas con SUNAT. Punto de venta (POS), control de inventario y gestión comercial para PYMES. ¡Prueba gratis!`,
+    description,
     keywords: [
       "facturación electrónica",
       "facturación electrónica perú",
@@ -20,29 +30,35 @@ export async function generateMetadata(): Promise<Metadata> {
       "facturación sunat",
       "punto de venta",
       BRAND.name.toLowerCase(),
-      `${BRAND.name.toLowerCase()} peru`
+      `${BRAND.name.toLowerCase()} peru`,
+      "boleta electrónica",
+      "factura electrónica",
+      "software sunat",
+      "sistema pos peru",
+      "control de inventario peru"
     ],
     authors: [{ name: BRAND.name, url: BRAND.website }],
     creator: BRAND.name,
     publisher: BRAND.name,
     icons: {
       icon: [
-        { url: '/assets/krezka/krezkalogo.png', sizes: '32x32', type: 'image/png' },
-        { url: '/assets/krezka/krezkalogo.png', sizes: '192x192', type: 'image/png' },
+        { url: brandLogo, sizes: '32x32', type: 'image/png' },
+        { url: brandLogo, sizes: '192x192', type: 'image/png' },
       ],
       apple: [
-        { url: '/assets/krezka/krezkalogo.png', sizes: '180x180', type: 'image/png' },
+        { url: brandLogo, sizes: '180x180', type: 'image/png' },
       ],
+      shortcut: [brandLogo],
     },
     manifest: '/manifest.json',
     openGraph: {
-      title: `${BRAND.name} | Sistema de Facturación Electrónica SUNAT #1 en Perú`,
-      description: "Emite facturas, boletas y notas de crédito electrónicas homologadas con SUNAT. Sistema POS, inventario y gestión comercial para PYMES. ¡Prueba gratis hoy!",
+      title,
+      description,
       url: `${BRAND.website}/`,
       siteName: `${BRAND.name} - Facturación Electrónica Perú`,
       images: [
         {
-          url: `${BRAND.website}/assets/og-image.png`,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: `${BRAND.name} - Sistema de Facturación Electrónica para PYMES en Perú`
@@ -53,14 +69,26 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${BRAND.name} | Facturación Electrónica SUNAT para PYMES`,
-      description: "El mejor sistema de facturación electrónica en Perú. Emite boletas, facturas y controla tu inventario fácilmente.",
-      images: [`${BRAND.website}/assets/og-image.png`],
+      title,
+      description,
+      images: [ogImage],
       creator: `@${BRAND.name.toLowerCase()}`
     },
     alternates: {
       canonical: BRAND.website,
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+    category: "business",
   };
 }
 
@@ -89,7 +117,7 @@ export default function RootLayout({
     },
     "description": `Sistema de facturación electrónica SUNAT para PYMES en Perú. Emite boletas, facturas y controla tu inventario.`,
     "url": BRAND.website,
-    "logo": `${BRAND.website}/assets/krezka/krezkalogo.png`,
+    "logo": `${BRAND.website}${BRAND.logo}`,
     "sameAs": [
       BRAND.socials.facebook,
       BRAND.socials.instagram
@@ -101,7 +129,7 @@ export default function RootLayout({
     "@type": "Organization",
     "name": BRAND.name,
     "url": BRAND.website,
-    "logo": `${BRAND.website}/assets/krezka/krezkalogo.png`,
+    "logo": `${BRAND.website}${BRAND.logo}`,
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": BRAND.phone,
@@ -172,4 +200,3 @@ export default function RootLayout({
     </html>
   );
 }
-
