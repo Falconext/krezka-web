@@ -88,6 +88,7 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
     tagline: "Para negocios en crecimiento con mayor volumen diario.",
     highlights: [
       "Todo lo del plan Emprendedor",
+      "Reporte Kardex e inventario",
       "Tienda Virtual + Banners y Galería",
       "5 Usuarios / 2 Sedes",
       "Gastos y compras",

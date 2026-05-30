@@ -519,23 +519,31 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                     <h3 className="text-2xl font-bold text-gray-900">{plan.name}</h3>
                                 </div>
                             </div>
-                            <div className="mt-5 space-y-1 text-center">
-                                <p className="text-xs uppercase text-gray-500">
-                                    Precio regular: <span className="line-through font-semibold text-gray-700">S/ {plan.regularMonthly.toFixed(2)}</span> / mes
-                                </p>
-                                <p className="text-3xl font-bold text-gray-900">
-                                    S/ {plan.monthly.toFixed(2)}
-                                    <span className="ml-1 text-sm font-normal text-gray-500">/ mes</span>
-                                    <span className="ml-2 text-[11px] uppercase tracking-wide text-gray-400 font-semibold">+ IGV</span>
-                                </p>
-                                <p className="text-xs font-semibold text-emerald-600">
-                                    Ahorra S/ {(plan.regularMonthly - plan.monthly).toFixed(2)} con la promo vigente
-                                </p>
-                                <p className="text-xs text-gray-500">
-                                    Plan anual: S/ {plan.annual.toFixed(2)} (S/ {(plan.annual / 12).toFixed(2)}/mes) + IGV
-                                </p>
-                                <p className="text-xs text-gray-500">{plan.tagline}</p>
-                                <p className="text-xs font-medium text-emerald-600">{plan.utility}</p>
+                            <div className="mt-5 space-y-3 text-center">
+                                {/* Precio principal */}
+                                <div>
+                                    <div className="flex items-center justify-center gap-2 mb-1">
+                                        <span className="text-sm text-gray-400 line-through">S/ {plan.regularMonthly.toFixed(2)}</span>
+                                        <span className="text-[11px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 rounded-full px-2 py-0.5">
+                                            {Math.round((1 - plan.monthly / plan.regularMonthly) * 100)}% OFF
+                                        </span>
+                                    </div>
+                                    <p className="text-4xl font-extrabold text-gray-900 leading-none">
+                                        S/ {plan.monthly.toFixed(2)}
+                                        <span className="text-base font-normal text-gray-400 ml-1">/ mes</span>
+                                    </p>
+                                </div>
+
+                                {/* Plan anual */}
+                                <div className="flex items-center justify-center gap-1.5 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2">
+                                    <span className="text-xs text-gray-500">Anual:</span>
+                                    <span className="text-xs font-bold text-gray-800">S/ {plan.annual.toFixed(2)}</span>
+                                    <span className="text-xs text-gray-400">(S/ {(plan.annual / 12).toFixed(2)}/mes)</span>
+                                    <span className="text-[11px] font-bold text-amber-600">· 2 meses gratis</span>
+                                </div>
+
+                                {/* Descripción */}
+                                <p className="text-xs text-gray-500 leading-relaxed">{plan.tagline}</p>
                             </div>
                             <div className="mt-4 rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-3 text-xs font-semibold text-gray-600 text-center">
                                 {plan.store}
@@ -653,7 +661,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
 
             {showComparison && (
                 <p className="mt-6 text-center text-xs text-gray-400">
-                    Todos los precios mostrados no incluyen IGV (18%).
+                    Precios finales. Sin costos ocultos.
                 </p>
             )}
         </section>
