@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const projectRoot = dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
   reactStrictMode: false,
+  turbopack: {
+    root: projectRoot,
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "s3.amazonaws.com" },
@@ -18,4 +25,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-

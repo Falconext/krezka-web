@@ -85,7 +85,7 @@ export default function Hero() {
                         Prueba Gratis
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </button>
-                    <button className="px-8 py-4 bg-transparent text-gray-900 border border-gray-200 dark:bg-white/5 dark:text-white dark:border-white/10 rounded-full font-semibold hover:bg-black/5 dark:hover:bg-white/10 transition-all backdrop-blur-sm">
+                    <button className="px-8 py-4 bg-transparent text-gray-900 border border-gray-200 dark:bg-white/5 dark:text-white dark:border-white/10 rounded-full font-semibold hover:bg-black/5 dark:hover:bg-white/10 transition-all  ">
                         Agendar Demo
                     </button>
                 </motion.div>

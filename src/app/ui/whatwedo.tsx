@@ -70,7 +70,7 @@ const WhatWeDo = () => {
                             { icon: "mdi:store", color: "#6366f1", text: "Tienda Virtual", sub: "Stock sincronizado." },
                             { icon: "mdi:devices", color: "#f97316", text: "Multidispositivo", sub: "PC, Tablet y Celular." }
                         ].map((item, idx) => (
-                            <div key={idx} className="flex items-center gap-3 rounded-2xl px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors backdrop-blur-sm shadow-sm dark:shadow-none">
+                            <div key={idx} className="flex items-center gap-3 rounded-2xl px-4 py-3 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors   shadow-sm dark:shadow-none">
                                 <div className={`rounded-xl p-2`} style={{ backgroundColor: `${item.color}20` }}>
                                     <Icon icon={item.icon} color={item.color} width={22} height={22} />
                                 </div>

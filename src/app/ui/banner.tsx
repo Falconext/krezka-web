@@ -24,7 +24,7 @@ const Banner = () => {
             <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center relative z-10">
                 <div className="mx-auto max-w-4xl">
                     <div className="mb-8 flex justify-center">
-                        <div className="relative rounded-full px-4 py-1.5 text-sm leading-6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 dark:ring-white/20 hover:ring-gray-900/20 dark:hover:ring-white/30 bg-white/50 dark:bg-white/5 backdrop-blur-sm transition-all">
+                        <div className="relative rounded-full px-4 py-1.5 text-sm leading-6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 dark:ring-white/20 hover:ring-gray-900/20 dark:hover:ring-white/30 bg-white/50 dark:bg-white/5   transition-all">
                             Potencia tu empresa con Facturación Electrónica SUNAT{' '}
                         </div>
                     </div>

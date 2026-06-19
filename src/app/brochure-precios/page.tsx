@@ -4,12 +4,38 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "@/app/public/assets/logo.png";
 import { CheckCircle2, Download, Printer, FileText, Package, Monitor, Store, BarChart3, Users, PieChart, ShieldCheck } from "lucide-react";
+import {
+    fetchPublicPlansClient,
+    mergePricingPlans,
+    PRICING_BASE_PLANS,
+    type PricingBasePlan,
+} from "@/lib/public-pricing";
+
+const formatPrice = (value: number) => `S/ ${value.toFixed(2)} + IGV`;
+const cleanUsers = (value: string) => value.replace(/\s+usuarios?$/i, "");
+
+const planById = (plans: PricingBasePlan[], id: PricingBasePlan["id"]) =>
+    plans.find((plan) => plan.id === id) ?? PRICING_BASE_PLANS.find((plan) => plan.id === id)!;
 
 export default function BrochurePreciosPage() {
     const [isClient, setIsClient] = useState(false);
+    const [plans, setPlans] = useState<PricingBasePlan[]>(PRICING_BASE_PLANS);
+    const emprendedor = planById(plans, "plan-emprendedor");
+    const negocio = planById(plans, "plan-negocio");
+    const corporativo = planById(plans, "plan-corporativo");
 
     useEffect(() => {
         setIsClient(true);
+        let active = true;
+        const loadPlans = async () => {
+            const remotePlans = await fetchPublicPlansClient();
+            if (!active) return;
+            setPlans(mergePricingPlans(PRICING_BASE_PLANS, remotePlans));
+        };
+        void loadPlans();
+        return () => {
+            active = false;
+        };
     }, []);
 
     const handlePrint = () => {
@@ -65,7 +91,7 @@ export default function BrochurePreciosPage() {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="text-center md:text-right bg-white/10 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/20">
+                                <div className="text-center md:text-right bg-white/10   px-6 py-3 rounded-xl border border-white/20">
                                     <p className="text-sm text-orange-100 font-medium">
                                         Certificado por
                                     </p>
@@ -108,40 +134,39 @@ export default function BrochurePreciosPage() {
                                 <tbody className="bg-white text-xs">
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Precio mensual</td>
-                                        <td className="py-2 px-2 text-center font-bold text-gray-900">S/ 39.00 + IGV</td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">S/ 79.00 + IGV</td>
-                                        <td className="py-2 px-2 text-center font-bold text-gray-900">S/ 149.00 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-gray-900">{formatPrice(emprendedor.monthly)}</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">{formatPrice(negocio.monthly)}</td>
+                                        <td className="py-2 px-2 text-center font-bold text-gray-900">{formatPrice(corporativo.monthly)}</td>
                                     </tr>
                                     <tr className="border-b border-gray-200 bg-gray-50">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Precio anual</td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700">S/ 390.00 + IGV</td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">S/ 790.00 + IGV</td>
-                                        <td className="py-2 px-2 text-center font-bold text-green-700">S/ 1490.00 + IGV</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700">{formatPrice(emprendedor.annual)}</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700 bg-green-50">{formatPrice(negocio.annual)}</td>
+                                        <td className="py-2 px-2 text-center font-bold text-green-700">{formatPrice(corporativo.annual)}</td>
                                     </tr>
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 text-gray-900">
                                             <div className="font-semibold">Comprobantes/mes</div>
                                             <div className="text-[10px] text-gray-500">Boletas y facturas electrónicas</div>
                                         </td>
-                                        <td className="py-2 px-2 text-center font-bold text-emerald-600">ILIMITADOS</td>
-                                        <td className="py-2 px-2 text-center font-bold text-emerald-600 bg-green-50">ILIMITADOS</td>
-                                        <td className="py-2 px-2 text-center font-bold text-emerald-600">ILIMITADOS</td>
+                                        <td className="py-2 px-2 text-center font-bold text-emerald-600">{emprendedor.docs.replace("Comprobantes ", "")}</td>
+                                        <td className="py-2 px-2 text-center font-bold text-emerald-600 bg-green-50">{negocio.docs.replace("Comprobantes ", "")}</td>
+                                        <td className="py-2 px-2 text-center font-bold text-emerald-600">{corporativo.docs.replace("Comprobantes ", "")}</td>
                                     </tr>
                                     <tr className="border-b border-gray-200 bg-gray-50">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Usuarios</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">1</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">3</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">Ilimitados</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">{cleanUsers(emprendedor.usersLabel)}</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">{cleanUsers(negocio.usersLabel)}</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">{cleanUsers(corporativo.usersLabel)}</td>
                                     </tr>
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Sedes</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">1</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">Ilimitadas</td>
-                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">Ilimitadas</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">{emprendedor.sedesLabel}</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900 bg-green-50">{negocio.sedesLabel}</td>
+                                        <td className="py-2 px-2 text-center font-semibold text-gray-900">{corporativo.sedesLabel}</td>
                                     </tr>
                                     <tr className="border-b border-gray-200 bg-gray-50">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Inventario + Kardex</td>
-                                        <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                         <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                         <td className="py-2 px-2 text-center bg-green-50"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
                                         <td className="py-2 px-2 text-center"><CheckCircle2 className="w-4 h-4 text-green-600 mx-auto" /></td>
@@ -160,9 +185,9 @@ export default function BrochurePreciosPage() {
                                     </tr>
                                     <tr className="border-b border-gray-200">
                                         <td className="py-2 px-3 font-semibold text-gray-900">Tienda virtual</td>
-                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold">Incluida</td>
-                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold bg-green-50">Incluida</td>
-                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold">Incluida</td>
+                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold">{emprendedor.store}</td>
+                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold bg-green-50">{negocio.store}</td>
+                                        <td className="py-2 px-2 text-center text-emerald-700 font-semibold">{corporativo.store}</td>
                                     </tr>
                                     <tr className="bg-gray-50">
                                         <td className="py-2 px-3 font-semibold text-gray-900 rounded-bl-xl">Soporte</td>
@@ -256,6 +281,23 @@ export default function BrochurePreciosPage() {
                             </p>
                         </div>
 
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            {[emprendedor, negocio, corporativo].map((plan) => (
+                                <div key={plan.id} className={`rounded-2xl border p-4 ${plan.popular ? "border-blue-200 bg-blue-50" : "border-gray-200 bg-white"}`}>
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-blue-600">Ideal para</p>
+                                    <h4 className="mt-1 text-lg font-black text-gray-900">{plan.name}</h4>
+                                    <p className="mt-2 text-xs leading-relaxed text-gray-600">{plan.target}</p>
+                                    <div className="mt-3 flex flex-wrap gap-1.5">
+                                        {plan.modules.slice(0, 5).map((module) => (
+                                            <span key={module} className="rounded-full border border-gray-200 bg-white px-2 py-0.5 text-[10px] font-bold text-gray-600">
+                                                {module}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
                         {/* Comparison Table */}
                         <div className="overflow-x-auto rounded-2xl border-2 border-gray-200 shadow-lg pb-2">
                             <table className="w-full table-fixed min-w-[620px]">
@@ -282,13 +324,13 @@ export default function BrochurePreciosPage() {
                                             Precio mensual
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-gray-900">
-                                            S/ 19.90 + IGV
+                                            {formatPrice(emprendedor.monthly)}
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-gray-900 bg-blue-50">
-                                            S/ 49.90 + IGV
+                                            {formatPrice(negocio.monthly)}
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-gray-900">
-                                            S/ 89.90 + IGV
+                                            {formatPrice(corporativo.monthly)}
                                         </td>
                                     </tr>
 
@@ -298,13 +340,13 @@ export default function BrochurePreciosPage() {
                                             Precio anual
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-green-700">
-                                            S/ 199.00 + IGV
+                                            {formatPrice(emprendedor.annual)}
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-green-700 bg-blue-50">
-                                            S/ 499.00 + IGV
+                                            {formatPrice(negocio.annual)}
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-green-700">
-                                            S/ 899.00 + IGV
+                                            {formatPrice(corporativo.annual)}
                                         </td>
                                     </tr>
 
@@ -314,13 +356,13 @@ export default function BrochurePreciosPage() {
                                             Comprobantes/mes
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-emerald-600">
-                                            ILIMITADOS
+                                            {emprendedor.docs.replace("Comprobantes ", "")}
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-emerald-600 bg-blue-50">
-                                            ILIMITADOS
+                                            {negocio.docs.replace("Comprobantes ", "")}
                                         </td>
                                         <td className="py-3 px-3 text-center font-bold text-emerald-600">
-                                            ILIMITADOS
+                                            {corporativo.docs.replace("Comprobantes ", "")}
                                         </td>
                                     </tr>
 
@@ -329,11 +371,11 @@ export default function BrochurePreciosPage() {
                                         <td className="py-3 px-4 font-semibold text-gray-900">
                                             Usuarios
                                         </td>
-                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">1</td>
+                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">{cleanUsers(emprendedor.usersLabel)}</td>
                                         <td className="py-3 px-3 text-center font-semibold text-gray-900 bg-blue-50">
-                                            3
+                                            {cleanUsers(negocio.usersLabel)}
                                         </td>
-                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">Ilimitados</td>
+                                        <td className="py-3 px-3 text-center font-semibold text-gray-900">{cleanUsers(corporativo.usersLabel)}</td>
                                     </tr>
 
                                     {/* Tienda Virtual */}
@@ -341,9 +383,9 @@ export default function BrochurePreciosPage() {
                                         <td className="py-3 px-4 font-semibold text-gray-900">
                                             Tienda virtual
                                         </td>
-                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold">Incluida</td>
-                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold bg-blue-50">Incluida</td>
-                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold">Incluida</td>
+                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold">{emprendedor.store}</td>
+                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold bg-blue-50">{negocio.store}</td>
+                                        <td className="py-3 px-3 text-center text-emerald-700 font-semibold">{corporativo.store}</td>
                                     </tr>
 
                                     <tr className="border-b border-gray-200 bg-gray-50">
@@ -387,7 +429,7 @@ export default function BrochurePreciosPage() {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
-                                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                                <div className="bg-white/5   border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
                                     <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">
                                         WhatsApp
                                     </p>
@@ -395,13 +437,13 @@ export default function BrochurePreciosPage() {
                                         +51 932 332 556
                                     </p>
                                 </div>
-                                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                                <div className="bg-white/5   border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
                                     <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Email</p>
                                     <p className="text-lg md:text-xl font-bold text-white break-words">
                                         soporte@falconext.pe
                                     </p>
                                 </div>
-                                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                                <div className="bg-white/5   border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
                                     <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">
                                         Sitio Web
                                     </p>

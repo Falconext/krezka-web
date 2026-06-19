@@ -433,6 +433,45 @@ const generalWhatsappLink = `https://wa.me/${BRAND.whatsapp}?text=${encodeURICom
     `Hola, quiero entender los Planes Pro de ${BRAND.name} y elegir el ideal para mi empresa.`
 )}`;
 
+const industryFit = [
+    {
+        rubro: "Bodegas, bazares y emprendedores",
+        plan: "Emprendedor",
+        promise: "Empieza formal, vende rápido y emite SUNAT sin pagar de más.",
+        bullets: ["POS básico", "Caja diaria", "Stock simple"],
+    },
+    {
+        rubro: "Ropa, calzado y ventas por redes",
+        plan: "Negocio",
+        promise: "Vende online con variantes de talla/color, WhatsApp y tienda virtual.",
+        bullets: ["Tienda virtual", "Variantes", "Banners"],
+    },
+    {
+        rubro: "Ferreterías y minimarkets",
+        plan: "Negocio",
+        promise: "Controla compras, proveedores, combos, mayoristas y rotación diaria.",
+        bullets: ["Compras", "Combos", "Mayoristas"],
+    },
+    {
+        rubro: "Cómputo, repuestos y servicios técnicos",
+        plan: "Negocio",
+        promise: "Gestiona ficha técnica, series, garantías, servicios y catálogo profesional.",
+        bullets: ["Series", "Garantías", "Servicios"],
+    },
+    {
+        rubro: "Farmacias, cadenas y distribuidoras",
+        plan: "Corporativo",
+        promise: "Escala con multi-sede, FEFO/FIFO, vencimientos, comisiones y SIRE.",
+        bullets: ["Multi-sede", "FEFO/FIFO", "SIRE"],
+    },
+    {
+        rubro: "Empresas que quieren crecer",
+        plan: "Corporativo",
+        promise: "Une web, móvil, escritorio, finanzas y soporte dedicado en un solo sistema.",
+        bullets: ["Mobile", "Desktop", "Finanzas"],
+    },
+];
+
 const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
     const [proPlans, setProPlans] = useState<PricingBasePlan[]>(PRICING_BASE_PLANS);
 
@@ -466,7 +505,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                         Planes Pro {BRAND.name}
                     </h2>
                     <p className="mt-3 text-sm md:text-base text-gray-500">
-                        Sin contratos forzosos, sin costos ocultos y todo el acompañamiento incluido. Elige el plan perfecto para comenzar, crecer o escalar tu empresa conservando tu utilidad.
+                        Falconext se adapta a tu rubro: bodegas, ropa, ferreterías, minimarkets, cómputo, farmacias, distribuidores y empresas multi-sede.
                     </p>
                     <div className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-semibold text-emerald-700">
                         <span className="text-lg">🏆</span>
@@ -485,8 +524,9 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     <div className="mt-6 flex flex-wrap justify-center gap-2 text-[13px] font-medium text-gray-700">
                         {[
                             "Facturación electrónica ilimitada",
-                            "Envío por correo y WhatsApp",
-                            "Soporte y acompañamiento incluido",
+                            "Inventario por rubro",
+                            "Tienda virtual + WhatsApp",
+                            "Desktop + Mobile",
                         ].map((pill) => (
                             <span key={pill} className="rounded-full border border-gray-200 bg-white px-4 py-1">
                                 {pill}
@@ -545,8 +585,19 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                 {/* Descripción */}
                                 <p className="text-xs text-gray-500 leading-relaxed">{plan.tagline}</p>
                             </div>
+                            <div className="mt-4 rounded-2xl border border-indigo-100 bg-indigo-50/70 px-4 py-3">
+                                <p className="text-[10px] font-black uppercase tracking-widest text-indigo-500">Ideal para</p>
+                                <p className="mt-1 text-xs font-semibold leading-relaxed text-gray-700">{plan.target}</p>
+                            </div>
                             <div className="mt-4 rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-3 text-xs font-semibold text-gray-600 text-center">
                                 {plan.store}
+                            </div>
+                            <div className="mt-4 flex flex-wrap gap-2">
+                                {plan.modules.slice(0, 6).map((module) => (
+                                    <span key={module} className="rounded-full border border-gray-200 bg-white px-3 py-1 text-[11px] font-semibold text-gray-600">
+                                        {module}
+                                    </span>
+                                ))}
                             </div>
                             <ul className="mt-5 space-y-2 text-sm text-gray-700">
                                 {plan.highlights.map((item) => (
@@ -566,6 +617,50 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                             </a>
                         </article>
                     ))}
+                </div>
+
+                {/* Industry Fit */}
+                <div className="rounded-[2rem] border border-gray-200 bg-white p-5 md:p-7 shadow-sm">
+                    <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                        <div>
+                            <p className="text-xs font-black uppercase tracking-[0.22em] text-indigo-500">Planes por rubro</p>
+                            <h3 className="mt-2 text-2xl md:text-3xl font-bold text-gray-900">
+                                Falconext se siente hecho para tu negocio
+                            </h3>
+                            <p className="mt-2 max-w-2xl text-sm text-gray-500">
+                                No todos necesitan los mismos módulos. Por eso el sistema activa lo útil según etapa, rubro y forma de vender.
+                            </p>
+                        </div>
+                        <a
+                            href={generalWhatsappLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex w-fit items-center rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-bold text-indigo-700 hover:bg-indigo-100"
+                        >
+                            Recomiéndame un plan
+                        </a>
+                    </div>
+
+                    <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+                        {industryFit.map((item) => (
+                            <div key={item.rubro} className="rounded-2xl border border-gray-100 bg-gray-50/70 p-4 transition-all hover:-translate-y-0.5 hover:border-indigo-100 hover:bg-white hover:shadow-md">
+                                <div className="flex items-start justify-between gap-3">
+                                    <h4 className="text-sm font-bold text-gray-900">{item.rubro}</h4>
+                                    <span className="shrink-0 rounded-full bg-white px-2.5 py-1 text-[10px] font-black uppercase text-indigo-600 shadow-sm">
+                                        {item.plan}
+                                    </span>
+                                </div>
+                                <p className="mt-2 text-xs leading-relaxed text-gray-500">{item.promise}</p>
+                                <div className="mt-4 flex flex-wrap gap-1.5">
+                                    {item.bullets.map((bullet) => (
+                                        <span key={bullet} className="rounded-full border border-gray-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-gray-600">
+                                            {bullet}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Comparison Table */}

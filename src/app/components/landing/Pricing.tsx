@@ -12,8 +12,6 @@ import {
 
 const planColor = (plan: PricingBasePlan): string => (plan.popular ? "bg-white/10" : "bg-white/5");
 const planFeatures = (plan: PricingBasePlan): string[] => [
-  "Boletas y Facturas Electrónicas",
-  "Certificado Digital PSE Incluido",
   plan.docs,
   `${plan.usersLabel} · ${plan.sedesLabel}`,
   ...plan.highlights,
@@ -49,7 +47,7 @@ const Pricing = () => {
             <span className="text-blue-500">contigo</span>
           </motion.h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-            Sin contratos forzosos. Elige el plan que mejor se adapte a tu etapa actual y escala cuando estés listo.
+            Elige una etapa: formalízate, vende online o escala con multi-sede, logística, app móvil y control financiero.
           </p>
         </div>
 
@@ -76,6 +74,7 @@ const Pricing = () => {
               <div className="mb-8 text-center">
                 <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-2">{plan.name}</h3>
                 <p className="text-gray-500 dark:text-gray-400 font-medium text-sm">{plan.description}</p>
+                <p className="mt-3 text-xs font-semibold leading-relaxed text-blue-600 dark:text-blue-300">{plan.target}</p>
               </div>
 
               <div className="mb-10 text-center">
@@ -87,6 +86,13 @@ const Pricing = () => {
               </div>
 
               <div className="space-y-4 mb-10 flex-grow">
+                <div className="flex flex-wrap gap-2">
+                  {plan.modules.slice(0, 5).map((module) => (
+                    <span key={module} className="rounded-full border border-gray-200 dark:border-white/10 px-3 py-1 text-[11px] font-bold text-gray-500 dark:text-gray-400">
+                      {module}
+                    </span>
+                  ))}
+                </div>
                 {planFeatures(plan).map((feature, i) => (
                   <div key={`${plan.id}-${i}-${feature}`} className="flex items-start gap-3">
                     <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${plan.popular ? 'bg-blue-500/20 text-blue-500' : 'bg-gray-200 dark:bg-white/10 text-gray-500 dark:text-gray-400'}`}>
