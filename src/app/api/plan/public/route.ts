@@ -4,11 +4,10 @@ import { fetchPublicPlansServer } from "@/lib/public-pricing";
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const producto = searchParams.get("producto") ?? "facturacion";
-  const plataforma = searchParams.get("plataforma") ?? "falconext";
 
   const plans = await fetchPublicPlansServer({
     producto,
-    plataforma: plataforma === "krezka" ? "krezka" : "falconext",
+    plataforma: "krezka",
   });
 
   return NextResponse.json({

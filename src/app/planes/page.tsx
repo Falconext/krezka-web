@@ -60,7 +60,7 @@ export default function PlanesPage() {
             <section className="mx-auto max-w-7xl px-4 md:px-6">
                 <div className="rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
                     <p className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-                        Falconext · Guía Comercial de Planes
+                        Krezka · Guía Comercial de Planes
                     </p>
                     <h1 className="mt-4 text-3xl md:text-5xl font-black text-slate-900 leading-tight">
                         Planes recomendados para crecer con margen saludable

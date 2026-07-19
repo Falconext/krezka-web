@@ -235,7 +235,7 @@ const QuotePage = () => {
         body: JSON.stringify({
           access_key: "9e8b5b39-7603-4a4c-90d7-1976f8d968d4",
           subject: `Cotización - ${selectedPlan.name} (${isAnnual ? "Anual" : "Mensual"})`,
-          from_name: "Cotización Falconext",
+          from_name: "Cotización Krezka",
           reply_to: formValues.email,
           email_template: template,
         }),

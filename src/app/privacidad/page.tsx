@@ -2,7 +2,7 @@ import { BRAND } from "@/lib/branding";
 import { Shield, Lock, Eye, Bell, Trash2, Mail } from "lucide-react";
 
 export const metadata = {
-    title: `Política de Privacidad | ${BRAND ? "Krezka" : "Falconext"}`,
+    title: `Política de Privacidad | ${BRAND.name}`,
     description: "Conoce cómo recopilamos, usamos y protegemos tu información personal.",
 };
 

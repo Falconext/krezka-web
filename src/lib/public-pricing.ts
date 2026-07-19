@@ -176,10 +176,7 @@ const normalizeName = (value: string): string =>
     .toLowerCase()
     .trim();
 
-export const getPlatform = (): "falconext" | "krezka" =>
-  (process.env.NEXT_PUBLIC_BRAND ?? "falconext").toLowerCase() === "krezka"
-    ? "krezka"
-    : "falconext";
+export const getPlatform = (): "krezka" => "krezka";
 
 const mapPlanId = (name: string): PricingBasePlan["id"] | null => {
   const n = normalizeName(name);
@@ -258,7 +255,7 @@ const extractPlans = (payload: unknown): PublicPlanApi[] => {
 };
 
 export async function fetchPublicPlansServer(
-  params?: { producto?: string; plataforma?: "falconext" | "krezka" }
+  params?: { producto?: string; plataforma?: "krezka" }
 ): Promise<PublicPlanApi[]> {
   try {
     const producto = params?.producto ?? PRODUCTO;

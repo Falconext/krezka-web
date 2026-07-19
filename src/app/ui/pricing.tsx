@@ -505,7 +505,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                         Planes Pro {BRAND.name}
                     </h2>
                     <p className="mt-3 text-sm md:text-base text-gray-500">
-                        Falconext se adapta a tu rubro: bodegas, ropa, ferreterías, minimarkets, cómputo, farmacias, distribuidores y empresas multi-sede.
+                        Krezka se adapta a tu rubro: bodegas, ropa, ferreterías, minimarkets, cómputo, farmacias, distribuidores y empresas multi-sede.
                     </p>
                     <div className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-semibold text-emerald-700">
                         <span className="text-lg">🏆</span>
@@ -625,7 +625,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                         <div>
                             <p className="text-xs font-black uppercase tracking-[0.22em] text-indigo-500">Planes por rubro</p>
                             <h3 className="mt-2 text-2xl md:text-3xl font-bold text-gray-900">
-                                Falconext se siente hecho para tu negocio
+                                Krezka se siente hecho para tu negocio
                             </h3>
                             <p className="mt-2 max-w-2xl text-sm text-gray-500">
                                 No todos necesitan los mismos módulos. Por eso el sistema activa lo útil según etapa, rubro y forma de vender.

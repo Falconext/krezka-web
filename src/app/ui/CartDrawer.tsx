@@ -79,7 +79,7 @@ export default function CartDrawer() {
                       {item.imageUrl ? (
                         <img src={item.imageUrl} alt={item.name} className="w-full h-full object-contain mix-blend-multiply" />
                       ) : (
-                        <img src="/assets/logo.png" alt="Falconext" className="w-8 h-8 opacity-10" />
+                        <img src="/assets/logo.png" alt="Krezka" className="w-8 h-8 opacity-10" />
                       )}
                     </div>
 

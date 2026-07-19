@@ -5,15 +5,10 @@ import Script from "next/script";
 import { BRAND } from "@/lib/branding";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const isFalconext = BRAND.name.toLowerCase() === "falconext";
-  const brandLogo = isFalconext ? "/assets/logofalconext.png" : "/assets/krezka/krezkalogo.png";
+  const brandLogo = "/assets/krezka/krezkalogo.png";
   const ogImage = `${BRAND.website}${brandLogo}`;
-  const title = isFalconext
-    ? "Falconext | Facturación Electrónica SUNAT y POS para Empresas en Perú"
-    : "Krezka | Facturación Electrónica SUNAT y POS para Negocios en Perú";
-  const description = isFalconext
-    ? "Falconext: sistema de facturación electrónica SUNAT con boletas, facturas, notas de crédito, POS e inventario. Optimizado para empresas y PYMES en Perú."
-    : "Krezka: software de facturación electrónica SUNAT con POS, control de inventario y gestión comercial para negocios en Perú.";
+  const title = "Krezka | Facturación Electrónica SUNAT y POS para Negocios en Perú";
+  const description = "Krezka: software de facturación electrónica SUNAT con POS, control de inventario y gestión comercial para negocios en Perú.";
 
   return {
     metadataBase: new URL(BRAND.website),

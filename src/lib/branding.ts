@@ -1,6 +1,6 @@
 /**
- * Sistema de Branding Centralizado para White-labeling
- * Permite cambiar la identidad visual de Falconext/Krezka desde un solo lugar.
+ * Sistema de Branding Centralizado
+ * Identidad visual de Krezka desde un solo lugar.
  */
 
 export type BrandConfig = {
@@ -24,23 +24,6 @@ export type BrandConfig = {
 };
 
 const brands: Record<string, BrandConfig> = {
-  falconext: {
-    name: 'Falconext',
-    legalName: 'Falconext S.A.C.',
-    website: 'https://falconext.pe',
-    email: 'ventas@falconext.pe',
-    phone: '+51 932 332 556',
-    whatsapp: '51932332556',
-    logo: '/assets/logofalconext.png',
-    logoWhite: '/assets/logowhite.png',
-    primaryColor: '#3E2BC7',
-    secondaryColor: '#5A45D1',
-    socials: {
-      facebook: 'https://www.facebook.com/profile.php?id=61576185915016',
-      instagram: 'https://www.instagram.com/falconext.pe/',
-    },
-    dashboardUrl: 'https://app.falconext.pe'
-  },
   krezka: {
     name: 'Krezka',
     legalName: 'Krezka Soluciones Digitales',
@@ -60,8 +43,4 @@ const brands: Record<string, BrandConfig> = {
   }
 };
 
-// Obtenemos la marca activa desde una variable de entorno
-// Por defecto usamos falconext
-const activeBrandKey = process.env.NEXT_PUBLIC_BRAND || 'falconext';
-
-export const BRAND = brands[activeBrandKey] || brands.falconext;
+export const BRAND = brands.krezka;

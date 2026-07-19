@@ -80,11 +80,11 @@ export default function BrochurePreciosPage() {
                             <div className="flex flex-col md:flex-row items-center md:justify-between gap-6">
                                 <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-center md:text-left">
                                     <div className="bg-white p-0 rounded-full shadow-xl">
-                                        <Image src={logo} alt="Falconext" width={80} height={80} />
+                                        <Image src={logo} alt="Krezka" width={80} height={80} />
                                     </div>
                                     <div>
                                         <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-                                            FALCONEXT
+                                            KREZKA
                                         </h1>
                                         <p className="text-orange-100 text-lg md:text-xl mt-1 font-medium">
                                             Sistema Inteligente de Facturación
@@ -215,7 +215,7 @@ export default function BrochurePreciosPage() {
                                 </span>
                             </h2>
                             <p className="text-gray-600 text-lg">
-                                Olvídate de pagar por módulos separados. Falconext te da acceso a todas las herramientas profesionales desde el plan más básico.
+                                Olvídate de pagar por módulos separados. Krezka te da acceso a todas las herramientas profesionales desde el plan más básico.
                             </p>
                         </div>
 
@@ -261,8 +261,8 @@ export default function BrochurePreciosPage() {
                     <div className="px-4 md:px-8 pt-8 pb-4 border-b-2 border-gray-200">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                                <Image src={logo} alt="Falconext" width={50} height={50} />
-                                <h2 className="text-2xl font-bold text-gray-800">FALCONEXT</h2>
+                                <Image src={logo} alt="Krezka" width={50} height={50} />
+                                <h2 className="text-2xl font-bold text-gray-800">KREZKA</h2>
                             </div>
                             <div className="text-sm text-gray-600 hidden md:block">
                                 Sistema Inteligente de Facturación
@@ -277,7 +277,7 @@ export default function BrochurePreciosPage() {
                                 Resumen de Planes Pro
                             </h3>
                             <p className="text-gray-600">
-                                Mismos precios publicados en falconext.pe
+                                Mismos precios publicados en krezka.com
                             </p>
                         </div>
 
@@ -424,7 +424,7 @@ export default function BrochurePreciosPage() {
                                     ¿Listo para impulsar tu negocio?
                                 </h3>
                                 <p className="text-slate-300 text-sm md:text-lg font-medium">
-                                    Únete a miles de empresarios que ya confían en Falconext
+                                    Únete a miles de empresarios que ya confían en Krezka
                                 </p>
                             </div>
 
@@ -440,7 +440,7 @@ export default function BrochurePreciosPage() {
                                 <div className="bg-white/5   border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
                                     <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Email</p>
                                     <p className="text-lg md:text-xl font-bold text-white break-words">
-                                        soporte@falconext.pe
+                                        soporte@krezka.com
                                     </p>
                                 </div>
                                 <div className="bg-white/5   border border-white/10 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
@@ -448,14 +448,14 @@ export default function BrochurePreciosPage() {
                                         Sitio Web
                                     </p>
                                     <p className="text-lg md:text-xl font-bold text-white">
-                                        www.falconext.pe
+                                        www.krezka.com
                                     </p>
                                 </div>
                             </div>
 
                             <div className="text-center mt-8 pt-6 border-t border-white/10">
                                 <p className="text-slate-400 text-xs md:text-sm">
-                                    © 2026 Falconext · Todos los derechos reservados
+                                    © 2026 Krezka · Todos los derechos reservados
                                 </p>
                             </div>
                         </div>

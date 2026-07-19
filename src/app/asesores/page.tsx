@@ -69,7 +69,7 @@ export default function AsesoresPage() {
                 <A4Page>
                     {/* Header Interno */}
                     <div className="absolute top-0 left-0 w-full h-12 bg-gray-900 flex items-center justify-between px-4 md:px-8 print:hidden">
-                        <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-gray-400">FALCONEXT PARTNERS</span>
+                        <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-gray-400">KREZKA PARTNERS</span>
                         <div className="flex items-center gap-2">
                             <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                             <span className="text-[10px] font-bold text-red-400 uppercase tracking-wider">Confidencial / Uso Interno</span>
@@ -200,7 +200,7 @@ export default function AsesoresPage() {
 
                     {/* FOOTER INTERNO */}
                     <div className="mt-auto border-t border-slate-100 pt-6 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-400 uppercase tracking-widest gap-2 text-center md:text-left">
-                        <span>FALCONEXT &copy; 2026</span>
+                        <span>KREZKA &copy; 2026</span>
                         <span>DOCUMENTO CONFIDENCIAL - PROHIBIDA SU DISTRIBUCIÓN</span>
                     </div>
                 </A4Page>
@@ -470,7 +470,7 @@ export default function AsesoresPage() {
                                 <span className="text-blue-400 font-bold tracking-widest text-xs uppercase mb-2 block">El Futuro</span>
                                 <h1 className="text-4xl md:text-5xl font-black text-white mb-6">Escalabilidad</h1>
                                 <p className="text-slate-400 text-lg max-w-xl leading-relaxed">
-                                    No hay límite para tu crecimiento. Este modelo está diseñado para que construyas tu propio imperio comercial dentro de Falconext.
+                                    No hay límite para tu crecimiento. Este modelo está diseñado para que construyas tu propio imperio comercial dentro de Krezka.
                                 </p>
                             </div>
 

@@ -35,7 +35,7 @@ export default function HotelSystemLanding() {
                 <section className="py-24 relative" id="pricing">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="text-center mb-16 flex flex-col items-center">
-                            <Image src={fnlogo} alt="Falconext" width={48} height={48} className="w-12 h-12 mb-6 opacity-80" />
+                            <Image src={fnlogo} alt="Krezka" width={48} height={48} className="w-12 h-12 mb-6 opacity-80" />
                             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Planes Simples y Transparentes</h2>
                             <p className="text-gray-600 dark:text-gray-400">Sin comisiones ocultas. Elige lo que tu hotel necesita.</p>
                         </div>

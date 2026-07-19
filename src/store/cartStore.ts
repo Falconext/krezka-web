@@ -95,7 +95,7 @@ export const useCartStore = create<CartState>()(
       },
     }),
     {
-      name: 'falconext-cart-storage',
+      name: 'krezka-cart-storage',
       partialize: (state) => ({ items: state.items }), // Only persist items, not UI state (isOpen)
     }
   )
