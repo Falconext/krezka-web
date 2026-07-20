@@ -5,7 +5,7 @@ import Script from "next/script";
 import { BRAND } from "@/lib/branding";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const brandLogo = "/assets/krezka/krezkalogo.png";
+  const brandLogo = "/assets/krezka/krezka-square.png";
   const ogImage = `${BRAND.website}${brandLogo}`;
   const title = "Krezka | Facturación Electrónica SUNAT y POS para Negocios en Perú";
   const description = "Krezka: software de facturación electrónica SUNAT con POS, control de inventario y gestión comercial para negocios en Perú.";
