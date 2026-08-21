@@ -106,7 +106,7 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
       "Compras, gastos y lotes básicos",
       "Envío automático de comprobantes por WhatsApp y Email",
       "Cotizaciones y proformas",
-      "Pasarela de pagos Culqi para cobrar con tarjeta",
+      "Integración con Shalom Pro para envío a despacho",
     ],
     modules: [
       "Tienda virtual",
@@ -114,9 +114,9 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
       "Combos",
       "Mayoristas",
       "Compras y gastos",
+      "Shalom Pro",
       "Lotes básicos",
       "WhatsApp/Email",
-      "Culqi",
     ],
     usersLabel: "5 usuarios",
     sedesLabel: "2 sedes",
@@ -135,27 +135,21 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
     store: "Incluye tienda virtual",
     tagline: "Para empresas que necesitan control absoluto: multi-sucursal, rentabilidad exacta, logística y operaciones B2B.",
     target: "Cadenas de tiendas, farmacias, distribuidoras B2B, supermercados y empresas con varias sucursales.",
-    strategy: "El valor premium está en el control: FEFO/FIFO, distribuidores, reseñas, SIRE, delivery/GPS, escritorio y app móvil.",
+    strategy: "El valor premium está en el control: FEFO/FIFO, reseñas y SIRE.",
     highlights: [
       "Todo lo del plan Negocio",
       "Usuarios y sedes ilimitadas",
       "Kardex avanzado FEFO/FIFO con vencimientos y traslados entre sucursales",
-      "Módulo de distribuidores, afiliados y cálculo de comisiones",
       "Reviews y reseñas web con moderación",
       "Contabilidad, SIRE y dashboard financiero con rentabilidad exacta",
-      "Delivery/GPS para la tienda virtual",
-      "Sistema de escritorio + App móvil",
       "Asesor personal dedicado",
     ],
     modules: [
       "Multi-sede",
       "FEFO/FIFO",
-      "Distribuidores",
-      "Comisiones",
       "Reviews",
       "SIRE",
-      "Delivery/GPS",
-      "Desktop + Mobile",
+      "Shalom Pro",
     ],
     usersLabel: "15 usuarios",
     sedesLabel: "Ilimitadas",
@@ -213,16 +207,13 @@ export const mergePricingPlans = (
     const remote = mapped.get(base.id);
     if (!remote) return base;
 
-    const monthlyRaw = typeof remote.costo === "string" ? Number(remote.costo) : remote.costo;
-    const monthly = Number.isFinite(monthlyRaw) ? monthlyRaw : base.monthly;
-    const annual = monthly * 10;
-    const regularMonthly = monthly * 1.25;
-
+    // Nota: no derivamos el precio del `costo` remoto porque el backend lo
+    // devuelve de forma inconsistente (unos planes traen el valor mensual y
+    // otros el anual), lo que producía precios como "S/ 399.00 /mes" y un
+    // anual mal calculado (× 10). Los precios curados en PRICING_BASE_PLANS
+    // son la fuente de verdad; el merge solo actualiza metadatos del plan.
     return {
       ...base,
-      monthly,
-      annual,
-      regularMonthly,
       docs: formatDocs(remote.maxComprobantes),
       description: remote.descripcion ?? base.description,
       usersLabel: formatUsers(remote.limiteUsuarios),

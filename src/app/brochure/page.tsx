@@ -273,7 +273,7 @@ export default function BrochurePage() {
               { title: "Ferreterías", plan: "Negocio", desc: "Precios mayoristas, combos, compras, proveedores y control por sede.", color: "#8B5CF6", tags: ["Mayorista", "Combos", "Compras"], bgImage: "/assets/brochure/ferreteria.png" },
               { title: "Cómputo y repuestos", plan: "Negocio", desc: "Ficha técnica, códigos de barra, series, garantías y servicios técnicos.", color: "#2563EB", tags: ["Series", "Garantía", "Servicios"], bgImage: "/assets/brochure/computo.png" },
               { title: "Farmacias y minimarkets", plan: "Corporativo", desc: "Lotes, vencimientos, FEFO/FIFO, traslados y control multi-sucursal.", color: "#10B981", tags: ["FEFO", "Lotes", "Vencimientos"], bgImage: "/assets/brochure/farmacias.png" },
-              { title: "Distribuidoras B2B", plan: "Corporativo", desc: "Resellers, comisiones, rutas, ventas por canal y rentabilidad exacta.", color: "#059669", tags: ["B2B", "Comisiones", "SIRE"], bgImage: "/assets/brochure/distribuidores.png" },
+              { title: "Distribuidoras B2B", plan: "Corporativo", desc: "Multi-sucursal, control de stock por canal, SIRE y rentabilidad exacta.", color: "#059669", tags: ["B2B", "Multi-sede", "SIRE"], bgImage: "/assets/brochure/distribuidores.png" },
             ].map((item) => (
               <div
                 key={item.title}
@@ -439,7 +439,7 @@ export default function BrochurePage() {
               { label: "Combos, kits y mayoristas", vals: [false, true, true] },
               { label: "Cotizaciones y proformas", vals: [false, true, true] },
               { label: "WhatsApp y Email automático", vals: [false, true, true] },
-              { label: "Pasarela de pagos Culqi", vals: [false, true, true] },
+              { label: "Pasarela de pagos Culqi", vals: [false, false, true] },
               { label: "Reviews y reseñas web", vals: [false, false, true] },
             ].map((row, i) => (
               "category" in row ? (
@@ -487,14 +487,10 @@ export default function BrochurePage() {
               { label: "Lotes básicos", vals: [false, true, true] },
               { label: "FEFO/FIFO y vencimientos", vals: [false, false, true] },
               { label: "Traslados entre sucursales", vals: [false, false, true] },
-              { label: "Delivery/GPS tienda virtual", vals: [false, false, true] },
+              { label: "Shalom Pro (envío a despacho)", vals: [false, true, true] },
               { category: "Crecimiento, finanzas y soporte" },
-              { label: "Distribuidores / resellers", vals: [false, false, true] },
-              { label: "Comisiones y afiliados", vals: [false, false, true] },
               { label: "SIRE y contabilidad avanzada", vals: [false, false, true] },
               { label: "Dashboard financiero y rentabilidad", vals: [false, false, true] },
-              { label: "Sistema de escritorio", vals: [false, false, true] },
-              { label: "App móvil", vals: [false, false, true] },
               { label: "Soporte", vals: plans.map(p => p.soporte) },
             ].map((row, i) => (
               "category" in row ? (

@@ -35,7 +35,7 @@ type Capability = {
     banners: boolean;
     galeria: boolean;
     culqi: boolean;
-    deliveryGPS: boolean;
+    shalom: boolean;
     // Reportes
     reportesGerenciales: boolean;
     sire: boolean;
@@ -69,7 +69,7 @@ const proPlanCapabilities: Record<string, Capability> = {
         banners: false,
         galeria: false,
         culqi: false,
-        deliveryGPS: false,
+        shalom: false,
         reportesGerenciales: false,
         sire: false,
         finanzas: false,
@@ -99,7 +99,7 @@ const proPlanCapabilities: Record<string, Capability> = {
         banners: true,
         galeria: true,
         culqi: false,
-        deliveryGPS: false,
+        shalom: true,
         reportesGerenciales: true,
         sire: true,
         finanzas: false,
@@ -129,12 +129,12 @@ const proPlanCapabilities: Record<string, Capability> = {
         banners: true,
         galeria: true,
         culqi: true,
-        deliveryGPS: true,
+        shalom: true,
         reportesGerenciales: true,
         sire: true,
         finanzas: true,
         produccion: true,
-        comisiones: true,
+        comisiones: false,
         roles: true,
         whatsapp: true,
         gemini: true,
@@ -307,11 +307,11 @@ const comparisonRows: ComparisonRow[] = [
         getValue: (plan) => proPlanCapabilities[plan.id].culqi,
     },
     {
-        key: "deliveryGPS",
-        label: "Delivery con GPS",
+        key: "shalom",
+        label: "Shalom Pro (envío a despacho)",
         category: "Tienda",
         kind: "boolean",
-        getValue: (plan) => proPlanCapabilities[plan.id].deliveryGPS,
+        getValue: (plan) => proPlanCapabilities[plan.id].shalom,
     },
     // ── Reportes & Contabilidad ──────────────────
     {
@@ -461,14 +461,14 @@ const industryFit = [
     {
         rubro: "Farmacias, cadenas y distribuidoras",
         plan: "Corporativo",
-        promise: "Escala con multi-sede, FEFO/FIFO, vencimientos, comisiones y SIRE.",
+        promise: "Escala con multi-sede, FEFO/FIFO, vencimientos y SIRE.",
         bullets: ["Multi-sede", "FEFO/FIFO", "SIRE"],
     },
     {
         rubro: "Empresas que quieren crecer",
         plan: "Corporativo",
-        promise: "Une web, móvil, escritorio, finanzas y soporte dedicado en un solo sistema.",
-        bullets: ["Mobile", "Desktop", "Finanzas"],
+        promise: "Une control multi-sede, finanzas y soporte dedicado en un solo sistema.",
+        bullets: ["Finanzas", "Multi-sede", "Soporte dedicado"],
     },
 ];
 
@@ -526,7 +526,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                             "Facturación electrónica ilimitada",
                             "Inventario por rubro",
                             "Tienda virtual + WhatsApp",
-                            "Desktop + Mobile",
+                            "Reportes y finanzas",
                         ].map((pill) => (
                             <span key={pill} className="rounded-full border border-gray-200 bg-white px-4 py-1">
                                 {pill}
