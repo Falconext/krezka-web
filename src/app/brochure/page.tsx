@@ -152,58 +152,69 @@ export default function BrochurePage() {
       {/* PAGE 1 — COVER */}
       <Page dark>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-700/25 blur-3xl print:hidden" />
-          <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-violet-700/20 blur-3xl print:hidden" />
-          <svg className="absolute inset-0 w-full h-full opacity-[0.035]"><defs><pattern id="g1" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0L0 0 0 44" fill="none" stroke="white" strokeWidth="0.6" /></pattern></defs><rect width="100%" height="100%" fill="url(#g1)" /></svg>
+          <div className="absolute -top-48 -right-40 w-[560px] h-[560px] rounded-full bg-violet-700/22 blur-3xl print:hidden" />
+          <div className="absolute top-1/3 -left-44 w-[460px] h-[460px] rounded-full bg-emerald-600/12 blur-3xl print:hidden" />
+          <div className="absolute -bottom-40 right-1/4 w-96 h-96 rounded-full bg-indigo-700/14 blur-3xl print:hidden" />
+          <svg className="absolute inset-0 w-full h-full opacity-[0.04]"><defs><pattern id="g1" width="46" height="46" patternUnits="userSpaceOnUse"><path d="M46 0L0 0 0 46" fill="none" stroke="white" strokeWidth="0.5" /></pattern></defs><rect width="100%" height="100%" fill="url(#g1)" /></svg>
         </div>
         <div className="relative z-10 flex flex-col h-full p-[14mm]">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Image
-                src="/assets/krezka/krezkawhite.png"
-                alt="Krezka Logo"
-                width={250}
-                height={50}
-                className="h-18 w-auto object-contain"
-              />
+            <Image
+              src="/assets/krezka/krezkawhite.png"
+              alt="Krezka Logo"
+              width={250}
+              height={50}
+              className="h-16 w-auto object-contain"
+            />
+            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5">
+              <span className="text-white/45 text-[10px] font-bold uppercase tracking-[0.28em]">Brochure {new Date().getFullYear()}</span>
             </div>
-            <span className="text-white/35 text-[11px] font-semibold uppercase tracking-[0.3em]">Brochure {new Date().getFullYear()}</span>
           </div>
 
-          <div className="my-auto flex flex-col gap-7">
-            <div className="inline-flex items-center gap-2 w-fit px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10">
-              <div className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-              <span className="text-indigo-300 text-[11px] font-bold tracking-[0.18em] uppercase">Sistema de Gestión Empresarial</span>
+          <div className="my-auto flex flex-col gap-8 max-w-2xl">
+            <div className="inline-flex w-fit items-center gap-2.5 rounded-full border border-emerald-400/25 bg-emerald-400/[0.07] px-3.5 py-1.5">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60 print:hidden" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              </span>
+              <span className="text-emerald-200/90 text-[10.5px] font-black uppercase tracking-[0.2em]">Facturación · Inventario · Tienda · IA de Ventas</span>
             </div>
-            <h1 className="text-[3.8rem] leading-none font-black text-white tracking-tight">
-              DIGITALIZA<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-pink-400 print:hidden">TU NEGOCIO</span>
-              <span className="hidden print:inline text-indigo-400">TU NEGOCIO</span>
+            <h1 className="text-[3.85rem] font-black leading-[0.98] tracking-tight text-white">
+              El sistema que{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-violet-300 print:hidden">digitaliza y hace crecer</span>
+              <span className="hidden print:inline text-emerald-300">digitaliza y hace crecer</span>
+              {" "}tu negocio
             </h1>
-            <p className="text-white/45 text-base font-light max-w-sm leading-relaxed">
-              Facturación electrónica SUNAT, inventario, caja, tienda virtual y más — todo en una sola plataforma.
+            <p className="max-w-lg text-[15px] font-light leading-relaxed text-white/50">
+              Facturación electrónica SUNAT, inventario, caja y tienda virtual — más un asesor con <span className="font-medium text-white/75">IA que atiende y vende por WhatsApp</span>. Todo en una sola plataforma.
             </p>
-            <div className="flex gap-8 pt-2">
-              {[{ v: "3", l: "Planes" }, { v: "8+", l: "Módulos" }, { v: "24h", l: "Activación" }, { v: "100%", l: "Cloud" }].map(s => (
+            <div className="flex flex-wrap gap-x-9 gap-y-4 pt-1">
+              {[
+                { v: "SUNAT", l: "Facturación autorizada" },
+                { v: "IA 24/7", l: "Ventas por WhatsApp" },
+                { v: "100%", l: "En la nube" },
+                { v: "24h", l: "Activación" },
+              ].map((s) => (
                 <div key={s.l}>
-                  <div className="text-2xl font-black text-white">{s.v}</div>
-                  <div className="text-white/35 text-[10px] uppercase tracking-wider mt-0.5">{s.l}</div>
+                  <div className="text-[1.35rem] font-black leading-none text-white">{s.v}</div>
+                  <div className="mt-1 text-[9.5px] uppercase tracking-wider text-white/35">{s.l}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-6">
-            <div className="flex gap-8">
-              {[{ l: "Web", v: BRAND.web }, { l: "Soporte", v: BRAND.email }].map(x => (
+          <div className="flex items-end justify-between border-t border-white/10 pt-6">
+            <div className="flex gap-9">
+              {[{ l: "Web", v: BRAND.web }, { l: "Contacto", v: BRAND.email }].map((x) => (
                 <div key={x.l}>
                   <p className="text-white/30 text-[9px] uppercase tracking-widest">{x.l}</p>
-                  <p className="text-white/65 text-sm font-semibold">{x.v}</p>
+                  <p className="mt-0.5 text-sm font-semibold text-white/70">{x.v}</p>
                 </div>
               ))}
             </div>
-            <div className="px-4 py-1.5 rounded-full bg-white/8 border border-white/10">
-              <span className="text-white/50 text-[10px] font-bold tracking-widest uppercase">Lima, Perú</span>
+            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <span className="text-white/55 text-[10px] font-bold uppercase tracking-widest">Perú · LatAm</span>
             </div>
           </div>
         </div>
@@ -743,9 +754,9 @@ export default function BrochurePage() {
       {/* PAGE 8 — CONTACTO (DARK) */}
       <Page dark last>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-violet-600/20 blur-3xl print:hidden" />
-          <div className="absolute -bottom-24 left-1/3 w-96 h-96 rounded-full bg-indigo-600/15 blur-3xl print:hidden" />
-          <svg className="absolute inset-0 w-full h-full opacity-[0.03]"><defs><pattern id="g2" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0L0 0 0 44" fill="none" stroke="white" strokeWidth="0.6" /></pattern></defs><rect width="100%" height="100%" fill="url(#g2)" /></svg>
+          <div className="absolute -top-28 -right-24 w-[420px] h-[420px] rounded-full bg-emerald-600/12 blur-3xl print:hidden" />
+          <div className="absolute -bottom-28 left-1/4 w-[460px] h-[460px] rounded-full bg-violet-600/20 blur-3xl print:hidden" />
+          <svg className="absolute inset-0 w-full h-full opacity-[0.035]"><defs><pattern id="g2" width="46" height="46" patternUnits="userSpaceOnUse"><path d="M46 0L0 0 0 46" fill="none" stroke="white" strokeWidth="0.5" /></pattern></defs><rect width="100%" height="100%" fill="url(#g2)" /></svg>
         </div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full p-[15mm] text-center gap-8">
           <div>
@@ -754,24 +765,28 @@ export default function BrochurePage() {
               alt="Krezka Logo"
               width={200}
               height={70}
-              className="h-16 w-auto object-contain mx-auto mb-5 drop-shadow-2xl"
+              className="h-16 w-auto object-contain mx-auto mb-6 drop-shadow-2xl"
             />
-            <h2 className="text-5xl font-black text-white leading-tight">
-              Empieza <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 print:hidden">Hoy</span>
-              <span className="hidden print:inline text-indigo-400">Hoy</span>
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/[0.07] px-3 py-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <span className="text-emerald-200/90 text-[10px] font-black uppercase tracking-[0.2em]">Activación en 24 horas</span>
+            </div>
+            <h2 className="text-5xl font-black leading-tight text-white">
+              Empieza <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-violet-300 print:hidden">hoy</span>
+              <span className="hidden print:inline text-emerald-300">hoy</span>
             </h2>
-            <p className="text-white/45 text-base mt-3 max-w-xs mx-auto leading-relaxed">
-              Digitaliza tu negocio en 24 horas. Sin contratos, sin permanencia.
+            <p className="mx-auto mt-3 max-w-sm text-base leading-relaxed text-white/50">
+              Digitaliza tu negocio y activa la IA de Ventas por WhatsApp. Sin contratos, sin permanencia — todo incluido.
             </p>
           </div>
 
           <div className="w-full max-w-sm space-y-3">
             {[
-              { Icon: Globe, bg: "bg-indigo-600", label: "Sitio Web", value: BRAND.web },
-              { Icon: Mail, bg: "bg-violet-600", label: "Correo", value: BRAND.email },
+              { Icon: Globe, bg: "bg-violet-600", label: "Sitio Web", value: BRAND.web },
+              { Icon: Mail, bg: "bg-indigo-600", label: "Correo", value: BRAND.email },
               { Icon: MessageCircle, bg: "bg-[#25D366]", label: "WhatsApp", value: "Escríbenos ahora" },
             ].map(({ Icon, bg, label, value }) => (
-              <div key={label} className="flex items-center gap-4 bg-white/6 border border-white/10 rounded-2xl px-5 py-4">
+              <div key={label} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.05] px-5 py-4 ring-1 ring-white/5">
                 <div className={`w-11 h-11 ${bg} rounded-xl flex items-center justify-center shrink-0 shadow-lg`}>
                   <Icon size={19} className="text-white" />
                 </div>
