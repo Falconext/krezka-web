@@ -89,7 +89,7 @@ const VENTAS_PLANS: VentasPlan[] = [
     price: 149,
     leads: 500,
     tagline: "Empieza a atender con IA — todo incluido",
-    bullets: ["Hasta 500 conversaciones/mes", "Todo incluido: no pagas Meta aparte", "Asesor IA 24/7 por WhatsApp"],
+    bullets: ["Hasta 500 conversaciones/mes", "Conversaciones sin costo extra en Meta", "Asesor IA 24/7 por WhatsApp"],
   },
   {
     name: "Pro",
@@ -112,7 +112,7 @@ const IA_CAPS: { icon: LucideIcon; title: string; desc: string }[] = [
   { icon: Search, title: "Catálogo real", desc: "Responde con tus productos, precios y stock en vivo." },
   { icon: BarChart3, title: "Califica solo", desc: "Puntúa cada conversación (BANT) y avisa las calientes." },
   { icon: MessageCircle, title: "Envía y da seguimiento", desc: "Manda fotos y brochure, y reengancha por su cuenta." },
-  { icon: Clock, title: "Todo incluido, 24/7", desc: "Un solo precio, tu propio número, sin pagar Meta aparte." },
+  { icon: Clock, title: "Todo incluido, 24/7", desc: "Un solo precio, tu propio número, sin costo por conversación." },
 ];
 
 const Page = ({ children, dark = false, last = false }: { children: React.ReactNode; dark?: boolean; last?: boolean }) => (
@@ -445,7 +445,7 @@ export default function BrochurePage() {
               ))}
             </div>
             <p className="mt-4 text-[8.5px] leading-relaxed text-white/30">
-              La atención con IA está toda incluida en tu plan. El costo de tus anuncios para traer nuevos leads (Click-to-WhatsApp) lo cobra Meta aparte y depende de tu campaña — eso es igual en cualquier plataforma.
+              Las conversaciones que atiende la IA (las que inicia tu cliente) no tienen costo por mensaje. Aparte, y como en cualquier plataforma: tus anuncios para traer leads (Click-to-WhatsApp) los cobra Meta según tu campaña, y los avisos automáticos que tú envíes (p. ej. despacho) tienen un costo mínimo de Meta por mensaje.
             </p>
           </div>
         </div>
