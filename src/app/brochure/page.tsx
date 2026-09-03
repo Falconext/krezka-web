@@ -1,5 +1,5 @@
 'use client';
-import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star, FileText, Package, BarChart3 } from "lucide-react";
+import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star, FileText, Package, BarChart3, Sparkles, TrendingUp, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { fetchPublicPlansClient, mergePricingPlans, PRICING_BASE_PLANS, type PricingBasePlan } from "@/lib/public-pricing";
 import { useEffect, useMemo, useState } from "react";
@@ -72,6 +72,48 @@ const toBrochurePlans = (basePlans: PricingBasePlan[]): BrochurePlan[] =>
 const Tick = ({ ok, color }: { ok: boolean; color: string }) => ok
   ? <CheckCircle2 size={15} style={{ color }} />
   : <XCircle size={15} className="text-gray-200" />;
+
+// ── IA de Ventas por WhatsApp — planes a escala ──────────────────────────────
+type VentasPlan = {
+  name: string;
+  price: number;
+  leads: number;
+  tagline: string;
+  bullets: string[];
+  popular?: boolean;
+};
+
+const VENTAS_PLANS: VentasPlan[] = [
+  {
+    name: "Start",
+    price: 149,
+    leads: 500,
+    tagline: "Para empezar a atender solo con IA",
+    bullets: ["Hasta 500 leads/mes", "Asesor IA 24/7 por WhatsApp", "Panel de prospectos con BANT"],
+  },
+  {
+    name: "Pro",
+    price: 249,
+    leads: 1500,
+    tagline: "El más elegido para escalar ventas",
+    bullets: ["Hasta 1,500 leads/mes", "Seguimiento automático de leads", "Aviso de leads calientes al vendedor"],
+    popular: true,
+  },
+  {
+    name: "Scale",
+    price: 399,
+    leads: 5000,
+    tagline: "Para operaciones de alto volumen",
+    bullets: ["Hasta 5,000 leads/mes", "Entrenamiento de la IA con tus documentos", "Prioridad de soporte"],
+  },
+];
+
+const IA_CAPS: { icon: LucideIcon; title: string; desc: string }[] = [
+  { icon: Search, title: "Catálogo real", desc: "Responde con tus productos, precios y stock en vivo." },
+  { icon: BarChart3, title: "Califica leads", desc: "Puntúa cada prospecto (BANT) y avisa los calientes." },
+  { icon: MessageCircle, title: "Envía y da seguimiento", desc: "Manda fotos y brochure, y reengancha solo." },
+  { icon: Clock, title: "Tu número, 24/7", desc: "Atiende siempre desde el WhatsApp de tu negocio." },
+];
 
 const Page = ({ children, dark = false, last = false }: { children: React.ReactNode; dark?: boolean; last?: boolean }) => (
   <div className={`w-full max-w-[210mm] md:w-[210mm] md:h-[297mm] mx-auto my-5 md:my-7 relative overflow-hidden shadow-2xl print:shadow-none print:my-0 ${!last ? 'break-after-page' : ''}  ${dark ? 'bg-[#080B14] text-white' : 'bg-white text-gray-900'}`} style={{ fontFamily: "'Helvetica Neue',Helvetica,Arial,sans-serif" }}>
@@ -253,6 +295,142 @@ export default function BrochurePage() {
           <div className="flex items-center justify-between bg-gray-50 border border-gray-100 rounded-xl px-5 py-3">
             <p className="text-[10px] text-gray-600 font-medium">Ahora el brochure usa la misma propuesta comercial de Planes Pro: target, módulos, precio anual y beneficios completos.</p>
             <p className="text-[9px] text-gray-400 shrink-0 ml-4">Precios sin IGV (18%)</p>
+          </div>
+        </div>
+      </Page>
+
+      {/* PAGE — IA DE VENTAS POR WHATSAPP (destacado) */}
+      <Page dark>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-44 -right-32 w-[540px] h-[540px] rounded-full bg-emerald-500/14 blur-3xl print:hidden" />
+          <div className="absolute -bottom-44 -left-36 w-[480px] h-[480px] rounded-full bg-violet-600/18 blur-3xl print:hidden" />
+          <svg className="absolute inset-0 w-full h-full opacity-[0.03]"><defs><pattern id="giav" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0L0 0 0 44" fill="none" stroke="white" strokeWidth="0.6" /></pattern></defs><rect width="100%" height="100%" fill="url(#giav)" /></svg>
+        </div>
+
+        <div className="relative z-10 flex flex-col h-full p-[12mm]">
+          {/* Header */}
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/[0.08] px-3 py-1">
+              <Sparkles size={12} className="text-emerald-300" />
+              <span className="text-emerald-300 text-[10px] font-black uppercase tracking-[0.22em]">Nuevo · IA de Ventas por WhatsApp</span>
+            </div>
+            <h2 className="mt-4 text-[2.7rem] leading-[1.04] font-black tracking-tight text-white">
+              Un vendedor con IA que{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-300 to-emerald-400 print:hidden">atiende, califica y vende</span>
+              <span className="hidden print:inline text-emerald-300">atiende, califica y vende</span>
+              {" "}solo
+            </h2>
+            <p className="mt-3 max-w-2xl text-[12.5px] leading-relaxed text-white/50">
+              Contesta a tus clientes por WhatsApp con tu catálogo, precios y stock reales, envía fotos y tu brochure, hace seguimiento por su cuenta y te avisa los leads calientes. Elige el plan por tu volumen de conversaciones.
+            </p>
+          </div>
+
+          {/* Solo IA de Ventas — planes a escala */}
+          <div className="mt-7">
+            <div className="mb-3 flex items-end justify-between">
+              <div className="flex items-center gap-2">
+                <TrendingUp size={13} className="text-emerald-300" />
+                <p className="text-white/45 text-[10px] font-black uppercase tracking-[0.24em]">Solo IA de Ventas · a escala</p>
+              </div>
+              <span className="text-white/30 text-[10px]">Baja el costo por lead al crecer</span>
+            </div>
+            <div className="grid grid-cols-3 gap-3.5">
+              {VENTAS_PLANS.map((p) => (
+                <div
+                  key={p.name}
+                  className={`relative flex flex-col rounded-[1.35rem] p-4 ${p.popular ? "bg-emerald-400/[0.07] ring-1 ring-emerald-400/40" : "bg-white/[0.035] ring-1 ring-white/10"}`}
+                >
+                  {p.popular && (
+                    <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-emerald-400 px-3 py-0.5 text-[7.5px] font-black uppercase tracking-wider text-emerald-950">
+                      Más elegido
+                    </div>
+                  )}
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-black text-white">{p.name}</h3>
+                    <span className="rounded-md bg-white/[0.06] px-1.5 py-0.5 text-[7.5px] font-black uppercase tracking-wider text-white/45">Ventas</span>
+                  </div>
+                  <p className="mt-0.5 text-[9.5px] leading-snug text-white/45">{p.tagline}</p>
+
+                  {/* Escala: leads/mes */}
+                  <div className="mt-3 rounded-xl bg-black/25 px-3 py-2.5">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-[1.7rem] font-black leading-none text-emerald-300">{p.leads.toLocaleString("es-PE")}</span>
+                      <span className="text-[10px] font-bold text-white/45">leads/mes</span>
+                    </div>
+                    <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-white/10">
+                      <div className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-teal-300" style={{ width: `${Math.round((p.leads / 5000) * 100)}%` }} />
+                    </div>
+                  </div>
+
+                  <div className="mt-3 flex items-baseline gap-1">
+                    <span className="text-[1.6rem] font-black leading-none text-white">S/ {p.price}</span>
+                    <span className="text-[10px] font-semibold text-white/40">/ mes</span>
+                  </div>
+                  <p className="mt-1 text-[9px] font-bold text-emerald-300/90">≈ S/ {(p.price / p.leads).toFixed(2)} por lead</p>
+
+                  <div className="mt-3 flex-1 space-y-1.5">
+                    {p.bullets.map((b) => (
+                      <div key={b} className="flex items-start gap-1.5 text-[9.5px] leading-snug text-white/70">
+                        <CheckCircle2 size={11} className="mt-0.5 shrink-0 text-emerald-400" />{b}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className={`mt-3.5 rounded-full px-3 py-2 text-center text-[9.5px] font-black ${p.popular ? "bg-emerald-400 text-emerald-950" : "bg-white/[0.08] text-white"}`}>
+                    Contratar por WhatsApp
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Facturación + Ventas (Full) — combo destacado */}
+          <div className="mt-5 overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-violet-600/20 via-white/[0.04] to-emerald-500/15 ring-1 ring-white/12">
+            <div className="grid grid-cols-[1.55fr_1fr]">
+              <div className="p-5">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[8px] font-black uppercase tracking-widest text-white">
+                    <Award size={11} className="text-amber-300" /> Mejor valor
+                  </span>
+                  <span className="rounded-full bg-emerald-400/15 px-2.5 py-1 text-[8px] font-black uppercase tracking-widest text-emerald-300">Combo completo</span>
+                </div>
+                <h3 className="mt-3 text-[1.9rem] font-black leading-tight text-white">Facturación <span className="text-white/40">+</span> Ventas</h3>
+                <p className="mt-1.5 max-w-md text-[11px] leading-relaxed text-white/55">
+                  Todo el ERP de Krezka (facturación SUNAT, inventario, caja, tienda virtual) <span className="font-bold text-white/80">más</span> la IA de Ventas por WhatsApp, en un solo plan.
+                </p>
+                <div className="mt-3.5 grid grid-cols-2 gap-x-4 gap-y-1.5">
+                  {["Todos los módulos de facturación", "IA de Ventas incluida (1,500 leads/mes)", "Tienda virtual + variantes + combos", "Un solo precio, sin sumar herramientas"].map((b) => (
+                    <div key={b} className="flex items-start gap-1.5 text-[10px] leading-snug text-white/75">
+                      <CheckCircle2 size={12} className="mt-0.5 shrink-0 text-emerald-400" />{b}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-1 border-l border-white/10 bg-black/20 p-5 text-center">
+                <span className="text-[9px] font-black uppercase tracking-widest text-white/40">Desde</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-[3rem] font-black leading-none text-white">S/ 299</span>
+                </div>
+                <span className="text-[11px] font-semibold text-white/45">/ mes · todo incluido</span>
+                <div className="mt-3 w-full rounded-full bg-white px-4 py-2.5 text-center text-[11px] font-black text-gray-950">
+                  Quiero el combo
+                </div>
+                <span className="mt-1 text-[8.5px] text-emerald-300/90">Más barato que ERP + IA por separado</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Capacidades de la IA */}
+          <div className="mt-auto grid grid-cols-4 gap-3 border-t border-white/10 pt-5">
+            {IA_CAPS.map((c) => (
+              <div key={c.title}>
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-400/10 text-emerald-300">
+                  <c.icon size={15} />
+                </div>
+                <p className="mt-2 text-[11px] font-black text-white">{c.title}</p>
+                <p className="mt-0.5 text-[9px] leading-snug text-white/45">{c.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Page>
