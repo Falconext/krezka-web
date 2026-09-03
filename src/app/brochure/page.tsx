@@ -88,8 +88,8 @@ const VENTAS_PLANS: VentasPlan[] = [
     name: "Start",
     price: 149,
     leads: 500,
-    tagline: "Empieza a atender con IA — todo incluido",
-    bullets: ["Hasta 500 conversaciones/mes", "Conversaciones sin costo extra en Meta", "Asesor IA 24/7 por WhatsApp"],
+    tagline: "Empieza a atender con IA",
+    bullets: ["Hasta 500 conversaciones/mes", "La IA atiende sin costo por mensaje", "Asesor IA 24/7 por WhatsApp"],
   },
   {
     name: "Pro",
@@ -112,7 +112,7 @@ const IA_CAPS: { icon: LucideIcon; title: string; desc: string }[] = [
   { icon: Search, title: "Catálogo real", desc: "Responde con tus productos, precios y stock en vivo." },
   { icon: BarChart3, title: "Califica solo", desc: "Puntúa cada conversación (BANT) y avisa las calientes." },
   { icon: MessageCircle, title: "Envía y da seguimiento", desc: "Manda fotos y brochure, y reengancha por su cuenta." },
-  { icon: Clock, title: "Todo incluido, 24/7", desc: "Un solo precio, tu propio número, sin costo por conversación." },
+  { icon: Clock, title: "Un solo precio, 24/7", desc: "El software y la IA en un plan, desde tu propio número." },
 ];
 
 const Page = ({ children, dark = false, last = false }: { children: React.ReactNode; dark?: boolean; last?: boolean }) => (
@@ -332,7 +332,7 @@ export default function BrochurePage() {
               {" "}solo
             </h2>
             <p className="mt-3 max-w-2xl text-[12.5px] leading-relaxed text-white/50">
-              Contesta a tus clientes por WhatsApp con tu catálogo, precios y stock reales, envía fotos y tu brochure, y hace seguimiento solo. <span className="font-bold text-white/80">Todo incluido en un solo precio</span> — tú no pagas nada extra a Meta por la conversación.
+              Contesta a tus clientes por WhatsApp con tu catálogo, precios y stock reales, envía fotos y tu brochure, y hace seguimiento solo. <span className="font-bold text-white/80">Un solo precio por el software y la IA</span> — las conversaciones que atiende no tienen costo por mensaje.
             </p>
           </div>
 
@@ -341,7 +341,7 @@ export default function BrochurePage() {
             <div className="mb-3 flex items-end justify-between">
               <div className="flex items-center gap-2">
                 <TrendingUp size={13} className="text-emerald-300" />
-                <p className="text-white/45 text-[10px] font-black uppercase tracking-[0.24em]">IA de Ventas · Todo incluido · a escala</p>
+                <p className="text-white/45 text-[10px] font-black uppercase tracking-[0.24em]">IA de Ventas · precio claro · a escala</p>
               </div>
               <span className="text-white/30 text-[10px]">Sin markup · más barato mientras creces</span>
             </div>
@@ -377,7 +377,7 @@ export default function BrochurePage() {
                     <span className="text-[1.6rem] font-black leading-none text-white">S/ {p.price}</span>
                     <span className="text-[10px] font-semibold text-white/40">/ mes</span>
                   </div>
-                  <p className="mt-1 text-[9px] font-bold text-emerald-300/90">≈ S/ {(p.price / p.leads).toFixed(2)} por conversación · todo incluido</p>
+                  <p className="mt-1 text-[9px] font-bold text-emerald-300/90">≈ S/ {(p.price / p.leads).toFixed(2)} por conversación · incluido en tu plan</p>
 
                   <div className="mt-3 flex-1 space-y-1.5">
                     {p.bullets.map((b) => (
@@ -410,7 +410,7 @@ export default function BrochurePage() {
                   Todo el ERP de Krezka (facturación SUNAT, inventario, caja, tienda virtual) <span className="font-bold text-white/80">más</span> la IA de Ventas por WhatsApp, en un solo plan.
                 </p>
                 <div className="mt-3.5 grid grid-cols-2 gap-x-4 gap-y-1.5">
-                  {["Todos los módulos de facturación", "IA de Ventas incluida (1,500 conversaciones/mes)", "Tienda virtual + variantes + combos", "Un solo precio — todo incluido, sin sumar herramientas"].map((b) => (
+                  {["Todos los módulos de facturación", "IA de Ventas incluida (1,500 conversaciones/mes)", "Tienda virtual + variantes + combos", "Un solo precio por todo el software, sin sumar herramientas"].map((b) => (
                     <div key={b} className="flex items-start gap-1.5 text-[10px] leading-snug text-white/75">
                       <CheckCircle2 size={12} className="mt-0.5 shrink-0 text-emerald-400" />{b}
                     </div>
@@ -422,7 +422,7 @@ export default function BrochurePage() {
                 <div className="flex items-baseline gap-1">
                   <span className="text-[3rem] font-black leading-none text-white">S/ 299</span>
                 </div>
-                <span className="text-[11px] font-semibold text-white/45">/ mes · todo incluido</span>
+                <span className="text-[11px] font-semibold text-white/45">/ mes · un solo precio</span>
                 <div className="mt-3 w-full rounded-full bg-white px-4 py-2.5 text-center text-[11px] font-black text-gray-950">
                   Quiero el combo
                 </div>
@@ -776,7 +776,7 @@ export default function BrochurePage() {
               <span className="hidden print:inline text-emerald-300">hoy</span>
             </h2>
             <p className="mx-auto mt-3 max-w-sm text-base leading-relaxed text-white/50">
-              Digitaliza tu negocio y activa la IA de Ventas por WhatsApp. Sin contratos, sin permanencia — todo incluido.
+              Digitaliza tu negocio y activa la IA de Ventas por WhatsApp. Sin contratos, sin permanencia.
             </p>
           </div>
 
