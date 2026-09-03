@@ -88,31 +88,31 @@ const VENTAS_PLANS: VentasPlan[] = [
     name: "Start",
     price: 149,
     leads: 500,
-    tagline: "Para empezar a atender solo con IA",
-    bullets: ["Hasta 500 leads/mes", "Asesor IA 24/7 por WhatsApp", "Panel de prospectos con BANT"],
+    tagline: "Empieza a atender con IA — todo incluido",
+    bullets: ["Hasta 500 conversaciones/mes", "Todo incluido: no pagas Meta aparte", "Asesor IA 24/7 por WhatsApp"],
   },
   {
     name: "Pro",
     price: 249,
     leads: 1500,
-    tagline: "El más elegido para escalar ventas",
-    bullets: ["Hasta 1,500 leads/mes", "Seguimiento automático de leads", "Aviso de leads calientes al vendedor"],
+    tagline: "El más elegido para escalar, sin sorpresas",
+    bullets: ["Hasta 1,500 conversaciones/mes", "Seguimiento automático de prospectos", "Sin markup por conversación"],
     popular: true,
   },
   {
     name: "Scale",
     price: 399,
     leads: 5000,
-    tagline: "Para operaciones de alto volumen",
-    bullets: ["Hasta 5,000 leads/mes", "Entrenamiento de la IA con tus documentos", "Prioridad de soporte"],
+    tagline: "Alto volumen — el costo por conversación más bajo",
+    bullets: ["Hasta 5,000 conversaciones/mes", "Más barato a escala que revender mensajes", "Entrenamiento de la IA + soporte prioritario"],
   },
 ];
 
 const IA_CAPS: { icon: LucideIcon; title: string; desc: string }[] = [
   { icon: Search, title: "Catálogo real", desc: "Responde con tus productos, precios y stock en vivo." },
-  { icon: BarChart3, title: "Califica leads", desc: "Puntúa cada prospecto (BANT) y avisa los calientes." },
-  { icon: MessageCircle, title: "Envía y da seguimiento", desc: "Manda fotos y brochure, y reengancha solo." },
-  { icon: Clock, title: "Tu número, 24/7", desc: "Atiende siempre desde el WhatsApp de tu negocio." },
+  { icon: BarChart3, title: "Califica solo", desc: "Puntúa cada conversación (BANT) y avisa las calientes." },
+  { icon: MessageCircle, title: "Envía y da seguimiento", desc: "Manda fotos y brochure, y reengancha por su cuenta." },
+  { icon: Clock, title: "Todo incluido, 24/7", desc: "Un solo precio, tu propio número, sin pagar Meta aparte." },
 ];
 
 const Page = ({ children, dark = false, last = false }: { children: React.ReactNode; dark?: boolean; last?: boolean }) => (
@@ -321,18 +321,18 @@ export default function BrochurePage() {
               {" "}solo
             </h2>
             <p className="mt-3 max-w-2xl text-[12.5px] leading-relaxed text-white/50">
-              Contesta a tus clientes por WhatsApp con tu catálogo, precios y stock reales, envía fotos y tu brochure, hace seguimiento por su cuenta y te avisa los leads calientes. Elige el plan por tu volumen de conversaciones.
+              Contesta a tus clientes por WhatsApp con tu catálogo, precios y stock reales, envía fotos y tu brochure, y hace seguimiento solo. <span className="font-bold text-white/80">Todo incluido en un solo precio</span> — tú no pagas nada extra a Meta por la conversación.
             </p>
           </div>
 
-          {/* Solo IA de Ventas — planes a escala */}
+          {/* IA de Ventas — planes todo incluido, a escala */}
           <div className="mt-7">
             <div className="mb-3 flex items-end justify-between">
               <div className="flex items-center gap-2">
                 <TrendingUp size={13} className="text-emerald-300" />
-                <p className="text-white/45 text-[10px] font-black uppercase tracking-[0.24em]">Solo IA de Ventas · a escala</p>
+                <p className="text-white/45 text-[10px] font-black uppercase tracking-[0.24em]">IA de Ventas · Todo incluido · a escala</p>
               </div>
-              <span className="text-white/30 text-[10px]">Baja el costo por lead al crecer</span>
+              <span className="text-white/30 text-[10px]">Sin markup · más barato mientras creces</span>
             </div>
             <div className="grid grid-cols-3 gap-3.5">
               {VENTAS_PLANS.map((p) => (
@@ -355,7 +355,7 @@ export default function BrochurePage() {
                   <div className="mt-3 rounded-xl bg-black/25 px-3 py-2.5">
                     <div className="flex items-baseline gap-1">
                       <span className="text-[1.7rem] font-black leading-none text-emerald-300">{p.leads.toLocaleString("es-PE")}</span>
-                      <span className="text-[10px] font-bold text-white/45">leads/mes</span>
+                      <span className="text-[10px] font-bold text-white/45">conversaciones/mes</span>
                     </div>
                     <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-white/10">
                       <div className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-teal-300" style={{ width: `${Math.round((p.leads / 5000) * 100)}%` }} />
@@ -366,7 +366,7 @@ export default function BrochurePage() {
                     <span className="text-[1.6rem] font-black leading-none text-white">S/ {p.price}</span>
                     <span className="text-[10px] font-semibold text-white/40">/ mes</span>
                   </div>
-                  <p className="mt-1 text-[9px] font-bold text-emerald-300/90">≈ S/ {(p.price / p.leads).toFixed(2)} por lead</p>
+                  <p className="mt-1 text-[9px] font-bold text-emerald-300/90">≈ S/ {(p.price / p.leads).toFixed(2)} por conversación · todo incluido</p>
 
                   <div className="mt-3 flex-1 space-y-1.5">
                     {p.bullets.map((b) => (
@@ -399,7 +399,7 @@ export default function BrochurePage() {
                   Todo el ERP de Krezka (facturación SUNAT, inventario, caja, tienda virtual) <span className="font-bold text-white/80">más</span> la IA de Ventas por WhatsApp, en un solo plan.
                 </p>
                 <div className="mt-3.5 grid grid-cols-2 gap-x-4 gap-y-1.5">
-                  {["Todos los módulos de facturación", "IA de Ventas incluida (1,500 leads/mes)", "Tienda virtual + variantes + combos", "Un solo precio, sin sumar herramientas"].map((b) => (
+                  {["Todos los módulos de facturación", "IA de Ventas incluida (1,500 conversaciones/mes)", "Tienda virtual + variantes + combos", "Un solo precio — todo incluido, sin sumar herramientas"].map((b) => (
                     <div key={b} className="flex items-start gap-1.5 text-[10px] leading-snug text-white/75">
                       <CheckCircle2 size={12} className="mt-0.5 shrink-0 text-emerald-400" />{b}
                     </div>
@@ -421,16 +421,21 @@ export default function BrochurePage() {
           </div>
 
           {/* Capacidades de la IA */}
-          <div className="mt-auto grid grid-cols-4 gap-3 border-t border-white/10 pt-5">
-            {IA_CAPS.map((c) => (
-              <div key={c.title}>
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-400/10 text-emerald-300">
-                  <c.icon size={15} />
+          <div className="mt-auto border-t border-white/10 pt-5">
+            <div className="grid grid-cols-4 gap-3">
+              {IA_CAPS.map((c) => (
+                <div key={c.title}>
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-400/10 text-emerald-300">
+                    <c.icon size={15} />
+                  </div>
+                  <p className="mt-2 text-[11px] font-black text-white">{c.title}</p>
+                  <p className="mt-0.5 text-[9px] leading-snug text-white/45">{c.desc}</p>
                 </div>
-                <p className="mt-2 text-[11px] font-black text-white">{c.title}</p>
-                <p className="mt-0.5 text-[9px] leading-snug text-white/45">{c.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+            <p className="mt-4 text-[8.5px] leading-relaxed text-white/30">
+              La atención con IA está toda incluida en tu plan. El costo de tus anuncios para traer nuevos leads (Click-to-WhatsApp) lo cobra Meta aparte y depende de tu campaña — eso es igual en cualquier plataforma.
+            </p>
           </div>
         </div>
       </Page>
