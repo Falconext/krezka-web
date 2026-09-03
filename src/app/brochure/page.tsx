@@ -89,7 +89,7 @@ const VENTAS_PLANS: VentasPlan[] = [
     price: 149,
     leads: 500,
     tagline: "Empieza a atender con IA",
-    bullets: ["Hasta 500 conversaciones/mes", "La IA atiende sin costo por mensaje", "Asesor IA 24/7 por WhatsApp"],
+    bullets: ["Hasta 500 conversaciones/mes", "Atiende, califica y responde 24/7", "Sin cargos por mensaje en tu plan"],
   },
   {
     name: "Pro",
@@ -332,7 +332,7 @@ export default function BrochurePage() {
               {" "}solo
             </h2>
             <p className="mt-3 max-w-2xl text-[12.5px] leading-relaxed text-white/50">
-              Contesta a tus clientes por WhatsApp con tu catálogo, precios y stock reales, envía fotos y tu brochure, y hace seguimiento solo. <span className="font-bold text-white/80">Un solo precio por el software y la IA</span> — las conversaciones que atiende no tienen costo por mensaje.
+              Tu asesor con IA atiende, califica y vende por WhatsApp las 24 horas: responde con tu catálogo, precios y stock reales, envía fotos y tu brochure, y hace seguimiento solo. <span className="font-bold text-white/80">Un solo precio, sin cargos por mensaje.</span>
             </p>
           </div>
 
@@ -445,7 +445,7 @@ export default function BrochurePage() {
               ))}
             </div>
             <p className="mt-4 text-[8.5px] leading-relaxed text-white/30">
-              Las conversaciones que atiende la IA (las que inicia tu cliente) no tienen costo por mensaje. Aparte, y como en cualquier plataforma: tus anuncios para traer leads (Click-to-WhatsApp) los cobra Meta según tu campaña, y los avisos automáticos que tú envíes (p. ej. despacho) tienen un costo mínimo de Meta por mensaje.
+              Tu plan cubre el software y el asesor con IA (sin cargos por mensaje de nuestra parte). Aparte, y como en cualquier plataforma, tú pagas a Meta: los anuncios para traer leads (según tu campaña) y los avisos salientes que tú envíes (p. ej. despacho), que tienen un costo mínimo por mensaje.
             </p>
           </div>
         </div>
