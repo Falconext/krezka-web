@@ -8,7 +8,12 @@ import BentoGrid from './components/home/BentoGrid';
 import Comparativa from './components/home/Comparativa';
 import Testimonios from './components/home/Testimonios';
 import HomePricing from './components/home/HomePricing';
+import VentasIA from './components/home/VentasIA';
+import ComparacionModulos from './components/home/ComparacionModulos';
+import PreciosAdicionales from './components/home/PreciosAdicionales';
+import Asesores from './components/home/Asesores';
 import Faq from './components/home/Faq';
+import Contacto from './components/home/Contacto';
 import FinalCta from './components/home/FinalCta';
 
 export default function Home() {
@@ -25,7 +30,12 @@ export default function Home() {
         <Comparativa />
         <Testimonios />
         <HomePricing />
+        <VentasIA />
+        <ComparacionModulos />
+        <PreciosAdicionales />
+        <Asesores />
         <Faq />
+        <Contacto />
         <FinalCta />
       </main>
     </>

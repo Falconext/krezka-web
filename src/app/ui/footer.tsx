@@ -1,245 +1,130 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import { ChangeEvent, FormEvent, useState } from "react";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { BRAND } from "@/lib/branding";
-import { ArrowRight } from 'lucide-react';
+'use client';
 
-const footerColumns = [
-    {
-        title: 'POS SOLUCIONES',
-        links: [
-            { label: 'POS Todo en Uno', href: '/tienda' },
-            { label: 'POS Portátil', href: '/tienda' },
-            { label: 'POS Delivery', href: '/tienda' },
-            { label: 'Software de Ventas', href: '/sistemas' },
-            { label: 'Gestión de Inventario', href: '/sistemas' },
-            { label: 'Facturación SUNAT', href: '/sistemas' },
-        ],
-    },
-    {
-        title: 'HARDWARE',
-        links: [
-            { label: 'Impresoras Térmicas', href: '/tienda' },
-            { label: 'Cajones de Dinero', href: '/tienda' },
-            { label: 'Lectores de Código', href: '/tienda' },
-            { label: 'Pantallas Touch', href: '/tienda' },
-            { label: 'Combos Completos', href: '/tienda' },
-        ],
-    },
-    {
-        title: 'SOFTWARE',
-        links: [
-            { label: 'Facturación Electrónica', href: '/sistemas' },
-            { label: 'E-Commerce', href: '/sistemas' },
-            { label: 'Software a Medida', href: '/sistemas' },
-            { label: 'App Móvil', href: '/sistemas' },
-            { label: 'Integraciones API', href: '/sistemas' },
-        ],
-    },
-    {
-        title: 'EMPRESA',
-        links: [
-            { label: 'Sobre Nosotros', href: '#' },
-            { label: 'Blog', href: '#' },
-            { label: 'Casos de Éxito', href: '#' },
-            { label: 'Partners', href: '/asesores' },
-        ],
-    },
-    {
-        title: 'SOPORTE',
-        links: [
-            { label: 'Centro de Ayuda', href: '#' },
-            { label: 'Contacto', href: '#' },
-            { label: 'WhatsApp Soporte', href: `https://wa.me/${BRAND.whatsapp}` },
-            { label: 'Términos de Uso', href: '#' },
-            { label: 'Política de Privacidad', href: '/privacidad' },
-        ],
-    },
+import Image from 'next/image';
+import { MessageCircle, Mail, ArrowRight } from 'lucide-react';
+import { BRAND } from '@/lib/branding';
+
+const producto = [
+  { label: 'Facturación SUNAT', href: '/#comparacion' },
+  { label: 'Punto de Venta (POS)', href: '/#tour' },
+  { label: 'Inventario / Kardex', href: '/#tour' },
+  { label: 'Tienda Virtual', href: '/#tour' },
+  { label: 'IA de Ventas', href: '/#ventas-ia' },
+  { label: 'Envíos Shalom', href: '/#tour' },
 ];
 
-const socialLinks = [
-    { icon: "mdi:twitter", label: "Twitter", href: BRAND.socials.twitter || "#" },
-    { icon: "mdi:instagram", label: "Instagram", href: BRAND.socials.instagram || "#" },
-    { icon: "mdi:linkedin", label: "LinkedIn", href: BRAND.socials.linkedin || "#" },
-    { icon: "mdi:facebook", label: "Facebook", href: BRAND.socials.facebook || "#" },
-    { icon: "mdi:youtube", label: "YouTube", href: "#" },
+const krezka = [
+  { label: 'Cómo funciona', href: '/#tour' },
+  { label: 'Precios', href: '/#planes' },
+  { label: 'Comparación de módulos', href: '/#comparacion' },
+  { label: 'Asesores', href: '/#asesores' },
+  { label: 'Preguntas frecuentes', href: '/#faq' },
+  { label: 'Contacto', href: '/#contacto' },
 ];
 
-const legalLinks = [
-    { label: 'Términos y Condiciones', href: '#' },
-    { label: 'Política de Privacidad', href: '/privacidad' },
-    { label: 'Libro de Reclamaciones', href: '#' },
-    { label: 'Política de Cookies', href: '/privacidad' },
-];
+const waLink = `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
+  `Hola, quiero más información sobre ${BRAND.name}.`
+)}`;
 
 const Footer = () => {
-    interface IFormSub { email: string; }
-    interface IFormErrors { email: string; }
+  const year = new Date().getFullYear();
 
-    const initialForm: IFormSub = { email: "" };
-    const initialErrors: IFormErrors = { email: "" };
+  return (
+    <footer className="font-inter-tight relative overflow-hidden bg-[#0f0a2e] text-white">
+      <div className="pointer-events-none absolute -top-24 left-1/4 h-64 w-64 rounded-full bg-[#6c5ce7]/25 blur-[120px]" />
 
-    const [formValues, setFormValues] = useState<IFormSub>(initialForm);
-    const [errors, setErrors] = useState<IFormErrors>(initialErrors);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitMessage, setSubmitMessage] = useState("");
+      <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
+          {/* Marca */}
+          <div>
+            <Image src={BRAND.logoWhite} width={800} height={800} alt={BRAND.name} className="h-11 w-auto object-contain" />
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
+              La plataforma peruana para facturar ante SUNAT, vender con POS y tienda virtual, y atender por
+              WhatsApp con inteligencia artificial. Todo en un solo lugar.
+            </p>
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-bold text-white transition-all hover:scale-[1.03] hover:bg-[#20bd5a]"
+            >
+              <MessageCircle size={16} />
+              Escríbenos por WhatsApp
+            </a>
+          </div>
 
-    const validateForm = () => {
-        const newErrors: IFormErrors = {
-            email: formValues.email.trim() !== ""
-                ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email) ? "" : "Ingrese un correo electrónico válido"
-                : "El correo electrónico es obligatorio",
-        };
-        setErrors(newErrors);
-        return Object.values(newErrors).every((error) => error === "");
-    };
+          {/* Producto */}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-white/40">Producto</p>
+            <ul className="mt-4 space-y-2.5">
+              {producto.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className="text-sm text-white/70 transition-colors hover:text-white">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setSubmitMessage("");
-        if (!validateForm()) { setIsSubmitting(false); return; }
-        try {
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    access_key: "9e8b5b39-7603-4a4c-90d7-1976f8d968d4",
-                    subject: `Nuevo mensaje de suscripcion - ${BRAND.name}`,
-                    from_name: `Suscripcion de ${BRAND.name}`,
-                    reply_to: formValues.email,
-                }),
-            });
-            const result = await response.json();
-            if (response.ok && result.success) {
-                setSubmitMessage("¡Suscrito con éxito!");
-                setFormValues(initialForm);
-                setErrors(initialErrors);
-            } else {
-                setSubmitMessage(result.message || "Hubo un error. Intenta de nuevo.");
-            }
-        } catch {
-            setSubmitMessage("Error de conexión. Intenta de nuevo más tarde.");
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
+          {/* Krezka */}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-white/40">Krezka</p>
+            <ul className="mt-4 space-y-2.5">
+              {krezka.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className="text-sm text-white/70 transition-colors hover:text-white">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormValues((prev) => ({ ...prev, [name]: value }));
-        setErrors((prev) => ({ ...prev, [name]: "" }));
-    };
+          {/* Contacto */}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-white/40">Contacto</p>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <a href={waLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-white/70 transition-colors hover:text-white">
+                  <MessageCircle size={16} className="text-[#25D366]" />
+                  {BRAND.phone}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${BRAND.email}`} className="flex items-center gap-2.5 text-sm text-white/70 transition-colors hover:text-white">
+                  <Mail size={16} className="text-[#a99df8]" />
+                  {BRAND.email}
+                </a>
+              </li>
+              <li>
+                <a href={BRAND.dashboardUrl} className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10">
+                  Iniciar sesión
+                  <ArrowRight size={14} />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-    return (
-        <footer className="bg-[#0c0a1a] text-white">
-
-            {/* Main body */}
-            <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-10">
-                <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20 pb-12 border-b border-white/10">
-
-                    {/* Left: Brand + newsletter */}
-                    <div className="flex flex-col gap-6">
-                        <Link href="/" className="flex items-center gap-3 relative left-[-18px]">
-                            <Image src={BRAND.logoWhite} width={1000} height={1000} alt={BRAND.name} className="w-48 h-14 object-contain" />
-                        </Link>
-                        <Link
-                            href="/tienda"
-                            className="inline-flex items-center gap-3 self-start border border-white/30 hover:border-white text-white text-[14px] font-semibold px-5 py-3 rounded-full transition-all hover:bg-white/5 group"
-                        >
-                            Ver Tienda
-                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
-
-                        {/* Newsletter */}
-                        <div>
-                            <p className="text-white text-[13px] font-semibold mb-3">Suscríbete a nuestro boletín</p>
-                            <form onSubmit={handleSubmit} className="flex overflow-hidden rounded-full border border-white/20 focus-within:border-white/40 transition-all">
-                                <input
-                                    name="email"
-                                    type="email"
-                                    onChange={handleChange}
-                                    value={formValues.email}
-                                    placeholder="tu@email.com"
-                                    className="bg-transparent w-full px-4 py-2.5 outline-none text-[13px] text-white placeholder-[#8b8fa8]"
-                                />
-                                <button
-                                    disabled={isSubmitting}
-                                    type="submit"
-                                    className="bg-white text-[#0c0a1a] px-5 py-2.5 text-[12px] font-bold hover:bg-[#a78bfa] hover:text-white transition-all whitespace-nowrap shrink-0"
-                                >
-                                    {isSubmitting ? "..." : "Enviar"}
-                                </button>
-                            </form>
-                            {errors.email && <p className="text-xs text-red-400 mt-2">{errors.email}</p>}
-                            {submitMessage && <p className="text-xs text-green-400 mt-2">{submitMessage}</p>}
-                        </div>
-
-                        {/* Social */}
-                        <div>
-                            <p className="text-[#8b8fa8] text-[11px] font-semibold mb-3 uppercase tracking-widest">Síguenos</p>
-                            <div className="flex gap-2">
-                                {socialLinks.map((s) => (
-                                    <a
-                                        key={s.label}
-                                        href={s.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label={s.label}
-                                        className="w-9 h-9 rounded-xl border border-white/15 hover:border-white/40 hover:bg-white/10 flex items-center justify-center transition-all"
-                                    >
-                                        <Icon icon={s.icon} width={16} height={16} className="text-[#8b8fa8]" />
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right: Link columns */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
-                        {footerColumns.map((col) => (
-                            <div key={col.title}>
-                                <h5 className="text-white text-[11px] font-bold tracking-[0.12em] uppercase mb-5">
-                                    {col.title}
-                                </h5>
-                                <ul className="space-y-3">
-                                    {col.links.map((link) => (
-                                        <li key={link.label}>
-                                            <Link
-                                                href={link.href}
-                                                className="text-[#8b8fa8] hover:text-white text-[13px] leading-snug transition-colors"
-                                            >
-                                                {link.label}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-
-                </div>
-
-                {/* Bottom bar */}
-                <div className="pt-7 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-[#555870] text-[12px]">
-                        {BRAND.name} © {new Date().getFullYear()} | Todos los derechos reservados.
-                    </p>
-                    <div className="flex flex-wrap items-center gap-5">
-                        {legalLinks.map((item) => (
-                            <Link key={item.label} href={item.href} className="text-[#555870] hover:text-white text-[12px] transition-colors">
-                                {item.label}
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-
-            </div>
-        </footer>
-    );
-}
+        {/* Barra inferior */}
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:flex-row">
+          <p className="text-xs text-white/50">
+            © {year} {BRAND.legalName}. Hecho en el Perú 🇵🇪
+          </p>
+          <div className="flex items-center gap-5 text-xs text-white/50">
+            <a href="/privacidad" className="transition-colors hover:text-white">
+              Política de Privacidad
+            </a>
+            <span className="text-white/20">·</span>
+            <a href={BRAND.website} className="transition-colors hover:text-white">
+              {BRAND.website.replace('https://', '')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;
-

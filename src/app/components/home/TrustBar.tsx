@@ -52,10 +52,10 @@ const TrustBar = () => {
   const enableMarquee = clientes.length >= 6;
 
   return (
-    <section className="bg-white pt-20 pb-14 md:pt-24">
+    <section className="bg-white py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-lg font-bold text-slate-800 md:text-xl">
-          Con la confianza de más de <span className="text-[#6c5ce7]">1000+</span> negocios peruanos
+        <p className="text-center text-base font-semibold text-slate-500 md:text-lg">
+          Con la confianza de más de <span className="text-slate-800">1000+</span> negocios peruanos
         </p>
 
         {/* Skeleton mientras carga */}
@@ -70,8 +70,8 @@ const TrustBar = () => {
         {/* Logos de clientes reales — tira limpia a color, en movimiento continuo */}
         {loaded && hasLogos && (
           <div
-            className={`kz-reveal relative mt-12 ${
-              enableMarquee ? 'overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]' : ''
+            className={`kz-reveal relative mt-14 ${
+              enableMarquee ? 'overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_16%,black_84%,transparent)]' : ''
             }`}
           >
             <ul
@@ -84,14 +84,14 @@ const TrustBar = () => {
               {(enableMarquee ? marquee : clientes).map((c, i) =>
                 esLogoCirculo(c.nombre) ? (
                   <li key={`${c.id}-${i}`} className="flex h-20 shrink-0 items-center">
-                    <span className="flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white shadow-sm">
+                    <span className="flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={c.logo}
                         alt={c.nombre}
                         title={c.nombre}
                         loading="lazy"
-                        className="h-full w-full object-cover opacity-90 transition-opacity duration-300 hover:opacity-100"
+                        className="h-full w-full object-cover"
                       />
                     </span>
                   </li>
@@ -103,7 +103,7 @@ const TrustBar = () => {
                       alt={c.nombre}
                       title={c.nombre}
                       loading="lazy"
-                      className={`w-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 ${
+                      className={`w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 ${
                         esLogoXL(c.nombre)
                           ? 'max-h-20 max-w-[250px]'
                           : esLogoGrande(c.nombre)

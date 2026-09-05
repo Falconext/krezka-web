@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { FileText, ShoppingCart, Store, Boxes, MessageCircle, Check, ArrowRight } from 'lucide-react';
+import { FileText, ShoppingCart, Store, Boxes, MessageCircle, Truck, Check, ArrowRight, Maximize2, X } from 'lucide-react';
 import CountUp from './CountUp';
 
 type Tab = {
@@ -54,6 +54,15 @@ const TABS: Tab[] = [
     img: '/assets/brochure/inventariointeligente.png',
   },
   {
+    key: 'shalom',
+    label: 'Envíos Shalom',
+    Icon: Truck,
+    title: 'Envía a todo el Perú con Shalom',
+    desc: 'Integración directa con Shalom: genera tus envíos a despacho desde el sistema y haz seguimiento del tracking automáticamente, con avisos a tu cliente.',
+    bullets: ['Envío a agencia Shalom', 'Tracking automático', 'Avisos al cliente por WhatsApp'],
+    img: '/assets/dashboard/shalom.png',
+  },
+  {
     key: 'ia',
     label: 'IA de Ventas',
     Icon: MessageCircle,
@@ -91,8 +100,21 @@ function useTourImage(tabKey: string, fallback: string) {
 
 const ProductTour = () => {
   const [active, setActive] = useState(0);
+  const [zoom, setZoom] = useState(false);
   const tab = TABS[active];
   const src = useTourImage(tab.key, tab.img);
+
+  // Cerrar el visor con ESC y bloquear el scroll de fondo mientras está abierto.
+  useEffect(() => {
+    if (!zoom) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setZoom(false);
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [zoom]);
 
   return (
     <section id="tour" className="bg-[#f8f7fe] py-16 md:py-24">
@@ -160,7 +182,7 @@ const ProductTour = () => {
           {/* screenshot */}
           <div key={`img-${tab.key}`} className="kz-reveal-right relative">
             <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-[#6c5ce7]/25 to-[#a99df8]/25 blur-2xl" />
-            <div className="overflow-hidden rounded-2xl border border-white bg-white shadow-[0_40px_80px_-24px_rgba(75,63,190,0.4)]">
+            <div className="group overflow-hidden rounded-2xl border border-white bg-white shadow-[0_40px_80px_-24px_rgba(75,63,190,0.4)]">
               <div className="flex items-center gap-1.5 border-b border-slate-100 bg-slate-50 px-4 py-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
@@ -169,8 +191,22 @@ const ProductTour = () => {
                   app.krezka.com/administrador
                 </span>
               </div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={src} alt={tab.title} className="block w-full" />
+              <button
+                type="button"
+                onClick={() => setZoom(true)}
+                aria-label="Ver imagen completa"
+                className="relative block w-full cursor-zoom-in"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={src} alt={tab.title} className="block w-full" />
+                {/* overlay elegante al pasar el mouse */}
+                <span className="pointer-events-none absolute inset-0 flex items-end justify-end bg-gradient-to-t from-slate-900/25 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-[13px] font-semibold text-slate-800 shadow-lg backdrop-blur">
+                    <Maximize2 size={15} className="text-[#6c5ce7]" />
+                    Ver completo
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -189,6 +225,35 @@ const ProductTour = () => {
           ))}
         </div>
       </div>
+
+      {/* ── Visor de imagen completa (lightbox) ── */}
+      {zoom && (
+        <div
+          onClick={() => setZoom(false)}
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm sm:p-8"
+        >
+          <button
+            onClick={() => setZoom(false)}
+            aria-label="Cerrar"
+            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-6 sm:top-6"
+          >
+            <X size={22} />
+          </button>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="kz-reveal-scale relative w-full max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-white shadow-2xl"
+          >
+            <div className="flex items-center gap-1.5 border-b border-slate-100 bg-slate-50 px-4 py-3">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+              <span className="ml-3 flex-1 truncate text-[11px] font-medium text-slate-500">{tab.title}</span>
+            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={src} alt={tab.title} className="max-h-[80vh] w-full object-contain" />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

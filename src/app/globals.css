@@ -95,6 +95,16 @@
   animation-fill-mode: forwards;
 }
 
+/* Deriva horizontal suave (pastillas flotantes del hero) */
+@keyframes kz-float-x {
+  0%, 100% { transform: translateX(-8px); }
+  50%      { transform: translateX(8px); }
+}
+.kz-float-x { animation: kz-float-x 5.5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .kz-float-x { animation: none; }
+}
+
 /* Utilidades tipo Tailwind para cambiar de fuente fácilmente */
 @layer utilities {
   .font-helvetica {

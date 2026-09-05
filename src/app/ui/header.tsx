@@ -6,9 +6,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Menu, X, MessageCircle, ShoppingBag } from 'lucide-react';
-import { useCartStore } from '@/store/cartStore';
-import CartDrawer from './CartDrawer';
+import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
 
 type NavItem = {
   label: string;
@@ -30,29 +28,19 @@ const NAV_GROUPS: NavGroup[] = [
     href: '/',
   },
   {
-    label: 'Catálogo',
-    direct: true,
-    href: '/tienda',
-  },
-  // {
-  //   label: 'Quiénes Somos',
-  //   direct: true,
-  //   href: '/nosotros',
-  // },
-  {
     label: 'Facturación',
     direct: true,
-    href: '/sistemas',
+    href: '/#comparacion',
   },
   {
-    label: 'Resellers',
+    label: 'Precios',
     direct: true,
-    href: '/resellers',
+    href: '/#planes',
   },
   {
     label: 'Contacto',
     direct: true,
-    href: '/contacto',
+    href: '/#contacto',
   },
 ];
 
@@ -80,13 +68,6 @@ const Header = () => {
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
-
-  const { getTotalItems, openCart } = useCartStore();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     document.documentElement.classList.remove('dark');
@@ -127,13 +108,13 @@ const Header = () => {
     [router],
   );
 
-  const isHome = pathname === '/';
-  const isTransparent = isHome && !scrolled;
+  // Header siempre sólido (hero claro): logo y nav oscuros, legibles sobre el cielo.
+  const isTransparent = false;
 
   // Dynamic class generators based on state
-  const pillBgClass = isTransparent
-    ? "bg-white/10 backdrop-blur-xl border border-white/20 shadow-none"
-    : "bg-white/95 backdrop-blur-xl border border-gray-200/50 shadow-lg shadow-slate-200/20";
+  const pillBgClass = scrolled
+    ? "bg-white/95 backdrop-blur-xl border border-gray-200/60 shadow-lg shadow-slate-200/30"
+    : "bg-white/80 backdrop-blur-xl border border-gray-200/50 shadow-md shadow-slate-200/10";
 
   const textClass = isTransparent ? "text-white" : "text-slate-600";
   const hoverTextClass = isTransparent ? "hover:text-white/80" : "hover:text-slate-900";
@@ -248,18 +229,6 @@ const Header = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
-            <button
-              onClick={openCart}
-              className={`relative p-2.5 rounded-full transition-colors ${isTransparent ? 'text-white hover:bg-white/10' : 'text-slate-700 hover:bg-slate-100'}`}
-              aria-label="Abrir carrito"
-            >
-              <ShoppingBag size={20} strokeWidth={2.5} />
-              {mounted && getTotalItems() > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 flex items-center justify-center bg-red-500 text-white text-[9px] font-bold rounded-full shadow-sm">
-                  {getTotalItems()}
-                </span>
-              )}
-            </button>
             <a
               href={BRAND.dashboardUrl}
               className={`hidden md:block px-5 py-2 text-sm font-medium rounded-full transition-colors ${loginTextClass}`}
@@ -267,7 +236,7 @@ const Header = () => {
               Iniciar Sesión
             </a>
             <button
-              onClick={() => router.push('/contacto')}
+              onClick={() => router.push('/#contacto')}
               className={`hidden md:block cursor-pointer px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 ${ctaBtnClass}`}
             >
               Empezar
@@ -283,27 +252,22 @@ const Header = () => {
         </div>
 
         {/* Mobile menu */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto', transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } }}
-              exit={{ opacity: 0, height: 0, transition: { duration: 0.18, ease: 'easeIn' } }}
-              className="xl:hidden mt-2 rounded-2xl bg-white/90 backdrop-blur-xl border border-gray-200 shadow-lg overflow-hidden"
-            >
+        {mobileOpen && (
+          <div className="xl:hidden mt-2 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
               <div className="px-4 py-3 space-y-0.5">
                 {NAV_GROUPS.map((group) => {
                   if (group.direct) {
+                    const external = group.href?.startsWith('http');
                     return (
                       <a
                         key={group.label}
                         href={group.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors"
+                        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-center justify-between px-3 py-3 text-sm font-semibold text-slate-700 rounded-lg transition-colors hover:bg-slate-50 hover:text-[#6c5ce7]"
                       >
-                        <MessageCircle size={15} className="text-green-500" />
                         {group.label}
+                        <ChevronRight size={16} className="text-slate-300" />
                       </a>
                     );
                   }
@@ -360,20 +324,16 @@ const Header = () => {
                     Iniciar Sesión
                   </a>
                   <button
-                    onClick={() => { setMobileOpen(false); router.push('/contacto'); }}
+                    onClick={() => { setMobileOpen(false); router.push('/#contacto'); }}
                     className="px-5 py-2.5 text-sm font-medium bg-[#0E0E0E] text-white rounded-full hover:bg-gray-800 transition-colors"
                   >
                     Empezar
                   </button>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        )}
       </div>
-
-      {/* Drawer del Carrito Global */}
-      <CartDrawer />
     </nav>
   );
 };
