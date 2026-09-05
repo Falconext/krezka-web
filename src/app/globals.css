@@ -1,5 +1,7 @@
 /* Importa las @font-face de HelveticaNowDisplay */
 @import url("./public/fontsIntall/stylesheet.css");
+/* Inter Tight (fuente del home estilo referencia) */
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap");
 
 @font-face {
   font-family: "Povlar";
@@ -26,6 +28,71 @@
     font-family: "Helvetica Now Display",
       system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
+  html,
+  body {
+    background-color: #ffffff;
+  }
+}
+
+/* Inter Tight for the home (unlayered → beats the @layer base * rule) */
+.font-inter-tight,
+.font-inter-tight * {
+  font-family: "Inter Tight", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Reveal on-load animations (CSS-only, JS-independent).
+   Content is always visible in the final state; if animations are
+   disabled (reduced motion) the element simply renders at opacity 1.
+   ────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes kz-reveal-up {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes kz-reveal-left {
+    from { opacity: 0; transform: translateX(-28px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes kz-reveal-right {
+    from { opacity: 0; transform: translateX(28px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes kz-reveal-scale {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+  }
+  .kz-reveal       { animation: kz-reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .kz-reveal-left  { animation: kz-reveal-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .kz-reveal-right { animation: kz-reveal-right 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .kz-reveal-scale { animation: kz-reveal-scale 0.85s cubic-bezier(0.16, 1, 0.3, 1) both; }
+}
+
+/* Marquee continuo para la fila de logos de clientes (unlayered → compila fiable) */
+@keyframes kz-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.kz-marquee {
+  animation: kz-marquee 45s linear infinite;
+  will-change: transform;
+}
+.kz-marquee:hover { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .kz-marquee { animation: none; }
+}
+
+/* Barra de progreso del stepper (unlayered → compila fiable) */
+@keyframes kz-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.kz-progress {
+  transform-origin: left center;
+  animation-name: kz-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 /* Utilidades tipo Tailwind para cambiar de fuente fácilmente */

@@ -75,18 +75,24 @@ const Hardware = () => {
   return (
     <section className="relative bg-white overflow-hidden" id="equipos">
 
-      {/* Hero banner background with overlay */}
-      <div className="relative w-full pt-28 pb-48 overflow-hidden">
-        {/* Background image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/assets/bannerhero.png')" }}
-        />
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-[#1a0a5e]/60" />
+      {/* Banner premium dark: gradiente + glows + grid */}
+      <div className="relative w-full pt-28 pb-48 overflow-hidden bg-[#0A0E1A]">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0A0E1A] via-[#11122A] to-[#0A0E1A]" />
+          <div className="absolute -top-32 left-1/4 h-[500px] w-[500px] rounded-full bg-violet-700/18 blur-[130px]" />
+          <div className="absolute top-10 right-1/4 h-[420px] w-[420px] rounded-full bg-emerald-600/10 blur-[130px]" />
+          <svg className="absolute inset-0 h-full w-full opacity-[0.04]">
+            <defs>
+              <pattern id="hwGrid" width="46" height="46" patternUnits="userSpaceOnUse">
+                <path d="M46 0L0 0 0 46" fill="none" stroke="white" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hwGrid)" />
+          </svg>
+        </div>
 
         {/* Curved white bottom edge */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
           <svg viewBox="0 0 1440 80" className="w-full h-20 fill-white" preserveAspectRatio="none">
             <path d="M0,80 C360,0 1080,0 1440,80 L1440,80 L0,80 Z" />
           </svg>
@@ -94,10 +100,12 @@ const Hardware = () => {
 
         {/* Text content */}
         <div className="relative z-10 text-center px-6">
-          <h4 className="text-white/80 font-bold tracking-widest text-sm uppercase mb-5">SISTEMA POS {BRAND.name.toUpperCase()}</h4>
+          <span className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-400/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-violet-200 mb-6">
+            Sistema POS {BRAND.name}
+          </span>
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-white max-w-3xl mx-auto leading-[1.15] font-povlar">
             Construye tu Punto de Venta <br />
-            <span className="text-[#a78bfa] font-povlar">todo en uno</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-violet-300 font-povlar">todo en uno</span>
           </h2>
           <p className="mt-5 text-white/70 text-lg max-w-2xl mx-auto leading-relaxed">
             Combos completos de hardware y software listo para operar. Equipa tu tienda, restaurante o local con todo lo que necesitas desde el primer día.

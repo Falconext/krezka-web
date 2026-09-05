@@ -163,12 +163,15 @@ const Contact = () => {
     return (
         <div className="bg-transparent py-16 md:py-24" id="contact">
             <div className="max-w-screen-xl mx-auto pt-0 md:pt-0 px-6">
-                <p className="uppercase text-[#B76AE0] text-center text-[19px] md:text-[20px] pt-10 mb-5 tracking-widest font-semibold">PONGAMONOS EN MARCHA</p>
-                <h2 className="font-bold px-3 md:px-0 w-full xl:text-[50px] text-[35px] md:text-[60px] leading-[32px] md:leading-[60px] md:w-[800px] mx-auto text-center text-gray-900 dark:text-white transition-colors">
-                    Contáctanos
+                <p className="uppercase text-center text-[13px] md:text-[14px] pt-10 mb-5 tracking-[0.22em] font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-emerald-500">PONGÁMONOS EN MARCHA</p>
+                <h2 className="font-bold px-3 md:px-0 w-full xl:text-[54px] text-[38px] md:text-[62px] leading-[1.05] md:w-[820px] mx-auto text-center text-gray-900 dark:text-white transition-colors">
+                    Digitaliza y vende{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-500 to-emerald-500">
+                        desde hoy
+                    </span>
                 </h2>
-                <p className="text-center mx-auto mt-5 md:mt-5 text-[20px] xl:text-[21px] md:text-[20px] md:w-[400px] w-full xl:w-9/12 text-gray-500 dark:text-gray-400 transition-colors">
-                    Ingresa tus datos y el detalle de lo que deseas automaticamente nos comunicaremos con usted.
+                <p className="text-center mx-auto mt-5 text-[18px] xl:text-[20px] md:w-[520px] w-full xl:w-8/12 text-gray-500 dark:text-gray-400 transition-colors">
+                    Déjanos tus datos y un asesor te contacta para activar tu sistema y la IA de Ventas en 24 horas.
                 </p>
             </div>
             <div className="mt-20 overflow-hidden md:overflow-visible mx-auto max-w-screen-xl">
@@ -278,11 +281,11 @@ const Contact = () => {
                                     </label>
                                     <div className="grid md:grid-cols-3 gap-4 mt-4 grid-cols-2">
                                         {[
-                                            "Página Web",
+                                            "Facturación SUNAT",
+                                            "IA de Ventas (WhatsApp)",
+                                            "Tienda virtual",
+                                            "Inventario / POS",
                                             "Software a medida",
-                                            "Posicionamiento",
-                                            "Marketing",
-                                            "Apps móviles",
                                             "Otros",
                                         ].map((service) => (
                                             <div key={service} className="flex items-center">

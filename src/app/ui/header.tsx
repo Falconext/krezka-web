@@ -141,8 +141,8 @@ const Header = () => {
   const logoTextClass = isTransparent ? "text-white group-hover:text-white/80" : "text-slate-900 group-hover:text-slate-600";
   const loginTextClass = isTransparent ? "text-white hover:bg-white/10" : "text-gray-700 hover:bg-gray-100";
   const ctaBtnClass = isTransparent
-    ? "bg-[#634EE1] text-white hover:bg-[#5240c9] shadow-lg shadow-purple-500/20"
-    : "bg-[#0E0E0E] text-white hover:bg-gray-800 shadow-lg shadow-purple-500/10";
+    ? "bg-white text-[#4b3fbe] hover:bg-white/90 shadow-lg shadow-black/10"
+    : "bg-[#6c5ce7] text-white hover:bg-[#5b4bd6] shadow-lg shadow-[#6c5ce7]/25";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-6 md:px-6">

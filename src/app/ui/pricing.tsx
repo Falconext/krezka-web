@@ -619,6 +619,146 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     ))}
                 </div>
 
+                {/* IA de Ventas — bloque premium dark (planes escalados por conversaciones) */}
+                <div className="relative overflow-hidden rounded-[2.5rem] bg-[#0A0E1A] p-6 md:p-10 shadow-2xl ring-1 ring-white/10">
+                    {/* glows */}
+                    <div className="pointer-events-none absolute inset-0">
+                        <div className="absolute -top-40 right-0 h-[520px] w-[520px] rounded-full bg-emerald-600/15 blur-[130px]" />
+                        <div className="absolute -bottom-40 left-0 h-[520px] w-[520px] rounded-full bg-violet-700/20 blur-[130px]" />
+                    </div>
+
+                    <div className="relative">
+                        {/* Header */}
+                        <div className="max-w-3xl">
+                            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-emerald-300">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                                </span>
+                                Nuevo · IA de Ventas por WhatsApp
+                            </span>
+                            <h3 className="mt-5 text-3xl md:text-4xl font-bold leading-tight text-white">
+                                Un asesor con IA que{" "}
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-violet-300">
+                                    atiende y vende 24/7
+                                </span>{" "}
+                                por tu WhatsApp
+                            </h3>
+                            <p className="mt-3 text-base text-gray-300">
+                                Responde al instante con tu catálogo real, califica a cada prospecto, da seguimiento
+                                automático y te avisa los leads calientes. Desde tu propio número, con tu marca.
+                            </p>
+                        </div>
+
+                        {/* Planes escalados */}
+                        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+                            {[
+                                { nombre: "Ventas Start", precio: "149", conv: "500", desc: "Para empezar a automatizar la atención.", popular: false },
+                                { nombre: "Ventas Pro", precio: "249", conv: "1,500", desc: "El equilibrio ideal para negocios activos.", popular: true },
+                                { nombre: "Ventas Scale", precio: "399", conv: "5,000", desc: "Alto volumen de conversaciones y campañas.", popular: false },
+                            ].map((p) => (
+                                <div
+                                    key={p.nombre}
+                                    className={`relative rounded-2xl border p-6 backdrop-blur-xl transition-all hover:-translate-y-0.5 ${
+                                        p.popular
+                                            ? "border-emerald-400/40 bg-emerald-400/[0.07] ring-1 ring-emerald-400/30 shadow-xl shadow-emerald-500/10"
+                                            : "border-white/10 bg-white/[0.04] hover:border-white/20"
+                                    }`}
+                                >
+                                    {p.popular && (
+                                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-emerald-400 px-3 py-1 text-[10px] font-black uppercase tracking-wide text-emerald-950">
+                                            Más elegido
+                                        </span>
+                                    )}
+                                    <p className="text-sm font-bold text-white">{p.nombre}</p>
+                                    <div className="mt-3 flex items-baseline gap-1">
+                                        <span className="text-sm text-gray-400">S/</span>
+                                        <span className="text-4xl font-bold text-white">{p.precio}</span>
+                                        <span className="text-sm text-gray-400">/mes</span>
+                                    </div>
+                                    <p className="mt-1 text-sm font-semibold text-emerald-300">
+                                        {p.conv} conversaciones/mes
+                                    </p>
+                                    <p className="mt-3 text-[13px] leading-relaxed text-gray-400">{p.desc}</p>
+                                    <a
+                                        href={generalWhatsappLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`mt-5 inline-flex w-full items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] ${
+                                            p.popular
+                                                ? "bg-emerald-400 text-emerald-950 hover:bg-emerald-300"
+                                                : "border border-white/15 bg-white/5 text-white hover:bg-white/10"
+                                        }`}
+                                    >
+                                        Quiero este plan
+                                    </a>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Full: Facturación + Ventas */}
+                        <div className="mt-4 flex flex-col gap-4 rounded-2xl border border-violet-400/30 bg-violet-500/[0.08] p-6 backdrop-blur-xl md:flex-row md:items-center md:justify-between">
+                            <div>
+                                <div className="flex items-center gap-2">
+                                    <span className="rounded-full bg-violet-400/20 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wide text-violet-200">
+                                        Todo en uno
+                                    </span>
+                                    <p className="text-sm font-bold text-white">Facturación + Ventas (Full)</p>
+                                </div>
+                                <p className="mt-2 max-w-xl text-[13px] leading-relaxed text-gray-300">
+                                    Todo el ERP (facturación SUNAT, inventario, tienda y caja) <span className="text-white font-semibold">más</span> la
+                                    IA de Ventas con 1,500 conversaciones/mes. Un solo sistema para gestionar y vender.
+                                </p>
+                            </div>
+                            <div className="flex shrink-0 items-center gap-5">
+                                <div className="text-right">
+                                    <div className="flex items-baseline justify-end gap-1">
+                                        <span className="text-sm text-gray-400">S/</span>
+                                        <span className="text-4xl font-bold text-white">299</span>
+                                        <span className="text-sm text-gray-400">/mes</span>
+                                    </div>
+                                    <p className="text-[11px] text-violet-200">ERP completo + IA</p>
+                                </div>
+                                <a
+                                    href={generalWhatsappLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-violet-500/20"
+                                >
+                                    Elegir Full
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Capacidades */}
+                        <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+                            {[
+                                "Responde con tu catálogo real y envía fotos",
+                                "Califica prospectos (BANT) automáticamente",
+                                "Seguimiento a quien no responde",
+                                "Te avisa los leads calientes al instante",
+                            ].map((cap) => (
+                                <div key={cap} className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-3">
+                                    <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-emerald-400" />
+                                    <span className="text-[12.5px] leading-snug text-gray-300">{cap}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Nota de pago honesta y visible */}
+                        <div className="mt-6 flex items-start gap-3 rounded-xl border border-white/12 bg-white/[0.05] px-4 py-3.5">
+                            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[11px] font-bold text-white/70">i</span>
+                            <p className="text-[12.5px] leading-relaxed text-gray-300">
+                                <span className="font-semibold text-white">Precio claro:</span> tu plan cubre el software y el
+                                asesor con IA que atiende, califica y responde 24/7 — sin cargos por mensaje dentro de tu plan.
+                                Aparte, y solo si tú los usas, pagas directo a Meta (como en cualquier plataforma): tus{" "}
+                                <span className="text-white">anuncios</span> para traer clientes y los{" "}
+                                <span className="text-white">avisos salientes</span> que tú programes fuera de la conversación.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Industry Fit */}
                 <div className="rounded-[2rem] border border-gray-200 bg-white p-5 md:p-7 shadow-sm">
                     <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">

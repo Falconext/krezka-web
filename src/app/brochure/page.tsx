@@ -1,5 +1,5 @@
 'use client';
-import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star, FileText, Package, BarChart3, Sparkles, TrendingUp, type LucideIcon } from "lucide-react";
+import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star, FileText, Package, BarChart3, Sparkles, TrendingUp, Info, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { fetchPublicPlansClient, mergePricingPlans, PRICING_BASE_PLANS, type PricingBasePlan } from "@/lib/public-pricing";
 import { useEffect, useMemo, useState } from "react";
@@ -444,9 +444,14 @@ export default function BrochurePage() {
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-[8.5px] leading-relaxed text-white/30">
-              Tu plan cubre el software y el asesor con IA (sin cargos por mensaje de nuestra parte). Aparte, y como en cualquier plataforma, tú pagas a Meta: los anuncios para traer leads (según tu campaña) y los avisos salientes que tú envíes (p. ej. despacho), que tienen un costo mínimo por mensaje.
-            </p>
+            <div className="mt-4 flex items-start gap-3 rounded-xl border border-white/12 bg-white/[0.05] px-4 py-3">
+              <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-400/10 text-emerald-300">
+                <Info size={14} />
+              </div>
+              <p className="text-[10.5px] leading-relaxed text-white/65">
+                <span className="font-black text-white">Tu plan cubre</span> el software y el asesor con IA — sin cargos por mensaje de nuestra parte. <span className="font-black text-white">Aparte pagas a Meta</span> (como en cualquier plataforma): tus <span className="font-bold text-white/90">anuncios</span> para traer leads (según tu campaña) y los <span className="font-bold text-white/90">avisos salientes</span> que tú envíes (p. ej. despacho), con un costo mínimo por mensaje.
+              </p>
+            </div>
           </div>
         </div>
       </Page>

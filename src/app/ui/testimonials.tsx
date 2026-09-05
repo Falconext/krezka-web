@@ -138,10 +138,15 @@ const Testimonials = () => {
             <div className="mx-auto max-w-screen-xl px-4 md:px-6">
                 <div className="flex items-center justify-between mb-12">
                     <div>
+                        <p className="inline-flex items-center rounded-full bg-emerald-500/10 px-4 py-1 text-xs md:text-sm font-semibold text-emerald-600 dark:text-emerald-300 mb-4">
+                            +500 negocios confían en {BRAND.name}
+                        </p>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-gray-900 dark:text-white transition-colors">
                             Mira lo que dicen
                             <br />
-                            <span>Nuestros clientes</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-500 to-emerald-500">
+                                nuestros clientes
+                            </span>
                         </h2>
                     </div>
                     <div className="hidden md:flex gap-3">

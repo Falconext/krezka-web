@@ -56,7 +56,10 @@ const Advisors = () => {
                         Equipo de asesores
                     </p>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white transition-colors">
-                        Habla con un asesor<br />especializado
+                        Habla con un asesor<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-500 to-emerald-500">
+                            especializado
+                        </span>
                     </h2>
                     <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm md:text-base">
                         Cada asesor conoce a profundidad el tipo de negocio que atiende. Contáctanos y te ayudamos a elegir el plan ideal para ti.

@@ -63,12 +63,12 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
     strategy: "Empieza con emisión ilimitada y control básico. Cuando necesites tienda online, variantes o automatización, subes a Negocio.",
     highlights: [
       "Facturación electrónica ilimitada: boletas, facturas, notas de venta y guías",
-      "Certificado Digital PSE incluido",
       "POS básico con apertura/cierre de caja y calculadora de vuelto",
       "Catálogo simple de productos y servicios",
       "Inventario básico con Kardex de entradas y salidas",
       "CRM básico de clientes y proveedores",
       "Reporte diario de ventas en Excel/PDF",
+      "Reporte para tu contador mensual",
       "Sin tienda virtual",
     ],
     modules: [
@@ -138,6 +138,7 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
     strategy: "El valor premium está en el control: FEFO/FIFO, reseñas y SIRE.",
     highlights: [
       "Todo lo del plan Negocio",
+      "Sube tus compras con foto (IA)",
       "Usuarios y sedes ilimitadas",
       "Kardex avanzado FEFO/FIFO con vencimientos y traslados entre sucursales",
       "Reviews y reseñas web con moderación",

@@ -184,7 +184,7 @@ const StorePreview = () => {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex-none w-full md:w-[220px] rounded-2xl overflow-hidden relative bg-gradient-to-br from-[#5F54D0] via-[#5F54D0] to-[#5F54D0] shadow-lg shadow-blue-500/20 flex flex-col justify-between p-7 md:p-6"
+            className="flex-none w-full md:w-[220px] rounded-2xl overflow-hidden relative bg-gradient-to-br from-[#1E1B4B] via-[#4338CA] to-[#6D28D9] shadow-xl shadow-violet-500/25 flex flex-col justify-between p-7 md:p-6"
           >
             {/* Decorative circle */}
             <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10 pointer-events-none" />
