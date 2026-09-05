@@ -8,7 +8,7 @@ const BRAND = {
   name: "KREZKA",
   web: "www.krezka.com",
   email: "ventas@krezka.com",
-  wa: "https://wa.me/51932332556"
+  wa: "https://wa.me/51972258391"
 };
 
 type BrochurePlan = PricingBasePlan & {
@@ -35,7 +35,7 @@ const PLAN_VISUALS: Record<PricingBasePlan["id"], Omit<BrochurePlan, keyof Prici
     delivery: false,
     api: false,
     soporte: "Estándar",
-    marks: ["Facturación ilimitada", "Certificado Digital incluido", "Gestión de productos", "Boletas y Facturas"],
+    marks: ["Facturación ilimitada", "Reporte para tu contador", "Gestión de productos", "Boletas y Facturas"],
   },
   "plan-negocio": {
     color: "#8B5CF6",
@@ -58,8 +58,8 @@ const PLAN_VISUALS: Record<PricingBasePlan["id"], Omit<BrochurePlan, keyof Prici
     reportes: true,
     delivery: true,
     api: true,
-    soporte: "Prioritario",
-    marks: ["Usuarios avanzados", "Tienda Virtual Pro", "Integraciones / API", "Asesor dedicado"],
+    soporte: "Dedicado",
+    marks: ["Usuarios avanzados", "Tienda Virtual Pro", "FEFO/FIFO y multi-sede", "Asesor dedicado"],
   },
 };
 
@@ -303,9 +303,25 @@ export default function BrochurePage() {
             ))}
           </div>
 
-          <div className="flex items-center justify-between bg-gray-50 border border-gray-100 rounded-xl px-5 py-3">
-            <p className="text-[10px] text-gray-600 font-medium">Ahora el brochure usa la misma propuesta comercial de Planes Pro: target, módulos, precio anual y beneficios completos.</p>
-            <p className="text-[9px] text-gray-400 shrink-0 ml-4">Precios sin IGV (18%)</p>
+          <div>
+            <div className="mb-1.5 flex items-center justify-between">
+              <p className="text-[9px] font-black uppercase tracking-[0.22em] text-indigo-600">Precios adicionales</p>
+              <p className="text-[9px] text-gray-400">Complementos opcionales sobre cualquier plan · sin IGV (18%)</p>
+            </div>
+            <div className="grid grid-cols-4 gap-2">
+              {[
+                { t: "Por usuario", v: "S/ 30", u: "/ mes" },
+                { t: "Por almacén o sucursal", v: "S/ 80", u: "/ mes" },
+                { t: "Reportes a medida", v: "A cotizar", u: "según análisis" },
+                { t: "Soporte Premium", v: "A cotizar", u: "según condiciones" },
+              ].map((a) => (
+                <div key={a.t} className="rounded-xl border border-gray-100 bg-gray-50 px-3 py-2.5 text-center">
+                  <p className="text-[9px] font-bold leading-tight text-gray-700">{a.t}</p>
+                  <p className="mt-1 text-[13px] font-black text-gray-900">{a.v}</p>
+                  <p className="text-[8px] text-gray-400">{a.u}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Page>
@@ -532,7 +548,7 @@ export default function BrochurePage() {
             {[
               { title: "Facturación sin miedo", desc: "Emite documentos SUNAT, notas, guías y tickets con PDF listo para imprimir, enviar por email o WhatsApp.", icon: FileText, color: "#6366F1", image: "/assets/brochure/facturacion.png" },
               { title: "Inventario inteligente", desc: "Stock simple, variantes, combos, lotes, FEFO/FIFO, series y garantías según el rubro.", icon: Package, color: "#8B5CF6", image: "/assets/brochure/inventariointeligente.png" },
-              { title: "Tienda virtual conectada", desc: "Catálogo web, banners, galería, reseñas, pagos Culqi, pedidos y atención por WhatsApp.", icon: Globe, color: "#2563EB", image: "/assets/brochure/tiendavirtual.png" },
+              { title: "Tienda virtual conectada", desc: "Catálogo web, banners, galería, reseñas, pagos online, pedidos y atención por WhatsApp.", icon: Globe, color: "#2563EB", image: "/assets/brochure/tiendavirtual.png" },
               { title: "Control financiero real", desc: "Caja, compras, cuentas por cobrar, SIRE, rentabilidad por margen y dashboard financiero.", icon: BarChart3, color: "#10B981", image: "/assets/brochure/financieroreal.png" },
             ].map((item) => (
               <div 
@@ -582,7 +598,7 @@ export default function BrochurePage() {
             {[
               { title: "Menos errores de caja", desc: "Apertura, cierre, cobros, vuelto, ventas rápidas y reportes diarios para saber qué pasó en cada turno.", icon: Zap, color: "#6366F1" },
               { title: "Stock que sí cuadra", desc: "Productos simples, variantes, combos, lotes, vencimientos, series, garantías y traslados según tu rubro.", icon: Package, color: "#8B5CF6" },
-              { title: "Tienda que vende de verdad", desc: "Catálogo web, banners, galería, carrito, pedidos por WhatsApp, pagos Culqi y reseñas moderadas.", icon: Globe, color: "#2563EB" },
+              { title: "Tienda que vende de verdad", desc: "Catálogo web, banners, galería, carrito, pedidos por WhatsApp, pagos online y reseñas moderadas.", icon: Globe, color: "#2563EB" },
               { title: "Rentabilidad visible", desc: "Compras, gastos, margen, cuentas por cobrar, cuentas por pagar, SIRE y dashboard financiero.", icon: BarChart3, color: "#10B981" },
             ].map((item) => (
               <div key={item.title} className="rounded-2xl border border-gray-100 bg-gray-50/60 p-4">
@@ -624,21 +640,22 @@ export default function BrochurePage() {
               { label: "Comprobantes/mes", vals: plans.map(p => p.docs) },
               { label: "Usuarios", vals: plans.map(p => p.usersLabel) },
               { label: "Sedes", vals: plans.map(p => p.sedesLabel) },
-              { label: "Certificado Digital PSE", vals: [true, true, true] },
-              { label: "Boletas, facturas, notas y guías", vals: [true, true, true] },
+              { label: "Boletas, facturas y notas de crédito/débito", vals: [true, true, true] },
+              { label: "Comprobantes informales (nota de venta, ticket, OT)", vals: [true, true, true] },
+              { label: "Guías de remisión GRE-R / GRE-T", vals: [true, true, true] },
               { label: "POS básico y ventas rápidas", vals: [true, true, true] },
               { label: "Apertura/cierre de caja y vuelto", vals: [true, true, true] },
-              { label: "Productos y servicios simples", vals: [true, true, true] },
+              { label: "Productos, servicios y código de barras", vals: [true, true, true] },
               { label: "Clientes y proveedores", vals: [true, true, true] },
+              { label: "Cotizaciones y proformas", vals: [true, true, true] },
               { label: "Reporte diario Excel/PDF", vals: [true, true, true] },
               { category: "Tienda virtual y ventas" },
               { label: "Tienda virtual ecommerce", vals: [false, true, true] },
               { label: "Banners y galería web", vals: [false, true, true] },
               { label: "Variantes talla/color", vals: [false, true, true] },
-              { label: "Combos, kits y mayoristas", vals: [false, true, true] },
-              { label: "Cotizaciones y proformas", vals: [false, true, true] },
+              { label: "Combos y kits", vals: [true, true, true] },
+              { label: "Precios mayoristas", vals: [false, true, true] },
               { label: "WhatsApp y Email automático", vals: [false, true, true] },
-              { label: "Pasarela de pagos Culqi", vals: [false, false, true] },
               { label: "Reviews y reseñas web", vals: [false, false, true] },
             ].map((row, i) => (
               "category" in row ? (
@@ -681,15 +698,23 @@ export default function BrochurePage() {
             </div>
             {[
               { category: "Inventario, compras y logística" },
-              { label: "Kardex básico entradas/salidas", vals: [true, true, true] },
-              { label: "Compras, gastos y cuentas por pagar", vals: [false, true, true] },
+              { label: "Kardex de entradas y salidas", vals: [true, true, true] },
+              { label: "Compras y proveedores", vals: [true, true, true] },
+              { label: "Gastos y cuentas por pagar", vals: [false, true, true] },
+              { label: "Dashboard de inventario", vals: [false, true, true] },
+              { label: "Autogeneración de imágenes con IA", vals: [false, true, true] },
               { label: "Lotes básicos", vals: [false, true, true] },
               { label: "FEFO/FIFO y vencimientos", vals: [false, false, true] },
-              { label: "Traslados entre sucursales", vals: [false, false, true] },
+              { label: "Traslados entre sucursales", vals: [false, true, true] },
+              { label: "Reservas y producción (recetas/BOM)", vals: [false, false, true] },
               { label: "Shalom Pro (envío a despacho)", vals: [false, true, true] },
               { category: "Crecimiento, finanzas y soporte" },
-              { label: "SIRE y contabilidad avanzada", vals: [false, false, true] },
-              { label: "Dashboard financiero y rentabilidad", vals: [false, false, true] },
+              { label: "Dashboard gerencial (KPIs)", vals: [false, true, true] },
+              { label: "SIRE (Libros Ventas / Compras)", vals: [false, true, true] },
+              { label: "Contabilidad y finanzas (P&L)", vals: [false, false, true] },
+              { label: "Roles y permisos granulares", vals: [true, true, true] },
+              { label: "WhatsApp automático", vals: [false, true, true] },
+              { label: "Gemini IA", vals: [false, false, true] },
               { label: "Soporte", vals: plans.map(p => p.soporte) },
             ].map((row, i) => (
               "category" in row ? (

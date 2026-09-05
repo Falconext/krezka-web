@@ -134,15 +134,19 @@ const Header = () => {
           {/* Logo */}
           <div
             onClick={() => router.push('/')}
-            className="flex items-center gap-2 cursor-pointer group transition-opacity"
+            className="flex items-center gap-2.5 cursor-pointer group transition-opacity"
           >
             <Image
-              src={isTransparent ? BRAND.logoWhite : BRAND.logo}
-              width={1000}
-              height={1000}
+              src="/assets/krezka/krezkalogo.png"
+              width={240}
+              height={288}
               alt={BRAND.name}
-              className={`w-48 h-14 object-contain transition-all duration-300`}
+              priority
+              className="h-11 w-auto object-contain transition-all duration-300"
             />
+            <span className="text-[1.6rem] font-extrabold tracking-tight text-slate-900">
+              {BRAND.name}
+            </span>
           </div>
 
           {/* Desktop nav */}

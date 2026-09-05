@@ -37,7 +37,10 @@ const Footer = () => {
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           {/* Marca */}
           <div>
-            <Image src={BRAND.logoWhite} width={800} height={800} alt={BRAND.name} className="h-11 w-auto object-contain" />
+            <div className="flex items-center gap-2.5">
+              <Image src="/assets/krezka/krezkalogo.png" width={240} height={288} alt={BRAND.name} className="h-11 w-auto object-contain" />
+              <span className="text-2xl font-extrabold tracking-tight text-white">{BRAND.name}</span>
+            </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
               La plataforma peruana para facturar ante SUNAT, vender con POS y tienda virtual, y atender por
               WhatsApp con inteligencia artificial. Todo en un solo lugar.
