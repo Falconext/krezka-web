@@ -50,7 +50,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative overflow-hidden pb-0 pt-28 md:pt-32">
+    <section id="home" className="relative overflow-hidden pb-0 pt-32 md:pt-36">
       {/* ── Cielo de fondo ── */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-[#e9eefb] via-[#f4f5fd] to-[#efeafe]" />
@@ -82,19 +82,19 @@ const Hero = () => {
 
         {/* ── Texto centrado ── */}
         <div ref={textRef} className="relative z-10 mx-auto max-w-4xl text-center will-change-[opacity,transform]">
-          <h1 className="kz-reveal text-4xl font-extrabold leading-[1.05] tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-[4.25rem]">
+          <h1 className="kz-reveal text-4xl font-extrabold leading-[1.12] tracking-tight text-slate-900 sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-[4.25rem]">
             Digitaliza tu negocio y
             <br className="hidden sm:block" /> vende{' '}
             <span className="bg-gradient-to-r from-[#7b6af2] to-[#6c5ce7] bg-clip-text text-transparent">
               sin límites
             </span>
           </h1>
-          <p className="kz-reveal mx-auto mt-6 max-w-xl text-base leading-relaxed text-slate-500 md:text-lg" style={{ animationDelay: '0.1s' }}>
+          <p className="kz-reveal mx-auto mt-7 max-w-xl text-base leading-relaxed text-slate-500 md:text-lg" style={{ animationDelay: '0.1s' }}>
             Facturación SUNAT, punto de venta, inventario y tienda virtual — con un asesor de IA
             que atiende y vende por WhatsApp 24/7.
           </p>
 
-          <div className="kz-reveal mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" style={{ animationDelay: '0.18s' }}>
+          <div className="kz-reveal mt-9 flex flex-col items-center justify-center gap-3.5 sm:mt-10 sm:flex-row" style={{ animationDelay: '0.18s' }}>
             <Link
               href="/sistemas"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#6c5ce7] px-8 py-4 text-[15px] font-semibold text-white shadow-lg shadow-[#6c5ce7]/30 transition-all hover:scale-[1.03] hover:bg-[#5b4bd6] sm:w-auto"
