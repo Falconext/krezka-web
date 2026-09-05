@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { MessageCircle, Mail, ArrowRight } from 'lucide-react';
+import { MessageCircle, Mail, ArrowRight, BookText } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
 
 const producto = [
@@ -106,6 +106,20 @@ const Footer = () => {
                   <ArrowRight size={14} />
                 </a>
               </li>
+              <li>
+                <a
+                  href="/libro-de-reclamaciones"
+                  className="mt-1 flex items-center gap-2.5 rounded-xl border-2 border-white/20 bg-white/[0.04] px-3.5 py-2.5 transition-colors hover:border-red-400/60 hover:bg-white/[0.07]"
+                >
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-600 text-white">
+                    <BookText size={16} />
+                  </span>
+                  <span className="text-left leading-tight">
+                    <span className="block text-[11px] font-bold uppercase tracking-wide text-white">Libro de</span>
+                    <span className="block text-[11px] font-bold uppercase tracking-wide text-white">Reclamaciones</span>
+                  </span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -113,7 +127,7 @@ const Footer = () => {
         {/* Barra inferior */}
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:flex-row">
           <p className="text-xs text-white/50">
-            © {year} {BRAND.legalName}. Hecho en el Perú 🇵🇪
+            © {year} {BRAND.legalName} · RUC {BRAND.ruc}. Hecho en el Perú 🇵🇪
           </p>
           <div className="flex items-center gap-5 text-xs text-white/50">
             <a href="/privacidad" className="transition-colors hover:text-white">

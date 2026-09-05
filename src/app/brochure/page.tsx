@@ -1,5 +1,5 @@
 'use client';
-import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star, FileText, Package, BarChart3, Sparkles, TrendingUp, Info, type LucideIcon } from "lucide-react";
+import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star, FileText, Package, BarChart3, Sparkles, TrendingUp, Info, BookText, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { fetchPublicPlansClient, mergePricingPlans, PRICING_BASE_PLANS, type PricingBasePlan } from "@/lib/public-pricing";
 import { useEffect, useMemo, useState } from "react";
@@ -828,8 +828,17 @@ export default function BrochurePage() {
             ))}
           </div>
 
-          <div className="text-white/20 text-[10px] border-t border-white/10 pt-6 w-full">
-            © {new Date().getFullYear()} Krezka. Todos los derechos reservados · Lima, Perú
+          <div className="w-full border-t border-white/10 pt-5">
+            <div className="mx-auto mb-3 inline-flex items-center gap-2 rounded-lg border border-white/12 bg-white/[0.04] px-3 py-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded bg-red-600 text-white">
+                <BookText size={13} />
+              </span>
+              <span className="text-[9px] font-bold uppercase tracking-wide text-white/70">Libro de Reclamaciones · {BRAND.web}/libro-de-reclamaciones</span>
+            </div>
+            <p className="text-white/35 text-[9px] leading-relaxed">
+              KREZKA PERU S.A.C. · RUC 20616318773 · Cal. Los Crisantemos Mz. N Lt. 13 Urb. Las Fresas, Callao
+              <br />© {new Date().getFullYear()} Krezka. Todos los derechos reservados · Perú
+            </p>
           </div>
         </div>
       </Page>

@@ -6,6 +6,8 @@
 export type BrandConfig = {
   name: string;
   legalName: string;
+  ruc: string;
+  address: string;
   website: string;
   email: string;
   phone: string;
@@ -26,7 +28,9 @@ export type BrandConfig = {
 const brands: Record<string, BrandConfig> = {
   krezka: {
     name: 'Krezka',
-    legalName: 'Krezka Soluciones Digitales',
+    legalName: 'KREZKA PERU S.A.C.',
+    ruc: '20616318773',
+    address: 'Cal. Los Crisantemos Mz. N Lt. 13 Urb. Las Fresas, Prov. Const. del Callao - Callao',
     website: 'https://krezka.com',
     email: 'ventas@krezka.com',
     phone: '+51 972 258 391',
