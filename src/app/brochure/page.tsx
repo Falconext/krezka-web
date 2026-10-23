@@ -124,7 +124,6 @@ const Page = ({ children, dark = false, last = false }: { children: React.ReactN
 export default function BrochurePage() {
   const [pricingPlans, setPricingPlans] = useState<PricingBasePlan[]>(PRICING_BASE_PLANS);
   const plans = useMemo(() => toBrochurePlans(pricingPlans), [pricingPlans]);
-  const minMonthly = useMemo(() => Math.min(...plans.map((plan) => plan.monthly)), [plans]);
 
   useEffect(() => {
     let active = true;
@@ -231,7 +230,7 @@ export default function BrochurePage() {
             </div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full">
               <Star size={10} className="text-emerald-600 fill-emerald-600" />
-              <span className="text-emerald-700 text-[11px] font-bold">Desde S/ {minMonthly.toFixed(2)} / mes</span>
+              <span className="text-emerald-700 text-[11px] font-bold">Instalación S/ 50 · pago único</span>
             </div>
           </div>
 
@@ -261,12 +260,13 @@ export default function BrochurePage() {
                       <span className="text-[2rem] font-black leading-none text-gray-950">S/ {p.monthly.toFixed(2)}</span>
                       <span className="text-[10px] font-semibold text-gray-400">/ mes</span>
                     </div>
+                    <p className="mt-1 text-[9px] font-bold text-gray-600">+ S/ 50 de instalación (pago único)</p>
                   </div>
                   <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-2 py-1.5">
                     <span className="text-[8px] text-gray-500">Anual: </span>
                     <span className="text-[8px] font-black text-gray-800">S/ {p.annual.toFixed(2)}</span>
                     <span className="text-[8px] text-gray-400"> (S/ {(p.annual / 12).toFixed(2)}/mes)</span>
-                    <span className="text-[8px] font-black text-amber-600"> · 2 meses gratis</span>
+                    <span className="text-[8px] font-black text-amber-600"> · 1 mes gratis</span>
                   </div>
                   <p className="mt-3 text-[9px] leading-relaxed text-gray-500">{p.tagline}</p>
                 </div>

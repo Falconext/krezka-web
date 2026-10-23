@@ -572,6 +572,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                         S/ {plan.monthly.toFixed(2)}
                                         <span className="text-base font-normal text-gray-400 ml-1">/ mes</span>
                                     </p>
+                                    <p className="mt-1.5 text-xs font-semibold text-gray-600">+ S/ 50 de instalación (pago único)</p>
                                 </div>
 
                                 {/* Plan anual */}
@@ -579,7 +580,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                     <span className="text-xs text-gray-500">Anual:</span>
                                     <span className="text-xs font-bold text-gray-800">S/ {plan.annual.toFixed(2)}</span>
                                     <span className="text-xs text-gray-400">(S/ {(plan.annual / 12).toFixed(2)}/mes)</span>
-                                    <span className="text-[11px] font-bold text-amber-600">· 2 meses gratis</span>
+                                    <span className="text-[11px] font-bold text-amber-600">· 1 mes gratis</span>
                                 </div>
 
                                 {/* Descripción */}
