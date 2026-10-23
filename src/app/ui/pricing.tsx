@@ -714,7 +714,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                 <div className="text-right">
                                     <div className="flex items-baseline justify-end gap-1">
                                         <span className="text-sm text-gray-400">S/</span>
-                                        <span className="text-4xl font-bold text-white">299</span>
+                                        <span className="text-4xl font-bold text-white">329</span>
                                         <span className="text-sm text-gray-400">/mes</span>
                                     </div>
                                     <p className="text-[11px] text-violet-200">ERP completo + IA</p>

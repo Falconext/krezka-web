@@ -62,7 +62,7 @@ const planes: Plan[] = [
   },
   {
     nombre: 'Facturación + Ventas (Full)',
-    precio: '299',
+    precio: '329',
     conv: 'ERP completo + 1,500 conv / mes',
     desc: 'Todo el ERP (facturación, inventario, tienda y caja) más la IA de Ventas.',
     feats: [

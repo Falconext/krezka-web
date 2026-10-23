@@ -436,7 +436,7 @@ export default function BrochurePage() {
               <div className="flex flex-col items-center justify-center gap-1 border-l border-white/10 bg-black/20 p-5 text-center">
                 <span className="text-[9px] font-black uppercase tracking-widest text-white/40">Desde</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-[3rem] font-black leading-none text-white">S/ 299</span>
+                  <span className="text-[3rem] font-black leading-none text-white">S/ 329</span>
                 </div>
                 <span className="text-[11px] font-semibold text-white/45">/ mes · un solo precio</span>
                 <div className="mt-3 w-full rounded-full bg-white px-4 py-2.5 text-center text-[11px] font-black text-gray-950">
