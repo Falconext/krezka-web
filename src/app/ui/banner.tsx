@@ -76,8 +76,11 @@ const Banner = () => {
                         <Image
                             src={dashboard}
                             alt="Dashboard de Krezka con ventas del mes, utilidad y ventas por canal"
-                            width={1512}
-                            height={807}
+                            width={3024}
+                            height={1614}
+                            quality={90}
+                            sizes="(min-width: 1280px) 1216px, 100vw"
+                            priority
                             className="rounded-2xl shadow-2xl ring-1 ring-gray-900/10 dark:ring-white/10 w-full"
                         />
                     </div>

@@ -30,8 +30,10 @@ const WhatWeDo = () => {
                             <div className="mb-5 rounded-2xl bg-gray-100 dark:bg-black/20 px-4 pt-5 pb-4 border border-gray-100 dark:border-white/5">
                                 <Image
                                     src={puntoDeVenta}
+                                    quality={90}
+                                    sizes="(min-width: 768px) 576px, 100vw"
                                     alt="Punto de venta de Krezka con catálogo de productos y detalle de venta"
-                                    className="w-full h-full object-cover rounded-xl opacity-90 hover:opacity-100 transition-opacity"
+                                    className="w-full h-full object-cover rounded-xl"
                                 />
                             </div>
                             <div className="flex items-center justify-between">

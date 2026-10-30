@@ -63,6 +63,8 @@ const Analytics = () => {
                                     className="w-full h-full mx-auto object-contain rounded-xl"
                                     alt="Cobros del mes por método de pago: efectivo, Plin, Yape y tarjeta"
                                     src={metodosDePago}
+                                    quality={90}
+                                    sizes="(min-width: 768px) 576px, 100vw"
                                 />
                             </div>
                             <div className="flex items-center justify-between">
