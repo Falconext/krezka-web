@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { Check, Clock, Gem, Sparkles } from 'lucide-react';
+import { Check, Gem, Sparkles } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
+import AvisoAlzaPrecios from '../AvisoAlzaPrecios';
 import {
   fetchPublicPlansClient,
   mergePricingPlans,
   PRICING_BASE_PLANS,
-  AVISO_ALZA_PRECIOS,
   type PricingBasePlan,
 } from '@/lib/public-pricing';
 
@@ -51,12 +51,8 @@ const HomePricing = () => {
           <p className="kz-reveal mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-slate-500 md:text-base" style={{ animationDelay: '0.12s' }}>
             Comprobantes ilimitados en todos los planes, desde S/ {minMonthly.toFixed(2)}/mes. Cambia o cancela cuando quieras.
           </p>
-          <div className="kz-reveal mx-auto mt-6 flex max-w-xl items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-5 py-3 text-left" style={{ animationDelay: '0.16s' }}>
-            <Clock size={18} className="mt-0.5 shrink-0 text-amber-600" />
-            <p className="text-sm text-amber-900">
-              <span className="block font-bold">{AVISO_ALZA_PRECIOS.titulo}</span>
-              {AVISO_ALZA_PRECIOS.texto}
-            </p>
+          <div className="kz-reveal mt-7" style={{ animationDelay: '0.16s' }}>
+            <AvisoAlzaPrecios />
           </div>
         </div>
 

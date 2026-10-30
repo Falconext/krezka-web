@@ -1,7 +1,8 @@
 'use client';
 import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star, FileText, Package, BarChart3, Sparkles, TrendingUp, Info, BookText, type LucideIcon } from "lucide-react";
 import Image from "next/image";
-import { AVISO_ALZA_PRECIOS, fetchPublicPlansClient, mergePricingPlans, PRICING_BASE_PLANS, type PricingBasePlan } from "@/lib/public-pricing";
+import { fetchPublicPlansClient, mergePricingPlans, PRICING_BASE_PLANS, type PricingBasePlan } from "@/lib/public-pricing";
+import AvisoAlzaPrecios from "@/app/components/AvisoAlzaPrecios";
 import { useEffect, useMemo, useState } from "react";
 
 const BRAND = {
@@ -243,12 +244,7 @@ export default function BrochurePage() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-2.5">
-            <Clock size={16} className="shrink-0 text-amber-600" />
-            <p className="text-[11px] leading-snug text-amber-900">
-              <span className="font-black">{AVISO_ALZA_PRECIOS.titulo}.</span> {AVISO_ALZA_PRECIOS.texto}
-            </p>
-          </div>
+          <AvisoAlzaPrecios impreso />
 
           <div className="grid grid-cols-3 gap-3 flex-1">
             {plans.map(p => (

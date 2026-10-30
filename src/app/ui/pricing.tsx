@@ -4,11 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { BRAND } from "@/lib/branding";
 import MetaPartnerBadge from "@/app/components/MetaPartnerBadge";
+import AvisoAlzaPrecios from "@/app/components/AvisoAlzaPrecios";
 import {
     fetchPublicPlansClient,
     mergePricingPlans,
     PRICING_BASE_PLANS,
-    AVISO_ALZA_PRECIOS,
     type PricingBasePlan,
 } from "@/lib/public-pricing";
 
@@ -513,13 +513,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                         <span className="text-lg">🏆</span>
                         Comprobantes ILIMITADOS en todos los planes — desde S/ {minMonthly.toFixed(2)}/mes
                     </div>
-                    <div className="mx-auto mt-4 flex max-w-xl items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-5 py-3 text-left">
-                        <span className="text-lg leading-none">⏰</span>
-                        <p className="text-sm text-amber-900">
-                            <span className="block font-bold">{AVISO_ALZA_PRECIOS.titulo}</span>
-                            {AVISO_ALZA_PRECIOS.texto}
-                        </p>
-                    </div>
+                    <AvisoAlzaPrecios className="mt-6" />
                     <div className="mt-4">
                         <a
                             href={generalWhatsappLink}
