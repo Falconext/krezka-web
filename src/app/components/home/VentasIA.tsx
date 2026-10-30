@@ -96,7 +96,8 @@ const funcionesIA = [
   'Panel de métricas y reporte diario por WhatsApp',
 ];
 
-const VentasIA = () => {
+// En /ventas-ia las funciones ya tienen su propia sección: ahí se omite la lista.
+const VentasIA = ({ conFunciones = true }: { conFunciones?: boolean }) => {
   return (
     <section id="ventas-ia" className="relative overflow-hidden bg-[#0f0a2e] py-16 md:py-24">
       {/* glows */}
@@ -187,6 +188,7 @@ const VentasIA = () => {
           ))}
         </div>
 
+        {conFunciones && (
         <div className="kz-reveal mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
           <p className="text-xs font-bold uppercase tracking-wider text-emerald-300">Todos los planes incluyen</p>
           <ul className="mt-5 grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -198,6 +200,7 @@ const VentasIA = () => {
             ))}
           </ul>
         </div>
+        )}
 
         <p className="mx-auto mt-8 max-w-3xl text-center text-[12.5px] leading-relaxed text-white/45">
           <span className="font-semibold text-white/70">Precio claro:</span> tu plan incluye la facturación electrónica SUNAT y el asesor con IA que
