@@ -20,18 +20,20 @@ export default function AvisoAlzaPrecios({ impreso = false, className = '' }: { 
   }, [impreso]);
 
   if (impreso) {
+    // shrink-0: la hoja A4 es una columna de alto fijo y, sin esto, la franja
+    // se aplastaba para hacerle sitio a las tarjetas.
     return (
-      <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#2a1d6b] via-[#4b3fbe] to-[#6c5ce7] px-4 py-3 text-white ${className}`}>
-        <div className="absolute -right-6 -top-10 h-28 w-28 rounded-full bg-white/10" />
-        <div className="relative flex items-center gap-3">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/25">
-            <CalendarClock size={18} strokeWidth={2.2} />
+      <div className={`relative shrink-0 overflow-hidden rounded-2xl bg-gradient-to-r from-[#2a1d6b] via-[#4b3fbe] to-[#6c5ce7] px-4 py-3.5 text-white ${className}`}>
+        <div className="pointer-events-none absolute -right-8 -top-12 h-32 w-32 rounded-full bg-white/10" />
+        <div className="relative flex items-center gap-3.5">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/15 text-amber-300 ring-1 ring-white/25">
+            <CalendarClock size={19} strokeWidth={2.2} />
           </span>
-          <div className="min-w-0">
-            <p className="text-[12px] font-black leading-tight">{AVISO_ALZA_PRECIOS.titulo}</p>
-            <p className="mt-0.5 text-[10px] leading-snug text-white/80">{AVISO_ALZA_PRECIOS.texto}</p>
+          <div className="min-w-0 flex-1">
+            <p className="text-[13px] font-black leading-tight">{AVISO_ALZA_PRECIOS.titulo}</p>
+            <p className="mt-1 text-[10px] leading-snug text-white/80">{AVISO_ALZA_PRECIOS.texto}</p>
           </div>
-          <span className="ml-auto shrink-0 rounded-full bg-white px-3 py-1 text-[9px] font-black uppercase tracking-wider text-[#4b3fbe]">
+          <span className="shrink-0 rounded-full bg-white px-3 py-1.5 text-[9px] font-black uppercase tracking-wider text-[#4b3fbe]">
             Hasta el 31/12/2026
           </span>
         </div>

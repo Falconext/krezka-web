@@ -244,7 +244,7 @@ export default function BrochurePage() {
             </div>
           </div>
 
-          <AvisoAlzaPrecios impreso />
+          <AvisoAlzaPrecios impreso className="mb-2" />
 
           <div className="grid grid-cols-3 gap-3 flex-1">
             {plans.map(p => (
