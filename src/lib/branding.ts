@@ -43,7 +43,8 @@ const brands: Record<string, BrandConfig> = {
       facebook: '#',
       instagram: '#',
     },
-    dashboardUrl: 'https://app.krezka.com'
+    // En local apunta a la app de desarrollo (NEXT_PUBLIC_DASHBOARD_URL en .env.local).
+    dashboardUrl: process.env.NEXT_PUBLIC_DASHBOARD_URL || 'https://app.krezka.com'
   }
 };
 

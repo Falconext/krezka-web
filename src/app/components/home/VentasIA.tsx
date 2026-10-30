@@ -3,6 +3,9 @@
 import { Check } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
 
+// Start/Pro/Scale abren la prueba gratis en el sistema; Personalizado se conversa.
+const registroLink = (clave: string) => `${BRAND.dashboardUrl}/registro?plan=${clave}`;
+
 const waLink = (plan: string) =>
   `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
     `Hola, quiero el plan ${plan} (IA de Ventas) de ${BRAND.name}. ¿Me ayudan a activarlo?`
@@ -10,70 +13,86 @@ const waLink = (plan: string) =>
 
 type Plan = {
   nombre: string;
-  precio: string;
+  precio?: string;
   conv: string;
   desc: string;
   feats: string[];
   cta: string;
   popular?: boolean;
-  full?: boolean;
+  custom?: boolean;
+  clave?: 'start' | 'pro' | 'scale';
 };
 
 const planes: Plan[] = [
   {
     nombre: 'Ventas Start',
-    precio: '149',
-    conv: '500 conversaciones / mes',
+    clave: 'start',
+    precio: '199',
+    conv: '500 leads / mes',
     desc: 'Para empezar a automatizar la atención por WhatsApp.',
     feats: [
-      'Responde 24/7 con tu catálogo real',
-      'Envía fotos y precios automáticamente',
-      'Califica prospectos (BANT)',
-      'Tu propio número de WhatsApp',
+      'Facturación electrónica SUNAT incluida',
+      'Todas las funciones de la IA de Ventas',
+      'Configuración inicial de tu asesor IA',
     ],
-    cta: 'Crear agente IA',
+    cta: 'Probar 7 días gratis',
   },
   {
     nombre: 'Ventas Pro',
-    precio: '249',
-    conv: '1,500 conversaciones / mes',
+    clave: 'pro',
+    precio: '299',
+    conv: '1,500 leads / mes',
     desc: 'El equilibrio ideal para negocios activos.',
     feats: [
-      'Todo lo de Ventas Start',
-      'Seguimiento automático a quien no responde',
-      'Aviso de leads calientes al instante',
-      'Reportes de conversaciones',
+      'Facturación electrónica SUNAT incluida',
+      'Todas las funciones de la IA de Ventas',
+      'Configuración inicial de tu asesor IA',
+      'Entrenamos la IA con tus documentos',
     ],
     cta: 'Probar 7 días gratis',
     popular: true,
   },
   {
     nombre: 'Ventas Scale',
-    precio: '399',
-    conv: '5,000 conversaciones / mes',
-    desc: 'Alto volumen de conversaciones y campañas.',
+    clave: 'scale',
+    precio: '499',
+    conv: '5,000 leads / mes',
+    desc: 'Para negocios con alto volumen de consultas.',
     feats: [
-      'Todo lo de Ventas Pro',
-      'Ideal para campañas y difusión',
-      'Máximo volumen de atención',
-      'Soporte prioritario',
+      'Facturación electrónica SUNAT incluida',
+      'Todas las funciones de la IA de Ventas',
+      'Entrenamos la IA con tus documentos',
+      'Revisión mensual de resultados',
     ],
     cta: 'Probar 7 días gratis',
   },
   {
-    nombre: 'Facturación + Ventas (Full)',
-    precio: '329',
-    conv: 'ERP completo + 1,500 conv / mes',
-    desc: 'Todo el ERP (facturación, inventario, tienda y caja) más la IA de Ventas.',
+    nombre: 'Personalizado',
+    conv: 'Más de 5,000 leads / mes',
+    desc: 'Para empresas con varias sedes o un volumen mayor.',
     feats: [
-      'Todo el sistema Krezka',
-      'IA de Ventas con 1,500 conv/mes',
-      'Un solo sistema para gestionar y vender',
-      'El mejor valor todo-en-uno',
+      'Facturación electrónica SUNAT incluida',
+      'Todas las funciones de la IA de Ventas',
+      'Volumen de leads a tu medida',
+      'Asesor dedicado y varias sedes',
     ],
     cta: 'Hablar con ventas',
-    full: true,
+    custom: true,
   },
+];
+
+const funcionesIA = [
+  'Atiende 24/7 por WhatsApp, Instagram y Messenger',
+  'Responde con tu catálogo, stock y precios reales',
+  'Cotiza con envío por zona y descuentos',
+  'Envía fotos, notas de voz y tu brochure',
+  'Aprende de los documentos que le subas',
+  'Califica prospectos (BANT) y avisa los leads calientes',
+  'Seguimiento automático: cotizaciones, recompra y reactivación',
+  'Toma pedidos con link de pago y valida el voucher',
+  'Bandeja de chats: pausa el bot y responde tú',
+  'Embudo de ventas y paso de prospecto a cliente',
+  'Panel de métricas y reporte diario por WhatsApp',
 ];
 
 const VentasIA = () => {
@@ -126,17 +145,23 @@ const VentasIA = () => {
               <h3 className="text-lg font-bold text-white">{p.nombre}</h3>
 
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-sm font-semibold text-white/60">S/</span>
-                <span className="text-4xl font-extrabold tracking-tight text-white">{p.precio}</span>
-                <span className="text-sm text-white/50">/mes</span>
+                {p.precio ? (
+                  <>
+                    <span className="text-sm font-semibold text-white/60">S/</span>
+                    <span className="text-4xl font-extrabold tracking-tight text-white">{p.precio}</span>
+                    <span className="text-sm text-white/50">/mes</span>
+                  </>
+                ) : (
+                  <span className="text-4xl font-extrabold tracking-tight text-white">A medida</span>
+                )}
               </div>
-              <p className={`mt-1.5 text-sm font-semibold ${p.full ? 'text-[#a99df8]' : 'text-emerald-300'}`}>{p.conv}</p>
+              <p className={`mt-1.5 text-sm font-semibold ${p.custom ? 'text-[#a99df8]' : 'text-emerald-300'}`}>{p.conv}</p>
               <p className="mt-3 text-[13px] leading-relaxed text-white/55">{p.desc}</p>
 
               <a
-                href={waLink(p.nombre)}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={p.clave ? registroLink(p.clave) : waLink(p.nombre)}
+                target={p.clave ? undefined : '_blank'}
+                rel={p.clave ? undefined : 'noopener noreferrer'}
                 className={`mt-5 inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-all hover:scale-[1.02] ${
                   p.popular
                     ? 'bg-white text-[#2a1d6b] hover:bg-white/90'
@@ -149,7 +174,7 @@ const VentasIA = () => {
               <ul className="mt-6 space-y-2.5">
                 {p.feats.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-[13px] leading-snug text-white/75">
-                    <Check size={16} className={`mt-0.5 shrink-0 ${p.full ? 'text-[#a99df8]' : 'text-emerald-400'}`} strokeWidth={2.5} />
+                    <Check size={16} className={`mt-0.5 shrink-0 ${p.custom ? 'text-[#a99df8]' : 'text-emerald-400'}`} strokeWidth={2.5} />
                     {f}
                   </li>
                 ))}
@@ -158,8 +183,20 @@ const VentasIA = () => {
           ))}
         </div>
 
+        <div className="kz-reveal mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
+          <p className="text-xs font-bold uppercase tracking-wider text-emerald-300">Todos los planes incluyen</p>
+          <ul className="mt-5 grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+            {funcionesIA.map((f) => (
+              <li key={f} className="flex items-start gap-2.5 text-[13px] leading-snug text-white/75">
+                <Check size={16} className="mt-0.5 shrink-0 text-emerald-400" strokeWidth={2.5} />
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <p className="mx-auto mt-8 max-w-3xl text-center text-[12.5px] leading-relaxed text-white/45">
-          <span className="font-semibold text-white/70">Precio claro:</span> tu plan cubre el software y el asesor con IA que
+          <span className="font-semibold text-white/70">Precio claro:</span> tu plan incluye la facturación electrónica SUNAT y el asesor con IA que
           atiende y responde 24/7, sin cargos por mensaje dentro de tu plan. Aparte —y solo si los usas— pagas directo a Meta
           tus anuncios y los avisos salientes que programes fuera de la conversación.
         </p>
