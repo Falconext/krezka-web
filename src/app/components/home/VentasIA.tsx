@@ -2,6 +2,7 @@
 
 import { Check } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
+import MetaPartnerBadge from '../MetaPartnerBadge';
 
 // Start/Pro/Scale abren la prueba gratis en el sistema; Personalizado se conversa.
 const registroLink = (clave: string) => `${BRAND.dashboardUrl}/registro?plan=${clave}`;
@@ -123,6 +124,9 @@ const VentasIA = () => {
             Responde con tu catálogo real, califica cada prospecto y te avisa los leads calientes —
             desde tu propio número y con tu marca.
           </p>
+          <div className="kz-reveal mt-6 flex justify-center" style={{ animationDelay: '0.18s' }}>
+            <MetaPartnerBadge fondo="oscuro" alto={42} />
+          </div>
         </div>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">

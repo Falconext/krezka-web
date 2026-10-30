@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import MetaPartnerBadge from '../MetaPartnerBadge';
 import Link from 'next/link';
 import { ChevronRight, Play } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
@@ -111,6 +112,10 @@ const Hero = () => {
               <Play className="h-4 w-4 fill-current" />
               Agendar demo
             </a>
+          </div>
+
+          <div className="kz-reveal mt-8 flex justify-center" style={{ animationDelay: '0.24s' }}>
+            <MetaPartnerBadge alto={46} />
           </div>
         </div>
 
