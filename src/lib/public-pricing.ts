@@ -288,3 +288,9 @@ export async function fetchPublicPlansClient(): Promise<PublicPlanApi[]> {
     return [];
   }
 }
+
+// Aviso de alza: los planes publicados valen hasta fin de 2026. Un solo texto para la web y los brochures.
+export const AVISO_ALZA_PRECIOS = {
+  titulo: "Precios vigentes hasta el 31 de diciembre de 2026",
+  texto: "Desde el 1 de enero de 2027 los planes suben de precio. Contrata antes y aprovecha la tarifa actual.",
+};

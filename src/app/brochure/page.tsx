@@ -1,7 +1,7 @@
 'use client';
 import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star, FileText, Package, BarChart3, Sparkles, TrendingUp, Info, BookText, type LucideIcon } from "lucide-react";
 import Image from "next/image";
-import { fetchPublicPlansClient, mergePricingPlans, PRICING_BASE_PLANS, type PricingBasePlan } from "@/lib/public-pricing";
+import { AVISO_ALZA_PRECIOS, fetchPublicPlansClient, mergePricingPlans, PRICING_BASE_PLANS, type PricingBasePlan } from "@/lib/public-pricing";
 import { useEffect, useMemo, useState } from "react";
 
 const BRAND = {
@@ -233,7 +233,7 @@ export default function BrochurePage() {
         <div className="flex flex-col h-full p-[12mm] gap-5">
           <div className="flex items-end justify-between border-b border-gray-100 pb-5">
             <div>
-              <p className="text-indigo-600 text-[10px] font-black uppercase tracking-[0.25em] mb-1">Krezka · Precios {new Date().getFullYear()}</p>
+              <p className="text-indigo-600 text-[10px] font-black uppercase tracking-[0.25em] mb-1">Krezka · Precios 2026</p>
               <h2 className="text-[2rem] font-black text-gray-900 leading-tight">Planes de Software</h2>
               <p className="text-gray-400 text-sm mt-1">Sin contratos · Sin costos ocultos · Cancela cuando quieras</p>
             </div>
@@ -243,7 +243,14 @@ export default function BrochurePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 flex-1 mt-4">
+          <div className="flex items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-2.5">
+            <Clock size={16} className="shrink-0 text-amber-600" />
+            <p className="text-[11px] leading-snug text-amber-900">
+              <span className="font-black">{AVISO_ALZA_PRECIOS.titulo}.</span> {AVISO_ALZA_PRECIOS.texto}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-3 flex-1">
             {plans.map(p => (
               <div key={p.id} className="relative rounded-[1.35rem] border bg-white p-3.5 shadow-sm flex flex-col" style={{ borderColor: p.popular ? p.color : '#E5E7EB', borderWidth: p.popular ? 2 : 1 }}>
                 {p.popular && (

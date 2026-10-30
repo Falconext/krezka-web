@@ -8,6 +8,7 @@ import {
     fetchPublicPlansClient,
     mergePricingPlans,
     PRICING_BASE_PLANS,
+    AVISO_ALZA_PRECIOS,
     type PricingBasePlan,
 } from "@/lib/public-pricing";
 
@@ -511,6 +512,13 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     <div className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-semibold text-emerald-700">
                         <span className="text-lg">🏆</span>
                         Comprobantes ILIMITADOS en todos los planes — desde S/ {minMonthly.toFixed(2)}/mes
+                    </div>
+                    <div className="mx-auto mt-4 flex max-w-xl items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-5 py-3 text-left">
+                        <span className="text-lg leading-none">⏰</span>
+                        <p className="text-sm text-amber-900">
+                            <span className="block font-bold">{AVISO_ALZA_PRECIOS.titulo}</span>
+                            {AVISO_ALZA_PRECIOS.texto}
+                        </p>
                     </div>
                     <div className="mt-4">
                         <a

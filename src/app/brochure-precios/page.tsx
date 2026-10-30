@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "@/app/public/assets/logo.png";
-import { CheckCircle2, Download, Printer, FileText, Package, Monitor, Store, BarChart3, Users, PieChart, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Download, Printer, FileText, Package, Monitor, Store, BarChart3, Users, PieChart, ShieldCheck, Clock } from "lucide-react";
 import {
     fetchPublicPlansClient,
     mergePricingPlans,
+    AVISO_ALZA_PRECIOS,
     PRICING_BASE_PLANS,
     type PricingBasePlan,
 } from "@/lib/public-pricing";
@@ -279,6 +280,13 @@ export default function BrochurePreciosPage() {
                             <p className="text-gray-600">
                                 Mismos precios publicados en krezka.com
                             </p>
+                            <div className="mt-4 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3">
+                                <Clock className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" />
+                                <p className="text-sm text-amber-900">
+                                    <span className="block font-bold">{AVISO_ALZA_PRECIOS.titulo}</span>
+                                    {AVISO_ALZA_PRECIOS.texto}
+                                </p>
+                            </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
