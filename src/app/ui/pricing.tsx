@@ -620,7 +620,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     ))}
                 </div>
 
-                {/* IA de Ventas — bloque premium dark (planes escalados por conversaciones) */}
+                {/* IA de Ventas — bloque premium dark (planes escalados por leads/mes) */}
                 <div className="relative overflow-hidden rounded-[2.5rem] bg-[#0A0E1A] p-6 md:p-10 shadow-2xl ring-1 ring-white/10">
                     {/* glows */}
                     <div className="pointer-events-none absolute inset-0">
@@ -652,11 +652,12 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                         </div>
 
                         {/* Planes escalados */}
-                        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+                        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                             {[
-                                { nombre: "Ventas Start", precio: "149", conv: "500", desc: "Para empezar a automatizar la atención.", popular: false },
-                                { nombre: "Ventas Pro", precio: "249", conv: "1,500", desc: "El equilibrio ideal para negocios activos.", popular: true },
-                                { nombre: "Ventas Scale", precio: "399", conv: "5,000", desc: "Alto volumen de conversaciones y campañas.", popular: false },
+                                { nombre: "Ventas Start", precio: "199", conv: "500 leads/mes", desc: "Para empezar a automatizar la atención.", extra: "Configuración inicial de tu asesor IA", popular: false },
+                                { nombre: "Ventas Pro", precio: "299", conv: "1,500 leads/mes", desc: "El equilibrio ideal para negocios activos.", extra: "+ Entrenamos la IA con tus documentos", popular: true },
+                                { nombre: "Ventas Scale", precio: "499", conv: "5,000 leads/mes", desc: "Para negocios con alto volumen de consultas.", extra: "+ Revisión mensual de resultados", popular: false },
+                                { nombre: "Personalizado", precio: "", conv: "Más de 5,000 leads/mes", desc: "Para empresas con varias sedes o un volumen mayor.", extra: "Asesor dedicado y varias sedes", popular: false },
                             ].map((p) => (
                                 <div
                                     key={p.nombre}
@@ -673,12 +674,24 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                     )}
                                     <p className="text-sm font-bold text-white">{p.nombre}</p>
                                     <div className="mt-3 flex items-baseline gap-1">
-                                        <span className="text-sm text-gray-400">S/</span>
-                                        <span className="text-4xl font-bold text-white">{p.precio}</span>
-                                        <span className="text-sm text-gray-400">/mes</span>
+                                        {p.precio ? (
+                                            <>
+                                                <span className="text-sm text-gray-400">S/</span>
+                                                <span className="text-4xl font-bold text-white">{p.precio}</span>
+                                                <span className="text-sm text-gray-400">/mes</span>
+                                            </>
+                                        ) : (
+                                            <span className="text-4xl font-bold text-white">A medida</span>
+                                        )}
                                     </div>
-                                    <p className="mt-1 text-sm font-semibold text-emerald-300">
-                                        {p.conv} conversaciones/mes
+                                    <p className="mt-1 text-sm font-semibold text-emerald-300">{p.conv}</p>
+                                    <p className="mt-2 inline-flex items-center gap-1.5 text-[12px] font-semibold text-violet-200">
+                                        <CheckCircle2 size={14} className="text-violet-300" />
+                                        Facturación electrónica SUNAT incluida
+                                    </p>
+                                    <p className="mt-1.5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-violet-200">
+                                        <CheckCircle2 size={14} className="text-violet-300" />
+                                        {p.extra}
                                     </p>
                                     <p className="mt-3 text-[13px] leading-relaxed text-gray-400">{p.desc}</p>
                                     <a
@@ -697,47 +710,22 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                             ))}
                         </div>
 
-                        {/* Full: Facturación + Ventas */}
-                        <div className="mt-4 flex flex-col gap-4 rounded-2xl border border-violet-400/30 bg-violet-500/[0.08] p-6 backdrop-blur-xl md:flex-row md:items-center md:justify-between">
-                            <div>
-                                <div className="flex items-center gap-2">
-                                    <span className="rounded-full bg-violet-400/20 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wide text-violet-200">
-                                        Todo en uno
-                                    </span>
-                                    <p className="text-sm font-bold text-white">Facturación + Ventas (Full)</p>
-                                </div>
-                                <p className="mt-2 max-w-xl text-[13px] leading-relaxed text-gray-300">
-                                    Todo el ERP (facturación SUNAT, inventario, tienda y caja) <span className="text-white font-semibold">más</span> la
-                                    IA de Ventas con 1,500 conversaciones/mes. Un solo sistema para gestionar y vender.
-                                </p>
-                            </div>
-                            <div className="flex shrink-0 items-center gap-5">
-                                <div className="text-right">
-                                    <div className="flex items-baseline justify-end gap-1">
-                                        <span className="text-sm text-gray-400">S/</span>
-                                        <span className="text-4xl font-bold text-white">329</span>
-                                        <span className="text-sm text-gray-400">/mes</span>
-                                    </div>
-                                    <p className="text-[11px] text-violet-200">ERP completo + IA</p>
-                                </div>
-                                <a
-                                    href={generalWhatsappLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-white hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-violet-500/20"
-                                >
-                                    Elegir Full
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* Capacidades */}
-                        <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+                        {/* Capacidades — iguales en todos los planes */}
+                        <p className="mt-8 text-xs font-bold uppercase tracking-[0.15em] text-emerald-300">Todos los planes incluyen</p>
+                        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                             {[
-                                "Responde con tu catálogo real y envía fotos",
-                                "Califica prospectos (BANT) automáticamente",
-                                "Seguimiento a quien no responde",
-                                "Te avisa los leads calientes al instante",
+                                "Atiende 24/7 por WhatsApp, Instagram y Messenger",
+                                "Responde con tu catálogo, stock y precios reales",
+                                "Cotiza con envío por zona y descuentos",
+                                "Envía fotos, notas de voz y tu brochure",
+                                "Aprende de los documentos que le subas",
+                                "Califica prospectos (BANT) y avisa los leads calientes",
+                                "Seguimiento automático: cotizaciones, recompra y reactivación",
+                                "Toma pedidos con link de pago y valida el voucher",
+                                "Bandeja de chats: pausa el bot y responde tú",
+                                "Embudo de ventas y paso de prospecto a cliente",
+                                "Panel de métricas y reporte diario por WhatsApp",
+                                "Facturación electrónica SUNAT",
                             ].map((cap) => (
                                 <div key={cap} className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-3">
                                     <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-emerald-400" />
@@ -750,7 +738,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                         <div className="mt-6 flex items-start gap-3 rounded-xl border border-white/12 bg-white/[0.05] px-4 py-3.5">
                             <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[11px] font-bold text-white/70">i</span>
                             <p className="text-[12.5px] leading-relaxed text-gray-300">
-                                <span className="font-semibold text-white">Precio claro:</span> tu plan cubre el software y el
+                                <span className="font-semibold text-white">Precio claro:</span> tu plan incluye la facturación electrónica SUNAT y el
                                 asesor con IA que atiende, califica y responde 24/7 — sin cargos por mensaje dentro de tu plan.
                                 Aparte, y solo si tú los usas, pagas directo a Meta (como en cualquier plataforma): tus{" "}
                                 <span className="text-white">anuncios</span> para traer clientes y los{" "}

@@ -76,8 +76,8 @@ const Tick = ({ ok, color }: { ok: boolean; color: string }) => ok
 // ── IA de Ventas por WhatsApp — planes a escala ──────────────────────────────
 type VentasPlan = {
   name: string;
-  price: number;
-  leads: number;
+  price?: number;
+  leads?: number;
   tagline: string;
   bullets: string[];
   popular?: boolean;
@@ -86,33 +86,42 @@ type VentasPlan = {
 const VENTAS_PLANS: VentasPlan[] = [
   {
     name: "Start",
-    price: 149,
+    price: 199,
     leads: 500,
     tagline: "Empieza a atender con IA",
-    bullets: ["Hasta 500 conversaciones/mes", "Atiende, califica y responde 24/7", "Sin cargos por mensaje en tu plan"],
+    bullets: ["Facturación electrónica SUNAT incluida", "Todas las funciones de la IA", "Configuración inicial de tu asesor IA"],
   },
   {
     name: "Pro",
-    price: 249,
+    price: 299,
     leads: 1500,
     tagline: "El más elegido para escalar, sin sorpresas",
-    bullets: ["Hasta 1,500 conversaciones/mes", "Seguimiento automático de prospectos", "Sin markup por conversación"],
+    bullets: ["Facturación electrónica SUNAT incluida", "Todas las funciones de la IA", "Entrenamos la IA con tus documentos"],
     popular: true,
   },
   {
     name: "Scale",
-    price: 399,
+    price: 499,
     leads: 5000,
-    tagline: "Alto volumen — el costo por conversación más bajo",
-    bullets: ["Hasta 5,000 conversaciones/mes", "Más barato a escala que revender mensajes", "Entrenamiento de la IA + soporte prioritario"],
+    tagline: "Alto volumen — el costo por lead más bajo",
+    bullets: ["Facturación electrónica SUNAT incluida", "Todas las funciones de la IA", "Revisión mensual de resultados"],
+  },
+  {
+    name: "Personalizado",
+    tagline: "Para varias sedes o un volumen mayor",
+    bullets: ["Facturación electrónica SUNAT incluida", "Todas las funciones de la IA", "Asesor dedicado y varias sedes"],
   },
 ];
 
 const IA_CAPS: { icon: LucideIcon; title: string; desc: string }[] = [
+  { icon: Clock, title: "Atiende 24/7", desc: "Por WhatsApp, Instagram y Messenger, desde tu propio número." },
   { icon: Search, title: "Catálogo real", desc: "Responde con tus productos, precios y stock en vivo." },
-  { icon: BarChart3, title: "Califica solo", desc: "Puntúa cada conversación (BANT) y avisa las calientes." },
-  { icon: MessageCircle, title: "Envía y da seguimiento", desc: "Manda fotos y brochure, y reengancha por su cuenta." },
-  { icon: Clock, title: "Un solo precio, 24/7", desc: "El software y la IA en un plan, desde tu propio número." },
+  { icon: Package, title: "Cotiza y vende", desc: "Envío por zona, descuentos, link de pago y validación del voucher." },
+  { icon: FileText, title: "Aprende de ti", desc: "Se entrena con tus documentos y envía fotos, audios y brochure." },
+  { icon: BarChart3, title: "Califica solo", desc: "Puntúa cada prospecto (BANT) y te avisa los calientes." },
+  { icon: MessageCircle, title: "Seguimiento automático", desc: "Recupera cotizaciones, recompra y reactiva clientes." },
+  { icon: Zap, title: "Tú tomas el control", desc: "Bandeja de chats: pausa el bot y responde tú." },
+  { icon: TrendingUp, title: "Métricas", desc: "Embudo de ventas, panel BI y reporte diario por WhatsApp." },
 ];
 
 const Page = ({ children, dark = false, last = false }: { children: React.ReactNode; dark?: boolean; last?: boolean }) => (
@@ -359,9 +368,9 @@ export default function BrochurePage() {
                 <TrendingUp size={13} className="text-emerald-300" />
                 <p className="text-white/45 text-[10px] font-black uppercase tracking-[0.24em]">IA de Ventas · precio claro · a escala</p>
               </div>
-              <span className="text-white/30 text-[10px]">Sin markup · más barato mientras creces</span>
+              <span className="text-white/30 text-[10px]">Todos incluyen facturación electrónica SUNAT</span>
             </div>
-            <div className="grid grid-cols-3 gap-3.5">
+            <div className="grid grid-cols-4 gap-3">
               {VENTAS_PLANS.map((p) => (
                 <div
                   key={p.name}
@@ -373,27 +382,27 @@ export default function BrochurePage() {
                     </div>
                   )}
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-black text-white">{p.name}</h3>
-                    <span className="rounded-md bg-white/[0.06] px-1.5 py-0.5 text-[7.5px] font-black uppercase tracking-wider text-white/45">Ventas</span>
+                    <h3 className="text-base font-black text-white">{p.name}</h3>
+                    {p.price && <span className="rounded-md bg-white/[0.06] px-1.5 py-0.5 text-[7.5px] font-black uppercase tracking-wider text-white/45">Ventas</span>}
                   </div>
                   <p className="mt-0.5 text-[9.5px] leading-snug text-white/45">{p.tagline}</p>
 
                   {/* Escala: leads/mes */}
                   <div className="mt-3 rounded-xl bg-black/25 px-3 py-2.5">
                     <div className="flex items-baseline gap-1">
-                      <span className="text-[1.7rem] font-black leading-none text-emerald-300">{p.leads.toLocaleString("es-PE")}</span>
-                      <span className="text-[10px] font-bold text-white/45">conversaciones/mes</span>
+                      <span className="text-[1.5rem] font-black leading-none text-emerald-300">{p.leads ? p.leads.toLocaleString("es-PE") : "+5,000"}</span>
+                      <span className="text-[9px] font-bold text-white/45">leads/mes</span>
                     </div>
                     <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-white/10">
-                      <div className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-teal-300" style={{ width: `${Math.round((p.leads / 5000) * 100)}%` }} />
+                      <div className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-teal-300" style={{ width: `${p.leads ? Math.round((p.leads / 5000) * 100) : 100}%` }} />
                     </div>
                   </div>
 
                   <div className="mt-3 flex items-baseline gap-1">
-                    <span className="text-[1.6rem] font-black leading-none text-white">S/ {p.price}</span>
-                    <span className="text-[10px] font-semibold text-white/40">/ mes</span>
+                    <span className="text-[1.45rem] font-black leading-none text-white">{p.price ? `S/ ${p.price}` : "A medida"}</span>
+                    {p.price && <span className="text-[10px] font-semibold text-white/40">/ mes</span>}
                   </div>
-                  <p className="mt-1 text-[9px] font-bold text-emerald-300/90">≈ S/ {(p.price / p.leads).toFixed(2)} por conversación · incluido en tu plan</p>
+                  <p className="mt-1 text-[9px] font-bold text-emerald-300/90">{p.price && p.leads ? `≈ S/ ${(p.price / p.leads).toFixed(2)} por lead` : "Cotización según tu volumen"}</p>
 
                   <div className="mt-3 flex-1 space-y-1.5">
                     {p.bullets.map((b) => (
@@ -411,45 +420,10 @@ export default function BrochurePage() {
             </div>
           </div>
 
-          {/* Facturación + Ventas (Full) — combo destacado */}
-          <div className="mt-5 overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-violet-600/20 via-white/[0.04] to-emerald-500/15 ring-1 ring-white/12">
-            <div className="grid grid-cols-[1.55fr_1fr]">
-              <div className="p-5">
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[8px] font-black uppercase tracking-widest text-white">
-                    <Award size={11} className="text-amber-300" /> Mejor valor
-                  </span>
-                  <span className="rounded-full bg-emerald-400/15 px-2.5 py-1 text-[8px] font-black uppercase tracking-widest text-emerald-300">Combo completo</span>
-                </div>
-                <h3 className="mt-3 text-[1.9rem] font-black leading-tight text-white">Facturación <span className="text-white/40">+</span> Ventas</h3>
-                <p className="mt-1.5 max-w-md text-[11px] leading-relaxed text-white/55">
-                  Todo el ERP de Krezka (facturación SUNAT, inventario, caja, tienda virtual) <span className="font-bold text-white/80">más</span> la IA de Ventas por WhatsApp, en un solo plan.
-                </p>
-                <div className="mt-3.5 grid grid-cols-2 gap-x-4 gap-y-1.5">
-                  {["Todos los módulos de facturación", "IA de Ventas incluida (1,500 conversaciones/mes)", "Tienda virtual + variantes + combos", "Un solo precio por todo el software, sin sumar herramientas"].map((b) => (
-                    <div key={b} className="flex items-start gap-1.5 text-[10px] leading-snug text-white/75">
-                      <CheckCircle2 size={12} className="mt-0.5 shrink-0 text-emerald-400" />{b}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-1 border-l border-white/10 bg-black/20 p-5 text-center">
-                <span className="text-[9px] font-black uppercase tracking-widest text-white/40">Desde</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-[3rem] font-black leading-none text-white">S/ 329</span>
-                </div>
-                <span className="text-[11px] font-semibold text-white/45">/ mes · un solo precio</span>
-                <div className="mt-3 w-full rounded-full bg-white px-4 py-2.5 text-center text-[11px] font-black text-gray-950">
-                  Quiero el combo
-                </div>
-                <span className="mt-1 text-[8.5px] text-emerald-300/90">Más barato que ERP + IA por separado</span>
-              </div>
-            </div>
-          </div>
-
           {/* Capacidades de la IA */}
           <div className="mt-auto border-t border-white/10 pt-5">
-            <div className="grid grid-cols-4 gap-3">
+            <p className="mb-3 text-[10px] font-black uppercase tracking-[0.24em] text-white/45">Todos los planes incluyen</p>
+            <div className="grid grid-cols-4 gap-x-3 gap-y-4">
               {IA_CAPS.map((c) => (
                 <div key={c.title}>
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-400/10 text-emerald-300">
@@ -465,7 +439,7 @@ export default function BrochurePage() {
                 <Info size={14} />
               </div>
               <p className="text-[10.5px] leading-relaxed text-white/65">
-                <span className="font-black text-white">Tu plan cubre</span> el software y el asesor con IA — sin cargos por mensaje de nuestra parte. <span className="font-black text-white">Aparte pagas a Meta</span> (como en cualquier plataforma): tus <span className="font-bold text-white/90">anuncios</span> para traer leads (según tu campaña) y los <span className="font-bold text-white/90">avisos salientes</span> que tú envíes (p. ej. despacho), con un costo mínimo por mensaje.
+                <span className="font-black text-white">Tu plan cubre</span> la facturación SUNAT y el asesor con IA — sin cargos por mensaje de nuestra parte. <span className="font-black text-white">Aparte pagas a Meta</span> (como en cualquier plataforma): tus <span className="font-bold text-white/90">anuncios</span> para traer leads (según tu campaña) y los <span className="font-bold text-white/90">avisos salientes</span> que tú envíes (p. ej. despacho), con un costo mínimo por mensaje.
               </p>
             </div>
           </div>
