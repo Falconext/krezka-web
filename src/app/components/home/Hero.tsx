@@ -17,7 +17,7 @@ const pills = [
   { label: 'Bodegas', dot: 'from-[#00d0d4] to-[#008b8f]', pos: '-top-5 left-[8%] sm:left-[14%]', delay: '0s' },
   { label: 'Ferreterías', dot: 'from-[#f59e0b] to-[#d97706]', pos: '-top-5 right-[8%] sm:right-[14%]', delay: '1.4s' },
   { label: 'Farmacias', dot: 'from-[#22c55e] to-[#16a34a]', pos: 'top-[42%] -left-2 sm:-left-6', delay: '0.7s' },
-  { label: 'Restaurantes', dot: 'from-[#f43f5e] to-[#e11d48]', pos: 'top-[36%] -right-2 sm:-right-6', delay: '2s' },
+  { label: 'Restaurantes', dot: 'from-[#f43f5e] to-[#e11d48]', pos: 'top-[60%] -right-2 sm:-right-6', delay: '2s' },
 ];
 
 const Hero = () => {
