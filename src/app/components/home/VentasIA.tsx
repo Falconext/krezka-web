@@ -3,6 +3,9 @@
 import { Check } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
 
+// Start/Pro/Scale abren la prueba gratis en el sistema; Personalizado se conversa.
+const registroLink = (clave: string) => `${BRAND.dashboardUrl}/registro?plan=${clave}`;
+
 const waLink = (plan: string) =>
   `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
     `Hola, quiero el plan ${plan} (IA de Ventas) de ${BRAND.name}. ¿Me ayudan a activarlo?`
@@ -17,11 +20,13 @@ type Plan = {
   cta: string;
   popular?: boolean;
   custom?: boolean;
+  clave?: 'start' | 'pro' | 'scale';
 };
 
 const planes: Plan[] = [
   {
     nombre: 'Ventas Start',
+    clave: 'start',
     precio: '199',
     conv: '500 leads / mes',
     desc: 'Para empezar a automatizar la atención por WhatsApp.',
@@ -30,10 +35,11 @@ const planes: Plan[] = [
       'Todas las funciones de la IA de Ventas',
       'Configuración inicial de tu asesor IA',
     ],
-    cta: 'Crear agente IA',
+    cta: 'Probar 7 días gratis',
   },
   {
     nombre: 'Ventas Pro',
+    clave: 'pro',
     precio: '299',
     conv: '1,500 leads / mes',
     desc: 'El equilibrio ideal para negocios activos.',
@@ -48,6 +54,7 @@ const planes: Plan[] = [
   },
   {
     nombre: 'Ventas Scale',
+    clave: 'scale',
     precio: '499',
     conv: '5,000 leads / mes',
     desc: 'Para negocios con alto volumen de consultas.',
@@ -152,9 +159,9 @@ const VentasIA = () => {
               <p className="mt-3 text-[13px] leading-relaxed text-white/55">{p.desc}</p>
 
               <a
-                href={waLink(p.nombre)}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={p.clave ? registroLink(p.clave) : waLink(p.nombre)}
+                target={p.clave ? undefined : '_blank'}
+                rel={p.clave ? undefined : 'noopener noreferrer'}
                 className={`mt-5 inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-all hover:scale-[1.02] ${
                   p.popular
                     ? 'bg-white text-[#2a1d6b] hover:bg-white/90'

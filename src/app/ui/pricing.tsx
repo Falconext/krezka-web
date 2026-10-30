@@ -654,10 +654,10 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                         {/* Planes escalados */}
                         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                             {[
-                                { nombre: "Ventas Start", precio: "199", conv: "500 leads/mes", desc: "Para empezar a automatizar la atención.", extra: "Configuración inicial de tu asesor IA", popular: false },
-                                { nombre: "Ventas Pro", precio: "299", conv: "1,500 leads/mes", desc: "El equilibrio ideal para negocios activos.", extra: "+ Entrenamos la IA con tus documentos", popular: true },
-                                { nombre: "Ventas Scale", precio: "499", conv: "5,000 leads/mes", desc: "Para negocios con alto volumen de consultas.", extra: "+ Revisión mensual de resultados", popular: false },
-                                { nombre: "Personalizado", precio: "", conv: "Más de 5,000 leads/mes", desc: "Para empresas con varias sedes o un volumen mayor.", extra: "Asesor dedicado y varias sedes", popular: false },
+                                { clave: "start", nombre: "Ventas Start", precio: "199", conv: "500 leads/mes", desc: "Para empezar a automatizar la atención.", extra: "Configuración inicial de tu asesor IA", popular: false },
+                                { clave: "pro", nombre: "Ventas Pro", precio: "299", conv: "1,500 leads/mes", desc: "El equilibrio ideal para negocios activos.", extra: "+ Entrenamos la IA con tus documentos", popular: true },
+                                { clave: "scale", nombre: "Ventas Scale", precio: "499", conv: "5,000 leads/mes", desc: "Para negocios con alto volumen de consultas.", extra: "+ Revisión mensual de resultados", popular: false },
+                                { clave: "", nombre: "Personalizado", precio: "", conv: "Más de 5,000 leads/mes", desc: "Para empresas con varias sedes o un volumen mayor.", extra: "Asesor dedicado y varias sedes", popular: false },
                             ].map((p) => (
                                 <div
                                     key={p.nombre}
@@ -695,16 +695,16 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                     </p>
                                     <p className="mt-3 text-[13px] leading-relaxed text-gray-400">{p.desc}</p>
                                     <a
-                                        href={generalWhatsappLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                        href={p.clave ? `${BRAND.dashboardUrl}/registro?plan=${p.clave}` : generalWhatsappLink}
+                                        target={p.clave ? undefined : "_blank"}
+                                        rel={p.clave ? undefined : "noopener noreferrer"}
                                         className={`mt-5 inline-flex w-full items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] ${
                                             p.popular
                                                 ? "bg-emerald-400 text-emerald-950 hover:bg-emerald-300"
                                                 : "border border-white/15 bg-white/5 text-white hover:bg-white/10"
                                         }`}
                                     >
-                                        Quiero este plan
+                                        {p.clave ? "Probar 7 días gratis" : "Hablar con ventas"}
                                     </a>
                                 </div>
                             ))}
