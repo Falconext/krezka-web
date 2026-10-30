@@ -6,7 +6,7 @@ import { BRAND } from '@/lib/branding';
 import MetaPartnerBadge from '@/app/components/MetaPartnerBadge';
 
 const producto = [
-  { label: 'Facturación SUNAT', href: '/#comparacion' },
+  { label: 'Facturación SUNAT', href: '/sistemas' },
   { label: 'Punto de Venta (POS)', href: '/#tour' },
   { label: 'Inventario / Kardex', href: '/#tour' },
   { label: 'Tienda Virtual', href: '/#tour' },

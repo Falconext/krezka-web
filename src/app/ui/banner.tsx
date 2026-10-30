@@ -51,7 +51,7 @@ const Banner = () => {
                     <div className="mt-8 flex justify-center">
                         <div className="inline-flex items-center rounded-lg bg-gray-50 dark:bg-white/5 px-4 py-2 text-sm text-gray-600 dark:text-gray-300 ring-1 ring-inset ring-gray-500/10 dark:ring-white/10">
                             <span className="mr-2 opacity-70">Credenciales:</span>
-                            <span className="font-mono font-bold mr-3">demo@{BRAND.name.toLowerCase()}.com</span> / <span className="font-mono font-bold ml-1">demo2026</span>
+                            <span className="font-mono font-bold mr-3">demo.minimarket@{BRAND.name.toLowerCase()}.com</span> / <span className="font-mono font-bold ml-1">123456</span>
                         </div>
                     </div>
 

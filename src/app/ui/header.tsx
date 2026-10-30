@@ -30,7 +30,7 @@ const NAV_GROUPS: NavGroup[] = [
   {
     label: 'Facturación',
     direct: true,
-    href: '/#comparacion',
+    href: '/sistemas',
   },
   {
     label: 'Ventas IA',
