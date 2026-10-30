@@ -3,10 +3,10 @@
 import { useState, type KeyboardEvent } from "react";
 import Image, { type StaticImageData } from "next/image";
 import { BarChart3, Boxes, Check, ScanBarcode, Wallet, type LucideIcon } from "lucide-react";
-import puntoDeVenta from "@/app/public/assets/sistema/punto-de-venta.webp";
-import cobro from "@/app/public/assets/sistema/cobro.webp";
-import productos from "@/app/public/assets/sistema/productos.webp";
-import inventario from "@/app/public/assets/sistema/inventario.webp";
+import vender from "@/app/public/assets/sistema/mm-vender.webp";
+import cobro from "@/app/public/assets/sistema/mm-cobro.webp";
+import inventario from "@/app/public/assets/sistema/mm-inventario.webp";
+import reportes from "@/app/public/assets/sistema/mm-reportes.webp";
 
 type Vista = {
     id: string;
@@ -18,11 +18,9 @@ type Vista = {
     img: StaticImageData;
     alt: string;
     ruta: string;
-    /** La captura del cobro es un modal: se muestra centrada sobre fondo, no a todo el ancho. */
-    centrada?: boolean;
 };
 
-// Capturas reales del sistema (cuenta demo). Cada punto describe algo que el sistema hace hoy.
+// Capturas reales del sistema con la cuenta demo de minimarket. Cada punto describe algo que el sistema hace hoy.
 const VISTAS: Vista[] = [
     {
         id: "vender",
@@ -35,8 +33,8 @@ const VISTAS: Vista[] = [
             "Lector de código de barras y catálogo con fotos",
             "Funciona en PC, tablet y celular",
         ],
-        img: puntoDeVenta,
-        alt: "Punto de venta de Krezka con catálogo de productos y carrito de venta",
+        img: vender,
+        alt: "Punto de venta de un minimarket con catálogo de productos y carrito de venta",
         ruta: "facturacion/nuevo",
     },
     {
@@ -53,7 +51,6 @@ const VISTAS: Vista[] = [
         img: cobro,
         alt: "Pantalla de cobro con Yape, Plin, efectivo, transferencia y tarjeta, y vista previa del ticket",
         ruta: "facturacion/nuevo",
-        centrada: true,
     },
     {
         id: "inventario",
@@ -63,11 +60,11 @@ const VISTAS: Vista[] = [
         texto: "Cada venta y cada compra mueven el kardex solas: sabes qué tienes y cuánto vale.",
         puntos: [
             "Costo, valor de inventario y ubicación por producto",
-            "Categorías, marcas, series y garantías",
+            "Categorías, marcas y código de barras",
             "Stock por sede y traslados entre almacenes",
         ],
-        img: productos,
-        alt: "Lista de productos con stock, costo, valor de inventario y ubicación",
+        img: inventario,
+        alt: "Productos de un minimarket con stock, costo y valor de inventario",
         ruta: "kardex/productos",
     },
     {
@@ -75,15 +72,15 @@ const VISTAS: Vista[] = [
         tab: "Reportes",
         Icon: BarChart3,
         titulo: "Decide con números reales",
-        texto: "Mira qué se vende, qué deja más ganancia y qué está por agotarse.",
+        texto: "Abre el sistema y ve cómo va el mes: cuánto vendiste, cuánto ganaste y cómo te pagan.",
         puntos: [
-            "Productos más vendidos y más rentables",
-            "Alertas de stock crítico y productos agotados",
-            "Ventas por método de pago y por canal",
+            "Ventas, pedidos, ticket promedio y utilidad del mes",
+            "Ventas por canal: efectivo, Yape/Plin y tarjeta",
+            "Productos más vendidos y alertas de stock crítico",
         ],
-        img: inventario,
-        alt: "Dashboard de inventario con stock crítico y los productos más vendidos",
-        ruta: "kardex/dashboard",
+        img: reportes,
+        alt: "Dashboard de un minimarket con ventas del mes, utilidad y ventas por canal",
+        ruta: "",
     },
 ];
 
@@ -180,33 +177,20 @@ const WhatWeDo = () => {
                                 <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
                                 <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
                                 <span className="ml-3 flex-1 truncate rounded-md bg-white px-3 py-1 text-[11px] text-gray-400 shadow-inner">
-                                    app.krezka.com/administrador/{vista.ruta}
+                                    app.krezka.com/administrador{vista.ruta ? `/${vista.ruta}` : ""}
                                 </span>
                             </div>
-                            {vista.centrada ? (
-                                <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-[#eef0ff] to-[#f7f5ff] p-4 sm:p-6">
-                                    <Image
-                                        key={vista.id}
-                                        src={vista.img}
-                                        alt={vista.alt}
-                                        quality={90}
-                                        sizes="(min-width: 1024px) 520px, 90vw"
-                                        className="h-full w-auto max-w-full rounded-2xl object-contain shadow-xl ring-1 ring-black/5"
-                                    />
-                                </div>
-                            ) : (
-                                // Alto fijo: si cada captura tuviera su propia proporción, la página saltaría al cambiar de pestaña.
-                                <div className="aspect-[16/10] overflow-hidden bg-white">
-                                    <Image
-                                        key={vista.id}
-                                        src={vista.img}
-                                        alt={vista.alt}
-                                        quality={90}
-                                        sizes="(min-width: 1280px) 820px, (min-width: 1024px) 66vw, 100vw"
-                                        className="h-full w-full object-cover object-top"
-                                    />
-                                </div>
-                            )}
+                            {/* Todas igual que el cobro: el componente centrado sobre degradado, con alto fijo para que no salte. */}
+                            <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-[#eef0ff] to-[#f7f5ff] p-4 sm:p-7">
+                                <Image
+                                    key={vista.id}
+                                    src={vista.img}
+                                    alt={vista.alt}
+                                    quality={90}
+                                    sizes="(min-width: 1280px) 760px, (min-width: 1024px) 60vw, 92vw"
+                                    className="h-full w-auto max-w-full rounded-2xl object-contain shadow-xl ring-1 ring-black/5"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
