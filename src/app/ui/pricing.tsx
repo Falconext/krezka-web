@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { BRAND } from "@/lib/branding";
+import MetaPartnerBadge from "@/app/components/MetaPartnerBadge";
+import AvisoAlzaPrecios from "@/app/components/AvisoAlzaPrecios";
 import {
     fetchPublicPlansClient,
     mergePricingPlans,
@@ -511,6 +513,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                         <span className="text-lg">🏆</span>
                         Comprobantes ILIMITADOS en todos los planes — desde S/ {minMonthly.toFixed(2)}/mes
                     </div>
+                    <AvisoAlzaPrecios className="mt-6" />
                     <div className="mt-4">
                         <a
                             href={generalWhatsappLink}
@@ -649,6 +652,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                 Responde al instante con tu catálogo real, califica a cada prospecto, da seguimiento
                                 automático y te avisa los leads calientes. Desde tu propio número, con tu marca.
                             </p>
+                            <MetaPartnerBadge fondo="oscuro" alto={40} className="mt-5" />
                         </div>
 
                         {/* Planes escalados */}

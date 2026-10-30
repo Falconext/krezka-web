@@ -22,8 +22,8 @@ const AllModules = () => {
         },
         {
             icon: "mdi:store",
-            title: "Tienda Virtual Gratis",
-            desc: "Tu propio catálogo online integrado automáticamante con tu stock."
+            title: "Tienda Virtual",
+            desc: "Tu catálogo online con pedidos, banners y reseñas, conectado a tu stock (planes Negocio y Corporativo)."
         },
         {
             icon: "mdi:finance",
@@ -60,18 +60,18 @@ const AllModules = () => {
                     <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
                         Todo lo que tu negocio necesita <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B76AE0] to-[#5A0EBB]">
-                            sin pagar extra
+                            en una sola plataforma
                         </span>
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 text-lg">
-                        Olvídate de pagar por módulos separados. {BRAND.name} te da acceso a todas las herramientas profesionales desde el plan más básico.
+                        Facturación, inventario, punto de venta, caja y reportes desde el plan más básico, con comprobantes ilimitados en todos los planes.
                     </p>
 
                     <div className="pt-4 flex justify-center">
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-500/20">
                             <Icon icon="logos:google-gemini" width={20} />
                             <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                                Impulsado por <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 font-bold">Google Gemini AI</span>
+                                Con <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 font-bold">inteligencia artificial</span>
                             </span>
                         </div>
                     </div>
@@ -109,7 +109,7 @@ const AllModules = () => {
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                         </span>
                         <span className="text-sm font-medium text-[#16a34a] dark:text-[#4ade80]">
-                            Sistema completo disponible en todos los planes
+                            Comprobantes ilimitados en todos los planes
                         </span>
                     </div>
                 </div>

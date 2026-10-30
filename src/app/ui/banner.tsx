@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import mainproject from '@/app/public/assets/mainproject.png'
+import dashboard from '@/app/public/assets/sistema/dashboard.webp'
 import Link from "next/link";
 import { BRAND } from "@/lib/branding";
 import { Monitor, ArrowRight } from 'lucide-react'
@@ -34,7 +34,7 @@ const Banner = () => {
                     </h1>
 
                     <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        Emite tus comprobantes electrónicos con control total, gestiona inventario y ventas y escala tus operaciones con el mejor sistema POS del mercado. ¡Prueba {BRAND.name} hoy!
+                        Emite tus comprobantes electrónicos con control total, gestiona inventario y ventas y escala tus operaciones con un punto de venta rápido y fácil de usar. ¡Prueba {BRAND.name} hoy!
                     </p>
 
                     <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -51,7 +51,7 @@ const Banner = () => {
                     <div className="mt-8 flex justify-center">
                         <div className="inline-flex items-center rounded-lg bg-gray-50 dark:bg-white/5 px-4 py-2 text-sm text-gray-600 dark:text-gray-300 ring-1 ring-inset ring-gray-500/10 dark:ring-white/10">
                             <span className="mr-2 opacity-70">Credenciales:</span>
-                            <span className="font-mono font-bold mr-3">demo@{BRAND.name.toLowerCase()}.com</span> / <span className="font-mono font-bold ml-1">demo2026</span>
+                            <span className="font-mono font-bold mr-3">demo.minimarket@{BRAND.name.toLowerCase()}.com</span> / <span className="font-mono font-bold ml-1">123456</span>
                         </div>
                     </div>
 
@@ -60,7 +60,7 @@ const Banner = () => {
                         {[
                             { value: "+500", label: "Negocios activos" },
                             { value: "SUNAT", label: "100% Certificado" },
-                            { value: "S/19.90", label: "Desde / mes" },
+                            { value: "S/39.90", label: "Desde / mes" },
                             { value: "Soporte", label: "100% en español" },
                         ].map((stat) => (
                             <div key={stat.label} className="flex flex-col items-center gap-0.5">
@@ -74,10 +74,13 @@ const Banner = () => {
                 <div className="mt-16 flow-root sm:mt-24">
                     <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 dark:ring-white/10 lg:-m-4 lg:rounded-2xl lg:p-4 bg-white/40 dark:bg-white/5 backdrop-blur-3xl">
                         <Image
-                            src={mainproject}
-                            alt="Dashboard Preview"
-                            width={2400}
-                            height={1600}
+                            src={dashboard}
+                            alt="Dashboard de Krezka con ventas del mes, utilidad y ventas por canal"
+                            width={3024}
+                            height={1614}
+                            quality={90}
+                            sizes="(min-width: 1280px) 1216px, 100vw"
+                            priority
                             className="rounded-2xl shadow-2xl ring-1 ring-gray-900/10 dark:ring-white/10 w-full"
                         />
                     </div>

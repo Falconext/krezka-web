@@ -5,11 +5,11 @@ import HeroMockup from './HeroMockup';
 
 /**
  * Panel del hero. Usa la captura real del panel administrativo de Krezka
- * (guardar en /public/assets/dashboard/panel-krezka.png). Mientras el archivo
+ * (/public/assets/dashboard/panel-krezka.webp, captura 2x). Mientras el archivo
  * no exista, muestra el mockup HTML — nunca una imagen rota. En cuanto se
  * agregue el archivo, aparece automáticamente.
  */
-const PANEL_IMG = '/assets/dashboard/panel-krezka.png';
+const PANEL_IMG = '/assets/dashboard/panel-krezka.webp';
 
 const HeroPanel = () => {
   const [ok, setOk] = useState(false);

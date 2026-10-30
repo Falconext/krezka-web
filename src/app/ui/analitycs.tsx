@@ -1,6 +1,5 @@
 import Image from "next/image";
-import data1 from '@/app/public/assets/data1.png';
-import data2 from '@/app/public/assets/data2.png';
+import metodosDePago from '@/app/public/assets/sistema/metodos-de-pago.webp';
 
 const Analytics = () => {
     // Forced Dark / Glassmorphism Mode
@@ -27,7 +26,7 @@ const Analytics = () => {
                         {[
                             { color: "#22c55e", text: "Control de comprobantes", sub: "Sigue cada boleta y factura." },
                             { color: "#facc15", text: "Clientes e inventario", sub: "Visualiza clientes y stock." },
-                            { color: "#6366f1", text: "Métodos de pago", sub: "Compara Efectivo, Yape y Plin." },
+                            { color: "#6366f1", text: "Métodos de pago", sub: "Compara Efectivo, Yape, Plin y tarjeta." },
                             { color: "#ec4899", text: "Productos más vendidos", sub: "Identifica tus tops." }
                         ].map((item, idx) => (
                             <div key={idx} className="flex items-start gap-3 p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">
@@ -44,7 +43,7 @@ const Analytics = () => {
                 </div>
 
                 <div className="md:col-span-6 flex justify-center mt-10 md:mt-0">
-                    <div className="relative w-full max-w-md">
+                    <div className="relative w-full max-w-xl">
                         {/* Blob decorativo */}
                         <div className="absolute inset-x-6 top-8 h-64 rounded-3xl bg-[#8A38F5]/20 filter blur-xl" />
 
@@ -52,32 +51,29 @@ const Analytics = () => {
                             <div className="mb-6 flex items-center justify-between">
                                 <div>
                                     <p className="text-xs uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400">Panel</p>
-                                    <p className="text-sm md:text-base font-medium text-gray-900 dark:text-white">Rendimiento de ventas</p>
+                                    <p className="text-sm md:text-base font-medium text-gray-900 dark:text-white">Cobros por método de pago</p>
                                 </div>
                                 <div className="flex items-center gap-2 text-xs text-[#22c55e]">
-                                    <span className="font-semibold">+18%</span>
-                                    <span className="text-gray-500 dark:text-gray-400">vs mes anterior</span>
+                                    <span className="font-semibold">En vivo</span>
+                                    <span className="text-gray-500 dark:text-gray-400">cada venta</span>
                                 </div>
                             </div>
                             <div className="mb-5 rounded-2xl bg-gray-50 dark:bg-black/20 px-4 pt-5 pb-4 border border-gray-100 dark:border-white/5">
                                 <Image
-                                    className="w-full h-full mx-auto object-contain rounded-t-xl opacity-90"
-                                    alt="Gráfico de rendimiento"
-                                    src={data1}
-                                />
-                                <Image
-                                    className="w-full h-full mx-auto object-contain rounded-b-xl opacity-90"
-                                    alt="Gráfico de rendimiento"
-                                    src={data2}
+                                    className="w-full h-full mx-auto object-contain rounded-xl"
+                                    alt="Cobros del mes por método de pago: efectivo, Plin, Yape y tarjeta"
+                                    src={metodosDePago}
+                                    quality={90}
+                                    sizes="(min-width: 768px) 576px, 100vw"
                                 />
                             </div>
                             <div className="flex items-center justify-between">
                                 <div>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">Ingresos totales</p>
-                                    <p className="text-xl font-semibold text-gray-900 dark:text-white">S/ 32,540</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">Métodos de pago</p>
+                                    <p className="text-base font-semibold text-gray-900 dark:text-white">Efectivo · Yape · Plin · Tarjeta</p>
                                 </div>
                                 <div className="rounded-full bg-[#22c55e]/10 px-3 py-1 text-xs text-[#22c55e] border border-[#22c55e]/20">
-                                    Operación saludable
+                                    Datos reales del sistema
                                 </div>
                             </div>
                         </div>

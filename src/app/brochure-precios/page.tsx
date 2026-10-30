@@ -10,6 +10,7 @@ import {
     PRICING_BASE_PLANS,
     type PricingBasePlan,
 } from "@/lib/public-pricing";
+import AvisoAlzaPrecios from "@/app/components/AvisoAlzaPrecios";
 
 const formatPrice = (value: number) => `S/ ${value.toFixed(2)} + IGV`;
 const cleanUsers = (value: string) => value.replace(/\s+usuarios?$/i, "");
@@ -279,6 +280,7 @@ export default function BrochurePreciosPage() {
                             <p className="text-gray-600">
                                 Mismos precios publicados en krezka.com
                             </p>
+                            <AvisoAlzaPrecios impreso className="mt-4" />
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">

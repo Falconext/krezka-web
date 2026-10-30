@@ -288,3 +288,11 @@ export async function fetchPublicPlansClient(): Promise<PublicPlanApi[]> {
     return [];
   }
 }
+
+// Aviso de alza: los planes publicados valen hasta fin de 2026. Un solo texto para la web y los brochures.
+export const AVISO_ALZA_PRECIOS = {
+  titulo: "Los precios suben el 1 de enero de 2027",
+  texto: "Los precios publicados valen hasta el 31 de diciembre de 2026. Contrata antes y aprovecha la tarifa actual.",
+  // Medianoche de Lima (UTC-5): desde aquí ya rige el precio nuevo.
+  desde: "2027-01-01T00:00:00-05:00",
+};

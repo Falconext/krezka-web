@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
     root: projectRoot,
   },
   images: {
+    // 90: capturas del sistema en HD (Next 16 solo acepta calidades listadas).
+    qualities: [75, 90],
     remotePatterns: [
       { protocol: "https", hostname: "s3.amazonaws.com" },
       { protocol: "https", hostname: "png.pngtree.com" },

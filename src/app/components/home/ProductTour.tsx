@@ -2,8 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image, { type StaticImageData } from 'next/image';
 import { FileText, ShoppingCart, Store, Boxes, MessageCircle, Truck, Check, ArrowRight, Maximize2, X } from 'lucide-react';
 import CountUp from './CountUp';
+import facturacion from '@/app/public/assets/sistema/tour-facturacion.webp';
+import pos from '@/app/public/assets/sistema/mm-vender.webp';
+import tienda from '@/app/public/assets/sistema/tour-tienda.webp';
+import inventario from '@/app/public/assets/sistema/tour-inventario.webp';
+import shalom from '@/app/public/assets/sistema/tour-shalom.webp';
+import ia from '@/app/public/assets/sistema/tour-ia.webp';
 
 type Tab = {
   key: string;
@@ -12,8 +19,9 @@ type Tab = {
   title: string;
   desc: string;
   bullets: string[];
-  // Imagen por defecto (respaldo). Si existe /assets/tour/<key>.png, se usa esa.
-  img: string;
+  // Captura real del sistema con la cuenta demo de minimarket.
+  img: StaticImageData;
+  url: string;
 };
 
 const TABS: Tab[] = [
@@ -24,7 +32,8 @@ const TABS: Tab[] = [
     title: 'Facturación electrónica SUNAT en segundos',
     desc: 'Emite boletas, facturas, notas y guías de remisión válidas ante SUNAT sin salir del sistema. Envío automático por WhatsApp y correo.',
     bullets: ['Comprobantes ilimitados', 'Guías de remisión GRE-R y GRE-T', 'Series y numeración automática'],
-    img: '/assets/dashboard/facturacion.png',
+    img: facturacion,
+    url: 'app.krezka.com/administrador/facturacion/nuevo',
   },
   {
     key: 'pos',
@@ -33,7 +42,8 @@ const TABS: Tab[] = [
     title: 'Vende rápido con un POS pensado para tu mostrador',
     desc: 'Cobra en segundos, controla tu caja con apertura y cierre, y prioriza los productos con stock. Táctil y también con lector de código de barras.',
     bullets: ['Apertura / cierre de caja', 'Calculadora de vuelto', 'Ventas por fracción y combos'],
-    img: '/assets/dashboard/pos.png',
+    img: pos,
+    url: 'app.krezka.com/administrador/facturacion/nuevo',
   },
   {
     key: 'tienda',
@@ -42,7 +52,8 @@ const TABS: Tab[] = [
     title: 'Tu tienda online lista para vender',
     desc: 'Un ecommerce con tu marca, catálogo, banners y variantes por talla/color. Pagos, delivery y comunicación automática con tus clientes.',
     bullets: ['Catálogo con tu slug propio', 'Variantes, combos y mayoristas', 'Pagos y envío a despacho'],
-    img: '/assets/brochure/tiendavirtual.png',
+    img: tienda,
+    url: 'app.krezka.com/tienda/minimarket-don-lucho',
   },
   {
     key: 'inventario',
@@ -51,7 +62,8 @@ const TABS: Tab[] = [
     title: 'Controla tu stock por rubro, sin sorpresas',
     desc: 'Kardex de entradas y salidas, lotes y vencimientos (FEFO/FIFO), código de barras y traslados entre sedes. Todo en tiempo real.',
     bullets: ['Kardex y dashboard de stock', 'Lotes y vencimientos', 'Traslados entre sucursales'],
-    img: '/assets/brochure/inventariointeligente.png',
+    img: inventario,
+    url: 'app.krezka.com/administrador/kardex/dashboard',
   },
   {
     key: 'shalom',
@@ -60,7 +72,8 @@ const TABS: Tab[] = [
     title: 'Envía a todo el Perú con Shalom',
     desc: 'Integración directa con Shalom: genera tus envíos a despacho desde el sistema y haz seguimiento del tracking automáticamente, con avisos a tu cliente.',
     bullets: ['Envío a agencia Shalom', 'Tracking automático', 'Avisos al cliente por WhatsApp'],
-    img: '/assets/dashboard/shalom.png',
+    img: shalom,
+    url: 'app.krezka.com/administrador/ventas',
   },
   {
     key: 'ia',
@@ -69,7 +82,8 @@ const TABS: Tab[] = [
     title: 'Un asesor con IA que atiende y vende 24/7',
     desc: 'Responde tu WhatsApp con tu catálogo real, envía fotos y precios, califica prospectos y te avisa los leads calientes. Con tu número y tu marca.',
     bullets: ['Responde al instante', 'Seguimiento automático', 'Te avisa los leads calientes'],
-    img: '/assets/brochure/financieroreal.png',
+    img: ia,
+    url: 'app.krezka.com/administrador/leads',
   },
 ];
 
@@ -84,25 +98,10 @@ const STATS: { to: number; fmt: (n: number) => string; label: string }[] = [
   { to: 24, fmt: (n) => `${n}/7`, label: 'Soporte e IA' },
 ];
 
-/** Usa /assets/tour/<key>.png si existe; si no, la imagen por defecto. Nunca imagen rota. */
-function useTourImage(tabKey: string, fallback: string) {
-  const [src, setSrc] = useState(fallback);
-  useEffect(() => {
-    setSrc(fallback);
-    const override = `/assets/tour/${tabKey}.png`;
-    const img = new window.Image();
-    img.onload = () => setSrc(override);
-    img.onerror = () => setSrc(fallback);
-    img.src = override;
-  }, [tabKey, fallback]);
-  return src;
-}
-
 const ProductTour = () => {
   const [active, setActive] = useState(0);
   const [zoom, setZoom] = useState(false);
   const tab = TABS[active];
-  const src = useTourImage(tab.key, tab.img);
 
   // Cerrar el visor con ESC y bloquear el scroll de fondo mientras está abierto.
   useEffect(() => {
@@ -188,17 +187,23 @@ const ProductTour = () => {
                 <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
                 <span className="ml-3 flex-1 truncate rounded-md bg-white px-3 py-1 text-[11px] text-slate-400 shadow-inner">
-                  app.krezka.com/administrador
+                  {tab.url}
                 </span>
               </div>
               <button
                 type="button"
                 onClick={() => setZoom(true)}
                 aria-label="Ver imagen completa"
-                className="relative block w-full cursor-zoom-in"
+                className="relative flex aspect-[16/10] w-full cursor-zoom-in items-center justify-center bg-gradient-to-br from-[#eef0ff] to-[#f7f5ff] p-4 sm:p-7"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt={tab.title} className="block w-full" />
+                {/* Igual que en /sistemas: el componente centrado sobre degradado, con alto fijo para que no salte. */}
+                <Image
+                  src={tab.img}
+                  alt={tab.title}
+                  quality={90}
+                  sizes="(min-width: 1152px) 640px, (min-width: 1024px) 55vw, 92vw"
+                  className="h-full w-auto max-w-full rounded-2xl object-contain shadow-xl ring-1 ring-black/5"
+                />
                 {/* overlay elegante al pasar el mouse */}
                 <span className="pointer-events-none absolute inset-0 flex items-end justify-end bg-gradient-to-t from-slate-900/25 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <span className="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-[13px] font-semibold text-slate-800 shadow-lg backdrop-blur">
@@ -249,8 +254,7 @@ const ProductTour = () => {
               <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
               <span className="ml-3 flex-1 truncate text-[11px] font-medium text-slate-500">{tab.title}</span>
             </div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={src} alt={tab.title} className="max-h-[80vh] w-full object-contain" />
+            <Image src={tab.img} alt={tab.title} quality={90} sizes="(min-width: 1152px) 1152px, 100vw" className="max-h-[80vh] w-full object-contain" />
           </div>
         </div>
       )}

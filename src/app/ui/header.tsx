@@ -30,7 +30,12 @@ const NAV_GROUPS: NavGroup[] = [
   {
     label: 'Facturación',
     direct: true,
-    href: '/#comparacion',
+    href: '/sistemas',
+  },
+  {
+    label: 'Ventas IA',
+    direct: true,
+    href: '/ventas-ia',
   },
   {
     label: 'Precios',
@@ -177,7 +182,8 @@ const Header = () => {
                     href={group.href}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener noreferrer" : undefined}
-                    className={`flex items-center gap-1.5 px-4 py-2 rounded-lg transition-colors ${hoverTextClass} ${hoverBgClass}`}
+                    aria-current={pathname === group.href ? 'page' : undefined}
+                    className={`flex items-center gap-1.5 px-4 py-2 rounded-lg transition-colors ${hoverTextClass} ${hoverBgClass} ${pathname === group.href ? 'bg-[#f1eefe] font-semibold text-[#6c5ce7]' : ''}`}
                   >
                     {group.label}
                   </a>

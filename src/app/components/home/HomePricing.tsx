@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Check, Gem, Sparkles } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
+import AvisoAlzaPrecios from '../AvisoAlzaPrecios';
 import {
   fetchPublicPlansClient,
   mergePricingPlans,
@@ -50,6 +51,9 @@ const HomePricing = () => {
           <p className="kz-reveal mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-slate-500 md:text-base" style={{ animationDelay: '0.12s' }}>
             Comprobantes ilimitados en todos los planes, desde S/ {minMonthly.toFixed(2)}/mes. Cambia o cancela cuando quieras.
           </p>
+          <div className="kz-reveal mt-7" style={{ animationDelay: '0.16s' }}>
+            <AvisoAlzaPrecios />
+          </div>
         </div>
 
         {/* toggle */}
