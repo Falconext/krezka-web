@@ -20,25 +20,25 @@ const WeTools = () => {
                     {[
                         {
                             name: "Catálogo Automático",
-                            desc: "Crea miles de productos en segundos. Solo escribe 'Ferretería' y la IA generará nombres, precios y descripciones por ti.",
+                            desc: "Importa el catálogo de tu rubro con miles de productos listos, o pide a la IA sugerencias con nombres, descripciones y precios de mercado.",
                             icon: "mdi:robot-excited-outline",
                             color: "#38bdf8"
                         },
                         {
-                            name: "Imágenes con IA",
-                            desc: "Olvídate de buscar fotos. Nuestra IA asigna imágenes realistas y atractivas a tus productos automáticamente.",
+                            name: "Fotos automáticas",
+                            desc: "Olvídate de buscar fotos: la IA encuentra la imagen correcta de cada producto por su nombre o código de barras.",
                             icon: "mdi:image-auto-adjust",
                             color: "#B76AE0"
                         },
                         {
-                            name: "Insights de Ventas",
-                            desc: "Detecta patrones de compra y recibe recomendaciones sobre qué productos reponer antes de que se agoten.",
+                            name: "Compras con una foto",
+                            desc: "Toma una foto a la factura de tu proveedor y la IA registra la compra con sus productos y montos.",
                             icon: "mdi:chart-timeline-variant-shimmer",
                             color: "#22c55e"
                         },
                         {
-                            name: "Asistente 24/7",
-                            desc: "Resuelve dudas sobre el sistema o temas contables al instante con nuestro chat integrado potenciado por LLMs.",
+                            name: "Alertas de inventario",
+                            desc: "Avisos de stock crítico, lotes por vencer y productos sin rotación para que repongas a tiempo.",
                             icon: "mdi:face-agent",
                             color: "#fb923c"
                         }

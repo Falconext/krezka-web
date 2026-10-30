@@ -23,7 +23,7 @@ const industries = [
     {
         Icon: UtensilsCrossed,
         name: "Restaurantes",
-        desc: "Comandas, delivery integrado y control de insumos.",
+        desc: "POS para llevar o en mesa, modificadores, pedidos online y repartidores.",
         color: "#0ea5e9",
     },
     {

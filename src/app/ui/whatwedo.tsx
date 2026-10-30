@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import whatdo from "@/app/public/assets/whatdo.png";
+import puntoDeVenta from "@/app/public/assets/sistema/punto-de-venta.webp";
 
 const WhatWeDo = () => {
     // Forced Dark / Glassmorphism Mode
@@ -19,28 +19,28 @@ const WhatWeDo = () => {
                         <div className="relative rounded-3xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-md px-6 pt-6 pb-5 shadow-2xl transition-colors">
                             <div className="flex items-center justify-between mb-5">
                                 <div>
-                                    <p className="text-xs uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400">Proyectos</p>
-                                    <p className="text-sm md:text-base font-medium text-gray-900 dark:text-white">Sistemas completados</p>
+                                    <p className="text-xs uppercase tracking-[0.25em] text-gray-500 dark:text-gray-400">Punto de venta</p>
+                                    <p className="text-sm md:text-base font-medium text-gray-900 dark:text-white">Vende en segundos</p>
                                 </div>
                                 <div className="flex items-center gap-2 text-xs text-[#22c55e]">
-                                    <span className="font-semibold">+24%</span>
-                                    <span className="text-gray-500 dark:text-gray-400">este año</span>
+                                    <span className="font-semibold">PC, tablet</span>
+                                    <span className="text-gray-500 dark:text-gray-400">y celular</span>
                                 </div>
                             </div>
                             <div className="mb-5 rounded-2xl bg-gray-100 dark:bg-black/20 px-4 pt-5 pb-4 border border-gray-100 dark:border-white/5">
                                 <Image
-                                    src={whatdo}
-                                    alt="Vista previa de nuestros sistemas"
+                                    src={puntoDeVenta}
+                                    alt="Punto de venta de Krezka con catálogo de productos y detalle de venta"
                                     className="w-full h-full object-cover rounded-xl opacity-90 hover:opacity-100 transition-opacity"
                                 />
                             </div>
                             <div className="flex items-center justify-between">
                                 <div>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">Clientes satisfechos</p>
-                                    <p className="text-xl font-semibold text-gray-900 dark:text-white">150+</p>
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">Comprobantes</p>
+                                    <p className="text-xl font-semibold text-gray-900 dark:text-white">Ilimitados</p>
                                 </div>
                                 <div className="rounded-full bg-[#22c55e]/10 px-3 py-1 text-xs text-[#22c55e] border border-[#22c55e]/20">
-                                    Calidad garantizada
+                                    Válido ante SUNAT
                                 </div>
                             </div>
                         </div>
@@ -54,13 +54,13 @@ const WhatWeDo = () => {
                     <h2
                         className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-gray-900 dark:text-white transition-colors"
                     >
-                        Contol total de tu negocio en una sola plataforma.
+                        Control total de tu negocio en una sola plataforma.
                     </h2>
                     <p
                         className="text-sm md:text-base max-w-md text-gray-600 dark:text-gray-400 transition-colors"
                     >
-                        Gestiona facturación, inventario, tienda virtual y clientes desde un solo lugar.
-                        Sin módulos extra ni costos ocultos, todo integrado para que tu negocio crezca sin límites.
+                        Factura, vende, controla tu stock y tu caja desde un solo lugar, sin límite de
+                        comprobantes en ningún plan.
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
