@@ -19,7 +19,7 @@ type Tab = {
   title: string;
   desc: string;
   bullets: string[];
-  // Captura real del sistema con la cuenta demo de minimarket.
+  // Captura real del sistema (cuenta demo de minimarket; la tienda virtual es demenver).
   img: StaticImageData;
   url: string;
 };
@@ -53,7 +53,7 @@ const TABS: Tab[] = [
     desc: 'Un ecommerce con tu marca, catálogo, banners y variantes por talla/color. Pagos, delivery y comunicación automática con tus clientes.',
     bullets: ['Catálogo con tu slug propio', 'Variantes, combos y mayoristas', 'Pagos y envío a despacho'],
     img: tienda,
-    url: 'app.krezka.com/tienda/minimarket-don-lucho',
+    url: 'app.krezka.com/tienda/demenver',
   },
   {
     key: 'inventario',
