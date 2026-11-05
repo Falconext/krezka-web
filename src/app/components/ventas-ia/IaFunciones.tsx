@@ -40,7 +40,7 @@ const IaFunciones = () => (
           Todo lo que hace tu vendedor IA
         </h2>
         <p className="kz-reveal mt-3 text-[15px] text-slate-500" style={{ animationDelay: '0.12s' }}>
-          Incluido en todos los planes. Sin funciones bloqueadas ni cobros por mensaje.
+          Incluido en todos los planes. Sin funciones bloqueadas. Krezka no cobra por mensaje.
         </p>
       </div>
 

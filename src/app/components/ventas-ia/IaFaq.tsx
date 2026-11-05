@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: '¿Hay cargos por mensaje?',
-    a: 'No dentro de tu plan. Aparte, y solo si los usas, pagas directo a Meta tus anuncios y los avisos que salen fuera de una conversación abierta.',
+    a: 'De Krezka, no. Meta sí los cobra directo a tu cuenta: 1,000 mensajes de servicio gratis al mes por número y, pasado eso, cada mensaje según su tarifa. Tus anuncios y los avisos con plantilla también van aparte. Registra un medio de pago en Meta: sin él, los mensajes de servicio que pasen de los gratis no se entregan.',
   },
   {
     q: '¿Viene con facturación electrónica?',
