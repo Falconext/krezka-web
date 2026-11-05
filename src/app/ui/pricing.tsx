@@ -743,10 +743,9 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                             <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-[11px] font-bold text-white/70">i</span>
                             <p className="text-[12.5px] leading-relaxed text-gray-300">
                                 <span className="font-semibold text-white">Precio claro:</span> tu plan incluye la facturación electrónica SUNAT y el
-                                asesor con IA que atiende, califica y responde 24/7 — sin cargos por mensaje dentro de tu plan.
-                                Aparte, y solo si tú los usas, pagas directo a Meta (como en cualquier plataforma): tus{" "}
-                                <span className="text-white">anuncios</span> para traer clientes y los{" "}
-                                <span className="text-white">avisos salientes</span> que tú programes fuera de la conversación.
+                                asesor con IA que atiende, califica y responde 24/7. Krezka no cobra por mensaje: tus{" "}
+                                <span className="text-white">mensajes de WhatsApp</span> y tus{" "}
+                                <span className="text-white">anuncios</span> los cobra Meta directo a tu cuenta. Cada número tiene 1,000 mensajes de servicio gratis al mes.
                             </p>
                         </div>
                     </div>

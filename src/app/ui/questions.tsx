@@ -19,9 +19,9 @@ const Questions = () => {
         },
         {
             id: "003",
-            question: "¿Le pago algo a Meta por la IA que atiende?",
+            question: "¿Le pago algo a Meta por los mensajes de WhatsApp?",
             answer:
-                "No. Tu plan cubre el software y el asesor con IA que atiende, califica y responde — sin cargos por mensaje dentro de tu plan. Solo pagas directo a Meta (como en cualquier plataforma) si tú decides hacer publicidad para traer clientes o programar avisos salientes fuera de la conversación; eso es opcional y con tu propia cuenta."
+                "Sí, directo a Meta y con tu propia cuenta; Krezka no cobra por mensaje. Tu plan cubre el software y el asesor con IA. Cada número tiene 1,000 mensajes de servicio gratis al mes; pasado eso, Meta cobra cada mensaje según su tarifa, y también cobra aparte tus anuncios y los avisos con plantilla. Registra un medio de pago en Meta: sin él, los mensajes de servicio que pasen de los gratis no se entregan."
         },
         {
             id: "004",

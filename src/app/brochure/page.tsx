@@ -360,7 +360,7 @@ export default function BrochurePage() {
               {" "}solo
             </h2>
             <p className="mt-3 max-w-2xl text-[12.5px] leading-relaxed text-white/50">
-              Tu asesor con IA atiende, califica y vende por WhatsApp las 24 horas: responde con tu catálogo, precios y stock reales, envía fotos y tu brochure, y hace seguimiento solo. <span className="font-bold text-white/80">Un solo precio, sin cargos por mensaje.</span>
+              Tu asesor con IA atiende, califica y vende por WhatsApp las 24 horas: responde con tu catálogo, precios y stock reales, envía fotos y tu brochure, y hace seguimiento solo. <span className="font-bold text-white/80">Un solo precio de Krezka; WhatsApp lo cobra Meta aparte.</span>
             </p>
           </div>
 
@@ -442,7 +442,7 @@ export default function BrochurePage() {
                 <Info size={14} />
               </div>
               <p className="text-[10.5px] leading-relaxed text-white/65">
-                <span className="font-black text-white">Tu plan cubre</span> la facturación SUNAT y el asesor con IA — sin cargos por mensaje de nuestra parte. <span className="font-black text-white">Aparte pagas a Meta</span> (como en cualquier plataforma): tus <span className="font-bold text-white/90">anuncios</span> para traer leads (según tu campaña) y los <span className="font-bold text-white/90">avisos salientes</span> que tú envíes (p. ej. despacho), con un costo mínimo por mensaje.
+                <span className="font-black text-white">Tu plan cubre</span> la facturación SUNAT y el asesor con IA — sin cargos por mensaje de nuestra parte. <span className="font-black text-white">Aparte pagas a Meta</span> con tu cuenta: tus <span className="font-bold text-white/90">mensajes de WhatsApp</span> (1,000 de servicio gratis al mes por número) y tus <span className="font-bold text-white/90">anuncios</span> para traer leads.
               </p>
             </div>
           </div>
