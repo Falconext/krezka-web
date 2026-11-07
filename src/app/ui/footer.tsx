@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { MessageCircle, Mail, ArrowRight, BookText } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
 import MetaPartnerBadge from '@/app/components/MetaPartnerBadge';
+import TikTokPartnerBadge from '@/app/components/TikTokPartnerBadge';
 import { RedesFooter } from '@/app/components/RedesSociales';
 
 const producto = [
@@ -57,8 +58,9 @@ const Footer = () => {
               Escríbenos por WhatsApp
             </a>
             <RedesFooter />
-            <div className="mt-5">
-              <MetaPartnerBadge fondo="oscuro" alto={38} />
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <MetaPartnerBadge fondo="oscuro" alto={34} />
+              <TikTokPartnerBadge fondo="oscuro" alto={34} />
             </div>
           </div>
 
