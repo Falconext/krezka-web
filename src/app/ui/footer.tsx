@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { MessageCircle, Mail, ArrowRight, BookText } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
 import MetaPartnerBadge from '@/app/components/MetaPartnerBadge';
+import { RedesFooter } from '@/app/components/RedesSociales';
 
 const producto = [
   { label: 'Facturación SUNAT', href: '/sistemas' },
@@ -55,6 +56,7 @@ const Footer = () => {
               <MessageCircle size={16} />
               Escríbenos por WhatsApp
             </a>
+            <RedesFooter />
             <div className="mt-5">
               <MetaPartnerBadge fondo="oscuro" alto={38} />
             </div>
