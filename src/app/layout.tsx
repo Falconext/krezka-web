@@ -115,7 +115,9 @@ export default function RootLayout({
     "logo": `${BRAND.website}${BRAND.logo}`,
     "sameAs": [
       BRAND.socials.facebook,
-      BRAND.socials.instagram
+      BRAND.socials.instagram,
+      BRAND.socials.tiktok,
+      BRAND.socials.youtube
     ].filter(Boolean)
   };
 

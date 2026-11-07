@@ -19,6 +19,8 @@ export type BrandConfig = {
   socials: {
     facebook?: string;
     instagram?: string;
+    tiktok?: string;
+    youtube?: string;
     linkedin?: string;
     twitter?: string;
   };
@@ -40,8 +42,10 @@ const brands: Record<string, BrandConfig> = {
     primaryColor: '#00D0D4',
     secondaryColor: '#00A0A4',
     socials: {
-      facebook: '#',
-      instagram: '#',
+      facebook: 'https://www.facebook.com/p/Krezka-61589067851006/',
+      instagram: 'https://www.instagram.com/krezka.peru/',
+      tiktok: 'https://www.tiktok.com/@krezka.peru',
+      youtube: 'https://www.youtube.com/@KREZKA-PER%C3%9A',
     },
     // En local apunta a la app de desarrollo (NEXT_PUBLIC_DASHBOARD_URL en .env.local).
     dashboardUrl: process.env.NEXT_PUBLIC_DASHBOARD_URL || 'https://app.krezka.com'
