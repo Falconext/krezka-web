@@ -23,9 +23,16 @@ const LOGOS_XL = ['chabelita'];
 const esLogoXL = (nombre: string) =>
   LOGOS_XL.some((k) => norm(nombre).includes(k));
 
+// Un logo cuadrado (tolerancia del 10%) también va recortado en círculo.
+const esImagenCuadrada = (img: HTMLImageElement) => {
+  const ratio = img.naturalWidth / img.naturalHeight;
+  return ratio >= 0.9 && ratio <= 1.1;
+};
+
 const TrustBar = () => {
   const [clientes, setClientes] = useState<Cliente[]>([]);
   const [loaded, setLoaded] = useState(false);
+  const [cuadrados, setCuadrados] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     let active = true;
@@ -82,9 +89,9 @@ const TrustBar = () => {
               }
             >
               {(enableMarquee ? marquee : clientes).map((c, i) =>
-                esLogoCirculo(c.nombre) ? (
+                esLogoCirculo(c.nombre) || cuadrados.has(c.id) ? (
                   <li key={`${c.id}-${i}`} className="flex h-20 shrink-0 items-center">
-                    <span className="flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
+                    <span className="flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={c.logo}
@@ -103,7 +110,12 @@ const TrustBar = () => {
                       alt={c.nombre}
                       title={c.nombre}
                       loading="lazy"
-                      className={`w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 ${
+                      onLoad={(e) => {
+                        if (esImagenCuadrada(e.currentTarget)) {
+                          setCuadrados((prev) => (prev.has(c.id) ? prev : new Set(prev).add(c.id)));
+                        }
+                      }}
+                      className={`w-auto object-contain ${
                         esLogoXL(c.nombre)
                           ? 'max-h-20 max-w-[250px]'
                           : esLogoGrande(c.nombre)

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import MetaPartnerBadge from '../MetaPartnerBadge';
+import TikTokPartnerBadge from '../TikTokPartnerBadge';
 import Link from 'next/link';
 import { ChevronRight, Play } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
@@ -114,8 +115,9 @@ const Hero = () => {
             </a>
           </div>
 
-          <div className="kz-reveal mt-8 flex justify-center" style={{ animationDelay: '0.24s' }}>
+          <div className="kz-reveal mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4" style={{ animationDelay: '0.24s' }}>
             <MetaPartnerBadge alto={46} />
+            <TikTokPartnerBadge alto={46} />
           </div>
         </div>
 
