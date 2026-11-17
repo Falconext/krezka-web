@@ -38,6 +38,11 @@ const NAV_GROUPS: NavGroup[] = [
     href: '/ventas-ia',
   },
   {
+    label: 'Tienda + POS',
+    direct: true,
+    href: '/empresarial',
+  },
+  {
     label: 'Precios',
     direct: true,
     href: '/#planes',

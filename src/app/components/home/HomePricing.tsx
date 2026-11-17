@@ -110,7 +110,7 @@ const HomePricing = () => {
             Planes claros. Sin costos ocultos.
           </h2>
           <p className="kz-reveal mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-slate-500 md:text-base" style={{ animationDelay: '0.12s' }}>
-            Desde S/ {minMonthly.toFixed(2)} + IGV al mes. Emprendedor incluye 300 comprobantes SUNAT al mes; desde Negocio, ilimitados. Cambia o cancela cuando quieras.
+            Desde S/ {minMonthly.toFixed(2)} + IGV al mes. Emprendedor incluye 300 comprobantes SUNAT al mes; desde Negocio, ilimitados. Instalación S/ 50, pago único. Cambia o cancela cuando quieras.
           </p>
           <div className="kz-reveal mt-7" style={{ animationDelay: '0.16s' }}>
             <AvisoAlzaPrecios />
@@ -241,6 +241,9 @@ const HomePricing = () => {
                   {periodo === 'mensual'
                     ? 'Facturación mensual'
                     : `Pagas S/ ${total.toFixed(2)} + IGV ${PERIODOS[periodo].cada}`}
+                </p>
+                <p className={`mt-0.5 text-[12px] font-semibold ${popular ? 'text-white/80' : 'text-slate-600'}`}>
+                  + S/ 50 de instalación (pago único)
                 </p>
 
                 {/* CTA */}

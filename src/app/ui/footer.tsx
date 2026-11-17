@@ -13,6 +13,7 @@ const producto = [
   { label: 'Inventario / Kardex', href: '/#tour' },
   { label: 'Tienda Virtual', href: '/#tour' },
   { label: 'IA de Ventas', href: '/ventas-ia' },
+  { label: 'Tienda + POS', href: '/empresarial' },
   { label: 'Envíos Shalom', href: '/#tour' },
 ];
 
