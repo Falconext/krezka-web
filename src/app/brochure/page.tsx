@@ -1,7 +1,7 @@
 'use client';
 import { CheckCircle2, XCircle, Globe, Mail, MessageCircle, Printer, Zap, Search, Rocket, Clock, Laptop, Award, Star, FileText, Package, BarChart3, Sparkles, TrendingUp, Info, BookText, type LucideIcon } from "lucide-react";
 import Image from "next/image";
-import { fetchPublicPlansClient, mergePricingPlans, PRICING_BASE_PLANS, type PricingBasePlan } from "@/lib/public-pricing";
+import { fetchPublicPlansClient, IA_VENTAS_ADDON_TEXTO, mergePricingPlans, PRICING_BASE_PLANS, type PricingBasePlan } from "@/lib/public-pricing";
 import AvisoAlzaPrecios from "@/app/components/AvisoAlzaPrecios";
 import { useEffect, useMemo, useState } from "react";
 
@@ -25,7 +25,7 @@ type BrochurePlan = PricingBasePlan & {
   marks: string[];
 };
 
-const PLAN_VISUALS: Record<PricingBasePlan["id"], Omit<BrochurePlan, keyof PricingBasePlan>> = {
+const PLAN_VISUALS: Record<"plan-emprendedor" | "plan-negocio" | "plan-corporativo", Omit<BrochurePlan, keyof PricingBasePlan>> = {
   "plan-emprendedor": {
     color: "#6366F1",
     light: "#EEF2FF",
@@ -36,7 +36,7 @@ const PLAN_VISUALS: Record<PricingBasePlan["id"], Omit<BrochurePlan, keyof Prici
     delivery: false,
     api: false,
     soporte: "Estándar",
-    marks: ["Facturación ilimitada", "Reporte para tu contador", "Gestión de productos", "Boletas y Facturas"],
+    marks: ["300 comprobantes SUNAT/mes", "Reporte para tu contador", "Gestión de productos", "Boletas y Facturas"],
   },
   "plan-negocio": {
     color: "#8B5CF6",
@@ -67,7 +67,7 @@ const PLAN_VISUALS: Record<PricingBasePlan["id"], Omit<BrochurePlan, keyof Prici
 const toBrochurePlans = (basePlans: PricingBasePlan[]): BrochurePlan[] =>
   basePlans.map((plan) => ({
     ...plan,
-    ...PLAN_VISUALS[plan.id],
+    ...PLAN_VISUALS[plan.id as keyof typeof PLAN_VISUALS],
   }));
 
 const Tick = ({ ok, color }: { ok: boolean; color: string }) => ok
@@ -270,15 +270,16 @@ export default function BrochurePage() {
                     </div>
                     <div className="flex items-baseline justify-center gap-1">
                       <span className="text-[2rem] font-black leading-none text-gray-950">S/ {p.monthly.toFixed(2)}</span>
+                      <span className="text-[9px] font-bold text-gray-400">+ IGV</span>
                       <span className="text-[10px] font-semibold text-gray-400">/ mes</span>
                     </div>
                     <p className="mt-1 text-[9px] font-bold text-gray-600">+ S/ 50 de instalación (pago único)</p>
                   </div>
                   <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-2 py-1.5">
                     <span className="text-[8px] text-gray-500">Anual: </span>
-                    <span className="text-[8px] font-black text-gray-800">S/ {p.annual.toFixed(2)}</span>
+                    <span className="text-[8px] font-black text-gray-800">S/ {p.annual.toFixed(2)} + IGV</span>
                     <span className="text-[8px] text-gray-400"> (S/ {(p.annual / 12).toFixed(2)}/mes)</span>
-                    <span className="text-[8px] font-black text-amber-600"> · 1 mes gratis</span>
+                    <span className="whitespace-nowrap text-[8px] font-black text-amber-600"> · 1 mes gratis</span>
                   </div>
                   <p className="mt-3 text-[9px] leading-relaxed text-gray-500">{p.tagline}</p>
                 </div>
@@ -403,6 +404,7 @@ export default function BrochurePage() {
 
                   <div className="mt-3 flex items-baseline gap-1">
                     <span className="text-[1.45rem] font-black leading-none text-white">{p.price ? `S/ ${p.price}` : "A medida"}</span>
+                    {p.price && <span className="text-[8.5px] font-bold text-white/40">+ IGV</span>}
                     {p.price && <span className="text-[10px] font-semibold text-white/40">/ mes</span>}
                   </div>
                   <p className="mt-1 text-[9px] font-bold text-emerald-300/90">{p.price && p.leads ? `≈ S/ ${(p.price / p.leads).toFixed(2)} por lead` : "Cotización según tu volumen"}</p>
@@ -422,6 +424,8 @@ export default function BrochurePage() {
               ))}
             </div>
           </div>
+
+          <p className="mt-3 text-center text-[10px] leading-snug text-white/65">{IA_VENTAS_ADDON_TEXTO}</p>
 
           {/* Capacidades de la IA */}
           <div className="mt-auto border-t border-white/10 pt-5">
@@ -654,7 +658,7 @@ export default function BrochurePage() {
 
           <div className="mt-auto flex items-center gap-3 bg-indigo-50 border border-indigo-100 rounded-xl px-5 py-3">
             <MessageCircle size={18} className="text-indigo-600 shrink-0" />
-            <p className="text-[11px] text-gray-600">Todos los planes incluyen comprobantes ilimitados. Negocio suma tienda virtual; Corporativo suma control avanzado.</p>
+            <p className="text-[11px] text-gray-600">Emprendedor incluye 300 comprobantes SUNAT al mes y notas de venta ilimitadas; desde Negocio, comprobantes ilimitados. Negocio suma tienda virtual; Corporativo suma control avanzado.</p>
           </div>
         </div>
       </Page>

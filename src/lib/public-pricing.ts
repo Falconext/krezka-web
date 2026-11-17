@@ -25,8 +25,8 @@ type PublicPlanResponse = {
 };
 
 export type PricingBasePlan = {
-  id: "plan-emprendedor" | "plan-negocio" | "plan-corporativo";
-  name: "Emprendedor" | "Negocio" | "Corporativo";
+  id: "plan-emprendedor" | "plan-negocio" | "plan-corporativo" | "plan-empresarial" | "plan-empresarial-plus";
+  name: "Emprendedor" | "Negocio" | "Corporativo" | "Empresarial" | "Empresarial Plus";
   monthly: number;
   annual: number;
   regularMonthly: number;
@@ -49,7 +49,8 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
   {
     id: "plan-emprendedor",
     name: "Emprendedor",
-    docs: "Comprobantes ILIMITADOS",
+    // Tope fijo del plan: no se toma de la API (que devuelve null = ilimitado).
+    docs: "300 comprobantes SUNAT al mes",
     monthly: 39.9,
     // Anual = 11 meses (1 mes gratis). La promo de 2 meses la da ventas al cerrar.
     annual: 438.9,
@@ -61,9 +62,9 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
     store: "Sin tienda virtual",
     tagline: "Para emprendedores que necesitan vender, emitir SUNAT y controlar su caja desde el primer día.",
     target: "Bodegas, pequeños bazares, profesionales independientes y negocios que recién se formalizan.",
-    strategy: "Empieza con emisión ilimitada y control básico. Cuando necesites tienda online, variantes o automatización, subes a Negocio.",
+    strategy: "Empieza con 300 comprobantes SUNAT al mes, notas de venta ilimitadas y control básico. Cuando necesites tienda online, variantes o automatización, subes a Negocio.",
     highlights: [
-      "Facturación electrónica ilimitada: boletas, facturas, notas de venta y guías",
+      "300 comprobantes SUNAT al mes (boletas, facturas y guías) y notas de venta ilimitadas",
       "POS básico con apertura/cierre de caja y calculadora de vuelto",
       "Catálogo simple de productos y servicios",
       "Inventario básico con Kardex de entradas y salidas",
@@ -158,6 +159,69 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
   },
 ];
 
+// Planes superiores: se muestran en la sección de precios del home y en la
+// comparación de módulos. Los brochures y /sistemas siguen con los 3 base.
+export const PRICING_PLANES_EMPRESARIALES: PricingBasePlan[] = [
+  {
+    id: "plan-empresarial",
+    name: "Empresarial",
+    docs: "Comprobantes ILIMITADOS",
+    monthly: 129.9,
+    annual: 1428.9,
+    regularMonthly: 162.38,
+    description: "Para empresas que venden fuerte en su tienda virtual.",
+    badge: "Empresarial",
+    popular: false,
+    utility: "Promociones, cupones y varias sedes",
+    store: "Incluye tienda virtual",
+    tagline: "Todo Corporativo más promociones automáticas y cupones de descuento en tu tienda.",
+    target: "Empresas con varias sedes que impulsan sus ventas online con promociones.",
+    strategy: "Suma promociones automáticas y cupones a la operación multi-sede.",
+    highlights: [
+      "Todo lo de Corporativo",
+      "Promociones automáticas y cupones de descuento en tu tienda",
+      "10 usuarios y hasta 8 sedes",
+      "Lotes y vencimientos (FEFO)",
+      "Asesor personal dedicado",
+    ],
+    modules: ["Multi-sede", "Promociones", "Cupones", "FEFO", "SIRE"],
+    usersLabel: "10 usuarios",
+    sedesLabel: "8 sedes",
+  },
+  {
+    id: "plan-empresarial-plus",
+    name: "Empresarial Plus",
+    docs: "Comprobantes ILIMITADOS",
+    monthly: 179.9,
+    annual: 1978.9,
+    regularMonthly: 224.88,
+    description: "Todo incluido para captar, fidelizar y vender más.",
+    badge: "Todo incluido",
+    popular: false,
+    utility: "Captar, fidelizar y vender más",
+    store: "Incluye tienda virtual",
+    tagline: "Todo Empresarial más herramientas para captar y fidelizar clientes en tu tienda.",
+    target: "Empresas que quieren una tienda virtual completa con fidelización y venta B2B.",
+    strategy: "El plan completo: captación, fidelización, B2B y analítica.",
+    highlights: [
+      "Todo lo de Empresarial",
+      "Cupones avanzados, cuenta del cliente y carritos abandonados",
+      "Puntos, gift cards, devoluciones y preventa",
+      "Precios mayoristas (B2B), compras recurrentes y analítica",
+      "10 usuarios y hasta 10 sedes",
+    ],
+    modules: ["Fidelización", "Gift cards", "B2B", "Analítica", "Multi-sede"],
+    usersLabel: "10 usuarios",
+    sedesLabel: "10 sedes",
+  },
+];
+
+/** Los 5 planes en orden de precio. */
+export const PRICING_TODOS_LOS_PLANES: PricingBasePlan[] = [
+  ...PRICING_BASE_PLANS,
+  ...PRICING_PLANES_EMPRESARIALES,
+];
+
 const API_URL = (
   process.env.API_URL ??
   process.env.NEXT_PUBLIC_API_URL ??
@@ -179,6 +243,8 @@ const mapPlanId = (name: string): PricingBasePlan["id"] | null => {
   if (n.includes("emprendedor")) return "plan-emprendedor";
   if (n.includes("negocio")) return "plan-negocio";
   if (n.includes("corporativo")) return "plan-corporativo";
+  if (n.includes("empresarial plus")) return "plan-empresarial-plus";
+  if (n.includes("empresarial")) return "plan-empresarial";
   return null;
 };
 
@@ -216,7 +282,8 @@ export const mergePricingPlans = (
     // son la fuente de verdad; el merge solo actualiza metadatos del plan.
     return {
       ...base,
-      docs: formatDocs(remote.maxComprobantes),
+      // Emprendedor tiene tope local de 300; la API aún lo reporta como ilimitado.
+      docs: base.id === "plan-emprendedor" ? base.docs : formatDocs(remote.maxComprobantes),
       description: remote.descripcion ?? base.description,
       usersLabel: formatUsers(remote.limiteUsuarios),
       sedesLabel: formatSedes(remote.maxSedes),
@@ -296,3 +363,41 @@ export const AVISO_ALZA_PRECIOS = {
   // Medianoche de Lima (UTC-5): desde aquí ya rige el precio nuevo.
   desde: "2027-01-01T00:00:00-05:00",
 };
+
+// IA de Ventas como complemento para quien ya tiene un plan Krezka (precios sin IGV).
+export const IA_VENTAS_ADDON_TEXTO =
+  "¿Ya usas Krezka? Súmale la IA de Ventas a tu plan: 500 leads por S/\u00a0149 + IGV, 1\u00a0500 por S/\u00a0249 + IGV o 5\u00a0000 por S/\u00a0399 + IGV.";
+
+// Periodos de pago de los planes del sistema. Para cambiar un descuento, edítalo aquí.
+// `descuento` se aplica sobre el precio mensual × meses; el anual usa el `annual`
+// curado de cada plan (11 meses ≈ 8 % menos).
+export type PeriodoClave = "mensual" | "trimestral" | "semestral" | "anual";
+
+export const PERIODOS: Record<
+  PeriodoClave,
+  { etiqueta: string; meses: number; descuento: number | "anual-del-plan"; cada: string }
+> = {
+  mensual: { etiqueta: "Mensual", meses: 1, descuento: 0, cada: "cada mes" },
+  trimestral: { etiqueta: "Trimestral", meses: 3, descuento: 0.05, cada: "cada 3 meses" },
+  semestral: { etiqueta: "Semestral", meses: 6, descuento: 0.07, cada: "cada 6 meses" },
+  anual: { etiqueta: "Anual", meses: 12, descuento: "anual-del-plan", cada: "al año" },
+};
+
+export const PERIODO_CLAVES = Object.keys(PERIODOS) as PeriodoClave[];
+
+const redondear2 = (n: number): number => Math.round(n * 100) / 100;
+
+/** Lo que se paga por el periodo completo (sin IGV), redondeado a 2 decimales. */
+export const totalPeriodo = (plan: PricingBasePlan, clave: PeriodoClave): number => {
+  const { meses, descuento } = PERIODOS[clave];
+  if (descuento === "anual-del-plan") return plan.annual;
+  return redondear2(plan.monthly * meses * (1 - descuento));
+};
+
+/** Equivalente mensual del periodo (sin IGV). */
+export const mensualPeriodo = (plan: PricingBasePlan, clave: PeriodoClave): number =>
+  totalPeriodo(plan, clave) / PERIODOS[clave].meses;
+
+/** Descuento del periodo frente a pagar mes a mes, en % entero (para el badge del tab). */
+export const descuentoPeriodoPct = (plan: PricingBasePlan, clave: PeriodoClave): number =>
+  Math.round((1 - totalPeriodo(plan, clave) / (plan.monthly * PERIODOS[clave].meses)) * 100);

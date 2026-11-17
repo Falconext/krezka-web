@@ -31,7 +31,7 @@ const TABS: Tab[] = [
     Icon: FileText,
     title: 'Facturación electrónica SUNAT en segundos',
     desc: 'Emite boletas, facturas, notas y guías de remisión válidas ante SUNAT sin salir del sistema. Envío automático por WhatsApp y correo.',
-    bullets: ['Comprobantes ilimitados', 'Guías de remisión GRE-R y GRE-T', 'Series y numeración automática'],
+    bullets: ['Notas de venta ilimitadas', 'Guías de remisión GRE-R y GRE-T', 'Series y numeración automática'],
     img: facturacion,
     url: 'app.krezka.com/administrador/facturacion/nuevo',
   },

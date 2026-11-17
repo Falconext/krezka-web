@@ -6,7 +6,7 @@ import { BRAND } from '@/lib/branding';
 
 const faqs = [
   { q: '¿Los comprobantes son válidos ante SUNAT?', a: 'Sí. Krezka está certificado y emite boletas, facturas, notas de crédito/débito y guías de remisión electrónicas 100% válidas ante SUNAT. El certificado digital PSE está incluido en todos los planes.' },
-  { q: '¿Hay límite de comprobantes?', a: 'No. Todos los planes incluyen comprobantes ILIMITADOS con una tarifa fija mensual o anual, sin cargos por documento emitido.' },
+  { q: '¿Hay límite de comprobantes?', a: 'Emprendedor incluye 300 comprobantes SUNAT al mes y notas de venta ilimitadas. Desde el plan Negocio, los comprobantes son ilimitados. Todo con una tarifa fija mensual o anual, sin cargos por documento emitido.' },
   { q: '¿Sirve para mi rubro?', a: 'Sí. El sistema se adapta a bodegas, ropa, ferreterías, farmacias, cómputo, minimarkets, distribuidoras y fabricación, activando lotes, vencimientos, código de barras, variantes y más.' },
   { q: '¿Qué incluye la IA de Ventas por WhatsApp?', a: 'Un asesor con IA que atiende tu WhatsApp 24/7: responde con tu catálogo real, envía fotos y precios, califica prospectos y te avisa los leads calientes desde tu propio número.' },
   { q: '¿Cuánto tarda la activación?', a: 'La mayoría de negocios queda operativo en 24 horas. Nuestro equipo te acompaña en la configuración y la carga de tu catálogo.' },

@@ -222,7 +222,7 @@ export default function BrochurePreciosPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {[
-                                { title: "Facturación Electrónica", desc: "Emite boletas, facturas y notas de venta ilimitadas directo a SUNAT.", icon: <FileText className="w-6 h-6" /> },
+                                { title: "Facturación Electrónica", desc: "Emite boletas y facturas directo a SUNAT, con notas de venta ilimitadas.", icon: <FileText className="w-6 h-6" /> },
                                 { title: "Control de Inventario", desc: "Kardex en tiempo real, control de stock mínimo y valoración de almacén.", icon: <Package className="w-6 h-6" /> },
                                 { title: "Punto de Venta (POS)", desc: "Ventas rápidas con lector de barras, compatible con PC, tablet y celular.", icon: <Monitor className="w-6 h-6" /> },
                                 { title: "Tienda Virtual Gratis", desc: "Tu propio catálogo online integrado automáticamante con tu stock.", icon: <Store className="w-6 h-6" /> },

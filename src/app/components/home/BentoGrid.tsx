@@ -6,7 +6,7 @@ const items = [
   {
     Icon: ShieldCheck,
     title: 'Facturación SUNAT',
-    desc: 'Boletas, facturas y guías 100% válidas ante SUNAT, ilimitadas.',
+    desc: 'Boletas, facturas y guías 100% válidas ante SUNAT. Notas de venta ilimitadas.',
     card: 'from-blue-50 to-white',
     tile: 'bg-blue-100 text-blue-500',
   },

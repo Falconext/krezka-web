@@ -1,13 +1,19 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-import { Check, Gem, Sparkles } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { Check, ChevronLeft, ChevronRight, Gem, Sparkles } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
 import AvisoAlzaPrecios from '../AvisoAlzaPrecios';
 import {
+  descuentoPeriodoPct,
   fetchPublicPlansClient,
+  mensualPeriodo,
   mergePricingPlans,
-  PRICING_BASE_PLANS,
+  PERIODO_CLAVES,
+  PERIODOS,
+  PRICING_TODOS_LOS_PLANES,
+  totalPeriodo,
+  type PeriodoClave,
   type PricingBasePlan,
 } from '@/lib/public-pricing';
 
@@ -16,17 +22,59 @@ const planWhatsappLink = (planName: string) =>
     `Hola, quiero el plan ${planName} de ${BRAND.name}. ¿Me ayudan a activarlo?`
   )}`;
 
-type Cycle = 'monthly' | 'annual';
+const prefiereMenosMovimiento = () =>
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const HomePricing = () => {
-  const [plans, setPlans] = useState<PricingBasePlan[]>(PRICING_BASE_PLANS);
-  const [cycle, setCycle] = useState<Cycle>('monthly');
+  const [plans, setPlans] = useState<PricingBasePlan[]>(PRICING_TODOS_LOS_PLANES);
+  const [periodo, setPeriodo] = useState<PeriodoClave>('mensual');
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [activo, setActivo] = useState(0);
+  const [enInicio, setEnInicio] = useState(true);
+  const [enFinal, setEnFinal] = useState(false);
+
+  // Paso entre tarjetas = ancho de una tarjeta + el gap del carrusel.
+  const paso = useCallback(() => {
+    const el = sliderRef.current;
+    const card = el?.querySelector<HTMLElement>('[data-card]');
+    if (!el || !card) return 0;
+    return card.offsetWidth + parseFloat(getComputedStyle(el).columnGap || '0');
+  }, []);
+
+  const actualizarPosicion = useCallback(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const p = paso();
+    const final = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+    // Al llegar al tope, marca el último punto aunque varias tarjetas quepan a la vez.
+    setActivo(final ? plans.length - 1 : p ? Math.round(el.scrollLeft / p) : 0);
+    setEnInicio(el.scrollLeft <= 4);
+    setEnFinal(final);
+  }, [paso, plans.length]);
+
+  useEffect(() => {
+    actualizarPosicion();
+    window.addEventListener('resize', actualizarPosicion);
+    return () => window.removeEventListener('resize', actualizarPosicion);
+  }, [actualizarPosicion, plans.length]);
+
+  const irA = (indice: number) => {
+    const el = sliderRef.current;
+    if (!el) return;
+    el.scrollTo({ left: indice * paso(), behavior: prefiereMenosMovimiento() ? 'auto' : 'smooth' });
+  };
+  const mover = (dir: 1 | -1) =>
+    sliderRef.current?.scrollBy({ left: dir * paso(), behavior: prefiereMenosMovimiento() ? 'auto' : 'smooth' });
+  const onTeclado = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); mover(1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); mover(-1); }
+  };
 
   useEffect(() => {
     let active = true;
     (async () => {
       const remote = await fetchPublicPlansClient();
-      if (active) setPlans(mergePricingPlans(PRICING_BASE_PLANS, remote));
+      if (active) setPlans(mergePricingPlans(PRICING_TODOS_LOS_PLANES, remote));
     })();
     return () => {
       active = false;
@@ -49,47 +97,69 @@ const HomePricing = () => {
             Planes claros. Sin costos ocultos.
           </h2>
           <p className="kz-reveal mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-slate-500 md:text-base" style={{ animationDelay: '0.12s' }}>
-            Comprobantes ilimitados en todos los planes, desde S/ {minMonthly.toFixed(2)}/mes. Cambia o cancela cuando quieras.
+            Desde S/ {minMonthly.toFixed(2)} + IGV al mes. Emprendedor incluye 300 comprobantes SUNAT al mes; desde Negocio, ilimitados. Cambia o cancela cuando quieras.
           </p>
           <div className="kz-reveal mt-7" style={{ animationDelay: '0.16s' }}>
             <AvisoAlzaPrecios />
           </div>
         </div>
 
-        {/* toggle */}
+        {/* periodo de pago */}
         <div className="mt-8 flex justify-center">
-          <div className="inline-flex items-center rounded-full border border-[#6c5ce7]/20 bg-white p-1 shadow-sm">
-            <button
-              onClick={() => setCycle('monthly')}
-              className={`rounded-full px-6 py-2.5 text-sm font-bold transition-all ${
-                cycle === 'monthly' ? 'bg-gradient-to-r from-[#7b6af2] to-[#6c5ce7] text-white shadow' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Mensual
-            </button>
-            <button
-              onClick={() => setCycle('annual')}
-              className={`rounded-full px-6 py-2.5 text-sm font-bold transition-all ${
-                cycle === 'annual' ? 'bg-gradient-to-r from-[#7b6af2] to-[#6c5ce7] text-white shadow' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Anual
-            </button>
+          <div role="group" aria-label="Periodo de pago" className="inline-flex max-w-full items-center rounded-full border border-[#6c5ce7]/20 bg-white p-1 shadow-sm">
+            {PERIODO_CLAVES.map((clave) => {
+              const sel = periodo === clave;
+              const pct = descuentoPeriodoPct(plans[0], clave);
+              return (
+                <button
+                  key={clave}
+                  type="button"
+                  aria-pressed={sel}
+                  onClick={() => setPeriodo(clave)}
+                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-2 text-xs font-bold transition-all sm:gap-1.5 sm:px-5 sm:py-2.5 sm:text-sm ${
+                    sel ? 'bg-gradient-to-r from-[#7b6af2] to-[#6c5ce7] text-white shadow' : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  {PERIODOS[clave].etiqueta}
+                  {pct > 0 && (
+                    <span
+                      className={`rounded-full px-1 py-px text-[9px] font-bold sm:px-1.5 sm:text-[10px] ${
+                        sel ? 'bg-white/25 text-white' : 'bg-emerald-50 text-emerald-600'
+                      }`}
+                    >
+                      -{pct}%
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
 
         {/* cards */}
-        <div className="mt-12 grid items-center gap-6 lg:grid-cols-3">
+        <div
+          ref={sliderRef}
+          onScroll={actualizarPosicion}
+          onKeyDown={onTeclado}
+          tabIndex={0}
+          role="region"
+          aria-roledescription="carrusel"
+          aria-label="Planes del sistema"
+          className="-mx-4 mt-6 flex snap-x snap-mandatory items-center gap-6 overflow-x-auto scroll-px-4 px-4 py-10 outline-none [scrollbar-width:none] focus-visible:ring-2 focus-visible:ring-[#6c5ce7]/40 sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:-mx-8 lg:scroll-px-8 lg:px-8 [&::-webkit-scrollbar]:hidden"
+        >
           {plans.map((plan, i) => {
             const popular = plan.popular;
-            const price = cycle === 'monthly' ? plan.monthly : plan.annual / 12;
-            const off = Math.round((1 - plan.monthly / plan.regularMonthly) * 100);
+            const price = mensualPeriodo(plan, periodo);
+            const total = totalPeriodo(plan, periodo);
+            const off = Math.round((1 - price / plan.regularMonthly) * 100);
 
             return (
               <article
                 key={plan.id}
+                data-card
+                aria-label={`${plan.name}, ${i + 1} de ${plans.length}`}
                 style={{ animationDelay: `${i * 0.1}s` }}
-                className={`kz-reveal relative flex flex-col overflow-hidden rounded-[2rem] p-8 ${
+                className={`kz-reveal relative flex w-[84%] shrink-0 snap-start flex-col last:snap-end overflow-hidden rounded-[2rem] p-8 sm:w-[46%] lg:w-[30%] ${
                   popular
                     ? 'z-10 bg-gradient-to-br from-[#8574f3] to-[#6c5ce7] text-white shadow-2xl shadow-[#6c5ce7]/40 lg:-my-6 lg:py-12'
                     : 'border border-slate-200 bg-white text-slate-900 shadow-sm'
@@ -147,10 +217,13 @@ const HomePricing = () => {
                   <span className={`text-5xl font-extrabold tracking-tight ${popular ? 'text-white' : 'text-slate-900'}`}>
                     {price.toFixed(2)}
                   </span>
+                  <span className={`text-xs font-semibold ${popular ? 'text-white/70' : 'text-slate-400'}`}>+ IGV</span>
                   <span className={`text-sm font-semibold ${popular ? 'text-white/70' : 'text-slate-400'}`}>/mes</span>
                 </div>
                 <p className={`mt-1 text-[12px] ${popular ? 'text-white/60' : 'text-slate-400'}`}>
-                  {cycle === 'annual' ? `Facturado S/ ${plan.annual.toFixed(2)} al año` : 'Facturación mensual'}
+                  {periodo === 'mensual'
+                    ? 'Facturación mensual'
+                    : `Pagas S/ ${total.toFixed(2)} + IGV ${PERIODOS[periodo].cada}`}
                 </p>
 
                 {/* CTA */}
@@ -169,6 +242,40 @@ const HomePricing = () => {
               </article>
             );
           })}
+        </div>
+
+        {/* controles del carrusel */}
+        <div className="mt-2 flex items-center justify-center gap-4">
+          <button
+            type="button"
+            onClick={() => mover(-1)}
+            disabled={enInicio}
+            aria-label="Plan anterior"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#6c5ce7]/20 bg-white text-[#6c5ce7] shadow-sm transition-all hover:border-[#6c5ce7]/50 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <div className="flex items-center gap-2">
+            {plans.map((plan, i) => (
+              <button
+                key={plan.id}
+                type="button"
+                onClick={() => irA(i)}
+                aria-label={`Ver plan ${plan.name}`}
+                aria-current={activo === i}
+                className={`h-2 rounded-full transition-all ${activo === i ? 'w-6 bg-[#6c5ce7]' : 'w-2 bg-[#6c5ce7]/25 hover:bg-[#6c5ce7]/50'}`}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => mover(1)}
+            disabled={enFinal}
+            aria-label="Plan siguiente"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#6c5ce7]/20 bg-white text-[#6c5ce7] shadow-sm transition-all hover:border-[#6c5ce7]/50 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <ChevronRight size={18} />
+          </button>
         </div>
 
         <div className="mt-9 text-center">

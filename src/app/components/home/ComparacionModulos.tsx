@@ -6,7 +6,7 @@ import { BRAND } from '@/lib/branding';
 import {
   fetchPublicPlansClient,
   mergePricingPlans,
-  PRICING_BASE_PLANS,
+  PRICING_TODOS_LOS_PLANES,
   type PricingBasePlan,
 } from '@/lib/public-pricing';
 
@@ -60,6 +60,9 @@ const CAP: Record<string, Capability> = {
     whatsapp: true, gemini: true, soporte: 'dedicated',
   },
 };
+// Empresarial y Empresarial Plus incluyen todo lo de Corporativo en esta tabla.
+CAP['plan-empresarial'] = CAP['plan-corporativo'];
+CAP['plan-empresarial-plus'] = CAP['plan-corporativo'];
 
 type CellVal = string | boolean | { label: string; tone: 'green' | 'violet' | 'indigo' | 'slate' };
 
@@ -131,13 +134,13 @@ const waLink = `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
 )}`;
 
 const ComparacionModulos = () => {
-  const [plans, setPlans] = useState<PricingBasePlan[]>(PRICING_BASE_PLANS);
+  const [plans, setPlans] = useState<PricingBasePlan[]>(PRICING_TODOS_LOS_PLANES);
 
   useEffect(() => {
     let active = true;
     (async () => {
       const remote = await fetchPublicPlansClient();
-      if (active) setPlans(mergePricingPlans(PRICING_BASE_PLANS, remote));
+      if (active) setPlans(mergePricingPlans(PRICING_TODOS_LOS_PLANES, remote));
     })();
     return () => {
       active = false;
@@ -181,7 +184,7 @@ const ComparacionModulos = () => {
         </div>
 
         <div className="kz-reveal mt-12 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-sm">
-          <div className="min-w-[720px]">
+          <div className="min-w-[900px]">
             {/* header */}
             <div className="sticky top-0 z-10 grid items-center gap-2 border-b border-slate-100 bg-white px-5 py-4" style={{ gridTemplateColumns: cols }}>
               <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Módulo</span>
@@ -189,7 +192,7 @@ const ComparacionModulos = () => {
                 <div key={p.id} className="text-center">
                   <div className={`inline-flex flex-col items-center rounded-xl px-3 py-1.5 ${p.popular ? 'bg-gradient-to-br from-[#7b6af2] to-[#6c5ce7] text-white shadow-md shadow-[#6c5ce7]/25' : ''}`}>
                     <span className={`text-sm font-extrabold ${p.popular ? 'text-white' : 'text-slate-900'}`}>{p.name}</span>
-                    <span className={`text-[11px] ${p.popular ? 'text-white/80' : 'text-slate-400'}`}>S/ {p.monthly.toFixed(2)}/mes</span>
+                    <span className={`text-[11px] ${p.popular ? 'text-white/80' : 'text-slate-400'}`}>S/ {p.monthly.toFixed(2)} + IGV/mes</span>
                   </div>
                 </div>
               ))}

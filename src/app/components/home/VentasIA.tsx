@@ -3,6 +3,7 @@
 import { Check } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
 import MetaPartnerBadge from '../MetaPartnerBadge';
+import { IA_VENTAS_ADDON_TEXTO } from '@/lib/public-pricing';
 
 // Start/Pro/Scale abren la prueba gratis en el sistema; Personalizado se conversa.
 const registroLink = (clave: string) => `${BRAND.dashboardUrl}/registro?plan=${clave}`;
@@ -154,6 +155,7 @@ const VentasIA = ({ conFunciones = true }: { conFunciones?: boolean }) => {
                   <>
                     <span className="text-sm font-semibold text-white/60">S/</span>
                     <span className="text-4xl font-extrabold tracking-tight text-white">{p.precio}</span>
+                    <span className="text-xs font-semibold text-white/50">+ IGV</span>
                     <span className="text-sm text-white/50">/mes</span>
                   </>
                 ) : (
@@ -187,6 +189,10 @@ const VentasIA = ({ conFunciones = true }: { conFunciones?: boolean }) => {
             </div>
           ))}
         </div>
+
+        <p className="kz-reveal mx-auto mt-8 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3.5 text-center text-[13.5px] leading-relaxed text-white/75">
+          {IA_VENTAS_ADDON_TEXTO}
+        </p>
 
         {conFunciones && (
         <div className="kz-reveal mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
