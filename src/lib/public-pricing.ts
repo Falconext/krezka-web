@@ -385,7 +385,8 @@ export const PERIODOS: Record<
 
 export const PERIODO_CLAVES = Object.keys(PERIODOS) as PeriodoClave[];
 
-const redondear2 = (n: number): number => Math.round(n * 100) / 100;
+// toPrecision(12) quita el error binario (36.575 * 100 = 3657.4999…) antes de redondear.
+const redondear2 = (n: number): number => Math.round(Number((n * 100).toPrecision(12))) / 100;
 
 /** Lo que se paga por el periodo completo (sin IGV), redondeado a 2 decimales. */
 export const totalPeriodo = (plan: PricingBasePlan, clave: PeriodoClave): number => {
@@ -396,7 +397,7 @@ export const totalPeriodo = (plan: PricingBasePlan, clave: PeriodoClave): number
 
 /** Equivalente mensual del periodo (sin IGV). */
 export const mensualPeriodo = (plan: PricingBasePlan, clave: PeriodoClave): number =>
-  totalPeriodo(plan, clave) / PERIODOS[clave].meses;
+  redondear2(totalPeriodo(plan, clave) / PERIODOS[clave].meses);
 
 /** Descuento del periodo frente a pagar mes a mes, en % entero (para el badge del tab). */
 export const descuentoPeriodoPct = (plan: PricingBasePlan, clave: PeriodoClave): number =>
