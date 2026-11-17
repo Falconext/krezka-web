@@ -32,6 +32,7 @@ const HomePricing = () => {
   const [activo, setActivo] = useState(0);
   const [enInicio, setEnInicio] = useState(true);
   const [enFinal, setEnFinal] = useState(false);
+  const [pausado, setPausado] = useState(false);
 
   // Paso entre tarjetas = ancho de una tarjeta + el gap del carrusel.
   const paso = useCallback(() => {
@@ -69,6 +70,18 @@ const HomePricing = () => {
     if (e.key === 'ArrowRight') { e.preventDefault(); mover(1); }
     if (e.key === 'ArrowLeft') { e.preventDefault(); mover(-1); }
   };
+
+  // Avanza solo cada 15 s; al llegar al final vuelve al primero. Se pausa con el mouse
+  // encima o el foco dentro, y el conteo se reinicia cada vez que la posición cambia.
+  useEffect(() => {
+    if (pausado) return;
+    const id = window.setInterval(() => {
+      if (document.hidden) return;
+      if (enFinal) irA(0);
+      else mover(1);
+    }, 15000);
+    return () => window.clearInterval(id);
+  }, [pausado, activo, enFinal]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     let active = true;
@@ -141,6 +154,10 @@ const HomePricing = () => {
           ref={sliderRef}
           onScroll={actualizarPosicion}
           onKeyDown={onTeclado}
+          onMouseEnter={() => setPausado(true)}
+          onMouseLeave={() => setPausado(false)}
+          onFocus={() => setPausado(true)}
+          onBlur={() => setPausado(false)}
           tabIndex={0}
           role="region"
           aria-roledescription="carrusel"
