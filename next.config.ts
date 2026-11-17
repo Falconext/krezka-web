@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
     ],
   },
   output: "standalone",
+  // /planes era una tabla vieja con precios de 2025; los planes viven en la portada.
+  async redirects() {
+    return [{ source: "/planes", destination: "/#planes", permanent: true }];
+  },
 };
 
 export default nextConfig;
