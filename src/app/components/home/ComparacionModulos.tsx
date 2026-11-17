@@ -76,10 +76,10 @@ type Row = {
 
 const CATEGORIES = ['Facturación', 'Inventario', 'Compras', 'Ventas', 'Tienda', 'Tienda avanzada', 'Reportes', 'Avanzado', 'Soporte'];
 
-// Funciones de la tienda virtual que se dan desde Empresarial (Sistema → Planes → Tienda virtual).
-const PLANES_TIENDA_AVANZADA = new Set(['plan-empresarial', 'plan-empresarial-plus']);
-const TIENDA_AVANZADA: { key: string; label: string; description: string }[] = [
-  { key: 'promociones', label: 'Promociones automáticas', description: 'Compra X lleva Y, descuento por monto del pedido' },
+// Funciones de la tienda virtual por plan (Sistema → Planes → Tienda virtual). Empresarial trae
+// solo las promociones automáticas; Empresarial Plus, todas.
+const TIENDA_AVANZADA: { key: string; label: string; description: string; enEmpresarial?: boolean }[] = [
+  { key: 'promociones', label: 'Promociones automáticas', description: 'Compra X lleva Y, descuento por monto del pedido', enEmpresarial: true },
   { key: 'cuponesAvanzados', label: 'Cupones avanzados', description: 'Lotes de códigos únicos y 2 cupones por pedido' },
   { key: 'retencion', label: 'Retención de clientes', description: 'Cuenta del cliente, carritos abandonados y popup de bienvenida' },
   { key: 'portada', label: 'Portada configurable', description: 'Ordena y oculta las secciones de tu tienda' },
@@ -121,9 +121,11 @@ const ROWS: Row[] = [
   { key: 'galeria', label: 'Galería de imágenes por producto', category: 'Tienda', getValue: (p) => CAP[p.id].galeria },
   { key: 'shalom', label: 'Shalom Pro (envío a despacho)', category: 'Tienda', getValue: (p) => CAP[p.id].shalom },
   ...TIENDA_AVANZADA.map((f): Row => ({
-    ...f,
+    key: f.key,
+    label: f.label,
+    description: f.description,
     category: 'Tienda avanzada',
-    getValue: (p) => PLANES_TIENDA_AVANZADA.has(p.id),
+    getValue: (p) => p.id === 'plan-empresarial-plus' || (p.id === 'plan-empresarial' && !!f.enEmpresarial),
   })),
   { key: 'reportes', label: 'Dashboard gerencial (KPIs)', category: 'Reportes', description: 'Top productos, tendencias, ventas por período', getValue: (p) => CAP[p.id].reportesGerenciales },
   { key: 'sire', label: 'SIRE (Libros Ventas / Compras)', category: 'Reportes', description: 'Exportación a formato SUNAT', getValue: (p) => CAP[p.id].sire },
