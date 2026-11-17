@@ -8,7 +8,7 @@ const AllModules = () => {
         {
             icon: "mdi:file-document-outline",
             title: "Facturación Electrónica",
-            desc: "Emite boletas, facturas y notas de venta ilimitadas directo a SUNAT."
+            desc: "Emite boletas y facturas directo a SUNAT, con notas de venta ilimitadas."
         },
         {
             icon: "mdi:package-variant-closed",
@@ -64,7 +64,7 @@ const AllModules = () => {
                         </span>
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 text-lg">
-                        Facturación, inventario, punto de venta, caja y reportes desde el plan más básico, con comprobantes ilimitados en todos los planes.
+                        Facturación, inventario, punto de venta, caja y reportes desde el plan más básico, con notas de venta ilimitadas en todos los planes.
                     </p>
 
                     <div className="pt-4 flex justify-center">
@@ -109,7 +109,7 @@ const AllModules = () => {
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                         </span>
                         <span className="text-sm font-medium text-[#16a34a] dark:text-[#4ade80]">
-                            Comprobantes ilimitados en todos los planes
+                            Comprobantes ilimitados desde el plan Negocio
                         </span>
                     </div>
                 </div>

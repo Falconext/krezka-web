@@ -7,6 +7,7 @@ import MetaPartnerBadge from "@/app/components/MetaPartnerBadge";
 import AvisoAlzaPrecios from "@/app/components/AvisoAlzaPrecios";
 import {
     fetchPublicPlansClient,
+    IA_VENTAS_ADDON_TEXTO,
     mergePricingPlans,
     PRICING_BASE_PLANS,
     type PricingBasePlan,
@@ -84,7 +85,7 @@ const proPlanCapabilities: Record<string, Capability> = {
         onboarding: "Activación en 24h",
     },
     "plan-negocio": {
-        users: "5 usuarios",
+        users: "4 usuarios",
         sedes: "2 sedes",
         guiaRemision: true,
         kardexDashboard: true,
@@ -114,8 +115,8 @@ const proPlanCapabilities: Record<string, Capability> = {
         onboarding: "Activación inmediata",
     },
     "plan-corporativo": {
-        users: "15 usuarios",
-        sedes: "Ilimitadas",
+        users: "7 usuarios",
+        sedes: "3 sedes",
         guiaRemision: true,
         kardexDashboard: true,
         traslados: true,
@@ -135,7 +136,7 @@ const proPlanCapabilities: Record<string, Capability> = {
         reportesGerenciales: true,
         sire: true,
         finanzas: true,
-        produccion: true,
+        produccion: false,
         comisiones: false,
         roles: true,
         whatsapp: true,
@@ -511,7 +512,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     </p>
                     <div className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-semibold text-emerald-700">
                         <span className="text-lg">🏆</span>
-                        Comprobantes ILIMITADOS en todos los planes — desde S/ {minMonthly.toFixed(2)}/mes
+                        Comprobantes ILIMITADOS desde el plan Negocio — desde S/ {minMonthly.toFixed(2)} + IGV/mes
                     </div>
                     <AvisoAlzaPrecios className="mt-6" />
                     <div className="mt-4">
@@ -526,7 +527,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                     </div>
                     <div className="mt-6 flex flex-wrap justify-center gap-2 text-[13px] font-medium text-gray-700">
                         {[
-                            "Facturación electrónica ilimitada",
+                            "Facturación electrónica SUNAT",
                             "Inventario por rubro",
                             "Tienda virtual + WhatsApp",
                             "Reportes y finanzas",
@@ -573,6 +574,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                     </div>
                                     <p className="text-4xl font-extrabold text-gray-900 leading-none">
                                         S/ {plan.monthly.toFixed(2)}
+                                        <span className="text-sm font-semibold text-gray-400 ml-1">+ IGV</span>
                                         <span className="text-base font-normal text-gray-400 ml-1">/ mes</span>
                                     </p>
                                     <p className="mt-1.5 text-xs font-semibold text-gray-600">+ S/ 50 de instalación (pago único)</p>
@@ -581,7 +583,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                 {/* Plan anual */}
                                 <div className="flex items-center justify-center gap-1.5 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2">
                                     <span className="text-xs text-gray-500">Anual:</span>
-                                    <span className="text-xs font-bold text-gray-800">S/ {plan.annual.toFixed(2)}</span>
+                                    <span className="text-xs font-bold text-gray-800">S/ {plan.annual.toFixed(2)} + IGV</span>
                                     <span className="text-xs text-gray-400">(S/ {(plan.annual / 12).toFixed(2)}/mes)</span>
                                     <span className="text-[11px] font-bold text-amber-600">· 1 mes gratis</span>
                                 </div>
@@ -682,6 +684,7 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                             <>
                                                 <span className="text-sm text-gray-400">S/</span>
                                                 <span className="text-4xl font-bold text-white">{p.precio}</span>
+                                                <span className="text-xs font-semibold text-gray-400">+ IGV</span>
                                                 <span className="text-sm text-gray-400">/mes</span>
                                             </>
                                         ) : (
@@ -713,6 +716,8 @@ const Pricing = ({ showComparison = true }: { showComparison?: boolean }) => {
                                 </div>
                             ))}
                         </div>
+
+                        <p className="mt-5 text-[13px] leading-relaxed text-gray-300">{IA_VENTAS_ADDON_TEXTO}</p>
 
                         {/* Capacidades — iguales en todos los planes */}
                         <p className="mt-8 text-xs font-bold uppercase tracking-[0.15em] text-emerald-300">Todos los planes incluyen</p>

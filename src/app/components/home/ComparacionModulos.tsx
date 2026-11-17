@@ -6,7 +6,7 @@ import { BRAND } from '@/lib/branding';
 import {
   fetchPublicPlansClient,
   mergePricingPlans,
-  PRICING_BASE_PLANS,
+  PRICING_TODOS_LOS_PLANES,
   type PricingBasePlan,
 } from '@/lib/public-pricing';
 
@@ -56,10 +56,13 @@ const CAP: Record<string, Capability> = {
     guiaRemision: true, kardexDashboard: true, traslados: true, combos: true, lotesBarcodes: true,
     compras: true, caja: true, gastos: true, ticketera: true, cotizaciones: true, reservas: true,
     tienda: 'included', banners: true, galeria: true, culqi: true, shalom: true,
-    reportesGerenciales: true, sire: true, finanzas: true, produccion: true, roles: true,
+    reportesGerenciales: true, sire: true, finanzas: true, produccion: false, roles: true,
     whatsapp: true, gemini: true, soporte: 'dedicated',
   },
 };
+// Empresarial incluye todo lo de Corporativo; Producción solo viene en Empresarial Plus.
+CAP['plan-empresarial'] = CAP['plan-corporativo'];
+CAP['plan-empresarial-plus'] = { ...CAP['plan-corporativo'], produccion: true };
 
 type CellVal = string | boolean | { label: string; tone: 'green' | 'violet' | 'indigo' | 'slate' };
 
@@ -71,7 +74,29 @@ type Row = {
   getValue: (plan: PricingBasePlan) => CellVal;
 };
 
-const CATEGORIES = ['Facturación', 'Inventario', 'Compras', 'Ventas', 'Tienda', 'Reportes', 'Avanzado', 'Soporte'];
+const CATEGORIES = ['Facturación', 'Inventario', 'Compras', 'Ventas', 'Tienda', 'Tienda avanzada', 'Reportes', 'Avanzado', 'Soporte'];
+
+// Lo que el plan tiene encendido en Sistema → Planes; sin respuesta de la API, el valor local.
+const conFuncion = (p: PricingBasePlan, clave: string, local: boolean): boolean =>
+  p.features && clave in p.features ? p.features[clave] : local;
+
+// Funciones de la tienda virtual que se venden por plan. El valor local (Empresarial: vender y
+// recuperar; Plus: todas) es el respaldo cuando la API no responde.
+const TIENDA_AVANZADA: { key: string; feature: string; label: string; description: string; enEmpresarial?: boolean }[] = [
+  { key: 'promociones', feature: 'tienePromocionesTienda', label: 'Promociones automáticas', description: 'Compra X lleva Y, descuento por monto del pedido', enEmpresarial: true },
+  { key: 'cuponesAvanzados', feature: 'tieneCuponesAvanzados', label: 'Cupones avanzados', description: 'Lotes de códigos únicos y 2 cupones por pedido', enEmpresarial: true },
+  { key: 'retencion', feature: 'tieneRetencionTienda', label: 'Retención de clientes', description: 'Cuenta del cliente, carritos abandonados y popup de bienvenida', enEmpresarial: true },
+  { key: 'portada', feature: 'tienePortadaConfigurable', label: 'Portada configurable', description: 'Ordena y oculta las secciones de tu tienda', enEmpresarial: true },
+  { key: 'giftCards', feature: 'tieneGiftCardsTienda', label: 'Gift cards', description: 'Saldo que el comprador usa como medio de pago' },
+  { key: 'puntos', feature: 'tienePuntosTienda', label: 'Puntos de fidelidad', description: 'El comprador gana y canjea puntos' },
+  { key: 'devoluciones', feature: 'tieneDevolucionesTienda', label: 'Devoluciones y cambios', description: 'El comprador los pide desde el seguimiento de su pedido' },
+  { key: 'preventa', feature: 'tienePreventaTienda', label: 'Preventa y avisos de stock', description: 'Vende sin stock con fecha de llegada', enEmpresarial: true },
+  { key: 'analitica', feature: 'tieneAnaliticaTienda', label: 'Analítica de conversión', description: 'Embudo, canales y productos de la tienda', enEmpresarial: true },
+  { key: 'recurrentes', feature: 'tieneComprasRecurrentesTienda', label: 'Compras recurrentes', description: 'El cliente recibe un producto cada cierto tiempo' },
+  { key: 'internacional', feature: 'tieneIdiomasMonedasTienda', label: 'Idiomas y monedas', description: 'Tienda en inglés y precios en US$ / €' },
+  { key: 'b2b', feature: 'tienePreciosB2BTienda', label: 'Precios B2B por cliente', description: 'Clientes mayoristas con su propia lista o %' },
+  { key: 'digitales', feature: 'tieneProductosDigitalesTienda', label: 'Productos digitales', description: 'Descargas (PDF, ZIP, video) sin stock ni envío' },
+];
 
 const ROWS: Row[] = [
   { key: 'docs', label: 'Comprobantes electrónicos', category: 'Facturación', description: 'Boletas, facturas, notas de crédito/débito', getValue: (p) => p.docs },
@@ -96,9 +121,17 @@ const ROWS: Row[] = [
       return { label: 'No incluida', tone: 'slate' };
     },
   },
-  { key: 'banners', label: 'Banners promocionales', category: 'Tienda', getValue: (p) => CAP[p.id].banners },
-  { key: 'galeria', label: 'Galería de imágenes por producto', category: 'Tienda', getValue: (p) => CAP[p.id].galeria },
-  { key: 'shalom', label: 'Shalom Pro (envío a despacho)', category: 'Tienda', getValue: (p) => CAP[p.id].shalom },
+  { key: 'banners', label: 'Banners promocionales', category: 'Tienda', getValue: (p) => conFuncion(p, 'tieneBanners', CAP[p.id].banners) },
+  { key: 'galeria', label: 'Galería de imágenes por producto', category: 'Tienda', getValue: (p) => conFuncion(p, 'tieneGaleria', CAP[p.id].galeria) },
+  { key: 'shalom', label: 'Shalom Pro (envío a despacho)', category: 'Tienda', getValue: (p) => conFuncion(p, 'tieneShalom', CAP[p.id].shalom) },
+  ...TIENDA_AVANZADA.map((f): Row => ({
+    key: f.key,
+    label: f.label,
+    description: f.description,
+    category: 'Tienda avanzada',
+    getValue: (p) =>
+      conFuncion(p, f.feature, p.id === 'plan-empresarial-plus' || (p.id === 'plan-empresarial' && !!f.enEmpresarial)),
+  })),
   { key: 'reportes', label: 'Dashboard gerencial (KPIs)', category: 'Reportes', description: 'Top productos, tendencias, ventas por período', getValue: (p) => CAP[p.id].reportesGerenciales },
   { key: 'sire', label: 'SIRE (Libros Ventas / Compras)', category: 'Reportes', description: 'Exportación a formato SUNAT', getValue: (p) => CAP[p.id].sire },
   { key: 'finanzas', label: 'Finanzas (P&L y análisis financiero)', category: 'Reportes', getValue: (p) => CAP[p.id].finanzas },
@@ -131,13 +164,13 @@ const waLink = `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
 )}`;
 
 const ComparacionModulos = () => {
-  const [plans, setPlans] = useState<PricingBasePlan[]>(PRICING_BASE_PLANS);
+  const [plans, setPlans] = useState<PricingBasePlan[]>(PRICING_TODOS_LOS_PLANES);
 
   useEffect(() => {
     let active = true;
     (async () => {
       const remote = await fetchPublicPlansClient();
-      if (active) setPlans(mergePricingPlans(PRICING_BASE_PLANS, remote));
+      if (active) setPlans(mergePricingPlans(PRICING_TODOS_LOS_PLANES, remote));
     })();
     return () => {
       active = false;
@@ -181,7 +214,7 @@ const ComparacionModulos = () => {
         </div>
 
         <div className="kz-reveal mt-12 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-sm">
-          <div className="min-w-[720px]">
+          <div className="min-w-[900px]">
             {/* header */}
             <div className="sticky top-0 z-10 grid items-center gap-2 border-b border-slate-100 bg-white px-5 py-4" style={{ gridTemplateColumns: cols }}>
               <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Módulo</span>
@@ -189,7 +222,7 @@ const ComparacionModulos = () => {
                 <div key={p.id} className="text-center">
                   <div className={`inline-flex flex-col items-center rounded-xl px-3 py-1.5 ${p.popular ? 'bg-gradient-to-br from-[#7b6af2] to-[#6c5ce7] text-white shadow-md shadow-[#6c5ce7]/25' : ''}`}>
                     <span className={`text-sm font-extrabold ${p.popular ? 'text-white' : 'text-slate-900'}`}>{p.name}</span>
-                    <span className={`text-[11px] ${p.popular ? 'text-white/80' : 'text-slate-400'}`}>S/ {p.monthly.toFixed(2)}/mes</span>
+                    <span className={`text-[11px] ${p.popular ? 'text-white/80' : 'text-slate-400'}`}>S/ {p.monthly.toFixed(2)} + IGV/mes</span>
                   </div>
                 </div>
               ))}

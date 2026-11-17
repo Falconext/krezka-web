@@ -60,7 +60,7 @@ const Banner = () => {
                         {[
                             { value: "+500", label: "Negocios activos" },
                             { value: "SUNAT", label: "100% Certificado" },
-                            { value: "S/39.90", label: "Desde / mes" },
+                            { value: "S/39.90 + IGV", label: "Desde / mes" },
                             { value: "Soporte", label: "100% en español" },
                         ].map((stat) => (
                             <div key={stat.label} className="flex flex-col items-center gap-0.5">
