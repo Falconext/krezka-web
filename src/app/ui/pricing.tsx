@@ -115,7 +115,7 @@ const proPlanCapabilities: Record<string, Capability> = {
         onboarding: "Activación inmediata",
     },
     "plan-corporativo": {
-        users: "15 usuarios",
+        users: "Ilimitados",
         sedes: "Ilimitadas",
         guiaRemision: true,
         kardexDashboard: true,
@@ -136,7 +136,7 @@ const proPlanCapabilities: Record<string, Capability> = {
         reportesGerenciales: true,
         sire: true,
         finanzas: true,
-        produccion: true,
+        produccion: false,
         comisiones: false,
         roles: true,
         whatsapp: true,

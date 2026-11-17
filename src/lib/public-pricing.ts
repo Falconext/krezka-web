@@ -158,7 +158,7 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
       "SIRE",
       "Shalom Pro",
     ],
-    usersLabel: "15 usuarios",
+    usersLabel: "Ilimitados",
     sedesLabel: "Ilimitadas",
   },
 ];
@@ -176,21 +176,22 @@ export const PRICING_PLANES_EMPRESARIALES: PricingBasePlan[] = [
     description: "Para empresas que venden fuerte en su tienda virtual.",
     badge: "Empresarial",
     popular: false,
-    utility: "Promociones, cupones y varias sedes",
+    utility: "Tu tienda vende sola y recupera ventas",
     store: "Incluye tienda virtual",
-    tagline: "Todo Corporativo más promociones automáticas y cupones de descuento en tu tienda.",
-    target: "Empresas con varias sedes que impulsan sus ventas online con promociones.",
-    strategy: "Suma promociones automáticas y cupones a la operación multi-sede.",
+    tagline: "Todo Corporativo más una tienda que vende sola: promociones, cupones y carritos abandonados recuperados.",
+    target: "Empresas que quieren vender más en su tienda virtual y recuperar las ventas que se les iban.",
+    strategy: "Con un solo carrito recuperado al mes, la diferencia con Corporativo se paga sola.",
     highlights: [
       "Todo lo de Corporativo",
-      "Promociones automáticas y cupones de descuento en tu tienda",
-      "10 usuarios y hasta 8 sedes",
-      "Lotes y vencimientos (FEFO)",
-      "Asesor personal dedicado",
+      "Promociones automáticas (2x1, lleva 3 paga 2) y cupones avanzados",
+      "Recupera carritos abandonados por WhatsApp o correo",
+      "Cuenta del cliente y popup que capta contactos",
+      "Portada a tu medida, preventa y analítica de conversión",
+      "Usuarios y sedes ilimitados",
     ],
-    modules: ["Multi-sede", "Promociones", "Cupones", "FEFO", "SIRE"],
-    usersLabel: "10 usuarios",
-    sedesLabel: "8 sedes",
+    modules: ["Promociones", "Carritos", "Cupones", "Analítica", "Multi-sede"],
+    usersLabel: "Ilimitados",
+    sedesLabel: "Ilimitadas",
   },
   {
     id: "plan-empresarial-plus",
@@ -204,19 +205,20 @@ export const PRICING_PLANES_EMPRESARIALES: PricingBasePlan[] = [
     popular: false,
     utility: "Captar, fidelizar y vender más",
     store: "Incluye tienda virtual",
-    tagline: "Todo Empresarial más herramientas para captar y fidelizar clientes en tu tienda.",
-    target: "Empresas que quieren una tienda virtual completa con fidelización y venta B2B.",
-    strategy: "El plan completo: captación, fidelización, B2B y analítica.",
+    tagline: "Todo Empresarial más fidelización y venta a empresas: precios B2B, puntos y gift cards.",
+    target: "Empresas que venden a mayoristas o contratistas y quieren clientes que vuelvan.",
+    strategy: "El plan completo: fidelización, B2B, pago con tarjeta y producción.",
     highlights: [
       "Todo lo de Empresarial",
-      "Cupones avanzados, cuenta del cliente y carritos abandonados",
-      "Puntos, gift cards, devoluciones y preventa",
-      "Precios mayoristas (B2B), compras recurrentes y analítica",
-      "10 usuarios y hasta 10 sedes",
+      "Precios B2B por cliente mayorista o contratista",
+      "Puntos de fidelidad, gift cards y compras recurrentes",
+      "Devoluciones y cambios, idiomas y monedas, productos digitales",
+      "Pago con tarjeta en tu tienda y módulo de producción",
+      "Usuarios y sedes ilimitados",
     ],
-    modules: ["Fidelización", "Gift cards", "B2B", "Analítica", "Multi-sede"],
-    usersLabel: "10 usuarios",
-    sedesLabel: "10 sedes",
+    modules: ["B2B", "Fidelización", "Gift cards", "Producción", "Multi-sede"],
+    usersLabel: "Ilimitados",
+    sedesLabel: "Ilimitadas",
   },
 ];
 
@@ -260,10 +262,10 @@ const formatDocs = (maxComprobantes: number | null): string =>
     : `${maxComprobantes} comprobantes`;
 
 const formatUsers = (limiteUsuarios: number | null): string =>
-  limiteUsuarios == null ? "Ilimitados" : `${limiteUsuarios} ${limiteUsuarios === 1 ? "usuario" : "usuarios"}`;
+  limiteUsuarios == null || limiteUsuarios <= 0 ? "Ilimitados" : `${limiteUsuarios} ${limiteUsuarios === 1 ? "usuario" : "usuarios"}`;
 
 const formatSedes = (maxSedes: number | null): string =>
-  maxSedes == null ? "Ilimitadas" : `${maxSedes} ${maxSedes === 1 ? "sede" : "sedes"}`;
+  maxSedes == null || maxSedes <= 0 ? "Ilimitadas" : `${maxSedes} ${maxSedes === 1 ? "sede" : "sedes"}`;
 
 export const mergePricingPlans = (
   basePlans: PricingBasePlan[],
