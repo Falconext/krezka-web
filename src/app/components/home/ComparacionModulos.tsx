@@ -76,22 +76,26 @@ type Row = {
 
 const CATEGORIES = ['Facturación', 'Inventario', 'Compras', 'Ventas', 'Tienda', 'Tienda avanzada', 'Reportes', 'Avanzado', 'Soporte'];
 
-// Funciones de la tienda virtual por plan (Sistema → Planes → Tienda virtual). Empresarial trae
-// solo las promociones automáticas; Empresarial Plus, todas.
-const TIENDA_AVANZADA: { key: string; label: string; description: string; enEmpresarial?: boolean }[] = [
-  { key: 'promociones', label: 'Promociones automáticas', description: 'Compra X lleva Y, descuento por monto del pedido', enEmpresarial: true },
-  { key: 'cuponesAvanzados', label: 'Cupones avanzados', description: 'Lotes de códigos únicos y 2 cupones por pedido' },
-  { key: 'retencion', label: 'Retención de clientes', description: 'Cuenta del cliente, carritos abandonados y popup de bienvenida' },
-  { key: 'portada', label: 'Portada configurable', description: 'Ordena y oculta las secciones de tu tienda' },
-  { key: 'giftCards', label: 'Gift cards', description: 'Saldo que el comprador usa como medio de pago' },
-  { key: 'puntos', label: 'Puntos de fidelidad', description: 'El comprador gana y canjea puntos' },
-  { key: 'devoluciones', label: 'Devoluciones y cambios', description: 'El comprador los pide desde el seguimiento de su pedido' },
-  { key: 'preventa', label: 'Preventa y avisos de stock', description: 'Vende sin stock con fecha de llegada' },
-  { key: 'analitica', label: 'Analítica de conversión', description: 'Embudo, canales y productos de la tienda' },
-  { key: 'recurrentes', label: 'Compras recurrentes', description: 'El cliente recibe un producto cada cierto tiempo' },
-  { key: 'internacional', label: 'Idiomas y monedas', description: 'Tienda en inglés y precios en US$ / €' },
-  { key: 'b2b', label: 'Precios B2B por cliente', description: 'Clientes mayoristas con su propia lista o %' },
-  { key: 'digitales', label: 'Productos digitales', description: 'Descargas (PDF, ZIP, video) sin stock ni envío' },
+// Lo que el plan tiene encendido en Sistema → Planes; sin respuesta de la API, el valor local.
+const conFuncion = (p: PricingBasePlan, clave: string, local: boolean): boolean =>
+  p.features && clave in p.features ? p.features[clave] : local;
+
+// Funciones de la tienda virtual que se venden por plan. El valor local (Empresarial: solo
+// promociones; Plus: todas) es el respaldo cuando la API no responde.
+const TIENDA_AVANZADA: { key: string; feature: string; label: string; description: string; enEmpresarial?: boolean }[] = [
+  { key: 'promociones', feature: 'tienePromocionesTienda', label: 'Promociones automáticas', description: 'Compra X lleva Y, descuento por monto del pedido', enEmpresarial: true },
+  { key: 'cuponesAvanzados', feature: 'tieneCuponesAvanzados', label: 'Cupones avanzados', description: 'Lotes de códigos únicos y 2 cupones por pedido' },
+  { key: 'retencion', feature: 'tieneRetencionTienda', label: 'Retención de clientes', description: 'Cuenta del cliente, carritos abandonados y popup de bienvenida' },
+  { key: 'portada', feature: 'tienePortadaConfigurable', label: 'Portada configurable', description: 'Ordena y oculta las secciones de tu tienda' },
+  { key: 'giftCards', feature: 'tieneGiftCardsTienda', label: 'Gift cards', description: 'Saldo que el comprador usa como medio de pago' },
+  { key: 'puntos', feature: 'tienePuntosTienda', label: 'Puntos de fidelidad', description: 'El comprador gana y canjea puntos' },
+  { key: 'devoluciones', feature: 'tieneDevolucionesTienda', label: 'Devoluciones y cambios', description: 'El comprador los pide desde el seguimiento de su pedido' },
+  { key: 'preventa', feature: 'tienePreventaTienda', label: 'Preventa y avisos de stock', description: 'Vende sin stock con fecha de llegada' },
+  { key: 'analitica', feature: 'tieneAnaliticaTienda', label: 'Analítica de conversión', description: 'Embudo, canales y productos de la tienda' },
+  { key: 'recurrentes', feature: 'tieneComprasRecurrentesTienda', label: 'Compras recurrentes', description: 'El cliente recibe un producto cada cierto tiempo' },
+  { key: 'internacional', feature: 'tieneIdiomasMonedasTienda', label: 'Idiomas y monedas', description: 'Tienda en inglés y precios en US$ / €' },
+  { key: 'b2b', feature: 'tienePreciosB2BTienda', label: 'Precios B2B por cliente', description: 'Clientes mayoristas con su propia lista o %' },
+  { key: 'digitales', feature: 'tieneProductosDigitalesTienda', label: 'Productos digitales', description: 'Descargas (PDF, ZIP, video) sin stock ni envío' },
 ];
 
 const ROWS: Row[] = [
@@ -117,15 +121,16 @@ const ROWS: Row[] = [
       return { label: 'No incluida', tone: 'slate' };
     },
   },
-  { key: 'banners', label: 'Banners promocionales', category: 'Tienda', getValue: (p) => CAP[p.id].banners },
-  { key: 'galeria', label: 'Galería de imágenes por producto', category: 'Tienda', getValue: (p) => CAP[p.id].galeria },
-  { key: 'shalom', label: 'Shalom Pro (envío a despacho)', category: 'Tienda', getValue: (p) => CAP[p.id].shalom },
+  { key: 'banners', label: 'Banners promocionales', category: 'Tienda', getValue: (p) => conFuncion(p, 'tieneBanners', CAP[p.id].banners) },
+  { key: 'galeria', label: 'Galería de imágenes por producto', category: 'Tienda', getValue: (p) => conFuncion(p, 'tieneGaleria', CAP[p.id].galeria) },
+  { key: 'shalom', label: 'Shalom Pro (envío a despacho)', category: 'Tienda', getValue: (p) => conFuncion(p, 'tieneShalom', CAP[p.id].shalom) },
   ...TIENDA_AVANZADA.map((f): Row => ({
     key: f.key,
     label: f.label,
     description: f.description,
     category: 'Tienda avanzada',
-    getValue: (p) => p.id === 'plan-empresarial-plus' || (p.id === 'plan-empresarial' && !!f.enEmpresarial),
+    getValue: (p) =>
+      conFuncion(p, f.feature, p.id === 'plan-empresarial-plus' || (p.id === 'plan-empresarial' && !!f.enEmpresarial)),
   })),
   { key: 'reportes', label: 'Dashboard gerencial (KPIs)', category: 'Reportes', description: 'Top productos, tendencias, ventas por período', getValue: (p) => CAP[p.id].reportesGerenciales },
   { key: 'sire', label: 'SIRE (Libros Ventas / Compras)', category: 'Reportes', description: 'Exportación a formato SUNAT', getValue: (p) => CAP[p.id].sire },

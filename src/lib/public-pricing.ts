@@ -16,6 +16,8 @@ export type PublicPlanApi = {
   tieneDeliveryGPS: boolean;
   tieneTicketera: boolean;
   tieneGestionLotes: boolean;
+  /** Funciones encendidas del plan en Sistema → Planes (tabla PlanFeature). */
+  features?: Record<string, boolean>;
 };
 
 type PublicPlanResponse = {
@@ -43,6 +45,8 @@ export type PricingBasePlan = {
   modules: string[];
   usersLabel: string;
   sedesLabel: string;
+  /** Funciones del plan según la base; sin API, la comparación usa sus valores locales. */
+  features?: Record<string, boolean>;
 };
 
 export const PRICING_BASE_PLANS: PricingBasePlan[] = [
@@ -240,6 +244,8 @@ export const getPlatform = (): "krezka" => "krezka";
 
 const mapPlanId = (name: string): PricingBasePlan["id"] | null => {
   const n = normalizeName(name);
+  // Los planes "… ANUAL" son el mismo plan cobrado al año: se lee el mensual.
+  if (n.includes("anual")) return null;
   if (n.includes("emprendedor")) return "plan-emprendedor";
   if (n.includes("negocio")) return "plan-negocio";
   if (n.includes("corporativo")) return "plan-corporativo";
@@ -288,6 +294,7 @@ export const mergePricingPlans = (
       usersLabel: formatUsers(remote.limiteUsuarios),
       sedesLabel: formatSedes(remote.maxSedes),
       store: remote.tieneTienda ? "Incluye tienda virtual" : base.store,
+      features: remote.features,
     };
   });
 };
