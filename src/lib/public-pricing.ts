@@ -124,7 +124,7 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
       "Lotes básicos",
       "WhatsApp/Email",
     ],
-    usersLabel: "5 usuarios",
+    usersLabel: "4 usuarios",
     sedesLabel: "2 sedes",
   },
   {
@@ -145,7 +145,7 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
     highlights: [
       "Todo lo del plan Negocio",
       "Sube tus compras con foto (IA)",
-      "15 usuarios y hasta 5 sedes",
+      "7 usuarios y hasta 3 sedes",
       "Kardex avanzado FEFO/FIFO con vencimientos y traslados entre sucursales",
       "Reviews y reseñas web con moderación",
       "Contabilidad, SIRE y dashboard financiero con rentabilidad exacta",
@@ -158,8 +158,8 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
       "SIRE",
       "Shalom Pro",
     ],
-    usersLabel: "15 usuarios",
-    sedesLabel: "5 sedes",
+    usersLabel: "7 usuarios",
+    sedesLabel: "3 sedes",
   },
 ];
 
@@ -187,11 +187,11 @@ export const PRICING_PLANES_EMPRESARIALES: PricingBasePlan[] = [
       "Recupera carritos abandonados por WhatsApp o correo",
       "Cuenta del cliente y popup que capta contactos",
       "Portada a tu medida, preventa y analítica de conversión",
-      "30 usuarios y hasta 10 sedes",
+      "10 usuarios y hasta 5 sedes",
     ],
     modules: ["Promociones", "Carritos", "Cupones", "Analítica", "Multi-sede"],
-    usersLabel: "30 usuarios",
-    sedesLabel: "10 sedes",
+    usersLabel: "10 usuarios",
+    sedesLabel: "5 sedes",
   },
   {
     id: "plan-empresarial-plus",

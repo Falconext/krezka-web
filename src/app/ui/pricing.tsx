@@ -85,7 +85,7 @@ const proPlanCapabilities: Record<string, Capability> = {
         onboarding: "Activación en 24h",
     },
     "plan-negocio": {
-        users: "5 usuarios",
+        users: "4 usuarios",
         sedes: "2 sedes",
         guiaRemision: true,
         kardexDashboard: true,
@@ -115,8 +115,8 @@ const proPlanCapabilities: Record<string, Capability> = {
         onboarding: "Activación inmediata",
     },
     "plan-corporativo": {
-        users: "15 usuarios",
-        sedes: "5 sedes",
+        users: "7 usuarios",
+        sedes: "3 sedes",
         guiaRemision: true,
         kardexDashboard: true,
         traslados: true,
