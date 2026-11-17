@@ -145,7 +145,7 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
     highlights: [
       "Todo lo del plan Negocio",
       "Sube tus compras con foto (IA)",
-      "Usuarios y sedes ilimitadas",
+      "15 usuarios y hasta 5 sedes",
       "Kardex avanzado FEFO/FIFO con vencimientos y traslados entre sucursales",
       "Reviews y reseñas web con moderación",
       "Contabilidad, SIRE y dashboard financiero con rentabilidad exacta",
@@ -158,8 +158,8 @@ export const PRICING_BASE_PLANS: PricingBasePlan[] = [
       "SIRE",
       "Shalom Pro",
     ],
-    usersLabel: "Ilimitados",
-    sedesLabel: "Ilimitadas",
+    usersLabel: "15 usuarios",
+    sedesLabel: "5 sedes",
   },
 ];
 
@@ -187,11 +187,11 @@ export const PRICING_PLANES_EMPRESARIALES: PricingBasePlan[] = [
       "Recupera carritos abandonados por WhatsApp o correo",
       "Cuenta del cliente y popup que capta contactos",
       "Portada a tu medida, preventa y analítica de conversión",
-      "Usuarios y sedes ilimitados",
+      "30 usuarios y hasta 10 sedes",
     ],
     modules: ["Promociones", "Carritos", "Cupones", "Analítica", "Multi-sede"],
-    usersLabel: "Ilimitados",
-    sedesLabel: "Ilimitadas",
+    usersLabel: "30 usuarios",
+    sedesLabel: "10 sedes",
   },
   {
     id: "plan-empresarial-plus",

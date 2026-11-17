@@ -295,7 +295,11 @@ const HomePricing = () => {
           </button>
         </div>
 
-        <div className="mt-9 text-center">
+        <p className="mt-8 text-center text-sm text-slate-500">
+          ¿Te falta un usuario o un local? Súmalos a cualquier plan: usuario adicional S/ 30 y sede adicional S/ 80 al mes + IGV.
+        </p>
+
+        <div className="mt-5 text-center">
           <a
             href="#comparacion"
             className="text-sm font-semibold text-[#6c5ce7] underline decoration-[#6c5ce7]/40 underline-offset-4 hover:text-[#4b3fbe]"
