@@ -65,6 +65,9 @@ const EmPlanes = () => (
             <p className={`mt-1.5 text-xs font-semibold ${p.destacado ? 'text-white/80' : 'text-slate-600'}`}>
               Primer pago: (S/ {p.mensual.toFixed(2)} + S/ {INSTALACION} de instalación, pago único) + IGV
             </p>
+            <p className={`mt-0.5 text-xs ${p.destacado ? 'text-white/70' : 'text-slate-500'}`}>
+              Instalación gratis pagando el año
+            </p>
 
             <ul className="mt-8 flex-1 space-y-3.5">
               {p.incluye.map((i) => (

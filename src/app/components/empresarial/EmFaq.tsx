@@ -3,7 +3,7 @@ import { CircleHelp } from 'lucide-react';
 const preguntas = [
   {
     p: '¿Puedo pasar mi tienda de Shopify a Krezka?',
-    r: 'Sí. Te ayudamos a cargar tus productos, categorías y fotos, y a conectar tu dominio. La instalación de S/ 50 + IGV es un solo pago.',
+    r: 'Sí. Te ayudamos a cargar tus productos, categorías y fotos, y a conectar tu dominio. La instalación de S/ 50 + IGV es un solo pago, y es gratis si pagas el plan anual.',
   },
   {
     p: '¿Krezka cobra comisión por venta?',
