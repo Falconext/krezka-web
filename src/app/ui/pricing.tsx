@@ -311,7 +311,8 @@ const comparisonRows: ComparisonRow[] = [
     },
     {
         key: "shalom",
-        label: "Shalom Pro (envío a despacho)",
+        label: "Shalom y Olva (envío a despacho)",
+        description: "En Negocio registras tus envíos a mano; en Corporativo creas tus guías desde el sistema, sin entrar a la web de Shalom ni de Olva",
         category: "Tienda",
         kind: "boolean",
         getValue: (plan) => proPlanCapabilities[plan.id].shalom,
