@@ -100,6 +100,17 @@
   0%, 100% { transform: translateX(-8px); }
   50%      { transform: translateX(8px); }
 }
+/* Columnas del collage de plantillas: suben (o bajan) sin fin, muy lento */
+@keyframes kz-columna {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+.kz-columna { animation: kz-columna 70s linear infinite; will-change: transform; }
+.kz-columna-inversa { animation-direction: reverse; }
+@media (prefers-reduced-motion: reduce) {
+  .kz-columna { animation: none; }
+}
+
 .kz-float-x { animation: kz-float-x 5.5s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
   .kz-float-x { animation: none; }

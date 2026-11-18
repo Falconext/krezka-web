@@ -123,7 +123,7 @@ const ROWS: Row[] = [
   },
   { key: 'banners', label: 'Banners promocionales', category: 'Tienda', getValue: (p) => conFuncion(p, 'tieneBanners', CAP[p.id].banners) },
   { key: 'galeria', label: 'Galería de imágenes por producto', category: 'Tienda', getValue: (p) => conFuncion(p, 'tieneGaleria', CAP[p.id].galeria) },
-  { key: 'shalom', label: 'Shalom Pro (envío a despacho)', category: 'Tienda', getValue: (p) => conFuncion(p, 'tieneShalom', CAP[p.id].shalom) },
+  { key: 'shalom', label: 'Shalom y Olva (envío a despacho)', category: 'Tienda', description: 'En Negocio registras tus envíos a mano; en Corporativo creas tus guías desde el sistema, sin entrar a la web de Shalom ni de Olva', getValue: (p) => conFuncion(p, 'tieneShalom', CAP[p.id].shalom) },
   ...TIENDA_AVANZADA.map((f): Row => ({
     key: f.key,
     label: f.label,

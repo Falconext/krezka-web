@@ -1,7 +1,35 @@
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { ChevronRight, Percent, ReceiptText, ShoppingCart } from 'lucide-react';
-import tienda from '@/app/public/assets/sistema/tour-tienda.webp';
+import arcilla from '@/app/public/assets/plantillas/arcilla.webp';
+import brasa from '@/app/public/assets/plantillas/brasa.webp';
+import cacao from '@/app/public/assets/plantillas/cacao.webp';
+import cumbre from '@/app/public/assets/plantillas/cumbre.webp';
+import esmalte from '@/app/public/assets/plantillas/esmalte.webp';
+import folio from '@/app/public/assets/plantillas/folio.webp';
+import halo from '@/app/public/assets/plantillas/halo.webp';
+import iris from '@/app/public/assets/plantillas/iris.webp';
+import lumen from '@/app/public/assets/plantillas/lumen.webp';
+import migas from '@/app/public/assets/plantillas/migas.webp';
+import navaja from '@/app/public/assets/plantillas/navaja.webp';
+import nori from '@/app/public/assets/plantillas/nori.webp';
+import polar from '@/app/public/assets/plantillas/polar.webp';
+import pulso from '@/app/public/assets/plantillas/pulso.webp';
+import smash from '@/app/public/assets/plantillas/smash.webp';
+import telar from '@/app/public/assets/plantillas/telar.webp';
+import voltio from '@/app/public/assets/plantillas/voltio.webp';
 import { EMPRESARIAL, waEmpresarial } from './datos';
+
+// Capturas reales de plantillas de la tienda virtual (vista previa con la tienda demo),
+// repartidas en columnas para el collage inclinado.
+const fotos: StaticImageData[] = [
+  migas, brasa, halo, cacao, voltio, polar, iris, smash, lumen, telar,
+  esmalte, cumbre, pulso, arcilla, nori, folio, navaja,
+];
+// 6 por columna, corridas para que ninguna fila repita la foto de al lado.
+const columnas = Array.from({ length: 5 }, (_, c) =>
+  Array.from({ length: 6 }, (_, f) => fotos[(f * 5 + c * 3) % fotos.length]),
+);
+const desfase = ['0%', '-22%', '-8%', '-30%', '-14%'];
 
 // Lo que pasa en una tienda Krezka mientras el dueño atiende el local.
 const avisos = [
@@ -51,26 +79,44 @@ const EmHero = () => (
         </a>
       </div>
 
-      {/* Tienda real de un cliente, con avisos flotantes */}
-      <div className="kz-reveal-scale relative mx-auto mt-16 max-w-5xl" style={{ animationDelay: '0.24s' }}>
+      {/* Collage inclinado con plantillas reales de la tienda virtual, con avisos flotantes */}
+      <div className="kz-reveal-scale relative mx-auto mt-16 max-w-6xl" style={{ animationDelay: '0.24s' }}>
         <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-[#6c5ce7]/25 via-white to-emerald-300/25 blur-2xl" />
-        <div className="overflow-hidden rounded-2xl border border-white bg-white text-left shadow-[0_50px_100px_-30px_rgba(75,63,190,0.45)]">
-          <div className="flex items-center gap-1.5 border-b border-slate-100 bg-slate-50 px-4 py-3">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-            <span className="ml-3 flex-1 truncate rounded-md bg-white px-3 py-1 text-[11px] text-slate-400 shadow-inner">
-              tutienda.krezka.com
-            </span>
+        <div
+          className="relative h-[400px] overflow-hidden rounded-[2rem] border border-white bg-[#ecebf3] shadow-[0_50px_100px_-30px_rgba(75,63,190,0.45)] sm:h-[540px] lg:h-[620px]"
+          role="img"
+          aria-label="Plantillas de tienda virtual de Krezka: panadería, hamburguesas, cerámica, perfumes, ópticas, ferretería y más"
+        >
+          <div
+            className="pointer-events-none absolute left-1/2 top-[-35%] grid w-[230%] grid-cols-5 gap-3 sm:w-[150%] sm:gap-5"
+            style={{ transform: 'translateX(-50%) rotate(-14deg)' }}
+            aria-hidden="true"
+          >
+            {columnas.map((fotos, c) => (
+              <div key={c} style={{ marginTop: desfase[c] }}>
+                {/* Se repite la columna para que el desplazamiento infinito no tenga salto. */}
+                <div className={`kz-columna ${c % 2 ? 'kz-columna-inversa' : ''}`}>
+                  {[...fotos, ...fotos].map((foto, i) => (
+                    <div key={i} className="pb-3 sm:pb-5">
+                      <div className="overflow-hidden rounded-xl bg-white shadow-[0_18px_40px_-18px_rgba(30,27,75,0.35)] ring-1 ring-black/5 sm:rounded-2xl">
+                        <Image
+                          src={foto}
+                          alt=""
+                          priority={i < 2}
+                          quality={80}
+                          sizes="(min-width: 1024px) 360px, 40vw"
+                          className="h-auto w-full"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-          <Image
-            src={tienda}
-            alt="Tienda virtual hecha con Krezka, con categorías, buscador, carrito y banners"
-            priority
-            quality={85}
-            sizes="(min-width: 1024px) 1024px, 94vw"
-            className="h-auto w-full"
-          />
+          {/* Desvanece arriba y abajo para que las columnas entren y salgan suaves. */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#ecebf3] to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#ecebf3] to-transparent" />
         </div>
 
         {avisos.map((a) => (

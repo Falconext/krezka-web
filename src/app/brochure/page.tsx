@@ -688,7 +688,7 @@ export default function BrochurePage() {
               { label: "FEFO/FIFO y vencimientos", vals: [false, false, true] },
               { label: "Traslados entre sucursales", vals: [false, true, true] },
               { label: "Reservas y producción (recetas/BOM)", vals: [false, false, true] },
-              { label: "Shalom Pro (envío a despacho)", vals: [false, true, true] },
+              { label: "Shalom y Olva (Negocio manual, Corporativo automático)", vals: [false, true, true] },
               { category: "Crecimiento, finanzas y soporte" },
               { label: "Dashboard gerencial (KPIs)", vals: [false, true, true] },
               { label: "SIRE (Libros Ventas / Compras)", vals: [false, true, true] },
