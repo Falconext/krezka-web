@@ -9,7 +9,9 @@ import WhatWeDo from '../ui/whatwedo';
 import AllModules from '../ui/all-modules';
 import WeTools from '../ui/wetools';
 import Analytics from '../ui/analitycs';
-import Pricing from '../ui/pricing';
+import HomePricing from '../components/home/HomePricing';
+import ComparacionModulos from '../components/home/ComparacionModulos';
+import PreciosAdicionales from '../components/home/PreciosAdicionales';
 import Testimonials from '../ui/testimonials';
 import Industries from '../ui/industries';
 import Advisors from '../ui/advisors';
@@ -79,9 +81,10 @@ export default function SistemasPage() {
           </AnimatedSection>
         </div>
 
-        <AnimatedSection delay={0.15} direction="right">
-          <Pricing />
-        </AnimatedSection>
+        {/* Los mismos planes que en Inicio */}
+        <HomePricing />
+        <ComparacionModulos />
+        <PreciosAdicionales />
 
         <AnimatedSection delay={0.12} direction="up">
           <Advisors />
