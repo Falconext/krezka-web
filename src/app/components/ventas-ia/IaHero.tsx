@@ -48,7 +48,7 @@ const IaHero = () => (
             href="#planes-ia"
             className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#6c5ce7] px-8 py-4 text-[15px] font-semibold text-white shadow-lg shadow-[#6c5ce7]/30 transition-all hover:scale-[1.03] hover:bg-[#5b4bd6] sm:w-auto"
           >
-            Probar 7 días gratis
+            Ver escalas y precios
             <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a

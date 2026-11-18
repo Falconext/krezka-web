@@ -22,14 +22,14 @@ const IaCta = () => (
           Mañana a las 11 de la noche alguien te va a escribir
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base text-white/85 md:text-lg">
-          Que tu vendedor IA le responda, le cotice y te deje la venta lista. Pruébalo 7 días gratis.
+          Que tu vendedor IA le responda, le cotice y te deje la venta lista. Súmalo a tu plan de Krezka.
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href={`${BRAND.dashboardUrl}/registro?plan=pro`}
+            href="#planes-ia"
             className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-[15px] font-semibold text-[#4b3fbe] shadow-lg transition-all hover:scale-[1.03] sm:w-auto"
           >
-            Probar 7 días gratis
+            Ver escalas y precios
             <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a

@@ -66,8 +66,8 @@ const IaFunciones = () => (
           className="kz-reveal flex flex-col justify-center rounded-2xl bg-gradient-to-br from-[#7b6af2] to-[#5b4bd6] p-5 text-white shadow-lg shadow-[#6c5ce7]/25 transition-transform hover:-translate-y-0.5"
           style={{ animationDelay: '0.12s' }}
         >
-          <span className="text-[15px] font-bold">Desde S/ 199 + IGV al mes</span>
-          <span className="mt-1 text-[13.5px] text-white/80">Con facturación SUNAT incluida. Ver planes →</span>
+          <span className="text-[15px] font-bold">Desde S/ 149 + IGV al mes</span>
+          <span className="mt-1 text-[13.5px] text-white/80">Complemento para cualquier plan de Krezka. Ver escalas →</span>
         </a>
       </div>
     </div>

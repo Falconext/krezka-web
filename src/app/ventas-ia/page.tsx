@@ -11,7 +11,7 @@ import IaCta from '../components/ventas-ia/IaCta';
 export const metadata: Metadata = {
   title: 'IA de Ventas por WhatsApp',
   description:
-    'Un vendedor con IA que atiende tu WhatsApp 24/7 con tu catálogo real, cotiza, toma pedidos y te avisa los leads calientes. Facturación SUNAT incluida, desde S/ 199 + IGV al mes.',
+    'Un vendedor con IA que atiende tu WhatsApp 24/7 con tu catálogo real, cotiza, toma pedidos y te avisa los leads calientes. Complemento para cualquier plan de Krezka, desde S/ 149 + IGV al mes.',
   alternates: { canonical: '/ventas-ia' },
 };
 

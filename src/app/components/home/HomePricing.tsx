@@ -110,7 +110,7 @@ const HomePricing = () => {
             Planes claros. Sin costos ocultos.
           </h2>
           <p className="kz-reveal mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-slate-500 md:text-base" style={{ animationDelay: '0.12s' }}>
-            Desde S/ {minMonthly.toFixed(2)} + IGV al mes. Emprendedor incluye 300 comprobantes SUNAT al mes; desde Negocio, ilimitados. Instalación S/ 50, pago único. Cambia o cancela cuando quieras.
+            Desde S/ {minMonthly.toFixed(2)} + IGV al mes. Emprendedor incluye 300 comprobantes SUNAT al mes; desde Negocio, ilimitados. Instalación de S/ 50 + IGV, pago único. Cambia o cancela cuando quieras.
           </p>
           <div className="kz-reveal mt-7" style={{ animationDelay: '0.16s' }}>
             <AvisoAlzaPrecios />
@@ -243,7 +243,7 @@ const HomePricing = () => {
                     : `Pagas S/ ${total.toFixed(2)} + IGV ${PERIODOS[periodo].cada}`}
                 </p>
                 <p className={`mt-0.5 text-[12px] font-semibold ${popular ? 'text-white/80' : 'text-slate-600'}`}>
-                  + S/ 50 de instalación (pago único)
+                  Primer pago: (S/ {(periodo === 'mensual' ? price : total).toFixed(2)} + S/ 50 de instalación, pago único) + IGV
                 </p>
 
                 {/* CTA */}
@@ -301,6 +301,23 @@ const HomePricing = () => {
         <p className="mt-8 text-center text-sm text-slate-500">
           ¿Te falta un usuario o un local? Súmalos a cualquier plan: usuario adicional S/ 30 y sede adicional S/ 80 al mes + IGV.
         </p>
+
+        {/* La IA de Ventas no va dentro de ningún plan: se cobra aparte y se suma a cualquiera. */}
+        <div className="mx-auto mt-5 flex max-w-3xl flex-col items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/70 px-5 py-4 text-center sm:flex-row sm:text-left">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white">
+            <Sparkles size={18} />
+          </span>
+          <p className="flex-1 text-sm leading-relaxed text-slate-600">
+            <span className="font-bold text-slate-900">IA de Ventas por WhatsApp: complemento aparte.</span> Se suma a
+            cualquier plan y se ajusta a tus leads, desde S/ 149 + IGV al mes.
+          </p>
+          <a
+            href="/ventas-ia"
+            className="shrink-0 text-sm font-semibold text-emerald-700 underline decoration-emerald-700/40 underline-offset-4 hover:text-emerald-800"
+          >
+            Ver la IA de Ventas
+          </a>
+        </div>
 
         <div className="mt-5 text-center">
           <a

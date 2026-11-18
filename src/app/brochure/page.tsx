@@ -86,31 +86,31 @@ type VentasPlan = {
 
 const VENTAS_PLANS: VentasPlan[] = [
   {
-    name: "Start",
-    price: 199,
+    name: "IA Start",
+    price: 149,
     leads: 500,
     tagline: "Empieza a atender con IA",
-    bullets: ["Facturación electrónica SUNAT incluida", "Todas las funciones de la IA", "Configuración inicial de tu asesor IA"],
+    bullets: ["Se suma a cualquier plan de Krezka", "Todas las funciones de la IA", "Configuración inicial de tu asesor IA"],
   },
   {
-    name: "Pro",
-    price: 299,
+    name: "IA Pro",
+    price: 249,
     leads: 1500,
     tagline: "El más elegido para escalar, sin sorpresas",
-    bullets: ["Facturación electrónica SUNAT incluida", "Todas las funciones de la IA", "Entrenamos la IA con tus documentos"],
+    bullets: ["Se suma a cualquier plan de Krezka", "Todas las funciones de la IA", "Entrenamos la IA con tus documentos"],
     popular: true,
   },
   {
-    name: "Scale",
-    price: 499,
+    name: "IA Scale",
+    price: 399,
     leads: 5000,
     tagline: "Alto volumen — el costo por lead más bajo",
-    bullets: ["Facturación electrónica SUNAT incluida", "Todas las funciones de la IA", "Revisión mensual de resultados"],
+    bullets: ["Se suma a cualquier plan de Krezka", "Todas las funciones de la IA", "Revisión mensual de resultados"],
   },
   {
-    name: "Personalizado",
+    name: "IA Personalizada",
     tagline: "Para varias sedes o un volumen mayor",
-    bullets: ["Facturación electrónica SUNAT incluida", "Todas las funciones de la IA", "Asesor dedicado y varias sedes"],
+    bullets: ["Se suma a cualquier plan de Krezka", "Todas las funciones de la IA", "Asesor dedicado y varias sedes"],
   },
 ];
 
@@ -240,7 +240,7 @@ export default function BrochurePage() {
             </div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full">
               <Star size={10} className="text-emerald-600 fill-emerald-600" />
-              <span className="text-emerald-700 text-[11px] font-bold">Instalación S/ 50 · pago único</span>
+              <span className="text-emerald-700 text-[11px] font-bold">Instalación S/ 50 + IGV · pago único</span>
             </div>
           </div>
 
@@ -273,7 +273,7 @@ export default function BrochurePage() {
                       <span className="text-[9px] font-bold text-gray-400">+ IGV</span>
                       <span className="text-[10px] font-semibold text-gray-400">/ mes</span>
                     </div>
-                    <p className="mt-1 text-[9px] font-bold text-gray-600">+ S/ 50 de instalación (pago único)</p>
+                    <p className="mt-1 text-[9px] font-bold text-gray-600">1er pago: (S/ {p.monthly.toFixed(2)} + S/ 50 de instalación, pago único) + IGV</p>
                   </div>
                   <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-2 py-1.5">
                     <span className="text-[8px] text-gray-500">Anual: </span>
@@ -352,7 +352,7 @@ export default function BrochurePage() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/[0.08] px-3 py-1">
               <Sparkles size={12} className="text-emerald-300" />
-              <span className="text-emerald-300 text-[10px] font-black uppercase tracking-[0.22em]">Nuevo · IA de Ventas por WhatsApp</span>
+              <span className="text-emerald-300 text-[10px] font-black uppercase tracking-[0.22em]">Nuevo · IA de Ventas por WhatsApp · complemento para cualquier plan</span>
             </div>
             <h2 className="mt-4 text-[2.7rem] leading-[1.04] font-black tracking-tight text-white">
               Un vendedor con IA que{" "}
@@ -365,14 +365,14 @@ export default function BrochurePage() {
             </p>
           </div>
 
-          {/* IA de Ventas — planes todo incluido, a escala */}
+          {/* IA de Ventas — complemento por escalas, se suma a cualquier plan */}
           <div className="mt-7">
             <div className="mb-3 flex items-end justify-between">
               <div className="flex items-center gap-2">
                 <TrendingUp size={13} className="text-emerald-300" />
-                <p className="text-white/45 text-[10px] font-black uppercase tracking-[0.24em]">IA de Ventas · precio claro · a escala</p>
+                <p className="text-white/45 text-[10px] font-black uppercase tracking-[0.24em]">IA de Ventas · complemento · a escala</p>
               </div>
-              <span className="text-white/30 text-[10px]">Todos incluyen facturación electrónica SUNAT</span>
+              <span className="text-white/30 text-[10px]">Se suma a cualquier plan · se ajusta a tus leads</span>
             </div>
             <div className="grid grid-cols-4 gap-3">
               {VENTAS_PLANS.map((p) => (
@@ -387,7 +387,7 @@ export default function BrochurePage() {
                   )}
                   <div className="flex items-center justify-between">
                     <h3 className="text-base font-black text-white">{p.name}</h3>
-                    {p.price && <span className="rounded-md bg-white/[0.06] px-1.5 py-0.5 text-[7.5px] font-black uppercase tracking-wider text-white/45">Ventas</span>}
+                    {p.price && <span className="rounded-md bg-white/[0.06] px-1.5 py-0.5 text-[7.5px] font-black uppercase tracking-wider text-white/45">Complemento</span>}
                   </div>
                   <p className="mt-0.5 text-[9.5px] leading-snug text-white/45">{p.tagline}</p>
 
@@ -418,7 +418,7 @@ export default function BrochurePage() {
                   </div>
 
                   <div className={`mt-3.5 rounded-full px-3 py-2 text-center text-[9.5px] font-black ${p.popular ? "bg-emerald-400 text-emerald-950" : "bg-white/[0.08] text-white"}`}>
-                    Contratar por WhatsApp
+                    Sumar a mi plan
                   </div>
                 </div>
               ))}

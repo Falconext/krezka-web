@@ -22,7 +22,7 @@ const metricas = [
   { valor: '13', texto: 'funciones de tienda avanzada' },
   { valor: '0 %', texto: 'de comisión por venta' },
   { valor: '1', texto: 'solo sistema para todo' },
-  { valor: `S/ ${INSTALACION}`, texto: 'de instalación, pago único' },
+  { valor: `S/ ${INSTALACION}`, texto: 'de instalación + IGV, pago único' },
 ];
 
 const EmUnSolo = () => (
