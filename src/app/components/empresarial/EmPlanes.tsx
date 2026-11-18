@@ -63,7 +63,7 @@ const EmPlanes = () => (
               <span className={`text-sm font-semibold ${p.destacado ? 'text-white/70' : 'text-slate-400'}`}>+ IGV /mes</span>
             </p>
             <p className={`mt-1.5 text-xs font-semibold ${p.destacado ? 'text-white/80' : 'text-slate-600'}`}>
-              + S/ {INSTALACION} de instalación (pago único)
+              Primer pago: (S/ {p.mensual.toFixed(2)} + S/ {INSTALACION} de instalación, pago único) + IGV
             </p>
 
             <ul className="mt-8 flex-1 space-y-3.5">

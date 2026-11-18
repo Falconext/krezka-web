@@ -240,7 +240,7 @@ export default function BrochurePage() {
             </div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full">
               <Star size={10} className="text-emerald-600 fill-emerald-600" />
-              <span className="text-emerald-700 text-[11px] font-bold">Instalación S/ 50 · pago único</span>
+              <span className="text-emerald-700 text-[11px] font-bold">Instalación S/ 50 + IGV · pago único</span>
             </div>
           </div>
 
@@ -273,7 +273,7 @@ export default function BrochurePage() {
                       <span className="text-[9px] font-bold text-gray-400">+ IGV</span>
                       <span className="text-[10px] font-semibold text-gray-400">/ mes</span>
                     </div>
-                    <p className="mt-1 text-[9px] font-bold text-gray-600">+ S/ 50 de instalación (pago único)</p>
+                    <p className="mt-1 text-[9px] font-bold text-gray-600">1er pago: (S/ {p.monthly.toFixed(2)} + S/ 50 de instalación, pago único) + IGV</p>
                   </div>
                   <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-2 py-1.5">
                     <span className="text-[8px] text-gray-500">Anual: </span>
