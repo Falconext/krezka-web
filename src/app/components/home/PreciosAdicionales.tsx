@@ -1,6 +1,6 @@
 'use client';
 
-import { Users, Building2, BarChart3, LifeBuoy } from 'lucide-react';
+import { Users, Building2, BarChart3, LifeBuoy, MessageCircleHeart } from 'lucide-react';
 import { BRAND } from '@/lib/branding';
 
 type Addon = {
@@ -16,6 +16,7 @@ const addons: Addon[] = [
   { Icon: Building2, title: 'Por almacén o sucursal', price: '80' },
   { Icon: BarChart3, title: 'Reportes a medida', note: 'Importe sujeto a análisis y evaluación', featured: true },
   { Icon: LifeBuoy, title: 'Soporte Premium', note: 'Importe sujeto a condiciones' },
+  { Icon: MessageCircleHeart, title: 'IA de Ventas por WhatsApp', note: 'Desde S/ 149 + IGV al mes, según tus leads' },
 ];
 
 const waLink = `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
@@ -39,7 +40,7 @@ const PreciosAdicionales = () => {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-4 lg:grid-cols-5">
           {addons.map((a, i) => (
             <div
               key={a.title}

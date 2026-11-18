@@ -5,80 +5,69 @@ import { BRAND } from '@/lib/branding';
 import MetaPartnerBadge from '../MetaPartnerBadge';
 import { IA_VENTAS_ADDON_TEXTO } from '@/lib/public-pricing';
 
-// Start/Pro/Scale abren la prueba gratis en el sistema; Personalizado se conversa.
-const registroLink = (clave: string) => `${BRAND.dashboardUrl}/registro?plan=${clave}`;
-
-const waLink = (plan: string) =>
+// La IA de Ventas es un complemento: se suma a cualquier plan de Krezka. Se contrata por WhatsApp.
+const waLink = (escala: string) =>
   `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
-    `Hola, quiero el plan ${plan} (IA de Ventas) de ${BRAND.name}. ¿Me ayudan a activarlo?`
+    `Hola, quiero sumar la IA de Ventas (${escala}) a mi plan de ${BRAND.name}. ¿Me ayudan a activarla?`
   )}`;
 
-type Plan = {
+type Escala = {
   nombre: string;
   precio?: string;
   conv: string;
   desc: string;
   feats: string[];
-  cta: string;
   popular?: boolean;
   custom?: boolean;
-  clave?: 'start' | 'pro' | 'scale';
 };
 
-const planes: Plan[] = [
+const escalas: Escala[] = [
   {
-    nombre: 'Ventas Start',
-    clave: 'start',
-    precio: '199',
+    nombre: 'IA Start',
+    precio: '149',
     conv: '500 leads / mes',
     desc: 'Para empezar a automatizar la atención por WhatsApp.',
     feats: [
-      'Facturación electrónica SUNAT incluida',
+      'Se suma a cualquier plan de Krezka',
       'Todas las funciones de la IA de Ventas',
       'Configuración inicial de tu asesor IA',
     ],
-    cta: 'Probar 7 días gratis',
   },
   {
-    nombre: 'Ventas Pro',
-    clave: 'pro',
-    precio: '299',
+    nombre: 'IA Pro',
+    precio: '249',
     conv: '1,500 leads / mes',
     desc: 'El equilibrio ideal para negocios activos.',
     feats: [
-      'Facturación electrónica SUNAT incluida',
+      'Se suma a cualquier plan de Krezka',
       'Todas las funciones de la IA de Ventas',
       'Configuración inicial de tu asesor IA',
       'Entrenamos la IA con tus documentos',
     ],
-    cta: 'Probar 7 días gratis',
     popular: true,
   },
   {
-    nombre: 'Ventas Scale',
-    clave: 'scale',
-    precio: '499',
+    nombre: 'IA Scale',
+    precio: '399',
     conv: '5,000 leads / mes',
     desc: 'Para negocios con alto volumen de consultas.',
     feats: [
-      'Facturación electrónica SUNAT incluida',
+      'Se suma a cualquier plan de Krezka',
       'Todas las funciones de la IA de Ventas',
       'Entrenamos la IA con tus documentos',
       'Revisión mensual de resultados',
     ],
-    cta: 'Probar 7 días gratis',
   },
   {
-    nombre: 'Personalizado',
+    nombre: 'IA Personalizada',
     conv: 'Más de 5,000 leads / mes',
     desc: 'Para empresas con varias sedes o un volumen mayor.',
     feats: [
-      'Facturación electrónica SUNAT incluida',
+      'Se suma a cualquier plan de Krezka',
       'Todas las funciones de la IA de Ventas',
       'Volumen de leads a tu medida',
       'Asesor dedicado y varias sedes',
     ],
-    cta: 'Hablar con ventas',
     custom: true,
   },
 ];
@@ -126,13 +115,16 @@ const VentasIA = ({ conFunciones = true }: { conFunciones?: boolean }) => {
             Responde con tu catálogo real, califica cada prospecto y te avisa los leads calientes —
             desde tu propio número y con tu marca.
           </p>
+          <p className="kz-reveal mt-4 inline-flex rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-[13px] font-semibold text-white/85" style={{ animationDelay: '0.15s' }}>
+            Complemento aparte: se suma a cualquier plan y se ajusta a tus leads
+          </p>
           <div className="kz-reveal mt-6 flex justify-center" style={{ animationDelay: '0.18s' }}>
             <MetaPartnerBadge fondo="oscuro" alto={42} />
           </div>
         </div>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {planes.map((p, i) => (
+          {escalas.map((p, i) => (
             <div
               key={p.nombre}
               style={{ animationDelay: `${i * 0.08}s` }}
@@ -166,16 +158,16 @@ const VentasIA = ({ conFunciones = true }: { conFunciones?: boolean }) => {
               <p className="mt-3 text-[13px] leading-relaxed text-white/55">{p.desc}</p>
 
               <a
-                href={p.clave ? registroLink(p.clave) : waLink(p.nombre)}
-                target={p.clave ? undefined : '_blank'}
-                rel={p.clave ? undefined : 'noopener noreferrer'}
+                href={waLink(`${p.nombre}, ${p.conv}`)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`mt-5 inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-all hover:scale-[1.02] ${
                   p.popular
                     ? 'bg-white text-[#2a1d6b] hover:bg-white/90'
                     : 'border border-white/15 bg-white/5 text-white hover:bg-white/10'
                 }`}
               >
-                {p.cta}
+                {p.custom ? 'Cotizar por WhatsApp' : 'Sumarla a mi plan'}
               </a>
 
               <ul className="mt-6 space-y-2.5">
@@ -196,7 +188,7 @@ const VentasIA = ({ conFunciones = true }: { conFunciones?: boolean }) => {
 
         {conFunciones && (
         <div className="kz-reveal mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
-          <p className="text-xs font-bold uppercase tracking-wider text-emerald-300">Todos los planes incluyen</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-emerald-300">Todas las escalas incluyen</p>
           <ul className="mt-5 grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
             {funcionesIA.map((f) => (
               <li key={f} className="flex items-start gap-2.5 text-[13px] leading-snug text-white/75">
@@ -209,8 +201,8 @@ const VentasIA = ({ conFunciones = true }: { conFunciones?: boolean }) => {
         )}
 
         <p className="mx-auto mt-8 max-w-3xl text-center text-[12.5px] leading-relaxed text-white/45">
-          <span className="font-semibold text-white/70">Precio claro:</span> tu plan incluye la facturación electrónica SUNAT y el asesor con IA que
-          atiende y responde 24/7. Krezka no cobra por mensaje: tus mensajes de WhatsApp y tus anuncios los cobra Meta directo a tu cuenta,
+          <span className="font-semibold text-white/70">Precio claro:</span> la IA de Ventas se paga aparte de tu plan de Krezka, que es
+          el que trae la facturación SUNAT, el punto de venta y el inventario. Krezka no cobra por mensaje: tus mensajes de WhatsApp y tus anuncios los cobra Meta directo a tu cuenta,
           con 1,000 mensajes de servicio gratis al mes por número.
         </p>
       </div>

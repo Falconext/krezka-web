@@ -18,24 +18,24 @@ const faqs = [
     a: 'Cuando quieras. Pausas el bot en ese chat y escribes tú desde la bandeja. También puedes apagar la IA completa con un interruptor.',
   },
   {
-    q: '¿Qué es un lead y cuántos incluye mi plan?',
-    a: 'Un lead es un cliente nuevo que te escribe en el mes; quien ya conversaba contigo no se vuelve a contar. Ventas Start incluye 500, Ventas Pro 1,500 y Ventas Scale 5,000. Si necesitas más, armamos un plan a tu medida.',
+    q: '¿Qué es un lead y cuántos incluye cada escala?',
+    a: 'Un lead es un cliente nuevo que te escribe en el mes; quien ya conversaba contigo no se vuelve a contar. IA Start incluye 500, IA Pro 1,500 e IA Scale 5,000. Si necesitas más, armamos una escala a tu medida.',
   },
   {
     q: '¿Hay cargos por mensaje?',
     a: 'De Krezka, no. Meta sí los cobra directo a tu cuenta: 1,000 mensajes de servicio gratis al mes por número y, pasado eso, cada mensaje según su tarifa. Tus anuncios y los avisos con plantilla también van aparte. Registra un medio de pago en Meta: sin él, los mensajes de servicio que pasen de los gratis no se entregan.',
   },
   {
-    q: '¿Viene con facturación electrónica?',
-    a: 'Sí. Todos los planes de IA de Ventas incluyen la facturación electrónica SUNAT, el punto de venta y el inventario de Krezka, porque la IA vende con tu stock real.',
+    q: '¿La IA de Ventas viene dentro de algún plan?',
+    a: 'No. Es un complemento que se suma a cualquier plan de Krezka, desde Emprendedor hasta Empresarial Plus. Tu plan trae la facturación SUNAT, el punto de venta y el inventario, y la IA vende con ese stock real.',
   },
   {
-    q: '¿Cómo es la prueba gratis?',
-    a: 'Te registras, eliges tu plan y tienes 7 días para probarlo con tus clientes. Si te convence, pagas desde el mismo sistema con Mercado Pago.',
+    q: '¿Puedo cambiar de escala?',
+    a: 'Sí. La ajustas a tus leads: subes o bajas de escala cuando quieras, sin cambiar tu plan de Krezka.',
   },
   {
     q: '¿Puedo cancelar cuando quiera?',
-    a: 'Sí. Sin permanencia forzada ni penalidades. Puedes subir o bajar de plan en cualquier momento.',
+    a: 'Sí. Sin permanencia forzada ni penalidades. Puedes subir o bajar de escala en cualquier momento.',
   },
 ];
 

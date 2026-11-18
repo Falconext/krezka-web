@@ -302,6 +302,23 @@ const HomePricing = () => {
           ¿Te falta un usuario o un local? Súmalos a cualquier plan: usuario adicional S/ 30 y sede adicional S/ 80 al mes + IGV.
         </p>
 
+        {/* La IA de Ventas no va dentro de ningún plan: se cobra aparte y se suma a cualquiera. */}
+        <div className="mx-auto mt-5 flex max-w-3xl flex-col items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/70 px-5 py-4 text-center sm:flex-row sm:text-left">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white">
+            <Sparkles size={18} />
+          </span>
+          <p className="flex-1 text-sm leading-relaxed text-slate-600">
+            <span className="font-bold text-slate-900">IA de Ventas por WhatsApp: complemento aparte.</span> Se suma a
+            cualquier plan y se ajusta a tus leads, desde S/ 149 + IGV al mes.
+          </p>
+          <a
+            href="/ventas-ia"
+            className="shrink-0 text-sm font-semibold text-emerald-700 underline decoration-emerald-700/40 underline-offset-4 hover:text-emerald-800"
+          >
+            Ver la IA de Ventas
+          </a>
+        </div>
+
         <div className="mt-5 text-center">
           <a
             href="#comparacion"

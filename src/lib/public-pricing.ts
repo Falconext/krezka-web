@@ -377,7 +377,7 @@ export const AVISO_ALZA_PRECIOS = {
 
 // IA de Ventas como complemento para quien ya tiene un plan Krezka (precios sin IGV).
 export const IA_VENTAS_ADDON_TEXTO =
-  "¿Ya usas Krezka? Súmale la IA de Ventas a tu plan: 500 leads por S/\u00a0149 + IGV, 1\u00a0500 por S/\u00a0249 + IGV o 5\u00a0000 por S/\u00a0399 + IGV.";
+  "La IA de Ventas es un complemento: no viene dentro de ningún plan, se suma a cualquiera y se ajusta a tus leads. Subes o bajas de escala cuando quieras.";
 
 // Periodos de pago de los planes del sistema. Para cambiar un descuento, edítalo aquí.
 // `descuento` se aplica sobre el precio mensual × meses; el anual usa el `annual`
